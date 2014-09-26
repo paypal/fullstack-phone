@@ -6,14 +6,27 @@ if [ ! -d "vendor" ]; then
   mkdir vendor
 fi
 
-# Install or update the dependencies.
-LIBRARIES=(libphonenumber closure-library closure-compiler closure-linter python-gflags)
+# Install or update the SVN dependencies.
+LIBRARIES=(libphonenumber closure-linter python-gflags)
 for LIBRARY in "${LIBRARIES[@]}"
 do
   if [ ! -d "vendor/$LIBRARY" ]; then
     svn checkout http://$LIBRARY.googlecode.com/svn/trunk/ vendor/$LIBRARY
   else
     svn update vendor/$LIBRARY
+  fi
+done
+
+# Install or update the git dependencies.
+LIBRARIES=(closure-library closure-compiler)
+for LIBRARY in "${LIBRARIES[@]}"
+do
+  if [ ! -d "vendor/$LIBRARY" ]; then
+    git clone https://github.com/google/$LIBRARY vendor/$LIBRARY
+  else
+    cd vendor/$LIBRARY
+    git pull
+    cd ../..
   fi
 done
 
