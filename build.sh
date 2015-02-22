@@ -7,7 +7,7 @@ if [ ! -d "vendor" ]; then
 fi
 
 # Install or update the SVN dependencies.
-LIBRARIES=(libphonenumber closure-linter python-gflags)
+LIBRARIES=(closure-linter python-gflags)
 for LIBRARY in "${LIBRARIES[@]}"
 do
   if [ ! -d "vendor/$LIBRARY" ]; then
@@ -23,6 +23,19 @@ for LIBRARY in "${LIBRARIES[@]}"
 do
   if [ ! -d "vendor/$LIBRARY" ]; then
     git clone https://github.com/google/$LIBRARY vendor/$LIBRARY
+  else
+    cd vendor/$LIBRARY
+    git pull
+    cd ../..
+  fi
+done
+
+# Install or update the git dependencies.
+LIBRARIES=(libphonenumber)
+for LIBRARY in "${LIBRARIES[@]}"
+do
+  if [ ! -d "vendor/$LIBRARY" ]; then
+    git clone https://github.com/googlei18n/$LIBRARY vendor/$LIBRARY
   else
     cd vendor/$LIBRARY
     git pull
