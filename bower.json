@@ -1,7 +1,7 @@
 {
   "name": "libphonenumber",
   "main": "dist/libphonenumber.js",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "homepage": "https://github.com/nathanhammond/libphonenumber",
   "authors": [
     "Nathan Hammond <nathan@nathanhammond.com>"
