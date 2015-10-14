@@ -13,7 +13,9 @@
             value="${basedir}/vendor/python-gflags" />
   <property name="libphonenumber.dir"
             value="${basedir}/vendor/libphonenumber" />
+  <property file="${basedir}/tmp/regioncodes.properties" />
 
+  <taskdef resource="net/sf/antcontrib/antlib.xml"></taskdef>
   <macrodef name="closure-compile">
     <attribute name="inputfile" />
     <attribute name="outputfile" />
@@ -93,11 +95,20 @@
   <target name="setnulldevice" depends="nul,devnull" />
 
   <target name="clean" description="deletes all generated files">
-    <delete file="dist/libphonenumber.js" />
+    <delete dir="dist" />
     <delete dir="tmp" />
+    <mkdir dir="dist"/>
+    <mkdir dir="tmp"/>
   </target>
 
-  <target name="compile-libphonenumber" depends="prepare-country-metadata"
+  <target name="prepare-country-metadata" >
+    <exec executable="${basedir}/metadata.js" failonerror="true">
+      <arg value="${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatalite.js" />
+      <arg value="${basedir}/tmp/" />
+    </exec>
+  </target>
+
+  <target name="compile-libphonenumber"
           description="generates libphonenumber.js">
     <closure-compile inputfile="libphonenumber.js"
                      outputfile="dist/libphonenumber.js">
@@ -110,11 +121,17 @@
     </closure-compile>
   </target>
 
-  <target name="prepare-country-metadata" >
-    <exec executable="${basedir}/metadata.js" failonerror="true">
-      <arg value="${libphonenumber.dir}/javascript/i18n/phonenumbers/metadata.js" />
-      <arg value="${basedir}/tmp/" />
-    </exec>
+  <target name="compile-country-libphonenumber"
+          description="generates country libphonenumber.js">
+    <closure-compile inputfile="libphonenumber.js"
+                     outputfile="dist/libphonenumber_${regioncode}.js">
+      <extraflags>
+        <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumberutil.js"' />
+        <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonemetadata.pb.js"' />
+        <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumber.pb.js"' />
+        <arg line='-p "tmp/metadata_${regioncode}.js"' />
+      </extraflags>
+    </closure-compile>
   </target>
 
   <target name="compile-tests" depends="setnulldevice">
@@ -136,7 +153,9 @@
     </closure-compile>
   </target>
 
-  <target name="compile" depends="compile-libphonenumber,compile-tests" />
+  <target name="compile" depends="clean,prepare-country-metadata,compile-libphonenumber">
+    <foreach parallel="true" target="compile-country-libphonenumber" param="regioncode" list="${regioncodes}"/>
+  </target>
 
   <target name="lint" description="lints all javascript files">
     <gjslint inputfile="${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter*.js" />

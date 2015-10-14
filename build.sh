@@ -26,4 +26,4 @@ done
 ant -f vendor/closure-compiler/build.xml
 
 # Build libphonenumber
-ant -f build.xml compile-libphonenumber
+ant -f build.xml compile

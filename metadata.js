@@ -9,7 +9,6 @@ var fs = require('fs');
 var vm = require('vm');
 
 var outpath = process.argv[3];
-fs.mkdirSync(outpath);
 
 var metadata = fs.readFileSync(process.argv[2]);
 var context = { goog: { provide: function() {} }, i18n: { phonenumbers: { metadata: {} } } };
@@ -56,3 +55,5 @@ regionCodeToCountryCodeMap['001'].forEach(function(countryCode) {
 });
 
 writeFile('001', countryToMetadata, countryCodeToRegionCodeMap);
+
+fs.writeFileSync(outpath + 'regioncodes.properties', 'regioncodes=' + Object.keys(regionCodeToCountryCodeMap));
