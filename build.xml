@@ -94,9 +94,10 @@
 
   <target name="clean" description="deletes all generated files">
     <delete file="dist/libphonenumber.js" />
+    <delete dir="tmp" />
   </target>
 
-  <target name="compile-libphonenumber"
+  <target name="compile-libphonenumber" depends="prepare-country-metadata"
           description="generates libphonenumber.js">
     <closure-compile inputfile="libphonenumber.js"
                      outputfile="dist/libphonenumber.js">
@@ -107,6 +108,13 @@
         <arg line='-e "${libphonenumber.dir}/javascript/i18n/phonenumbers/regioncodefortesting.js"' />
       </extraflags>
     </closure-compile>
+  </target>
+
+  <target name="prepare-country-metadata" >
+    <exec executable="${basedir}/metadata.js" failonerror="true">
+      <arg value="${libphonenumber.dir}/javascript/i18n/phonenumbers/metadata.js" />
+      <arg value="${basedir}/tmp/" />
+    </exec>
   </target>
 
   <target name="compile-tests" depends="setnulldevice">
