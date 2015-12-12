@@ -7,6 +7,10 @@ goog.require('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
 var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
 
+function countryCodeToRegionCodeMap() {
+  return i18n.phonenumbers.metadata.countryCodeToRegionCodeMap;
+}
+
 function isPossibleNumber(phoneNumber, regionCode) {
   regionCode = regionCode || "us";
   var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
@@ -29,6 +33,11 @@ function isValidNumberForRegion(phoneNumber, regionCode) {
   regionCode = regionCode || "us";
   var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
   return phoneUtil.isValidNumberForRegion(number, regionCode);
+}
+
+function getCountryCodeForRegion(regionCode) {
+  regionCode = regionCode || "us";
+  return phoneUtil.getCountryCodeForRegion(regionCode);
 }
 
 function getRegionCodeForNumber(phoneNumber, regionCode) {
@@ -80,6 +89,10 @@ function getNumberType(phoneNumber, regionCode) {
   return output;
 }
 
+function getSupportedRegions() {
+  return phoneUtil.getSupportedRegions();
+}
+
 function formatE164(phoneNumber, regionCode) {
   var PNF = i18n.phonenumbers.PhoneNumberFormat;
   regionCode = regionCode || "us";
@@ -113,12 +126,15 @@ function formatOutOfCountryCallingNumber(phoneNumber, regionCode, target) {
   return phoneUtil.formatOutOfCountryCallingNumber(number, target);
 }
 
+goog.exportSymbol('phoneUtils.countryCodeToRegionCodeMap', countryCodeToRegionCodeMap);
 goog.exportSymbol('phoneUtils.isPossibleNumber', isPossibleNumber);
 goog.exportSymbol('phoneUtils.isPossibleNumberWithReason', isPossibleNumberWithReason);
 goog.exportSymbol('phoneUtils.isValidNumber', isValidNumber);
 goog.exportSymbol('phoneUtils.isValidNumberForRegion', isValidNumberForRegion);
+goog.exportSymbol('phoneUtils.getCountryCodeForRegion', getCountryCodeForRegion);
 goog.exportSymbol('phoneUtils.getRegionCodeForNumber', getRegionCodeForNumber);
 goog.exportSymbol('phoneUtils.getNumberType', getNumberType);
+goog.exportSymbol('phoneUtils.getSupportedRegions', getSupportedRegions);
 goog.exportSymbol('phoneUtils.formatE164', formatE164);
 goog.exportSymbol('phoneUtils.formatNational', formatNational);
 goog.exportSymbol('phoneUtils.formatInternational', formatInternational);
