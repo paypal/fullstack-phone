@@ -7,5 +7,6 @@
     "Nathan Hammond <nathan@nathanhammond.com>"
   ],
   "description": "Google's libphonenumber as an easily included JavaScript library.",
-  "license": "Apache 2"
+  "license": "Apache 2",
+  "ignore": []
 }
