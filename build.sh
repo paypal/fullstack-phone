@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-CWD=`pwd`
-
 if [ ! -d "vendor" ]; then
   mkdir vendor
 fi
