@@ -34,7 +34,10 @@ I've modified `vendor/libphonenumber/javascript/build.xml` and turned that into 
 
 The `./build.sh` command uses those two pieces together in order to generate a new version of libphonenumber.js in the `/dist` folder.
 
-Before you run the build script, ensure you have [ant-contrib](http://ant-contrib.sourceforge.net/) installed, and present on your system's PATH.
+Before you run the build script, ensure you have these tools installed and present on your system's PATH:
+* [Ant](http://ant.apache.org/)
+* [Ant-Contrib](http://ant-contrib.sourceforge.net/)
+* [Maven](http://maven.apache.org/)
 
 Contributing
 ------------
