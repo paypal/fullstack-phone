@@ -25,6 +25,16 @@ phoneUtils.formatInOriginalFormat(phoneNumber, regionCode);
 phoneUtils.formatOutOfCountryCallingNumber(phoneNumber, regionCode, target);
 ```
 
+Prerequisites
+------------
+
+Ant, Ant-Contrib, and Maven:
+```bash
+brew install ant
+brew install ant-contrib
+brew install maven
+```
+
 How it works
 ------------
 
