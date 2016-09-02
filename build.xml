@@ -126,6 +126,7 @@
     <closure-compile inputfile="libphonenumber.js"
                      outputfile="dist/libphonenumber_${regioncode}.js">
       <extraflags>
+        <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumberutil.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonemetadata.pb.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumber.pb.js"' />

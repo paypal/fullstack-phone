@@ -1,11 +1,29 @@
-// TODO: Add this back in as a feature:
-// goog.require('i18n.phonenumbers.AsYouTypeFormatter');
+goog.require('i18n.phonenumbers.AsYouTypeFormatter');
 goog.require('i18n.phonenumbers.PhoneNumberFormat');
 goog.require('i18n.phonenumbers.PhoneNumberType');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
 var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+
+// stateless AsYouTypeFormatter (pass full string to it each time)
+// designed as stateless to work with ADVANCED_OPTIMIZATIONS
+function formatAsTyped(phoneNumber, regionCode) {
+  regionCode = regionCode || "us";
+
+  var formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
+
+  var output;
+
+  // loop over phone number and input digits one by one, then return final output
+  if (phoneNumber && typeof phoneNumber === 'string') {
+    for (var i = 0; i < phoneNumber.length; i++) {
+      output = formatter.inputDigit(phoneNumber.charAt(i));
+    }
+  }
+
+  return output;
+}
 
 function countryCodeToRegionCodeMap() {
   return i18n.phonenumbers.metadata.countryCodeToRegionCodeMap;
@@ -140,3 +158,4 @@ goog.exportSymbol('phoneUtils.formatNational', formatNational);
 goog.exportSymbol('phoneUtils.formatInternational', formatInternational);
 goog.exportSymbol('phoneUtils.formatInOriginalFormat', formatInOriginalFormat);
 goog.exportSymbol('phoneUtils.formatOutOfCountryCallingNumber', formatOutOfCountryCallingNumber);
+goog.exportSymbol('phoneUtils.formatAsTyped', formatAsTyped);
