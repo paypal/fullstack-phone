@@ -21,7 +21,7 @@ do
 done
 
 # Build closure-compiler
-ant -f vendor/closure-compiler/build.xml
+mvn -DskipTests -f vendor/closure-compiler/pom.xml
 
 # Build libphonenumber
 ant -f build.xml compile
