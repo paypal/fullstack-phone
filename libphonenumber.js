@@ -11,6 +11,8 @@ var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
 function formatAsTyped(phoneNumber, regionCode) {
   regionCode = regionCode || "us";
 
+  console.log('Instantiating AsYouTypeFormatter for', regionCode);
+
   var formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
 
   var output;
@@ -19,6 +21,7 @@ function formatAsTyped(phoneNumber, regionCode) {
   if (phoneNumber && typeof phoneNumber === 'string') {
     for (var i = 0; i < phoneNumber.length; i++) {
       output = formatter.inputDigit(phoneNumber.charAt(i));
+      console.log('char:', phoneNumber.charAt(i), 'output:', output);
     }
   }
 
