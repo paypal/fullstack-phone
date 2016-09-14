@@ -11,12 +11,16 @@ var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance(),
   formatter, // AsYouTypeFormatter
   statelessFormatter; // stateless AsYouTypeFormatter
 
-// initialize regionCode and formatter
-function init(code) {
-  regionCode = code || 'US';
-  formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
+// initialization function that calls injectMeta (provided by metadataInjector)
+// then sets regionCode and initializes formatters
+function useMeta(bundle) {
+  console.log('useMeta called for', bundle['regionCode']);
+  regionCode = bundle['regionCode']; // quote property names to prevent closure compiler from reducing them
+  injectMeta(bundle['countryCodeToRegionCodeMap'], bundle['countryToMetadata']);
+
+  formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode); // do this only AFTER injecting metadata
   statelessFormatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
-  console.log('initialized everything to', regionCode);
+  console.log('useMeta initialized everything to', regionCode);
 }
 
 function clearFormatter() {
@@ -157,6 +161,39 @@ function formatOutOfCountryCallingNumber(phoneNumber, target) {
   return phoneUtil.formatOutOfCountryCallingNumber(number, target);
 }
 
+function getExampleNumber() {
+  return phoneUtil.getExampleNumber(regionCode);
+}
+
+function getMetadataForRegion() {
+  return phoneUtil.getMetadataForRegion(regionCode);
+}
+
+function parsePhoneNumber(phoneNumberToParse) {
+  return protoToCanonicalPhone(phoneUtil.parse(phoneNumberToParse, regionCode));
+}
+
+function protoToCanonicalPhone(phoneNumber) {
+
+    if (phoneNumber === null) {
+        return null;
+    }
+
+    var canonicalPhone = {};
+
+    canonicalPhone['countryCode'] = phoneNumber.values_[1].toString();
+    canonicalPhone['nationalNumber'] = phoneNumber.values_[2].toString(); // use string literals to prevent Closure optimization
+
+    if (phoneNumber.values_[4] && phoneUtil.isLeadingZeroPossible(phoneNumber.values_[1])) {
+        canonicalPhone['nationalNumber'] = '0' + canonicalPhone['nationalNumber'];
+    }
+
+    if (phoneNumber.values_[3] !== undefined) {
+        canonicalPhone['extension'] = phoneNumber.values_[3];
+    }
+    return canonicalPhone;
+}
+
 goog.exportSymbol('countryCodeToRegionCodeMap', countryCodeToRegionCodeMap);
 goog.exportSymbol('isPossibleNumber', isPossibleNumber);
 goog.exportSymbol('isPossibleNumberWithReason', isPossibleNumberWithReason);
@@ -172,8 +209,11 @@ goog.exportSymbol('formatInternational', formatInternational);
 goog.exportSymbol('formatInOriginalFormat', formatInOriginalFormat);
 goog.exportSymbol('formatOutOfCountryCallingNumber', formatOutOfCountryCallingNumber);
 goog.exportSymbol('formatAsTyped', formatAsTyped);
+goog.exportSymbol('getExampleNumber', getExampleNumber);
+goog.exportSymbol('getMetadataForRegion', getMetadataForRegion);
+goog.exportSymbol('parsePhoneNumber', parsePhoneNumber);
 
-goog.exportSymbol('init', init);
+goog.exportSymbol('useMeta', useMeta);
 
 // AsYouTypeFormatter functions
 goog.exportSymbol('asYouType.clear', clearFormatter);

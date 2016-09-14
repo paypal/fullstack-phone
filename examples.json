@@ -1,0 +1,982 @@
+{
+    "AD": {
+        "countryCode": "376",
+        "nationalNumber": "712345"
+    },
+    "AE": {
+        "countryCode": "971",
+        "nationalNumber": "22345678"
+    },
+    "AF": {
+        "countryCode": "93",
+        "nationalNumber": "234567890"
+    },
+    "AG": {
+        "countryCode": "1",
+        "nationalNumber": "2684601234"
+    },
+    "AI": {
+        "countryCode": "1",
+        "nationalNumber": "2644612345"
+    },
+    "AL": {
+        "countryCode": "355",
+        "nationalNumber": "22345678"
+    },
+    "AM": {
+        "countryCode": "374",
+        "nationalNumber": "10123456"
+    },
+    "AN": {
+        "countryCode": "599",
+        "nationalNumber": "7151234"
+    },
+    "AO": {
+        "countryCode": "244",
+        "nationalNumber": "222123456"
+    },
+    "AR": {
+        "countryCode": "54",
+        "nationalNumber": "1123456789"
+    },
+    "AS": {
+        "countryCode": "1",
+        "nationalNumber": "6846221234"
+    },
+    "AT": {
+        "countryCode": "43",
+        "nationalNumber": "1234567890"
+    },
+    "AU": {
+        "countryCode": "61",
+        "nationalNumber": "212345678"
+    },
+    "AW": {
+        "countryCode": "297",
+        "nationalNumber": "5212345"
+    },
+    "AX": {
+        "countryCode": "358",
+        "nationalNumber": "1812345678"
+    },
+    "AZ": {
+        "countryCode": "994",
+        "nationalNumber": "123123456"
+    },
+    "BA": {
+        "countryCode": "387",
+        "nationalNumber": "30123456"
+    },
+    "BB": {
+        "countryCode": "1",
+        "nationalNumber": "2464123456"
+    },
+    "BD": {
+        "countryCode": "880",
+        "nationalNumber": "27111234"
+    },
+    "BE": {
+        "countryCode": "32",
+        "nationalNumber": "12345678"
+    },
+    "BF": {
+        "countryCode": "226",
+        "nationalNumber": "20491234"
+    },
+    "BG": {
+        "countryCode": "359",
+        "nationalNumber": "2123456"
+    },
+    "BH": {
+        "countryCode": "973",
+        "nationalNumber": "17001234"
+    },
+    "BI": {
+        "countryCode": "257",
+        "nationalNumber": "22201234"
+    },
+    "BJ": {
+        "countryCode": "229",
+        "nationalNumber": "20211234"
+    },
+    "BL": {
+        "countryCode": "590",
+        "nationalNumber": "590271234"
+    },
+    "BM": {
+        "countryCode": "1",
+        "nationalNumber": "4412345678"
+    },
+    "BN": {
+        "countryCode": "673",
+        "nationalNumber": "2345678"
+    },
+    "BO": {
+        "countryCode": "591",
+        "nationalNumber": "22123456"
+    },
+    "BQ": {
+        "countryCode": "599",
+        "nationalNumber": "7151234"
+    },
+    "BR": {
+        "countryCode": "55",
+        "nationalNumber": "1123456789"
+    },
+    "BS": {
+        "countryCode": "1",
+        "nationalNumber": "2423456789"
+    },
+    "BT": {
+        "countryCode": "975",
+        "nationalNumber": "2345678"
+    },
+    "BW": {
+        "countryCode": "267",
+        "nationalNumber": "2401234"
+    },
+    "BY": {
+        "countryCode": "375",
+        "nationalNumber": "152450911"
+    },
+    "BZ": {
+        "countryCode": "501",
+        "nationalNumber": "2221234"
+    },
+    "CA": {
+        "countryCode": "1",
+        "nationalNumber": "2042345678"
+    },
+    "CC": {
+        "countryCode": "61",
+        "nationalNumber": "891621234"
+    },
+    "CD": {
+        "countryCode": "243",
+        "nationalNumber": "1234567"
+    },
+    "CF": {
+        "countryCode": "236",
+        "nationalNumber": "21612345"
+    },
+    "CG": {
+        "countryCode": "242",
+        "nationalNumber": "222123456"
+    },
+    "CH": {
+        "countryCode": "41",
+        "nationalNumber": "212345678"
+    },
+    "CI": {
+        "countryCode": "225",
+        "nationalNumber": "21234567"
+    },
+    "CK": {
+        "countryCode": "682",
+        "nationalNumber": "21234"
+    },
+    "CL": {
+        "countryCode": "56",
+        "nationalNumber": "221234567"
+    },
+    "CM": {
+        "countryCode": "237",
+        "nationalNumber": "222123456"
+    },
+    "CN": {
+        "countryCode": "86",
+        "nationalNumber": "1012345678"
+    },
+    "CO": {
+        "countryCode": "57",
+        "nationalNumber": "12345678"
+    },
+    "CR": {
+        "countryCode": "506",
+        "nationalNumber": "22123456"
+    },
+    "CU": {
+        "countryCode": "53",
+        "nationalNumber": "71234567"
+    },
+    "CV": {
+        "countryCode": "238",
+        "nationalNumber": "2211234"
+    },
+    "CW": {
+        "countryCode": "599",
+        "nationalNumber": "94151234"
+    },
+    "CX": {
+        "countryCode": "61",
+        "nationalNumber": "891641234"
+    },
+    "CY": {
+        "countryCode": "357",
+        "nationalNumber": "22345678"
+    },
+    "CZ": {
+        "countryCode": "420",
+        "nationalNumber": "212345678"
+    },
+    "DE": {
+        "countryCode": "49",
+        "nationalNumber": "30123456"
+    },
+    "DJ": {
+        "countryCode": "253",
+        "nationalNumber": "21360003"
+    },
+    "DK": {
+        "countryCode": "45",
+        "nationalNumber": "32123456"
+    },
+    "DM": {
+        "countryCode": "1",
+        "nationalNumber": "7674201234"
+    },
+    "DO": {
+        "countryCode": "1",
+        "nationalNumber": "8092345678"
+    },
+    "DZ": {
+        "countryCode": "213",
+        "nationalNumber": "12345678"
+    },
+    "EC": {
+        "countryCode": "593",
+        "nationalNumber": "22123456"
+    },
+    "EE": {
+        "countryCode": "372",
+        "nationalNumber": "3212345"
+    },
+    "EG": {
+        "countryCode": "20",
+        "nationalNumber": "234567890"
+    },
+    "EH": {
+        "countryCode": "212",
+        "nationalNumber": "528812345"
+    },
+    "ER": {
+        "countryCode": "291",
+        "nationalNumber": "8370362"
+    },
+    "ES": {
+        "countryCode": "34",
+        "nationalNumber": "810123456"
+    },
+    "ET": {
+        "countryCode": "251",
+        "nationalNumber": "111112345"
+    },
+    "FI": {
+        "countryCode": "358",
+        "nationalNumber": "1312345678"
+    },
+    "FJ": {
+        "countryCode": "679",
+        "nationalNumber": "3212345"
+    },
+    "FK": {
+        "countryCode": "500",
+        "nationalNumber": "31234"
+    },
+    "FM": {
+        "countryCode": "691",
+        "nationalNumber": "3201234"
+    },
+    "FO": {
+        "countryCode": "298",
+        "nationalNumber": "201234"
+    },
+    "FR": {
+        "countryCode": "33",
+        "nationalNumber": "123456789"
+    },
+    "GA": {
+        "countryCode": "241",
+        "nationalNumber": "01441234"
+    },
+    "GB": {
+        "countryCode": "44",
+        "nationalNumber": "1212345678"
+    },
+    "GD": {
+        "countryCode": "1",
+        "nationalNumber": "4732691234"
+    },
+    "GE": {
+        "countryCode": "995",
+        "nationalNumber": "322123456"
+    },
+    "GF": {
+        "countryCode": "594",
+        "nationalNumber": "594101234"
+    },
+    "GG": {
+        "countryCode": "44",
+        "nationalNumber": "1481456789"
+    },
+    "GH": {
+        "countryCode": "233",
+        "nationalNumber": "302345678"
+    },
+    "GI": {
+        "countryCode": "350",
+        "nationalNumber": "20012345"
+    },
+    "GL": {
+        "countryCode": "299",
+        "nationalNumber": "321000"
+    },
+    "GM": {
+        "countryCode": "220",
+        "nationalNumber": "5661234"
+    },
+    "GN": {
+        "countryCode": "224",
+        "nationalNumber": "30241234"
+    },
+    "GP": {
+        "countryCode": "590",
+        "nationalNumber": "590201234"
+    },
+    "GQ": {
+        "countryCode": "240",
+        "nationalNumber": "333091234"
+    },
+    "GR": {
+        "countryCode": "30",
+        "nationalNumber": "2123456789"
+    },
+    "GT": {
+        "countryCode": "502",
+        "nationalNumber": "22456789"
+    },
+    "GU": {
+        "countryCode": "1",
+        "nationalNumber": "6713001234"
+    },
+    "GW": {
+        "countryCode": "245",
+        "nationalNumber": "443201234"
+    },
+    "GY": {
+        "countryCode": "592",
+        "nationalNumber": "2201234"
+    },
+    "HK": {
+        "countryCode": "852",
+        "nationalNumber": "21234567"
+    },
+    "HN": {
+        "countryCode": "504",
+        "nationalNumber": "22123456"
+    },
+    "HR": {
+        "countryCode": "385",
+        "nationalNumber": "12345678"
+    },
+    "HT": {
+        "countryCode": "509",
+        "nationalNumber": "22453300"
+    },
+    "HU": {
+        "countryCode": "36",
+        "nationalNumber": "12345678"
+    },
+    "ID": {
+        "countryCode": "62",
+        "nationalNumber": "612345678"
+    },
+    "IE": {
+        "countryCode": "353",
+        "nationalNumber": "2212345"
+    },
+    "IL": {
+        "countryCode": "972",
+        "nationalNumber": "21234567"
+    },
+    "IM": {
+        "countryCode": "44",
+        "nationalNumber": "1624456789"
+    },
+    "IN": {
+        "countryCode": "91",
+        "nationalNumber": "1123456789"
+    },
+    "IQ": {
+        "countryCode": "964",
+        "nationalNumber": "12345678"
+    },
+    "IR": {
+        "countryCode": "98",
+        "nationalNumber": "2123456789"
+    },
+    "IS": {
+        "countryCode": "354",
+        "nationalNumber": "4101234"
+    },
+    "IT": {
+        "countryCode": "39",
+        "nationalNumber": "0212345678"
+    },
+    "JE": {
+        "countryCode": "44",
+        "nationalNumber": "1534456789"
+    },
+    "JM": {
+        "countryCode": "1",
+        "nationalNumber": "8765123456"
+    },
+    "JO": {
+        "countryCode": "962",
+        "nationalNumber": "62001234"
+    },
+    "JP": {
+        "countryCode": "81",
+        "nationalNumber": "312345678"
+    },
+    "KE": {
+        "countryCode": "254",
+        "nationalNumber": "202012345"
+    },
+    "KG": {
+        "countryCode": "996",
+        "nationalNumber": "312123456"
+    },
+    "KH": {
+        "countryCode": "855",
+        "nationalNumber": "23756789"
+    },
+    "KI": {
+        "countryCode": "686",
+        "nationalNumber": "31234"
+    },
+    "KM": {
+        "countryCode": "269",
+        "nationalNumber": "7712345"
+    },
+    "KN": {
+        "countryCode": "1",
+        "nationalNumber": "8692361234"
+    },
+    "KP": {
+        "countryCode": "850",
+        "nationalNumber": "21234567"
+    },
+    "KR": {
+        "countryCode": "82",
+        "nationalNumber": "22123456"
+    },
+    "KW": {
+        "countryCode": "965",
+        "nationalNumber": "22345678"
+    },
+    "KY": {
+        "countryCode": "1",
+        "nationalNumber": "3452221234"
+    },
+    "KZ": {
+        "countryCode": "7",
+        "nationalNumber": "7123456789"
+    },
+    "LA": {
+        "countryCode": "856",
+        "nationalNumber": "21212862"
+    },
+    "LB": {
+        "countryCode": "961",
+        "nationalNumber": "1123456"
+    },
+    "LC": {
+        "countryCode": "1",
+        "nationalNumber": "7584305678"
+    },
+    "LI": {
+        "countryCode": "423",
+        "nationalNumber": "2345678"
+    },
+    "LK": {
+        "countryCode": "94",
+        "nationalNumber": "112345678"
+    },
+    "LR": {
+        "countryCode": "231",
+        "nationalNumber": "21234567"
+    },
+    "LS": {
+        "countryCode": "266",
+        "nationalNumber": "22123456"
+    },
+    "LT": {
+        "countryCode": "370",
+        "nationalNumber": "31234567"
+    },
+    "LU": {
+        "countryCode": "352",
+        "nationalNumber": "27123456"
+    },
+    "LV": {
+        "countryCode": "371",
+        "nationalNumber": "63123456"
+    },
+    "LY": {
+        "countryCode": "218",
+        "nationalNumber": "212345678"
+    },
+    "MA": {
+        "countryCode": "212",
+        "nationalNumber": "520123456"
+    },
+    "MC": {
+        "countryCode": "377",
+        "nationalNumber": "99123456"
+    },
+    "MD": {
+        "countryCode": "373",
+        "nationalNumber": "22212345"
+    },
+    "ME": {
+        "countryCode": "382",
+        "nationalNumber": "30234567"
+    },
+    "MF": {
+        "countryCode": "590",
+        "nationalNumber": "590271234"
+    },
+    "MG": {
+        "countryCode": "261",
+        "nationalNumber": "202123456"
+    },
+    "MH": {
+        "countryCode": "692",
+        "nationalNumber": "2471234"
+    },
+    "MK": {
+        "countryCode": "389",
+        "nationalNumber": "22212345"
+    },
+    "ML": {
+        "countryCode": "223",
+        "nationalNumber": "20212345"
+    },
+    "MM": {
+        "countryCode": "95",
+        "nationalNumber": "1234567"
+    },
+    "MN": {
+        "countryCode": "976",
+        "nationalNumber": "50123456"
+    },
+    "MO": {
+        "countryCode": "853",
+        "nationalNumber": "28212345"
+    },
+    "MP": {
+        "countryCode": "1",
+        "nationalNumber": "6702345678"
+    },
+    "MQ": {
+        "countryCode": "596",
+        "nationalNumber": "596301234"
+    },
+    "MR": {
+        "countryCode": "222",
+        "nationalNumber": "35123456"
+    },
+    "MS": {
+        "countryCode": "1",
+        "nationalNumber": "6644912345"
+    },
+    "MT": {
+        "countryCode": "356",
+        "nationalNumber": "21001234"
+    },
+    "MU": {
+        "countryCode": "230",
+        "nationalNumber": "2012345"
+    },
+    "MV": {
+        "countryCode": "960",
+        "nationalNumber": "6701234"
+    },
+    "MW": {
+        "countryCode": "265",
+        "nationalNumber": "1234567"
+    },
+    "MX": {
+        "countryCode": "52",
+        "nationalNumber": "2221234567"
+    },
+    "MY": {
+        "countryCode": "60",
+        "nationalNumber": "323456789"
+    },
+    "MZ": {
+        "countryCode": "258",
+        "nationalNumber": "21123456"
+    },
+    "NA": {
+        "countryCode": "264",
+        "nationalNumber": "61221234"
+    },
+    "NC": {
+        "countryCode": "687",
+        "nationalNumber": "201234"
+    },
+    "NE": {
+        "countryCode": "227",
+        "nationalNumber": "20201234"
+    },
+    "NF": {
+        "countryCode": "672",
+        "nationalNumber": "106609"
+    },
+    "NG": {
+        "countryCode": "234",
+        "nationalNumber": "12345678"
+    },
+    "NI": {
+        "countryCode": "505",
+        "nationalNumber": "21234567"
+    },
+    "NL": {
+        "countryCode": "31",
+        "nationalNumber": "101234567"
+    },
+    "NO": {
+        "countryCode": "47",
+        "nationalNumber": "21234567"
+    },
+    "NP": {
+        "countryCode": "977",
+        "nationalNumber": "14567890"
+    },
+    "NR": {
+        "countryCode": "674",
+        "nationalNumber": "4441234"
+    },
+    "NU": {
+        "countryCode": "683",
+        "nationalNumber": "4002"
+    },
+    "NZ": {
+        "countryCode": "64",
+        "nationalNumber": "32345678"
+    },
+    "OM": {
+        "countryCode": "968",
+        "nationalNumber": "23123456"
+    },
+    "PA": {
+        "countryCode": "507",
+        "nationalNumber": "2001234"
+    },
+    "PE": {
+        "countryCode": "51",
+        "nationalNumber": "11234567"
+    },
+    "PF": {
+        "countryCode": "689",
+        "nationalNumber": "40412345"
+    },
+    "PG": {
+        "countryCode": "675",
+        "nationalNumber": "3123456"
+    },
+    "PH": {
+        "countryCode": "63",
+        "nationalNumber": "21234567"
+    },
+    "PK": {
+        "countryCode": "92",
+        "nationalNumber": "2123456789"
+    },
+    "PL": {
+        "countryCode": "48",
+        "nationalNumber": "123456789"
+    },
+    "PM": {
+        "countryCode": "508",
+        "nationalNumber": "411234"
+    },
+    "PN": {
+        "countryCode": "64",
+        "nationalNumber": "32345678"
+    },
+    "PR": {
+        "countryCode": "1",
+        "nationalNumber": "7872345678"
+    },
+    "PS": {
+        "countryCode": "970",
+        "nationalNumber": "22234567"
+    },
+    "PT": {
+        "countryCode": "351",
+        "nationalNumber": "212345678"
+    },
+    "PW": {
+        "countryCode": "680",
+        "nationalNumber": "2771234"
+    },
+    "PY": {
+        "countryCode": "595",
+        "nationalNumber": "212345678"
+    },
+    "QA": {
+        "countryCode": "974",
+        "nationalNumber": "44123456"
+    },
+    "RE": {
+        "countryCode": "262",
+        "nationalNumber": "262161234"
+    },
+    "RO": {
+        "countryCode": "40",
+        "nationalNumber": "211234567"
+    },
+    "RS": {
+        "countryCode": "381",
+        "nationalNumber": "10234567"
+    },
+    "RU": {
+        "countryCode": "7",
+        "nationalNumber": "3011234567"
+    },
+    "RW": {
+        "countryCode": "250",
+        "nationalNumber": "250123456"
+    },
+    "SA": {
+        "countryCode": "966",
+        "nationalNumber": "112345678"
+    },
+    "SB": {
+        "countryCode": "677",
+        "nationalNumber": "40123"
+    },
+    "SC": {
+        "countryCode": "248",
+        "nationalNumber": "4217123"
+    },
+    "SD": {
+        "countryCode": "249",
+        "nationalNumber": "121231234"
+    },
+    "SE": {
+        "countryCode": "46",
+        "nationalNumber": "8123456"
+    },
+    "SG": {
+        "countryCode": "65",
+        "nationalNumber": "61234567"
+    },
+    "SH": {
+        "countryCode": "290",
+        "nationalNumber": "22158"
+    },
+    "SI": {
+        "countryCode": "386",
+        "nationalNumber": "11234567"
+    },
+    "SJ": {
+        "countryCode": "47",
+        "nationalNumber": "79123456"
+    },
+    "SK": {
+        "countryCode": "421",
+        "nationalNumber": "212345678"
+    },
+    "SL": {
+        "countryCode": "232",
+        "nationalNumber": "22221234"
+    },
+    "SM": {
+        "countryCode": "378",
+        "nationalNumber": "0549886377"
+    },
+    "SN": {
+        "countryCode": "221",
+        "nationalNumber": "301012345"
+    },
+    "SO": {
+        "countryCode": "252",
+        "nationalNumber": "4012345"
+    },
+    "SR": {
+        "countryCode": "597",
+        "nationalNumber": "211234"
+    },
+    "SS": {
+        "countryCode": "211",
+        "nationalNumber": "181234567"
+    },
+    "ST": {
+        "countryCode": "239",
+        "nationalNumber": "2221234"
+    },
+    "SV": {
+        "countryCode": "503",
+        "nationalNumber": "21234567"
+    },
+    "SX": {
+        "countryCode": "1",
+        "nationalNumber": "7215425678"
+    },
+    "SY": {
+        "countryCode": "963",
+        "nationalNumber": "112345678"
+    },
+    "SZ": {
+        "countryCode": "268",
+        "nationalNumber": "22171234"
+    },
+    "TC": {
+        "countryCode": "1",
+        "nationalNumber": "6497121234"
+    },
+    "TD": {
+        "countryCode": "235",
+        "nationalNumber": "22501234"
+    },
+    "TG": {
+        "countryCode": "228",
+        "nationalNumber": "22212345"
+    },
+    "TH": {
+        "countryCode": "66",
+        "nationalNumber": "21234567"
+    },
+    "TJ": {
+        "countryCode": "992",
+        "nationalNumber": "372123456"
+    },
+    "TK": {
+        "countryCode": "690",
+        "nationalNumber": "3101"
+    },
+    "TL": {
+        "countryCode": "670",
+        "nationalNumber": "2112345"
+    },
+    "TM": {
+        "countryCode": "993",
+        "nationalNumber": "12345678"
+    },
+    "TN": {
+        "countryCode": "216",
+        "nationalNumber": "71234567"
+    },
+    "TO": {
+        "countryCode": "676",
+        "nationalNumber": "20123"
+    },
+    "TR": {
+        "countryCode": "90",
+        "nationalNumber": "2123456789"
+    },
+    "TT": {
+        "countryCode": "1",
+        "nationalNumber": "8682211234"
+    },
+    "TV": {
+        "countryCode": "688",
+        "nationalNumber": "20123"
+    },
+    "TW": {
+        "countryCode": "886",
+        "nationalNumber": "21234567"
+    },
+    "TZ": {
+        "countryCode": "255",
+        "nationalNumber": "222345678"
+    },
+    "UA": {
+        "countryCode": "380",
+        "nationalNumber": "311234567"
+    },
+    "UG": {
+        "countryCode": "256",
+        "nationalNumber": "312345678"
+    },
+    "US": {
+        "countryCode": "1",
+        "nationalNumber": "2015550123"
+    },
+    "UY": {
+        "countryCode": "598",
+        "nationalNumber": "21231234"
+    },
+    "UZ": {
+        "countryCode": "998",
+        "nationalNumber": "662345678"
+    },
+    "VA": {
+        "countryCode": "39",
+        "nationalNumber": "0669812345"
+    },
+    "VC": {
+        "countryCode": "1",
+        "nationalNumber": "7842661234"
+    },
+    "VE": {
+        "countryCode": "58",
+        "nationalNumber": "2121234567"
+    },
+    "VG": {
+        "countryCode": "1",
+        "nationalNumber": "2842291234"
+    },
+    "VI": {
+        "countryCode": "1",
+        "nationalNumber": "3406421234"
+    },
+    "VN": {
+        "countryCode": "84",
+        "nationalNumber": "2101234567"
+    },
+    "VU": {
+        "countryCode": "678",
+        "nationalNumber": "22123"
+    },
+    "WF": {
+        "countryCode": "681",
+        "nationalNumber": "501234"
+    },
+    "WS": {
+        "countryCode": "685",
+        "nationalNumber": "22123"
+    },
+    "XK": {
+        "countryCode": "377",
+        "nationalNumber": "99123456"
+    },
+    "YE": {
+        "countryCode": "967",
+        "nationalNumber": "1234567"
+    },
+    "YT": {
+        "countryCode": "262",
+        "nationalNumber": "269601234"
+    },
+    "ZA": {
+        "countryCode": "27",
+        "nationalNumber": "101234567"
+    },
+    "ZM": {
+        "countryCode": "260",
+        "nationalNumber": "211234567"
+    },
+    "ZW": {
+        "countryCode": "263",
+        "nationalNumber": "1312345"
+    },
+    "C2": {
+        "countryCode": "86",
+        "nationalNumber": "1012345678"
+    }
+}

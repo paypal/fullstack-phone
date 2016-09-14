@@ -96,23 +96,24 @@
 
   <target name="clean" description="deletes all generated files">
     <delete dir="dist" />
-    <delete dir="tmp" />
+    <delete dir="metadata" />
     <mkdir dir="dist"/>
-    <mkdir dir="tmp"/>
+    <mkdir dir="metadata"/>
   </target>
 
   <target name="prepare-country-metadata" >
-    <exec executable="${basedir}/metadata.js" failonerror="true">
+    <exec executable="${basedir}/metadataExtractor.js" failonerror="true">
       <arg value="${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatalite.js" />
-      <arg value="${basedir}/tmp/" />
+      <arg value="${basedir}/metadata/" />
     </exec>
   </target>
 
   <target name="compile-libphonenumber"
-          description="generates libphonenumber.js">
+          description="generates full libphonenumber.js">
     <closure-compile inputfile="libphonenumber.js"
                      outputfile="dist/libphonenumber.js">
       <extraflags>
+        <arg line='-f "--js=metadataInjectorNoop.js"' /><!-- compile with dummy version of injectMeta -->
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers"' />
         <arg line='-e "${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatafortesting.js"' />
         <arg line='-e "${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatalite.js"' />
@@ -121,17 +122,16 @@
     </closure-compile>
   </target>
 
-  <target name="compile-country-libphonenumber"
-          description="generates country libphonenumber.js">
+  <target name="compile-bare-libphonenumber"
+          description="generates libphonenumber_bare.js (no metadata)">
     <closure-compile inputfile="libphonenumber.js"
-                     outputfile="dist/libphonenumber_${regioncode}.js"
-                     outputwrapper="var NS={};(function(){%output%}).apply(NS);NS.init('${regioncode}');delete NS.init;module.exports=NS;">
+                     outputfile="dist/libphonenumber_bare.js">
       <extraflags>
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumberutil.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonemetadata.pb.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumber.pb.js"' />
-        <arg line='-p "tmp/metadata_${regioncode}.js"' />
+        <arg line='-p "metadataInjector.js"' /> <!-- overrides libpohonenumber metadata module with injectMeta function -->
       </extraflags>
     </closure-compile>
   </target>
@@ -155,8 +155,10 @@
     </closure-compile>
   </target>
 
-  <target name="compile" depends="clean,prepare-country-metadata,compile-libphonenumber">
-    <foreach parallel="true" target="compile-country-libphonenumber" param="regioncode" list="${regioncodes}"/>
+  <target name="compile" depends="clean,
+                                  prepare-country-metadata,
+                                  compile-libphonenumber,
+                                  compile-bare-libphonenumber">
   </target>
 
   <target name="lint" description="lints all javascript files">
