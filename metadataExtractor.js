@@ -1,74 +1,130 @@
 #!/usr/bin/env node
+'use strict';
 
 /*
 Ported from work by Marco Faustinelli (contacts@faustinelli.net)
 https://gist.github.com/Muzietto/62c3fc5a1c285f091654
 Adapted by dwbruhn (dwbruhn@gmail.com)
 Outputs phone metadata as JSON
+Note: countryCode = country calling code (e.g. 61 for AU)
+      regionCode = ISO 3166- 1 alpha-2 (e.g. AU)
 */
 
-var fs = require('fs');
-var vm = require('vm');
 
-var outpath = process.argv[3];
+var fs = require('fs'),
+    vm = require('vm'),
+    path = require('path'),
+    outpath; // populated in main
 
-var metadata = fs.readFileSync(process.argv[2]);
-var context = { goog: { provide: function() {} }, i18n: { phonenumbers: { metadata: {} } } };
-vm.runInNewContext(metadata, context);
+function main() {
 
-function writeFile(regionCode, countryToMetadata, countryCodeToRegionCodeMap) {
-  var output = {
-    regionCode: regionCode,
-    countryCodeToRegionCodeMap: countryCodeToRegionCodeMap,
-    countryToMetadata: countryToMetadata
-  };
+    outpath = process.argv[3];
 
-  return fs.writeFileSync(outpath + 'metadata_' + regionCode + '.json', JSON.stringify(output));
+    var metadata = fs.readFileSync(process.argv[2]),
+        context = { goog: { provide: function () { } }, i18n: { phonenumbers: { metadata: {} } } };
+
+    vm.runInNewContext(metadata, context); // provide dummy google closure wrapper around metadata.js file from libphonenumber
+
+    var countryCodeToRegionCodeMap = context.i18n.phonenumbers.metadata.countryCodeToRegionCodeMap; // extract map from metadata
+    var fullMetadata = context.i18n.phonenumbers.metadata.countryToMetadata;
+
+    var regionCodeToCountryCodeMap = getRegionCodeToCountryCodeMap(countryCodeToRegionCodeMap); // construct simple map from territory codes ('region code') to country calling codes ('country code')
+    var dependencyMap = createDependencyMap(regionCodeToCountryCodeMap, countryCodeToRegionCodeMap); // list dependencies (regions that depend on metadata of main country with shared calling code)
+
+    // loop over each region to extract and write metadata
+    Object.keys(fullMetadata).forEach(function (regionCode) {
+        if (!Number.isNaN(parseInt(regionCode))) { return; } // skip 001 because it's not stored the same (keys in countryToMetadata are calling codes, not region codes)
+
+        var regionalOutput = extractRegionalMetadata(regionCode, fullMetadata, regionCodeToCountryCodeMap, countryCodeToRegionCodeMap);
+        writeRegionalFile(regionCode, regionalOutput);
+    });
+
+    // extract metadata for 001 (stored differently)
+    var globalExchangeOutput = extractGlobalExchanges('001', fullMetadata, regionCodeToCountryCodeMap);
+    writeRegionalFile('001', globalExchangeOutput);
+
+    // write dependency map
+    fs.writeFileSync(path.join(outpath, 'dependencyMap.json'), JSON.stringify(dependencyMap, null, 2));
+
+    // debugging
+    // fs.writeFileSync(path.join(outpath, 'countryCodeToRegionCodeMap.json'), JSON.stringify(countryCodeToRegionCodeMap, null, 2));
+    // fs.writeFileSync(path.join(outpath, 'regionCodeToCountryCodeMap.json'), JSON.stringify(regionCodeToCountryCodeMap, null, 2));
+    // fs.writeFileSync(path.join(outpath, 'regioncodes.properties'), 'regioncodes=' + Object.keys(regionCodeToCountryCodeMap));
 }
 
-var regionCodeToCountryCodeMap = {}; // construct map from territory codes ('region code') to country calling codes ('country code')
-for (var countryCode in context.i18n.phonenumbers.metadata.countryCodeToRegionCodeMap) {
-  context.i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[countryCode].forEach(function(regionCode) {
-    if (!regionCodeToCountryCodeMap[regionCode]) {
-      regionCodeToCountryCodeMap[regionCode] = [];
-    }
-    regionCodeToCountryCodeMap[regionCode].push(countryCode);
-  });
+// output regional metadata files
+function writeRegionalFile(regionCode, regionalOutput) {
+    fs.writeFileSync(path.join(outpath, 'metadata_' + regionCode + '.json'), JSON.stringify(regionalOutput));
 }
 
-// Grab the appropriate data.
-// note: countryCode = country calling code (e.g. 61 for AU)
-//       regionCode = ISO 3166- 1 alpha-2 (e.g.AU)
+/**
+ * Extract metadata for given regionCode
+ */
+function extractRegionalMetadata(regionCode, fullMetadata, regionCodeToCountryCodeMap, countryCodeToRegionCodeMap) {
 
-var countryToMetadata, countryCodeToRegionCodeMap;
-for (var regionCode in context.i18n.phonenumbers.metadata.countryToMetadata) {
-  if (!Number.isNaN(parseInt(regionCode))) { continue; }
+    var countryToMetadataLocal = {},
+        countryCodeToRegionCodeMapLocal = {};
 
-  var countryCode = regionCodeToCountryCodeMap[regionCode],
-     // get main country for shared country calling code and include its metadata
-    mainCountryForCode = context.i18n.phonenumbers.metadata.countryCodeToRegionCodeMap[countryCode][0],
-    regionCodesToAdd = (regionCode === mainCountryForCode) ? [regionCode] : [mainCountryForCode, regionCode];
+    var countryCode = regionCodeToCountryCodeMap[regionCode];
 
-  countryCodeToRegionCodeMap = {};
-  countryCodeToRegionCodeMap[countryCode] = regionCodesToAdd; // populate country code to region code map
+    countryCodeToRegionCodeMapLocal[countryCode] = [regionCode]; // populate country code to local region code map
+    countryToMetadataLocal[regionCode] = fullMetadata[regionCode];
 
-  // add metadata for each relevant region code
-  countryToMetadata = {};
-  regionCodesToAdd.forEach(function (regionCodeToAdd) {
-    countryToMetadata[regionCodeToAdd] = context.i18n.phonenumbers.metadata.countryToMetadata[regionCodeToAdd];
-  });
+    var output = {
+        regionCodes: [regionCode],
+        countryCodeToRegionCodeMap: countryCodeToRegionCodeMapLocal,
+        countryToMetadata: countryToMetadataLocal
+    };
 
-  writeFile(regionCode, countryToMetadata, countryCodeToRegionCodeMap);
+    return output;
 }
 
-// Handle the global exchanges.
-countryToMetadata = {};
-countryCodeToRegionCodeMap = {};
-regionCodeToCountryCodeMap['001'].forEach(function(countryCode) {
-  countryToMetadata[countryCode] = context.i18n.phonenumbers.metadata.countryToMetadata[countryCode];
-  countryCodeToRegionCodeMap[countryCode] = ['001'];
-});
+// Handle the global exchanges (metadata is stored differently for 001 than for other regions)
+function extractGlobalExchanges(globalRegionCode, fullMetadata, regionCodeToCountryCodeMap) {
+    var countryToMetadataLocal = {},
+        countryCodeToRegionCodeMapLocal = {};
 
-writeFile('001', countryToMetadata, countryCodeToRegionCodeMap);
+    regionCodeToCountryCodeMap[globalRegionCode].forEach(function (countryCode) {
+        countryToMetadataLocal[countryCode] = fullMetadata[countryCode];
+        countryCodeToRegionCodeMapLocal[countryCode] = [globalRegionCode];
+    });
 
-fs.writeFileSync(outpath + 'regioncodes.properties', 'regioncodes=' + Object.keys(regionCodeToCountryCodeMap));
+    var output = {
+        regionCode: [globalRegionCode],
+        countryCodeToRegionCodeMap: countryCodeToRegionCodeMapLocal,
+        countryToMetadata: countryToMetadataLocal
+    };
+
+    return output;
+}
+
+// create dependency map (regions depend on metadata of main country for calling code)
+function createDependencyMap(regionCodeToCountryCodeMap, countryCodeToRegionCodeMap) {
+    var dependencyMap = {
+        regionCodeToCountryCodeMap: regionCodeToCountryCodeMap,
+        countryCodeToRegionCodeMap: countryCodeToRegionCodeMap
+    };
+
+    return dependencyMap;
+}
+
+// given countryCodeToRegionCodeMap (straight from metadata), reverse the map
+// to map region codes to array of calling codes (e.g. 001 has 9 calling codes)
+function getRegionCodeToCountryCodeMap(countryCodeToRegionCodeMap) {
+    var regionCodeToCountryCodeMap = {};
+    // loop over country calling codes
+    Object.keys(countryCodeToRegionCodeMap).forEach(function (countryCode) {
+
+        // loop over region codes for each calling code
+        countryCodeToRegionCodeMap[countryCode].forEach(function (regionCode) {
+            if (!regionCodeToCountryCodeMap[regionCode]) {
+                regionCodeToCountryCodeMap[regionCode] = [];
+            }
+            regionCodeToCountryCodeMap[regionCode].push(countryCode);
+        });
+    });
+
+    return regionCodeToCountryCodeMap;
+}
+
+module.exports = main(); // export execution of main

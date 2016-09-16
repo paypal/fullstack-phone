@@ -13,7 +13,6 @@
             value="${basedir}/vendor/python-gflags" />
   <property name="libphonenumber.dir"
             value="${basedir}/vendor/libphonenumber" />
-  <property file="${basedir}/tmp/regioncodes.properties" />
 
   <taskdef resource="net/sf/antcontrib/antlib.xml"></taskdef>
   <macrodef name="closure-compile">
