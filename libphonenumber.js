@@ -9,200 +9,210 @@ goog.require('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 // TODO add checking on regionCodes param
 
 var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance(),
-  regionCodes, // region codes from metadata
-  formatter, // AsYouTypeFormatter
-  statelessFormatter; // stateless AsYouTypeFormatter
+    allRegionCodes, // region codes from metadata
+    regionCode, // one region code to use for all functions
+    formatter, // AsYouTypeFormatter
+    statelessFormatter; // stateless AsYouTypeFormatter
 
 // initialization function that calls injectMeta (provided by metadataInjector)
-// sets regionCodes
+// sets allRegionCodes
 // initializes formatter to first country (necessary to prevent Closure Compiler from removing the code)
 function useMeta(bundle) {
-  console.log('useMeta called for', bundle['regionCodes']);
-  regionCodes = bundle['regionCodes']; // quote property names to prevent closure compiler from reducing them
-  injectMeta(bundle['countryCodeToRegionCodeMap'], bundle['countryToMetadata']);
+    console.log('useMeta called for', bundle['regionCodes']);
+    allRegionCodes = bundle['regionCodes']; // quote property names to prevent closure compiler from reducing them
+    injectMeta(bundle['countryCodeToRegionCodeMap'], bundle['countryToMetadata']);
 
-  // initialize formatters to the first region code just to prevent closure compiler from removing the code
-  formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCodes[0]); // do this only AFTER injecting metadata
-  statelessFormatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCodes[0]);
-  console.log('useMeta initialized everything to', regionCodes);
+    // initialize formatters to the first region code just to prevent closure compiler from removing the code
+    setRegion(allRegionCodes[0]); // do this only AFTER injecting metadata
+    console.log('useMeta initialized everything to', allRegionCodes);
+}
+
+// initialize default region and asYouType formatters
+function setRegion(regionCodeParam) {
+    if (allRegionCodes.indexOf(regionCodeParam) === -1) {
+        throw new Error('Unsupported region: ' + regionCodeParam);
+    }
+
+    regionCode = regionCodeParam; // set default region for all function
+
+    // initialize asYouType formatters for default region
+    formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
+    statelessFormatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
+
 }
 
 // namespace the stateful AsYouTypeFormatter functions
 var asYouType = {
-  setRegion: function setRegion(regionCode) {
-    formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
-  },
+    clear: function clear() {
+        console.log('Clearing formatter');
+        formatter.clear();
+    },
 
-  clear: function clear() {
-    console.log('Clearing formatter');
-    formatter.clear();
-  },
-
-  inputDigit: function inputDigit(digit) {
-    console.log('Inputting digit', digit);
-    return formatter.inputDigit(digit);
-  }
+    inputDigit: function inputDigit(digit) {
+        console.log('Inputting digit', digit);
+        return formatter.inputDigit(digit);
+    }
 };
 
 // stateless AsYouTypeFormatter (pass full string to it each time)
 // designed as stateless to work with ADVANCED_OPTIMIZATIONS
-function formatAsTyped(phoneNumber, regionCode) {
+function formatAsTyped(phoneNumber) {
 
-  console.log('Clearing AsYouTypeFormatter for', regionCode);
-  statelessFormatter.clear();
+    console.log('Clearing AsYouTypeFormatter for', regionCode);
+    statelessFormatter.clear();
 
-  var output;
+    var output;
 
-  // loop over phone number and input digits one by one, then return final output
-  if (phoneNumber && typeof phoneNumber === 'string') {
-    for (var i = 0; i < phoneNumber.length; i++) {
-      output = statelessFormatter.inputDigit(phoneNumber.charAt(i));
-      console.log('char:', phoneNumber.charAt(i), 'output:', output);
+    // loop over phone number and input digits one by one, then return final output
+    if (phoneNumber && typeof phoneNumber === 'string') {
+        for (var i = 0; i < phoneNumber.length; i++) {
+            output = statelessFormatter.inputDigit(phoneNumber.charAt(i));
+            console.log('char:', phoneNumber.charAt(i), 'output:', output);
+        }
     }
-  }
 
-  return output;
+    return output;
 }
 
 function countryCodeToRegionCodeMap() {
-  return i18n.phonenumbers.metadata.countryCodeToRegionCodeMap;
+    return i18n.phonenumbers.metadata.countryCodeToRegionCodeMap;
 }
 
-function isPossibleNumber(phoneNumber, regionCode) {
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.isPossibleNumber(number);
+function isPossibleNumber(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.isPossibleNumber(number);
 }
 
-function isPossibleNumberWithReason(phoneNumber, regionCode) {
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.isPossibleNumberWithReason(number);
+function isPossibleNumberWithReason(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.isPossibleNumberWithReason(number);
 }
 
-function isValidNumber(phoneNumber, regionCode) {
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.isValidNumber(number);
+function isValidNumber(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.isValidNumber(number);
 }
 
-function isValidNumberForRegion(phoneNumber, regionCode) {
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.isValidNumberForRegion(number, regionCode);
+function isValidNumberForRegion(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.isValidNumberForRegion(number, regionCodeParam || regionCode);
 }
 
-function getCountryCodeForRegion(regionCode) {
-  return phoneUtil.getCountryCodeForRegion(regionCode);
+function getCountryCodeForRegion(regionCodeParam) {
+    return phoneUtil.getCountryCodeForRegion(regionCodeParam || regionCode);
 }
 
-function getRegionCodeForNumber(phoneNumber, regionCode) {
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.getRegionCodeForNumber(number);
+function getRegionCodeForNumber(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.getRegionCodeForNumber(number);
 }
 
-function getNumberType(phoneNumber, regionCode) {
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  var output;
-  var PNT = i18n.phonenumbers.PhoneNumberType;
-  switch (phoneUtil.getNumberType(number)) {
-    case PNT.FIXED_LINE:
-      output = 'FIXED_LINE';
-      break;
-    case PNT.MOBILE:
-      output = 'MOBILE';
-      break;
-    case PNT.FIXED_LINE_OR_MOBILE:
-      output = 'FIXED_LINE_OR_MOBILE';
-      break;
-    case PNT.TOLL_FREE:
-      output = 'TOLL_FREE';
-      break;
-    case PNT.PREMIUM_RATE:
-      output = 'PREMIUM_RATE';
-      break;
-    case PNT.SHARED_COST:
-      output = 'SHARED_COST';
-      break;
-    case PNT.VOIP:
-      output = 'VOIP';
-      break;
-    case PNT.PERSONAL_NUMBER:
-      output = 'PERSONAL_NUMBER';
-      break;
-    case PNT.PAGER:
-      output = 'PAGER';
-      break;
-    case PNT.UAN:
-      output = 'UAN';
-      break;
-    case PNT.UNKNOWN:
-      output = 'UNKNOWN';
-      break;
-  }
-  return output;
+function getNumberType(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    var output;
+    var PNT = i18n.phonenumbers.PhoneNumberType;
+    switch (phoneUtil.getNumberType(number)) {
+        case PNT.FIXED_LINE:
+            output = 'FIXED_LINE';
+            break;
+        case PNT.MOBILE:
+            output = 'MOBILE';
+            break;
+        case PNT.FIXED_LINE_OR_MOBILE:
+            output = 'FIXED_LINE_OR_MOBILE';
+            break;
+        case PNT.TOLL_FREE:
+            output = 'TOLL_FREE';
+            break;
+        case PNT.PREMIUM_RATE:
+            output = 'PREMIUM_RATE';
+            break;
+        case PNT.SHARED_COST:
+            output = 'SHARED_COST';
+            break;
+        case PNT.VOIP:
+            output = 'VOIP';
+            break;
+        case PNT.PERSONAL_NUMBER:
+            output = 'PERSONAL_NUMBER';
+            break;
+        case PNT.PAGER:
+            output = 'PAGER';
+            break;
+        case PNT.UAN:
+            output = 'UAN';
+            break;
+        case PNT.UNKNOWN:
+            output = 'UNKNOWN';
+            break;
+    }
+    return output;
 }
 
 function getSupportedRegions() {
-  return phoneUtil.getSupportedRegions();
+    return phoneUtil.getSupportedRegions();
 }
 
-function formatE164(phoneNumber, regionCode) {
-  var PNF = i18n.phonenumbers.PhoneNumberFormat;
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.format(number, PNF.E164);
+function formatE164(phoneNumber, regionCodeParam) {
+    var PNF = i18n.phonenumbers.PhoneNumberFormat;
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.format(number, PNF.E164);
 }
 
-function formatNational(phoneNumber, regionCode) {
-  var PNF = i18n.phonenumbers.PhoneNumberFormat;
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.format(number, PNF.NATIONAL);
+function formatNational(phoneNumber, regionCodeParam) {
+    var PNF = i18n.phonenumbers.PhoneNumberFormat;
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.format(number, PNF.NATIONAL);
 }
 
-function formatInternational(phoneNumber, regionCode) {
-  var PNF = i18n.phonenumbers.PhoneNumberFormat;
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.format(number, PNF.INTERNATIONAL);
+function formatInternational(phoneNumber, regionCodeParam) {
+    var PNF = i18n.phonenumbers.PhoneNumberFormat;
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.format(number, PNF.INTERNATIONAL);
 }
 
-function formatInOriginalFormat(phoneNumber, regionCode) {
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.formatInOriginalFormat(number, regionCode);
+function formatInOriginalFormat(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.formatInOriginalFormat(number, regionCodeParam || regionCode);
 }
 
-function formatOutOfCountryCallingNumber(phoneNumber, regionCode, target) {
-  if (!target) { return; }
-  var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCode);
-  return phoneUtil.formatOutOfCountryCallingNumber(number, target);
+function formatOutOfCountryCallingNumber(phoneNumber, regionCodeParam, target) {
+    if (!target) { return; }
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.formatOutOfCountryCallingNumber(number, target);
 }
 
-function getExampleNumber(regionCode) {
-  return phoneUtil.getExampleNumber(regionCode);
+function getExampleNumber(regionCodeParam) {
+    return phoneUtil.getExampleNumber(regionCodeParam || regionCode);
 }
 
-function getMetadataForRegion(regionCode) {
-  return phoneUtil.getMetadataForRegion(regionCode);
+function getMetadataForRegion(regionCodeParam) {
+    return phoneUtil.getMetadataForRegion(regionCodeParam || regionCode);
 }
 
-function parsePhoneNumber(phoneNumberToParse, regionCode) {
-  return protoToCanonicalPhone(phoneUtil.parse(phoneNumberToParse, regionCode));
+function parsePhoneNumber(phoneNumberToParse, regionCodeParam) {
+    return protoToCanonicalPhone(phoneUtil.parse(phoneNumberToParse, regionCodeParam || regionCode));
 }
 
 function protoToCanonicalPhone(phoneNumber) {
 
-  if (phoneNumber === null) {
-    return null;
-  }
+    if (phoneNumber === null) {
+        return null;
+    }
 
-  var canonicalPhone = {};
+    var canonicalPhone = {};
 
-  canonicalPhone['countryCode'] = phoneNumber.values_[1].toString();
-  canonicalPhone['nationalNumber'] = phoneNumber.values_[2].toString(); // use string literals to prevent Closure optimization
+    canonicalPhone['countryCode'] = phoneNumber.values_[1].toString();
+    canonicalPhone['nationalNumber'] = phoneNumber.values_[2].toString(); // use string literals to prevent Closure optimization
 
-  if (phoneNumber.values_[4] && phoneUtil.isLeadingZeroPossible(phoneNumber.values_[1])) {
-    canonicalPhone['nationalNumber'] = '0' + canonicalPhone['nationalNumber'];
-  }
+    if (phoneNumber.values_[4] && phoneUtil.isLeadingZeroPossible(phoneNumber.values_[1])) {
+        canonicalPhone['nationalNumber'] = '0' + canonicalPhone['nationalNumber'];
+    }
 
-  if (phoneNumber.values_[3] !== undefined) {
-    canonicalPhone['extension'] = phoneNumber.values_[3];
-  }
-  return canonicalPhone;
+    if (phoneNumber.values_[3] !== undefined) {
+        canonicalPhone['extension'] = phoneNumber.values_[3];
+    }
+    return canonicalPhone;
 }
 
 goog.exportSymbol('countryCodeToRegionCodeMap', countryCodeToRegionCodeMap);
@@ -225,8 +235,8 @@ goog.exportSymbol('getMetadataForRegion', getMetadataForRegion);
 goog.exportSymbol('parsePhoneNumber', parsePhoneNumber);
 
 goog.exportSymbol('useMeta', useMeta);
+goog.exportSymbol('setRegion', setRegion);
 
 // AsYouTypeFormatter functions
 goog.exportSymbol('asYouType.clear', asYouType.clear);
 goog.exportSymbol('asYouType.inputDigit', asYouType.inputDigit);
-goog.exportSymbol('asYouType.setRegion', asYouType.setRegion);
