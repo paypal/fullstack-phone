@@ -2,6 +2,7 @@
 
 goog.require('i18n.phonenumbers.AsYouTypeFormatter');
 goog.require('i18n.phonenumbers.PhoneNumberFormat');
+// goog.require('i18n.phonenumbers.PhoneNumberType');
 goog.require('i18n.phonenumbers.PhoneNumberUtil');
 goog.require('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
@@ -45,7 +46,7 @@ function useMeta(bundle) {
 
     // initialize formatters to the first region code just to prevent closure compiler from removing the code
     setRegion(allRegionCodes[0]); // do this only AFTER injecting metadata
-    console.log('useMeta initialized everything to', allRegionCodes[0]);
+    console.log('useMeta initialized everything to', allRegionCodes);
 }
 
 // initialize default region and asYouType formatters
@@ -95,9 +96,6 @@ function formatAsTyped(phoneNumber) {
     return output;
 }
 
-/**
- * Original functions from libphonenumber-hammond
- */
 function countryCodeToRegionCodeMap() {
     return i18n.phonenumbers.metadata.countryCodeToRegionCodeMap;
 }
@@ -110,11 +108,123 @@ function getSupportedRegions() {
     return phoneUtil.getSupportedRegions();
 }
 
+/**
+ * Original functions from libphonenumber-hammond
+ */
+
+/*
+function isPossibleNumber(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.isPossibleNumber(number);
+}
+
+function isPossibleNumberWithReason(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.isPossibleNumberWithReason(number);
+}
+
+function isValidNumber(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.isValidNumber(number);
+}
+
+function isValidNumberForRegion(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.isValidNumberForRegion(number, regionCodeParam || regionCode);
+}
+
+function getRegionCodeForNumber(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.getRegionCodeForNumber(number);
+}
+
+function getNumberType(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    var output;
+    var PNT = i18n.phonenumbers.PhoneNumberType;
+    switch (phoneUtil.getNumberType(number)) {
+        case PNT.FIXED_LINE:
+            output = 'FIXED_LINE';
+            break;
+        case PNT.MOBILE:
+            output = 'MOBILE';
+            break;
+        case PNT.FIXED_LINE_OR_MOBILE:
+            output = 'FIXED_LINE_OR_MOBILE';
+            break;
+        case PNT.TOLL_FREE:
+            output = 'TOLL_FREE';
+            break;
+        case PNT.PREMIUM_RATE:
+            output = 'PREMIUM_RATE';
+            break;
+        case PNT.SHARED_COST:
+            output = 'SHARED_COST';
+            break;
+        case PNT.VOIP:
+            output = 'VOIP';
+            break;
+        case PNT.PERSONAL_NUMBER:
+            output = 'PERSONAL_NUMBER';
+            break;
+        case PNT.PAGER:
+            output = 'PAGER';
+            break;
+        case PNT.UAN:
+            output = 'UAN';
+            break;
+        case PNT.UNKNOWN:
+            output = 'UNKNOWN';
+            break;
+    }
+    return output;
+}
+
+function formatE164(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.format(number, PNF.E164);
+}
+
+function formatNational(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.format(number, PNF.NATIONAL);
+}
+
+function formatInternational(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.format(number, PNF.INTERNATIONAL);
+}
+
+function formatInOriginalFormat(phoneNumber, regionCodeParam) {
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.formatInOriginalFormat(number, regionCodeParam || regionCode);
+}
+
+function formatOutOfCountryCallingNumber(phoneNumber, regionCodeParam, target) {
+    if (!target) { return; }
+    var number = phoneUtil.parseAndKeepRawInput(phoneNumber, regionCodeParam || regionCode);
+    return phoneUtil.formatOutOfCountryCallingNumber(number, target);
+}
+*/
+
 
 /**
  *  PHONE ADAPTER FUNCTIONS
  */
 
+// EXCLUDE getExampleNumber because it doesn't allow building with metadatalite
+/*
+function getExampleNumber(regionCodeParam) {
+    var protoPhone = phoneUtil.getExampleNumber(regionCodeParam || regionCode);
+    return protoToCanonicalPhone(protoPhone);
+}
+*/
+
+/*
+function parsePhoneNumber(phoneNumberToParse, regionCodeParam) {
+    return protoToCanonicalPhone(phoneUtil.parse(phoneNumberToParse, regionCodeParam || regionCode));
+}
+*/
 
 /**
  * @param {Object} canonicalPhone
@@ -154,8 +264,8 @@ function formatPhoneNumber(canonicalPhone, options) {
 /**
  * @param {Object} canonicalPhone
  * @param {string} region i.e. 'US'
- * @return {boolean|Error} true if phone number is valid, Error if phone number is not valid
- * @throws {Error} if conversion to protocol buffer phone format failed (getPBPhoneFromJSONPhone)
+ * @return {boolean|Error} true if phone number is valid // TODO change this to empty object?
+ *   if phone number is not valid
  */
 function validatePhoneNumber(canonicalPhone, region) {
     var phoneNumber;
@@ -186,6 +296,22 @@ function validatePhoneNumber(canonicalPhone, region) {
 
     // Some other error
     return new Error(errorCode);
+}
+
+
+// TODO: functions that simply return patterns should just use pre-generated metadata
+
+/**
+ * @param {string} regionCode
+ * @param {string} type
+ * @return {string|undefined} the international phone regex string
+ */
+function getInternationalPhoneNumberPattern(regionCode, type) {
+    var desc = getDesc(regionCode, type);
+    if (!desc) {
+        return;
+    }
+    return desc.getNationalNumberPatternOrDefault(regionCode);
 }
 
 
@@ -227,9 +353,9 @@ function getPBPhoneFromJSONPhone(canonicalPhone) {
             if (isNaN(Number(nationalNumber))) {
                 throw new Error(errors.FORMAT_INVALID);
             }
-            // setItalianLeadingZero = true if
-            // nationalNumber is a string and starts with '0'
-            // and leading zero is possible for that country
+            //setItalianLeadingZero = true if countryCode = Italy and
+            //nationalNumber is a string and
+            //nationalNumber starts with '0'
             phoneNumber.setItalianLeadingZero(nationalNumber.charAt(0) === '0' && phoneUtil.isLeadingZeroPossible(countryCode));
 
             nationalNumber = Number(nationalNumber);
@@ -248,12 +374,90 @@ function getPBPhoneFromJSONPhone(canonicalPhone) {
     return phoneNumber;
 }
 
+/**
+ * @private
+ * @param {string} regionCode
+ * @param {string} type the phone type
+ * @return {Object|undefined} phone number descriptor
+ */
+function getDesc(regionCode, type) {
+    regionCode = getRegionCode(regionCode);
+    var metadata = phoneUtil.getMetadataForRegion(regionCode);
+    if (!metadata) {
+        return;
+    }
+    if (type === undefined || type === 'GENERAL') {
+        return metadata.getGeneralDescOrDefault();
+    } else if (type === 'MOBILE') {
+        return metadata.getMobile();
+    } else if (type === 'FIXED_LINE') {
+        return metadata.getFixedLine();
+    }
+}
+
+/**
+ * @private
+ * always returns or falls back to a region code with existing metadata
+ */
+function getRegionCode(regionCode) {
+    var regionCodeMapping = { //these region codes do not exist in phone metadata, so we use the related region codes
+        XK: 'MC',
+        AN: 'BQ',
+        C2: 'CN',
+        PN: 'NZ'
+    };
+    if (regionCodeMapping[regionCode]) {
+        regionCode = regionCodeMapping[regionCode];
+    }
+    return regionCode;
+}
+
+/**
+ * @private
+ */
+function protoToCanonicalPhone(phoneNumber) {
+
+    if (phoneNumber === null) {
+        return null;
+    }
+
+    var canonicalPhone = {};
+
+    canonicalPhone['countryCode'] = phoneNumber.values_[1].toString();
+    canonicalPhone['nationalNumber'] = phoneNumber.values_[2].toString(); // use string literals to prevent Closure optimization
+
+    if (phoneNumber.values_[4] && phoneUtil.isLeadingZeroPossible(phoneNumber.values_[1])) {
+        canonicalPhone['nationalNumber'] = '0' + canonicalPhone['nationalNumber'];
+    }
+
+    if (phoneNumber.values_[3] !== undefined) {
+        canonicalPhone['extension'] = phoneNumber.values_[3];
+    }
+    return canonicalPhone;
+}
+
 // original functions
 goog.exportSymbol('countryCodeToRegionCodeMap', countryCodeToRegionCodeMap);
+// goog.exportSymbol('isPossibleNumber', isPossibleNumber);
+// goog.exportSymbol('isPossibleNumberWithReason', isPossibleNumberWithReason);
+// goog.exportSymbol('isValidNumber', isValidNumber);
+// goog.exportSymbol('isValidNumberForRegion', isValidNumberForRegion);
 goog.exportSymbol('getCountryCodeForRegion', getCountryCodeForRegion);
+// goog.exportSymbol('getRegionCodeForNumber', getRegionCodeForNumber);
+// goog.exportSymbol('getNumberType', getNumberType);
 goog.exportSymbol('getSupportedRegions', getSupportedRegions);
+// goog.exportSymbol('formatE164', formatE164);
+// goog.exportSymbol('formatNational', formatNational);
+// goog.exportSymbol('formatInternational', formatInternational);
+// goog.exportSymbol('formatInOriginalFormat', formatInOriginalFormat);
+// goog.exportSymbol('formatOutOfCountryCallingNumber', formatOutOfCountryCallingNumber);
+
+// goog.exportSymbol('getMetadataForRegion', getMetadataForRegion);
 
 // phone adapter functions
+goog.exportSymbol('getInternationalPhoneNumberPattern', getInternationalPhoneNumberPattern);
+// goog.exportSymbol('getExampleNumber', getExampleNumber);
+goog.exportSymbol('parsePhoneNumber', parsePhoneNumber);
 goog.exportSymbol('formatPhoneNumber', formatPhoneNumber);
 goog.exportSymbol('validatePhoneNumber', validatePhoneNumber);
 

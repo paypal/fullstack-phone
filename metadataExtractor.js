@@ -90,7 +90,7 @@ function extractGlobalExchanges(globalRegionCode, fullMetadata, regionCodeToCoun
     });
 
     var output = {
-        regionCode: [globalRegionCode],
+        regionCodes: [globalRegionCode],
         countryCodeToRegionCodeMap: countryCodeToRegionCodeMapLocal,
         countryToMetadata: countryToMetadataLocal
     };
