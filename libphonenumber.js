@@ -7,10 +7,7 @@ goog.require('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
 var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance(),
     PNF = i18n.phonenumbers.PhoneNumberFormat,
-    allRegionCodes, // region codes from metadata
-    regionCode, // one region code to use for all functions
-    formatter, // AsYouTypeFormatter
-    statelessFormatter; // stateless AsYouTypeFormatter
+    allRegionCodes; // region codes from metadata
 
 var styles = {
     E164: 'e164',
@@ -35,79 +32,81 @@ var styles = {
         UNKNOWN_REGION: 'PHN_UNKNOWN_REGION'
     };
 
-// initialization function that calls injectMeta (provided by metadataInjector)
-// sets allRegionCodes
-// initializes formatter to first country (necessary to prevent Closure Compiler from removing the code)
+// namespace the stateful AsYouTypeFormatter functions
+var asYouType = {
+
+    formatter: undefined, // AsYouTypeFormatter
+
+    setRegion: function setRegion(regionCode) {
+        if (allRegionCodes.indexOf(regionCode) === -1) {
+            throw new Error('Unsupported region: ' + regionCode);
+        }
+
+        // initialize asYouType formatter for given region
+        asYouType.formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
+    },
+
+    clear: function clear() {
+        // console.log('Clearing formatter');
+        asYouType.formatter.clear(); // normally this.formatter.clear, but Closure Compiler thinks that refers to global this
+    },
+
+    inputDigit: function inputDigit(digit) {
+        // console.log('Inputting digit', digit);
+        return asYouType.formatter.inputDigit(digit);
+    }
+};
+
+/**
+ * initialization function that calls injectMeta (provided by metadataInjector)
+ * sets allRegionCodes
+ * initializes formatter to first country (necessary to prevent Closure Compiler from removing the code)
+ * @param {Object} bundle metadata objet with regionCodes, countryCodeToRegionCodeMap, and countryToMetadata properties
+ */
 function useMeta(bundle) {
     console.log('useMeta called for', bundle['regionCodes']);
     allRegionCodes = bundle['regionCodes']; // quote property names to prevent closure compiler from reducing them
     injectMeta(bundle['countryCodeToRegionCodeMap'], bundle['countryToMetadata']);
 
-    // initialize formatters to the first region code just to prevent closure compiler from removing the code
-    setRegion(allRegionCodes[0]); // do this only AFTER injecting metadata
-    console.log('useMeta initialized everything to', allRegionCodes[0]);
-}
-
-// initialize default region and asYouType formatters
-function setRegion(regionCodeParam) {
-    if (allRegionCodes.indexOf(regionCodeParam) === -1) {
-        throw new Error('Unsupported region: ' + regionCodeParam);
-    }
-
-    regionCode = regionCodeParam; // set default region for all function
-
-    // initialize asYouType formatters for default region
-    formatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
-    statelessFormatter = new i18n.phonenumbers.AsYouTypeFormatter(regionCode);
-
-}
-
-// namespace the stateful AsYouTypeFormatter functions
-var asYouType = {
-    clear: function clear() {
-        console.log('Clearing formatter');
-        formatter.clear();
-    },
-
-    inputDigit: function inputDigit(digit) {
-        console.log('Inputting digit', digit);
-        return formatter.inputDigit(digit);
-    }
-};
-
-// stateless AsYouTypeFormatter (pass full string to it each time)
-// designed as stateless to work with ADVANCED_OPTIMIZATIONS
-function formatAsTyped(phoneNumber) {
-
-    console.log('Clearing AsYouTypeFormatter for', regionCode);
-    statelessFormatter.clear();
-
-    var output;
-
-    // loop over phone number and input digits one by one, then return final output
-    if (phoneNumber && typeof phoneNumber === 'string') {
-        for (var i = 0; i < phoneNumber.length; i++) {
-            output = statelessFormatter.inputDigit(phoneNumber.charAt(i));
-            console.log('char:', phoneNumber.charAt(i), 'output:', output);
-        }
-    }
-
-    return output;
+    // initialize AsYouType formatter to the first region code
+    asYouType.setRegion(allRegionCodes[0]); // do this only AFTER injecting metadata
+    console.log('useMeta initialized AsYouTypeFormatter to', allRegionCodes[0]);
 }
 
 /**
  * Original functions from libphonenumber-hammond
  */
+
+/**
+ * @return {Object|undefined} map from country calling codes to arrays of regions
+ */
 function countryCodeToRegionCodeMap() {
-    return i18n.phonenumbers.metadata.countryCodeToRegionCodeMap;
+    if (allRegionCodes) { // if initialized
+        return i18n.phonenumbers.metadata.countryCodeToRegionCodeMap;
+    }
 }
 
-function getCountryCodeForRegion(regionCodeParam) {
-    return phoneUtil.getCountryCodeForRegion(regionCodeParam || regionCode);
+/**
+ * @param {string} regionCode territory code
+ * @return {string|undefined} country calling code for that territory
+ * @throws {Error} if metadata has not been loaded for that region
+ */
+function getCountryCodeForRegion(regionCode) {
+    if (allRegionCodes) { // if initialized
+        if (allRegionCodes.indexOf(regionCode) === -1) {
+            throw new Error('Unsupported region: ' + regionCode);
+        }
+        return phoneUtil.getCountryCodeForRegion(regionCode);
+    }
 }
 
+/**
+ * @return {Array|undefined} array of supported regions
+ */
 function getSupportedRegions() {
-    return phoneUtil.getSupportedRegions();
+    if (allRegionCodes) { // if initialized
+        return phoneUtil.getSupportedRegions();
+    }
 }
 
 
@@ -156,8 +155,13 @@ function formatPhoneNumber(canonicalPhone, options) {
  * @param {string} region i.e. 'US'
  * @return {boolean|Error} true if phone number is valid, Error if phone number is not valid
  * @throws {Error} if conversion to protocol buffer phone format failed (getPBPhoneFromJSONPhone)
+ *                 or if metadata has not been loaded for given region
  */
 function validatePhoneNumber(canonicalPhone, region) {
+    if (allRegionCodes.indexOf(region) === -1) {
+            throw new Error('Unsupported region: ' + region);
+    }
+
     var phoneNumber;
     try {
         phoneNumber = getPBPhoneFromJSONPhone(canonicalPhone);
@@ -257,11 +261,10 @@ goog.exportSymbol('getSupportedRegions', getSupportedRegions);
 goog.exportSymbol('formatPhoneNumber', formatPhoneNumber);
 goog.exportSymbol('validatePhoneNumber', validatePhoneNumber);
 
-// initialization functions
+// initialization function
 goog.exportSymbol('useMeta', useMeta);
-goog.exportSymbol('setRegion', setRegion);
 
 // AsYouTypeFormatter functions
 goog.exportSymbol('asYouType.clear', asYouType.clear);
 goog.exportSymbol('asYouType.inputDigit', asYouType.inputDigit);
-goog.exportSymbol('formatAsTyped', formatAsTyped);
+goog.exportSymbol('asYouType.setRegion', asYouType.setRegion);

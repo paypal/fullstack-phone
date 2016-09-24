@@ -4,9 +4,8 @@ goog.provide('i18n.phonenumbers.metadata'); // replace libphonenumber metadata m
 // i18n.phonenumbers.metadata.countryToMetadata = {};
 
 function injectMeta(map, meta) {
-    console.log('injectMeta called');
-    console.log('map:', map);
-    // console.log('meta:', meta);
+    // console.log('injectMeta called');
+    // console.log('map:', map);
     i18n.phonenumbers.metadata.countryCodeToRegionCodeMap = map;
     i18n.phonenumbers.metadata.countryToMetadata = meta;
 }
