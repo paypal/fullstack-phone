@@ -69,10 +69,23 @@ describe('Phone handler-exported functions test', function () {
         });
 
         it('Should not validate invalid US phone numbers', function () {
+            // TODO add more
             var badNumbers = [
                 {
                     numberObj: { countryCode: '1', nationalNumber: '5' },
                     errorMessage: 'PHN_NUMBER_TOO_SHORT'
+                },
+                {
+                    numberObj: { countryCode: '44', nationalNumber: '5103981827' },
+                    errorMessage: 'PHN_INVALID_FOR_REGION'
+                },
+                {
+                    numberObj: { countryCode: '1', nationalNumber: '01212345678' }, // GB number
+                    errorMessage: 'PHN_INVALID_FOR_REGION'
+                },
+                {
+                    numberObj: { countryCode: '1', nationalNumber: '51052618767' }, // one extra digit
+                    errorMessage: 'PHN_NUMBER_TOO_LONG'
                 }
             ];
 
@@ -210,6 +223,83 @@ describe('Phone handler-exported functions test', function () {
 
             numbers.forEach(function (phone) {
                 assert.ok(lib.validatePhoneNumber(phone, 'GB'));
+            });
+        });
+
+        it('Should format GB number as typed using stateful AsYouTypeFormatter', function () {
+            lib.asYouType.setRegion('GB');
+            lib.asYouType.clear();
+
+            assert.equal(lib.asYouType.inputDigit('0'), '0');
+            assert.equal(lib.asYouType.inputDigit('1'), '01');
+            assert.equal(lib.asYouType.inputDigit('2'), '012');
+            assert.equal(lib.asYouType.inputDigit('1'), '0121');
+            assert.equal(lib.asYouType.inputDigit('2'), '0121 2');
+            assert.equal(lib.asYouType.inputDigit('3'), '0121 23');
+            assert.equal(lib.asYouType.inputDigit('4'), '0121 234');
+            assert.equal(lib.asYouType.inputDigit('5'), '0121 234 5');
+            assert.equal(lib.asYouType.inputDigit('6'), '0121 234 56');
+            assert.equal(lib.asYouType.inputDigit('7'), '01212 34567');
+            assert.equal(lib.asYouType.inputDigit('8'), '0121 234 5678');
+
+            // test overrun
+            assert.equal(lib.asYouType.inputDigit('9'), '012123456789');
+
+            // test that clear works
+            lib.asYouType.clear();
+            assert.equal(lib.asYouType.inputDigit('0'), '0');
+        });
+
+        it('Should not validate invalid GB phone numbers', function () {
+            // TODO add more
+            var badNumbers = [
+                {
+                    numberObj: { countryCode: '44', nationalNumber: '5' },
+                    errorMessage: 'PHN_NUMBER_TOO_SHORT'
+                },
+                {
+                    numberObj: { countryCode: '1', nationalNumber: '01212345678' },
+                    errorMessage: 'PHN_INVALID_FOR_REGION'
+                },
+                {
+                    numberObj: { countryCode: '44', nationalNumber: '5105261987' },
+                    errorMessage: 'PHN_INVALID_FOR_REGION'
+                },
+                {
+                    numberObj: { countryCode: '44', nationalNumber: '012123456789' }, // one extra digit
+                    errorMessage: 'PHN_NUMBER_TOO_LONG'
+                }
+            ];
+
+            badNumbers.forEach(function (phone) {
+                var response = lib.validatePhoneNumber(phone.numberObj, 'GB');
+                assert.ok(response instanceof Error);
+                assert.equal(response.message, phone.errorMessage);
+            });
+        });
+
+        it('Should throw errors for certain invalid inputs', function () {
+            var throwableNumbers = [
+                {
+                    numberObj: { countryCode: '44', nationalNumber: undefined },
+                    errorRegex: /PHN_NUMBER_EMPTY/
+                },
+                {
+                    numberObj: { countryCode: '44', nationalNumber: 'ABCDE' },
+                    errorRegex: /PHN_FORMAT_INVALID/
+                },
+                {
+                    numberObj: { countryCode: undefined, nationalNumber: '01212345678' },
+                    errorRegex: /PHN_COUNTRY_MISSING/
+                },
+                {
+                    numberObj: { countryCode: 'ABCD', nationalNumber: '01212345678' },
+                    errorRegex: /PHN_COUNTRY_CODE_INVALID/
+                }
+            ];
+
+            throwableNumbers.forEach(function (phone) {
+                assert.throws(() => lib.validatePhoneNumber(phone.numberObj ,'GB'), phone.errorRegex);
             });
         });
     });
