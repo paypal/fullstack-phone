@@ -31,7 +31,8 @@ var styles = {
         INVALID_STYLE: 'PHN_OPTIONS_INVALID',
         MISSING_COUNTRY_CODE: 'PHN_COUNTRY_MISSING',
         FORMAT_INVALID: 'PHN_FORMAT_INVALID',
-        MISSING_NATIONAL_NUMBER: 'PHN_NUMBER_EMPTY'
+        MISSING_NATIONAL_NUMBER: 'PHN_NUMBER_EMPTY',
+        UNSUPPORTED_REGION: 'PHN_UNSUPPORTED_REGION' // thrown if function called with regionCode for which no metadata loaded
     };
 
 // namespace the stateful AsYouTypeFormatter functions
@@ -41,7 +42,7 @@ var asYouType = {
 
     setRegion: function setRegion(regionCode) {
         if (allRegionCodes.indexOf(regionCode) === -1) {
-            throw new Error('Unsupported region: ' + regionCode);
+            throw new Error(errors.UNSUPPORTED_REGION);
         }
 
         // initialize asYouType formatter for given region
@@ -96,7 +97,7 @@ function countryCodeToRegionCodeMap() {
 function getCountryCodeForRegion(regionCode) {
     if (allRegionCodes) { // if initialized
         if (allRegionCodes.indexOf(regionCode) === -1) {
-            throw new Error('Unsupported region: ' + regionCode);
+            throw new Error(errors.UNSUPPORTED_REGION);
         }
         return phoneUtil.getCountryCodeForRegion(regionCode);
     }
@@ -161,7 +162,7 @@ function formatPhoneNumber(canonicalPhone, options) {
  */
 function validatePhoneNumber(canonicalPhone, region) {
     if (allRegionCodes.indexOf(region) === -1) {
-            throw new Error('Unsupported region: ' + region);
+        throw new Error(errors.UNSUPPORTED_REGION);
     }
 
     var phoneNumber;

@@ -120,9 +120,9 @@ describe('Phone handler-exported functions test', function () {
         });
 
         it('Should throw errors if metadata not loaded for requested region', function () {
-            assert.throws(() => lib.asYouType.setRegion('TR'), /Unsupported region/);
-            assert.throws(() => lib.getCountryCodeForRegion('TR'), /Unsupported region/);
-            assert.throws(() => lib.validatePhoneNumber({}, 'TR'), /Unsupported region/);
+            assert.throws(() => lib.asYouType.setRegion('TR'), /PHN_UNSUPPORTED_REGION/);
+            assert.throws(() => lib.getCountryCodeForRegion('TR'), /PHN_UNSUPPORTED_REGION/);
+            assert.throws(() => lib.validatePhoneNumber({}, 'TR'), /PHN_UNSUPPORTED_REGION/);
         });
     });
 
