@@ -67,13 +67,13 @@ var asYouType = {
  * @param {Object} bundle metadata objet with regionCodes, countryCodeToRegionCodeMap, and countryToMetadata properties
  */
 function useMeta(bundle) {
-    console.log('useMeta called for', bundle['regionCodes']);
+    // console.log('useMeta called for', bundle['regionCodes']);
     allRegionCodes = bundle['regionCodes']; // quote property names to prevent closure compiler from reducing them
     injectMeta(bundle['countryCodeToRegionCodeMap'], bundle['countryToMetadata']);
 
     // initialize AsYouType formatter to the first region code
     asYouType.setRegion(allRegionCodes[0]); // do this only AFTER injecting metadata
-    console.log('useMeta initialized AsYouTypeFormatter to', allRegionCodes[0]);
+    // console.log('useMeta initialized AsYouTypeFormatter to', allRegionCodes[0]);
 }
 
 /**
