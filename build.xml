@@ -109,7 +109,7 @@
 
   <target name="compile-libphonenumber"
           description="generates full libphonenumber.js">
-    <closure-compile inputfile="libphonenumber.js"
+    <closure-compile inputfile="phoneAdapter.js"
                      outputfile="dist/libphonenumber_full.js">
       <extraflags>
         <arg line='-f "--js=metadataInjectorNoop.js"' /><!-- compile with dummy version of injectMeta -->
@@ -123,7 +123,7 @@
 
   <target name="compile-bare-libphonenumber"
           description="generates libphonenumber.js (no metadata)">
-    <closure-compile inputfile="libphonenumber.js"
+    <closure-compile inputfile="phoneAdapter.js"
                      outputfile="dist/libphonenumber.js">
       <extraflags>
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter.js"' />
