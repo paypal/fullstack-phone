@@ -49,7 +49,10 @@ module.exports = function loadMeta(regionCodeArray) {
     allRegionCodes.forEach(function (regionCode) {
         var regionalMeta = require('./metadata/' + regionCode + '.json');
         // for countryToMetadata, just add keys
-        Object.assign(metadata.countryToMetadata, regionalMeta.countryToMetadata);
+        Object.keys(regionalMeta.countryToMetadata).forEach(function (cty) {
+            metadata.countryToMetadata[cty] = regionalMeta.countryToMetadata[cty];
+        });
+        // Object.assign(metadata.countryToMetadata, regionalMeta.countryToMetadata); // ES6
     });
 
     // construct countryCodeToRegionCodeMap based on included regions
