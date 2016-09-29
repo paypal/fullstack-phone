@@ -34,7 +34,14 @@ var styles = {
         FORMAT_INVALID: 'PHN_FORMAT_INVALID',
         MISSING_NATIONAL_NUMBER: 'PHN_NUMBER_EMPTY',
         UNSUPPORTED_REGION: 'PHN_UNSUPPORTED_REGION' // thrown if function called with regionCode for which no metadata loaded
+    },
+    // some systems support these territories, but libphonenumber does not, so map to ones that libphonenumber supports
+    // NOTE: quote the keys so google closure compiler won't reduce them
+    legacyRegionCodeMap = {
+        'AN': 'BQ', // Netherlands Antilles no longer exists, so use Bonaire, Sint Eustatius and Saba instead
+        'PN': 'NZ' // Pitcairn Islands - use NZ data
     };
+
 
 // namespace the stateful AsYouTypeFormatter functions
 var asYouType = {
@@ -42,6 +49,8 @@ var asYouType = {
     formatter: undefined, // AsYouTypeFormatter
 
     setRegion: function setRegion(regionCode) {
+        regionCode = legacyRegionCodeMap[regionCode] || regionCode;
+
         if (allRegionCodes.indexOf(regionCode) === -1) {
             throw new Error(errors.UNSUPPORTED_REGION);
         }
@@ -97,6 +106,7 @@ function countryCodeToRegionCodeMap() {
  */
 function getCountryCodeForRegion(regionCode) {
     if (allRegionCodes) { // if initialized
+        regionCode = legacyRegionCodeMap[regionCode] || regionCode;
         if (allRegionCodes.indexOf(regionCode) === -1) {
             throw new Error(errors.UNSUPPORTED_REGION);
         }
@@ -162,6 +172,8 @@ function formatPhoneNumber(canonicalPhone, options) {
  *                 or if metadata has not been loaded for given region
  */
 function validatePhoneNumber(canonicalPhone, region) {
+    region = legacyRegionCodeMap[region] || region;
+
     if (allRegionCodes.indexOf(region) === -1) {
         throw new Error(errors.UNSUPPORTED_REGION);
     }
@@ -203,6 +215,8 @@ function validatePhoneNumber(canonicalPhone, region) {
  *         {Error} if number is invalid
  */
 function parsePhoneNumber(phoneNumberToParse, region) {
+    region = legacyRegionCodeMap[region] || region;
+
     if (allRegionCodes.indexOf(region) === -1) {
         throw new Error(errors.UNSUPPORTED_REGION);
     }

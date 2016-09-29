@@ -4,6 +4,8 @@ var assert = require('assert'),
     loadMeta = require('../loadMeta'),
     lib = require('../dist/libphonenumber');
 
+// TODO add tests for legacy region mapping (AN, PN)
+
 describe('Phone handler-exported functions test', function () {
     describe('Test formatting/validation of US phone numbers', function () {
 

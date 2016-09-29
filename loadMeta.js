@@ -2,6 +2,12 @@
 
 var R = require('ramda'); // utility library
 
+// some systems support these territories, but libphonenumber does not, so map to ones that libphonenumber supports
+var legacyRegionCodeMap = {
+    AN: 'BQ', // Netherlands Antilles no longer exists, so use Bonaire, Sint Eustatius and Saba instead
+    PN: 'NZ' // Pitcairn Islands - use NZ data
+};
+
 /**
  * Given array of region codes whose metadata is desired
  * Return libphonenumber metadata for those regions, including the necessary metadata for the main countries for each country calling code
@@ -19,7 +25,8 @@ module.exports = function loadMeta(regionCodeArray) {
 
     // populate full list of region codes to add (regions and their main country dependencies)
     // and populate full list of country calling codes
-    regionCodeArray.forEach(function (regionCode) {
+    regionCodeArray.forEach(function (regionCodeParam) {
+        var regionCode = legacyRegionCodeMap[regionCodeParam] || regionCodeParam; // map legacy regions to libphonenumber-supported ones (for AN and PN)
         allRegionCodes.push(regionCode);
 
         var countryCodes = dependencyMap.regionCodeToCountryCodeMap[regionCode];
@@ -57,11 +64,13 @@ module.exports = function loadMeta(regionCodeArray) {
 
     // construct countryCodeToRegionCodeMap based on included regions
     // make sure main country is first in array for each country calling code
-    allCountryCodes.forEach(countryCode => {
+    allCountryCodes.forEach(function (countryCode) {
         // pull countryCodeToRegionCodeMap from master map (in dependencyMap), filtering out regions not present
         metadata.countryCodeToRegionCodeMap[countryCode] = dependencyMap
             .countryCodeToRegionCodeMap[countryCode]
-            .filter(regionCode => allRegionCodes.indexOf(regionCode) !== -1);
+            .filter(function (regionCode) {
+                return allRegionCodes.indexOf(regionCode) !== -1;
+            });
     });
 
     return metadata;
