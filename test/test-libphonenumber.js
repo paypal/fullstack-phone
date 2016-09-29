@@ -68,6 +68,56 @@ describe('Phone handler-exported functions test', function () {
             });
         });
 
+        it('Should parse US phone numbers', function () {
+            var canonicalPhone = {
+                countryCode: '1',
+                nationalNumber: '9104678933'
+            };
+
+            var inputs = [
+                '(910) 467-8933',
+                '+1 910-467-8933',
+                '+19104678933',
+                'tel:+1-910-467-8933',
+                '9104678933',
+                '19104678933',
+                '1-910   4678933'
+            ];
+
+            inputs.forEach(function (phone) {
+                var response = lib.parsePhoneNumber(phone, 'US');
+                assert.deepEqual(response, canonicalPhone);
+            });
+        });
+
+        it('Should return errors when parsing invalid US phone numbers', function () {
+
+            var badNumbers = [
+                {
+                    phone: '5',
+                    errorMessage: 'PHN_NOT_A_NUMBER'
+                },
+                {
+                    phone: '555555555555555555555',
+                    errorMessage: 'PHN_NUMBER_TOO_LONG'
+                },
+                {
+                    phone: 'aaa',
+                    errorMessage: 'PHN_NOT_A_NUMBER'
+                },
+                {
+                    phone: '+44 0121',
+                    errorMessage: 'PHN_COUNTRY_CODE_INVALID'
+                }
+            ];
+
+            badNumbers.forEach(function (phoneObj) {
+                var response = lib.parsePhoneNumber(phoneObj.phone, 'US');
+                assert.ok(response instanceof Error);
+                assert.equal(response.message, phoneObj.errorMessage);
+            });
+        });
+
         it('Should not validate invalid US phone numbers', function () {
             // TODO add more
             var badNumbers = [
@@ -299,7 +349,7 @@ describe('Phone handler-exported functions test', function () {
             ];
 
             throwableNumbers.forEach(function (phone) {
-                assert.throws(() => lib.validatePhoneNumber(phone.numberObj ,'GB'), phone.errorRegex);
+                assert.throws(() => lib.validatePhoneNumber(phone.numberObj, 'GB'), phone.errorRegex);
             });
         });
     });

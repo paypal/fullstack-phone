@@ -7,6 +7,7 @@ goog.require('i18n.phonenumbers.PhoneNumberUtil.ValidationResult');
 
 var phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance(),
     PNF = i18n.phonenumbers.PhoneNumberFormat,
+    i18nError = i18n.phonenumbers.Error,
     allRegionCodes; // region codes from metadata
 
 var styles = {
@@ -195,10 +196,87 @@ function validatePhoneNumber(canonicalPhone, region) {
     return new Error(errorCode);
 }
 
+/**
+ * @param {string} phoneNumberToParse
+ * @param {string} region ie 'US'
+ * @return {Object} canonicalPhone
+ *         {Error} if number is invalid
+ */
+function parsePhoneNumber(phoneNumberToParse, region) {
+    if (allRegionCodes.indexOf(region) === -1) {
+        throw new Error(errors.UNSUPPORTED_REGION);
+    }
+
+    var parsedPhoneNumber;
+    try {
+        parsedPhoneNumber = phoneUtil.parse(phoneNumberToParse, region);
+    } catch (e) {
+        return new Error(errorToCode(e));
+    }
+    return protoToCanonicalPhone(parsedPhoneNumber);
+}
+
 
 /**
  * HELPER FUNCTIONS
  */
+
+/**
+ * Map i18n phonenumber errors to fixed set of errors
+ * @param {string} error
+ * @return {string} errorCode, values in errors object
+ * @private
+ */
+function errorToCode(error) {
+    var errorCode;
+    switch (error) {
+        case i18nError.INVALID_COUNTRY_CODE:
+            errorCode = errors.INVALID_COUNTRY_CODE;
+            break;
+        case i18nError.NOT_A_NUMBER:
+            errorCode = errors.NOT_A_NUMBER;
+            break;
+        case i18nError.TOO_SHORT_AFTER_IDD:
+            errorCode = errors.TOO_SHORT_AFTER_IDD;
+            break;
+        case i18nError.TOO_SHORT_NSN:
+            errorCode = errors.TOO_SHORT_NSN;
+            break;
+        case i18nError.TOO_LONG:
+            errorCode = errors.TOO_LONG;
+            break;
+        default:
+            errorCode = errors.PARSE_ERROR;
+            break;
+    }
+    return errorCode;
+}
+
+/**
+ * @param {Object} phoneNumber phone number in protocol buffer format
+ * @return {Object} canonicalPhone
+ * @private
+ */
+function protoToCanonicalPhone(phoneNumber) {
+
+    if (phoneNumber === null) {
+        return null;
+    }
+
+    var canonicalPhone = {
+        'countryCode': phoneNumber.values_[1].toString(),
+        'nationalNumber': phoneNumber.values_[2].toString()
+    };
+
+    if (phoneNumber.values_[4] && phoneUtil.isLeadingZeroPossible(phoneNumber.values_[1])) {
+        canonicalPhone['nationalNumber'] = '0' + canonicalPhone['nationalNumber'];
+    }
+
+    if (phoneNumber.values_[3] !== undefined) {
+        canonicalPhone['extension'] = phoneNumber.values_[3]; // quote property names to prevent closure compiler reduction
+    }
+    return canonicalPhone;
+}
 
 /**
  * @param {Object} canonicalPhone, where countryCode and nationalNumber are required
@@ -263,6 +341,7 @@ goog.exportSymbol('getSupportedRegions', getSupportedRegions);
 // phone adapter functions
 goog.exportSymbol('formatPhoneNumber', formatPhoneNumber);
 goog.exportSymbol('validatePhoneNumber', validatePhoneNumber);
+goog.exportSymbol('parsePhoneNumber', parsePhoneNumber);
 
 // initialization function
 goog.exportSymbol('useMeta', useMeta);

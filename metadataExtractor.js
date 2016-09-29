@@ -54,7 +54,7 @@ function main() {
 
 // output regional metadata files
 function writeRegionalFile(regionCode, regionalOutput) {
-    fs.writeFileSync(path.join(outpath, 'metadata_' + regionCode + '.json'), JSON.stringify(regionalOutput));
+    fs.writeFileSync(path.join(outpath, regionCode + '.json'), JSON.stringify(regionalOutput));
 }
 
 /**
