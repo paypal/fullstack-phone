@@ -1,29 +1,9 @@
 libphonenumber-builder
 ======================
 
-Google's libphonenumber as an easily included JavaScript library.
+Custom build system on top of Google libphonenumber to provide compressed version with dynamic regional metadata loading.
 
-Exports
--------
-
-This library adds the global `phoneUtils` with the following methods:
-
-```js
-phoneUtils.countryCodeToRegionCodeMap();
-phoneUtils.isPossibleNumber(phoneNumber, regionCode);
-phoneUtils.isPossibleNumberWithReason(phoneNumber, regionCode);
-phoneUtils.isValidNumber(phoneNumber, regionCode);
-phoneUtils.isValidNumberForRegion(phoneNumber, regionCode);
-phoneUtils.getCountryCodeForRegion(regionCode);
-phoneUtils.getRegionCodeForNumber(phoneNumber, regionCode);
-phoneUtils.getNumberType(phoneNumber, regionCode);
-phoneUtils.getSupportedRegions();
-phoneUtils.formatE164(phoneNumber, regionCode);
-phoneUtils.formatNational(phoneNumber, regionCode);
-phoneUtils.formatInternational(phoneNumber, regionCode);
-phoneUtils.formatInOriginalFormat(phoneNumber, regionCode);
-phoneUtils.formatOutOfCountryCallingNumber(phoneNumber, regionCode, target);
-```
+Extended from [Nathan Hammond's project](https://github.com/nathanhammond/libphonenumber).
 
 Prerequisites
 ------------
@@ -31,25 +11,46 @@ Prerequisites
 Ant, Ant-Contrib, and Maven:
 ```bash
 brew install ant
-brew install ant-contrib
+brew install ant-contrib # cf. http://ant-contrib.sourceforge.net/
 brew install maven
 ```
+
+Supporting Tools
+---
+
+(Installed by `build.sh`)
+
+* [Google Closure Library](https://github.com/google/closure-library)
+* [Google Closure Compiler](https://github.com/google/closure-compiler)
+* [Google libphonenumber](https://github.com/googlei18n/libphonenumber)
+
+Usage
+-----
+
+If running for the first time, execute:
+
+```bash
+./build.sh
+```
+
+This clones/updates all the supporting tools (google closure library, closure compiler, and libphonenumber), compiles the closure compiler (using Maven), and runs the libphonenumber builder in this repo using Ant (based on `build.xml`).
+
+
+Thereafter, unless libphonenumber needs to be updated, execute:
+
+```bash
+./build_quick.sh
+```
+
+This runs only the Ant compilation tasks in `build.xml`.
+
+Output
+------
+
+TODO
+
 
 How it works
 ------------
 
-I've extracted/ported/written code based on `vendor/libphonenumber/javascript/i18n/phonenumbers/demo.js` and turned that into `libphonenumber.js` at the root of this project.
-
-I've modified `vendor/libphonenumber/javascript/build.xml` and turned that into `build.xml` at the root of this project. Diff those files to see changes.
-
-The `./build.sh` command uses those two pieces together in order to generate a new version of libphonenumber.js in the `/dist` folder.
-
-Before you run the build script, ensure you have these tools installed and present on your system's PATH:
-* [Ant](http://ant.apache.org/)
-* [Ant-Contrib](http://ant-contrib.sourceforge.net/)
-* [Maven](http://maven.apache.org/)
-
-Contributing
-------------
-
-I only semi-actively maintain this code. Fortunately it's very little more than a build system on top of the public project. If you're interested in a feature I've not included I'll be glad to help you as I can, but I'm not terribly familiar with Closure Compiler and won't necessarily be the best help. Your goal would be to port something that's working inside of `vendor/libphonenumber/javascript/i18n/phonenumbers/demo.js` to be runnable as a series of methods inside of `libphonenumber.js`. I will review PRs!
+TODO

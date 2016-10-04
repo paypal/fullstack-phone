@@ -5,7 +5,7 @@ if [ ! -d "vendor" ]; then
 fi
 
 # Install or update the git dependencies.
-LIBRARIES=(google/closure-linter gflags/python-gflags google/closure-library google/closure-compiler googlei18n/libphonenumber)
+LIBRARIES=(google/closure-library google/closure-compiler googlei18n/libphonenumber)
 for LIBRARY in "${LIBRARIES[@]}"
 do
   SPLIT=(${LIBRARY//\// })
