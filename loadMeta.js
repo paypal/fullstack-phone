@@ -21,7 +21,7 @@ module.exports = function loadMeta(regionCodeArray) {
     },
         allRegionCodes = [],
         allCountryCodes = [],
-        dependencyMap = require('./metadata/dependencyMap');
+        dependencyMap = require('./dist/metadata/dependencyMap');
 
     // populate full list of region codes to add (regions and their main country dependencies)
     // and populate full list of country calling codes
@@ -54,7 +54,7 @@ module.exports = function loadMeta(regionCodeArray) {
 
     // populate countryToMetadata for each region code
     allRegionCodes.forEach(function (regionCode) {
-        var regionalMeta = require('./metadata/' + regionCode + '.json');
+        var regionalMeta = require('./dist/metadata/' + regionCode + '.json');
         // for countryToMetadata, just add keys
         Object.keys(regionalMeta.countryToMetadata).forEach(function (cty) {
             metadata.countryToMetadata[cty] = regionalMeta.countryToMetadata[cty];

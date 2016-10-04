@@ -1,5 +1,5 @@
 {
-  "name": "libphonenumber-hammond",
+  "name": "libphonenumber-builder",
   "version": "1.0.0",
   "description": "libphonenumber build system",
   "dependencies": {

@@ -66,53 +66,26 @@
     </sequential>
   </macrodef>
 
-  <macrodef name="gjslint">
-    <attribute name="inputfile" />
-    <sequential>
-      <exec executable="python" failonerror="false" logError="true">
-        <env key="PYTHONPATH"
-             value="${closure-linter.dir}:${python-gflags.dir}"/>
-        <arg value="${closure-linter.dir}/closure_linter/gjslint.py" />
-        <arg line='--strict' />
-        <arg line='"@{inputfile}"' />
-      </exec>
-    </sequential>
-  </macrodef>
-
-  <condition property="os.iswindows">
-    <os family="windows" />
-  </condition>
-  <condition property="os.isunix">
-    <os family="unix" />
-  </condition>
-  <target name="nul" if="os.iswindows">
-    <property name="null.device" value="NUL" />
-  </target>
-  <target name="devnull" if="os.isunix">
-    <property name="null.device" value="/dev/null" />
-  </target>
-  <target name="setnulldevice" depends="nul,devnull" />
-
   <target name="clean" description="deletes all generated files">
     <delete dir="dist" />
-    <delete dir="metadata" />
     <mkdir dir="dist"/>
-    <mkdir dir="metadata"/>
+    <mkdir dir="dist/code"/>
+    <mkdir dir="dist/metadata"/>
   </target>
 
   <target name="prepare-country-metadata" >
-    <exec executable="${basedir}/metadataExtractor.js" failonerror="true">
+    <exec executable="${basedir}/lib/metadataExtractor.js" failonerror="true">
       <arg value="${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatalite.js" />
-      <arg value="${basedir}/metadata/" />
+      <arg value="${basedir}/dist/metadata/" />
     </exec>
   </target>
 
   <target name="compile-libphonenumber"
           description="generates full libphonenumber.js">
-    <closure-compile inputfile="phoneAdapter.js"
-                     outputfile="dist/libphonenumber_full.js">
+    <closure-compile inputfile="lib/phoneAdapter.js"
+                     outputfile="dist/code/libphonenumber_full.js">
       <extraflags>
-        <arg line='-f "--js=metadataInjectorNoop.js"' /><!-- compile with dummy version of injectMeta -->
+        <arg line='-f "--js=lib/metadataInjectorNoop.js"' /><!-- compile with dummy version of injectMeta -->
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers"' />
         <arg line='-e "${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatafortesting.js"' />
         <arg line='-e "${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatalite.js"' />
@@ -123,33 +96,14 @@
 
   <target name="compile-bare-libphonenumber"
           description="generates libphonenumber.js (no metadata)">
-    <closure-compile inputfile="phoneAdapter.js"
-                     outputfile="dist/libphonenumber.js">
+    <closure-compile inputfile="lib/phoneAdapter.js"
+                     outputfile="dist/code/libphonenumber.js">
       <extraflags>
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumberutil.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonemetadata.pb.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumber.pb.js"' />
-        <arg line='-p "metadataInjector.js"' /> <!-- overrides libphonenumber metadata module with injectMeta function -->
-      </extraflags>
-    </closure-compile>
-  </target>
-
-  <target name="compile-tests" depends="setnulldevice">
-    <closure-compile inputfile="${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter_test.js"
-                     outputfile="${null.device}">
-      <extraflags>
-        <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers"' />
-        <arg line='-e "${libphonenumber.dir}/javascript/i18n/phonenumbers/metadata.js"' />
-        <arg line='-e "${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatalite.js"' />
-      </extraflags>
-    </closure-compile>
-    <closure-compile inputfile="${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumberutil_test.js"
-                     outputfile="${null.device}">
-      <extraflags>
-        <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers"' />
-        <arg line='-e "${libphonenumber.dir}/javascript/i18n/phonenumbers/metadata.js"' />
-        <arg line='-e "${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatalite.js"' />
+        <arg line='-p "lib/metadataInjector.js"' /> <!-- overrides libphonenumber metadata module with injectMeta function -->
       </extraflags>
     </closure-compile>
   </target>
@@ -158,12 +112,6 @@
                                   prepare-country-metadata,
                                   compile-libphonenumber,
                                   compile-bare-libphonenumber">
-  </target>
-
-  <target name="lint" description="lints all javascript files">
-    <gjslint inputfile="${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter*.js" />
-    <gjslint inputfile="${libphonenumber.dir}/javascript/i18n/phonenumbers/demo.js" />
-    <gjslint inputfile="${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumberutil*.js" />
   </target>
 
 </project>

@@ -1,5 +1,5 @@
-libphonenumber
-==============
+libphonenumber-builder
+======================
 
 Google's libphonenumber as an easily included JavaScript library.
 

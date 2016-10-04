@@ -2,7 +2,7 @@
 
 var assert = require('assert'),
     loadMeta = require('../loadMeta'),
-    lib = require('../dist/libphonenumber');
+    lib = require('../dist/code/libphonenumber');
 
 // TODO add tests for legacy region mapping (AN, PN)
 

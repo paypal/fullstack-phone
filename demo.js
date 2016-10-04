@@ -1,2 +1,2 @@
-var lib = require('./dist/libphonenumber.js');
+var lib = require('./dist/code/libphonenumber.js');
 var loadMeta = require('./loadMeta');
