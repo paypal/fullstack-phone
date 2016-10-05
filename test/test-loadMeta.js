@@ -1,7 +1,7 @@
 'use strict';
 
 var assert = require('assert'),
-    loadMeta = require('../loadMeta');
+    loadMeta = require('../dist/loadMeta');
 
 describe('Metadata loader tests', function () {
     it('Should load metadata for US', function () {

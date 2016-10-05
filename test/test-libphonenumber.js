@@ -1,8 +1,8 @@
 'use strict';
 
 var assert = require('assert'),
-    loadMeta = require('../loadMeta'),
-    lib = require('../dist/code/libphonenumber');
+    loadMeta = require('../dist/loadMeta'),
+    lib = require('../dist/libphonenumber');
 
 // TODO add tests for legacy region mapping (AN, PN)
 

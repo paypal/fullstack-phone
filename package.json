@@ -2,14 +2,13 @@
   "name": "libphonenumber-builder",
   "version": "1.0.0",
   "description": "libphonenumber build system",
-  "dependencies": {
-    "ramda": "^0.22.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "ramda": "^0.22.1",
     "mocha": "^3.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
