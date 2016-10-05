@@ -1,3 +1,8 @@
+/**
+ * Module that returns appropriate set of libphonenumber metadata, given array of region codes
+ * e.g. CA, US, KZ, and RU metadata given input array: ['CA', 'KZ']
+ */
+
 'use strict';
 
 var R = require('ramda'); // utility library
@@ -21,7 +26,7 @@ module.exports = function loadMeta(regionCodeArray) {
     },
         allRegionCodes = [],
         allCountryCodes = [],
-        dependencyMap = require('./dist/metadata/dependencyMap');
+        dependencyMap = require('./metadata/dependencyMap'); // ATTENTION: modify this path as necessary
 
     // populate full list of region codes to add (regions and their main country dependencies)
     // and populate full list of country calling codes
@@ -54,7 +59,7 @@ module.exports = function loadMeta(regionCodeArray) {
 
     // populate countryToMetadata for each region code
     allRegionCodes.forEach(function (regionCode) {
-        var regionalMeta = require('./dist/metadata/' + regionCode + '.json');
+        var regionalMeta = require('./metadata/' + regionCode + '.json'); // ATTENTION: modify this path as necessary
         // for countryToMetadata, just add keys
         Object.keys(regionalMeta.countryToMetadata).forEach(function (cty) {
             metadata.countryToMetadata[cty] = regionalMeta.countryToMetadata[cty];

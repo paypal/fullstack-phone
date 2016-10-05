@@ -14,7 +14,6 @@
   <property name="libphonenumber.dir"
             value="${basedir}/vendor/libphonenumber" />
 
-  <taskdef resource="net/sf/antcontrib/antlib.xml"></taskdef>
   <macrodef name="closure-compile">
     <attribute name="inputfile" />
     <attribute name="outputfile" />
@@ -69,21 +68,20 @@
   <target name="clean" description="deletes all generated files">
     <delete dir="dist" />
     <mkdir dir="dist"/>
-    <mkdir dir="dist/code"/>
     <mkdir dir="dist/metadata"/>
   </target>
 
-  <target name="prepare-country-metadata" >
+  <target name="prepare-regional-metadata" description="Extracts regional metadata from libphonenumber">
     <exec executable="${basedir}/lib/metadataExtractor.js" failonerror="true">
       <arg value="${libphonenumber.dir}/javascript/i18n/phonenumbers/metadatalite.js" />
       <arg value="${basedir}/dist/metadata/" />
     </exec>
   </target>
 
-  <target name="compile-libphonenumber"
-          description="generates full libphonenumber.js">
+  <target name="compile-full-libphonenumber"
+          description="generates full libphonenumber.js with all metadata">
     <closure-compile inputfile="lib/phoneAdapter.js"
-                     outputfile="dist/code/libphonenumber_full.js">
+                     outputfile="dist/libphonenumber_full.js">
       <extraflags>
         <arg line='-f "--js=lib/metadataInjectorNoop.js"' /><!-- compile with dummy version of injectMeta -->
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers"' />
@@ -97,7 +95,7 @@
   <target name="compile-bare-libphonenumber"
           description="generates libphonenumber.js (no metadata)">
     <closure-compile inputfile="lib/phoneAdapter.js"
-                     outputfile="dist/code/libphonenumber.js">
+                     outputfile="dist/libphonenumber.js">
       <extraflags>
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumberutil.js"' />
@@ -108,9 +106,14 @@
     </closure-compile>
   </target>
 
+  <target name="copy-loadMeta" description="copies metadata loader to dist directory">
+    <copy file="lib/loadMeta.js" todir="dist/"/>
+  </target>
+
   <target name="compile" depends="clean,
-                                  prepare-country-metadata,
-                                  compile-libphonenumber,
+                                  copy-loadMeta,
+                                  prepare-regional-metadata,
+                                  compile-full-libphonenumber,
                                   compile-bare-libphonenumber">
   </target>
 

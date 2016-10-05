@@ -8,10 +8,9 @@ Extended from [Nathan Hammond's project](https://github.com/nathanhammond/libpho
 Prerequisites
 ------------
 
-Ant, Ant-Contrib, and Maven:
+Ant and Maven:
 ```bash
 brew install ant
-brew install ant-contrib # cf. http://ant-contrib.sourceforge.net/
 brew install maven
 ```
 
