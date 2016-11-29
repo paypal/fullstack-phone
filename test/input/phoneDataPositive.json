@@ -1,0 +1,3662 @@
+{
+    "AD": [
+        {
+            "phoneObj": {
+                "countryCode": "376",
+                "nationalNumber": "712345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "712 345",
+                "international": "+376 712 345",
+                "e164": "+376712345",
+                "rfc3966": "tel:+376-712-345"
+            }
+        }
+    ],
+    "AE": [
+        {
+            "phoneObj": {
+                "countryCode": "971",
+                "nationalNumber": "22345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02 234 5678",
+                "international": "+971 2 234 5678",
+                "e164": "+97122345678",
+                "rfc3966": "tel:+971-2-234-5678"
+            }
+        }
+    ],
+    "AF": [
+        {
+            "phoneObj": {
+                "countryCode": "93",
+                "nationalNumber": "234567890"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "023 456 7890",
+                "international": "+93 23 456 7890",
+                "e164": "+93234567890",
+                "rfc3966": "tel:+93-23-456-7890"
+            }
+        }
+    ],
+    "AG": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "2684601234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(268) 460-1234",
+                "international": "+1 268-460-1234",
+                "e164": "+12684601234",
+                "rfc3966": "tel:+1-268-460-1234"
+            }
+        }
+    ],
+    "AI": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "2644612345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(264) 461-2345",
+                "international": "+1 264-461-2345",
+                "e164": "+12644612345",
+                "rfc3966": "tel:+1-264-461-2345"
+            }
+        }
+    ],
+    "AL": [
+        {
+            "phoneObj": {
+                "countryCode": "355",
+                "nationalNumber": "22345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "022 345 678",
+                "international": "+355 22 345 678",
+                "e164": "+35522345678",
+                "rfc3966": "tel:+355-22-345-678"
+            }
+        }
+    ],
+    "AM": [
+        {
+            "phoneObj": {
+                "countryCode": "374",
+                "nationalNumber": "10123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(010) 123456",
+                "international": "+374 10 123456",
+                "e164": "+37410123456",
+                "rfc3966": "tel:+374-10-123456"
+            }
+        }
+    ],
+    "AN": [
+        {
+            "phoneObj": {
+                "countryCode": "599",
+                "nationalNumber": "7151234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "715 1234",
+                "international": "+599 715 1234",
+                "e164": "+5997151234",
+                "rfc3966": "tel:+599-715-1234"
+            }
+        }
+    ],
+    "AO": [
+        {
+            "phoneObj": {
+                "countryCode": "244",
+                "nationalNumber": "222123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "222 123 456",
+                "international": "+244 222 123 456",
+                "e164": "+244222123456",
+                "rfc3966": "tel:+244-222-123-456"
+            }
+        }
+    ],
+    "AR": [
+        {
+            "phoneObj": {
+                "countryCode": "54",
+                "nationalNumber": "1123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "011 2345-6789",
+                "international": "+54 11 2345-6789",
+                "e164": "+541123456789",
+                "rfc3966": "tel:+54-11-2345-6789"
+            }
+        }
+    ],
+    "AS": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "6846221234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(684) 622-1234",
+                "international": "+1 684-622-1234",
+                "e164": "+16846221234",
+                "rfc3966": "tel:+1-684-622-1234"
+            }
+        }
+    ],
+    "AT": [
+        {
+            "phoneObj": {
+                "countryCode": "43",
+                "nationalNumber": "1234567890"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 234567890",
+                "international": "+43 1 234567890",
+                "e164": "+431234567890",
+                "rfc3966": "tel:+43-1-234567890"
+            }
+        }
+    ],
+    "AU": [
+        {
+            "phoneObj": {
+                "countryCode": "61",
+                "nationalNumber": "212345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(02) 1234 5678",
+                "international": "+61 2 1234 5678",
+                "e164": "+61212345678",
+                "rfc3966": "tel:+61-2-1234-5678"
+            }
+        }
+    ],
+    "AW": [
+        {
+            "phoneObj": {
+                "countryCode": "297",
+                "nationalNumber": "5212345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "521 2345",
+                "international": "+297 521 2345",
+                "e164": "+2975212345",
+                "rfc3966": "tel:+297-521-2345"
+            }
+        }
+    ],
+    "AX": [
+        {
+            "phoneObj": {
+                "countryCode": "358",
+                "nationalNumber": "1812345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "018 12345678",
+                "international": "+358 18 12345678",
+                "e164": "+3581812345678",
+                "rfc3966": "tel:+358-18-12345678"
+            }
+        }
+    ],
+    "AZ": [
+        {
+            "phoneObj": {
+                "countryCode": "994",
+                "nationalNumber": "123123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(012) 312 34 56",
+                "international": "+994 12 312 34 56",
+                "e164": "+994123123456",
+                "rfc3966": "tel:+994-12-312-34-56"
+            }
+        }
+    ],
+    "BA": [
+        {
+            "phoneObj": {
+                "countryCode": "387",
+                "nationalNumber": "30123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "030 123-456",
+                "international": "+387 30 123-456",
+                "e164": "+38730123456",
+                "rfc3966": "tel:+387-30-123-456"
+            }
+        }
+    ],
+    "BB": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "2464123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(246) 412-3456",
+                "international": "+1 246-412-3456",
+                "e164": "+12464123456",
+                "rfc3966": "tel:+1-246-412-3456"
+            }
+        }
+    ],
+    "BD": [
+        {
+            "phoneObj": {
+                "countryCode": "880",
+                "nationalNumber": "27111234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02-7111234",
+                "international": "+880 2-7111234",
+                "e164": "+88027111234",
+                "rfc3966": "tel:+880-2-7111234"
+            }
+        }
+    ],
+    "BE": [
+        {
+            "phoneObj": {
+                "countryCode": "32",
+                "nationalNumber": "12345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "012 34 56 78",
+                "international": "+32 12 34 56 78",
+                "e164": "+3212345678",
+                "rfc3966": "tel:+32-12-34-56-78"
+            }
+        }
+    ],
+    "BF": [
+        {
+            "phoneObj": {
+                "countryCode": "226",
+                "nationalNumber": "20491234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "20 49 12 34",
+                "international": "+226 20 49 12 34",
+                "e164": "+22620491234",
+                "rfc3966": "tel:+226-20-49-12-34"
+            }
+        }
+    ],
+    "BG": [
+        {
+            "phoneObj": {
+                "countryCode": "359",
+                "nationalNumber": "2123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02 123 456",
+                "international": "+359 2 123 456",
+                "e164": "+3592123456",
+                "rfc3966": "tel:+359-2-123-456"
+            }
+        }
+    ],
+    "BH": [
+        {
+            "phoneObj": {
+                "countryCode": "973",
+                "nationalNumber": "17001234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "1700 1234",
+                "international": "+973 1700 1234",
+                "e164": "+97317001234",
+                "rfc3966": "tel:+973-1700-1234"
+            }
+        }
+    ],
+    "BI": [
+        {
+            "phoneObj": {
+                "countryCode": "257",
+                "nationalNumber": "22201234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "22 20 12 34",
+                "international": "+257 22 20 12 34",
+                "e164": "+25722201234",
+                "rfc3966": "tel:+257-22-20-12-34"
+            }
+        }
+    ],
+    "BJ": [
+        {
+            "phoneObj": {
+                "countryCode": "229",
+                "nationalNumber": "20211234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "20 21 12 34",
+                "international": "+229 20 21 12 34",
+                "e164": "+22920211234",
+                "rfc3966": "tel:+229-20-21-12-34"
+            }
+        }
+    ],
+    "BL": [
+        {
+            "phoneObj": {
+                "countryCode": "590",
+                "nationalNumber": "590271234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0590 27-1234",
+                "international": "+590 590 27-1234",
+                "e164": "+590590271234",
+                "rfc3966": "tel:+590-590-27-1234"
+            }
+        }
+    ],
+    "BM": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "4412345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(441) 234-5678",
+                "international": "+1 441-234-5678",
+                "e164": "+14412345678",
+                "rfc3966": "tel:+1-441-234-5678"
+            }
+        }
+    ],
+    "BN": [
+        {
+            "phoneObj": {
+                "countryCode": "673",
+                "nationalNumber": "2345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "234 5678",
+                "international": "+673 234 5678",
+                "e164": "+6732345678",
+                "rfc3966": "tel:+673-234-5678"
+            }
+        }
+    ],
+    "BO": [
+        {
+            "phoneObj": {
+                "countryCode": "591",
+                "nationalNumber": "22123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2 2123456",
+                "international": "+591 2 2123456",
+                "e164": "+59122123456",
+                "rfc3966": "tel:+591-2-2123456"
+            }
+        }
+    ],
+    "BQ": [
+        {
+            "phoneObj": {
+                "countryCode": "599",
+                "nationalNumber": "7151234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "715 1234",
+                "international": "+599 715 1234",
+                "e164": "+5997151234",
+                "rfc3966": "tel:+599-715-1234"
+            }
+        }
+    ],
+    "BR": [
+        {
+            "phoneObj": {
+                "countryCode": "55",
+                "nationalNumber": "1123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(11) 2345-6789",
+                "international": "+55 11 2345-6789",
+                "e164": "+551123456789",
+                "rfc3966": "tel:+55-11-2345-6789"
+            }
+        }
+    ],
+    "BS": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "2423456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(242) 345-6789",
+                "international": "+1 242-345-6789",
+                "e164": "+12423456789",
+                "rfc3966": "tel:+1-242-345-6789"
+            }
+        }
+    ],
+    "BT": [
+        {
+            "phoneObj": {
+                "countryCode": "975",
+                "nationalNumber": "2345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2 345 678",
+                "international": "+975 2 345 678",
+                "e164": "+9752345678",
+                "rfc3966": "tel:+975-2-345-678"
+            }
+        }
+    ],
+    "BW": [
+        {
+            "phoneObj": {
+                "countryCode": "267",
+                "nationalNumber": "2401234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "240 1234",
+                "international": "+267 240 1234",
+                "e164": "+2672401234",
+                "rfc3966": "tel:+267-240-1234"
+            }
+        }
+    ],
+    "BY": [
+        {
+            "phoneObj": {
+                "countryCode": "375",
+                "nationalNumber": "152450911"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "8 0152 45-09-11",
+                "international": "+375 152 45-09-11",
+                "e164": "+375152450911",
+                "rfc3966": "tel:+375-152-45-09-11"
+            }
+        }
+    ],
+    "BZ": [
+        {
+            "phoneObj": {
+                "countryCode": "501",
+                "nationalNumber": "2221234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "222-1234",
+                "international": "+501 222-1234",
+                "e164": "+5012221234",
+                "rfc3966": "tel:+501-222-1234"
+            }
+        }
+    ],
+    "CA": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "2042345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(204) 234-5678",
+                "international": "+1 204-234-5678",
+                "e164": "+12042345678",
+                "rfc3966": "tel:+1-204-234-5678"
+            }
+        }
+    ],
+    "CC": [
+        {
+            "phoneObj": {
+                "countryCode": "61",
+                "nationalNumber": "891621234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(08) 9162 1234",
+                "international": "+61 8 9162 1234",
+                "e164": "+61891621234",
+                "rfc3966": "tel:+61-8-9162-1234"
+            }
+        }
+    ],
+    "CD": [
+        {
+            "phoneObj": {
+                "countryCode": "243",
+                "nationalNumber": "1234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "012 34567",
+                "international": "+243 12 34567",
+                "e164": "+2431234567",
+                "rfc3966": "tel:+243-12-34567"
+            }
+        }
+    ],
+    "CF": [
+        {
+            "phoneObj": {
+                "countryCode": "236",
+                "nationalNumber": "21612345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "21 61 23 45",
+                "international": "+236 21 61 23 45",
+                "e164": "+23621612345",
+                "rfc3966": "tel:+236-21-61-23-45"
+            }
+        }
+    ],
+    "CG": [
+        {
+            "phoneObj": {
+                "countryCode": "242",
+                "nationalNumber": "222123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "22 212 3456",
+                "international": "+242 22 212 3456",
+                "e164": "+242222123456",
+                "rfc3966": "tel:+242-22-212-3456"
+            }
+        }
+    ],
+    "CH": [
+        {
+            "phoneObj": {
+                "countryCode": "41",
+                "nationalNumber": "212345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "021 234 56 78",
+                "international": "+41 21 234 56 78",
+                "e164": "+41212345678",
+                "rfc3966": "tel:+41-21-234-56-78"
+            }
+        }
+    ],
+    "CI": [
+        {
+            "phoneObj": {
+                "countryCode": "225",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "21 23 45 67",
+                "international": "+225 21 23 45 67",
+                "e164": "+22521234567",
+                "rfc3966": "tel:+225-21-23-45-67"
+            }
+        }
+    ],
+    "CK": [
+        {
+            "phoneObj": {
+                "countryCode": "682",
+                "nationalNumber": "21234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "21 234",
+                "international": "+682 21 234",
+                "e164": "+68221234",
+                "rfc3966": "tel:+682-21-234"
+            }
+        }
+    ],
+    "CL": [
+        {
+            "phoneObj": {
+                "countryCode": "56",
+                "nationalNumber": "221234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(2) 2123 4567",
+                "international": "+56 2 2123 4567",
+                "e164": "+56221234567",
+                "rfc3966": "tel:+56-2-2123-4567"
+            }
+        }
+    ],
+    "CM": [
+        {
+            "phoneObj": {
+                "countryCode": "237",
+                "nationalNumber": "222123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2 22 12 34 56",
+                "international": "+237 2 22 12 34 56",
+                "e164": "+237222123456",
+                "rfc3966": "tel:+237-2-22-12-34-56"
+            }
+        }
+    ],
+    "CN": [
+        {
+            "phoneObj": {
+                "countryCode": "86",
+                "nationalNumber": "1012345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "010 1234 5678",
+                "international": "+86 10 1234 5678",
+                "e164": "+861012345678",
+                "rfc3966": "tel:+86-10-1234-5678"
+            }
+        }
+    ],
+    "CO": [
+        {
+            "phoneObj": {
+                "countryCode": "57",
+                "nationalNumber": "12345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(1) 2345678",
+                "international": "+57 1 2345678",
+                "e164": "+5712345678",
+                "rfc3966": "tel:+57-1-2345678"
+            }
+        }
+    ],
+    "CR": [
+        {
+            "phoneObj": {
+                "countryCode": "506",
+                "nationalNumber": "22123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2212 3456",
+                "international": "+506 2212 3456",
+                "e164": "+50622123456",
+                "rfc3966": "tel:+506-2212-3456"
+            }
+        }
+    ],
+    "CU": [
+        {
+            "phoneObj": {
+                "countryCode": "53",
+                "nationalNumber": "71234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(07) 1234567",
+                "international": "+53 7 1234567",
+                "e164": "+5371234567",
+                "rfc3966": "tel:+53-7-1234567"
+            }
+        }
+    ],
+    "CV": [
+        {
+            "phoneObj": {
+                "countryCode": "238",
+                "nationalNumber": "2211234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "221 12 34",
+                "international": "+238 221 12 34",
+                "e164": "+2382211234",
+                "rfc3966": "tel:+238-221-12-34"
+            }
+        }
+    ],
+    "CW": [
+        {
+            "phoneObj": {
+                "countryCode": "599",
+                "nationalNumber": "94151234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "9 415 1234",
+                "international": "+599 9 415 1234",
+                "e164": "+59994151234",
+                "rfc3966": "tel:+599-9-415-1234"
+            }
+        }
+    ],
+    "CX": [
+        {
+            "phoneObj": {
+                "countryCode": "61",
+                "nationalNumber": "891641234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(08) 9164 1234",
+                "international": "+61 8 9164 1234",
+                "e164": "+61891641234",
+                "rfc3966": "tel:+61-8-9164-1234"
+            }
+        }
+    ],
+    "CY": [
+        {
+            "phoneObj": {
+                "countryCode": "357",
+                "nationalNumber": "22345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "22 345678",
+                "international": "+357 22 345678",
+                "e164": "+35722345678",
+                "rfc3966": "tel:+357-22-345678"
+            }
+        }
+    ],
+    "CZ": [
+        {
+            "phoneObj": {
+                "countryCode": "420",
+                "nationalNumber": "212345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "212 345 678",
+                "international": "+420 212 345 678",
+                "e164": "+420212345678",
+                "rfc3966": "tel:+420-212-345-678"
+            }
+        }
+    ],
+    "DE": [
+        {
+            "phoneObj": {
+                "countryCode": "49",
+                "nationalNumber": "30123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "030 123456",
+                "international": "+49 30 123456",
+                "e164": "+4930123456",
+                "rfc3966": "tel:+49-30-123456"
+            }
+        }
+    ],
+    "DJ": [
+        {
+            "phoneObj": {
+                "countryCode": "253",
+                "nationalNumber": "21360003"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "21 36 00 03",
+                "international": "+253 21 36 00 03",
+                "e164": "+25321360003",
+                "rfc3966": "tel:+253-21-36-00-03"
+            }
+        }
+    ],
+    "DK": [
+        {
+            "phoneObj": {
+                "countryCode": "45",
+                "nationalNumber": "32123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "32 12 34 56",
+                "international": "+45 32 12 34 56",
+                "e164": "+4532123456",
+                "rfc3966": "tel:+45-32-12-34-56"
+            }
+        }
+    ],
+    "DM": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "7674201234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(767) 420-1234",
+                "international": "+1 767-420-1234",
+                "e164": "+17674201234",
+                "rfc3966": "tel:+1-767-420-1234"
+            }
+        }
+    ],
+    "DO": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "8092345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(809) 234-5678",
+                "international": "+1 809-234-5678",
+                "e164": "+18092345678",
+                "rfc3966": "tel:+1-809-234-5678"
+            }
+        }
+    ],
+    "DZ": [
+        {
+            "phoneObj": {
+                "countryCode": "213",
+                "nationalNumber": "12345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "012 34 56 78",
+                "international": "+213 12 34 56 78",
+                "e164": "+21312345678",
+                "rfc3966": "tel:+213-12-34-56-78"
+            }
+        }
+    ],
+    "EC": [
+        {
+            "phoneObj": {
+                "countryCode": "593",
+                "nationalNumber": "22123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(02) 212-3456",
+                "international": "+593 2-212-3456",
+                "e164": "+59322123456",
+                "rfc3966": "tel:+593-2-212-3456"
+            }
+        }
+    ],
+    "EE": [
+        {
+            "phoneObj": {
+                "countryCode": "372",
+                "nationalNumber": "3212345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "321 2345",
+                "international": "+372 321 2345",
+                "e164": "+3723212345",
+                "rfc3966": "tel:+372-321-2345"
+            }
+        }
+    ],
+    "EG": [
+        {
+            "phoneObj": {
+                "countryCode": "20",
+                "nationalNumber": "234567890"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02 34567890",
+                "international": "+20 2 34567890",
+                "e164": "+20234567890",
+                "rfc3966": "tel:+20-2-34567890"
+            }
+        }
+    ],
+    "EH": [
+        {
+            "phoneObj": {
+                "countryCode": "212",
+                "nationalNumber": "528812345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "05288-12345",
+                "international": "+212 5288-12345",
+                "e164": "+212528812345",
+                "rfc3966": "tel:+212-5288-12345"
+            }
+        }
+    ],
+    "ER": [
+        {
+            "phoneObj": {
+                "countryCode": "291",
+                "nationalNumber": "8370362"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "08 370 362",
+                "international": "+291 8 370 362",
+                "e164": "+2918370362",
+                "rfc3966": "tel:+291-8-370-362"
+            }
+        }
+    ],
+    "ES": [
+        {
+            "phoneObj": {
+                "countryCode": "34",
+                "nationalNumber": "810123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "810 12 34 56",
+                "international": "+34 810 12 34 56",
+                "e164": "+34810123456",
+                "rfc3966": "tel:+34-810-12-34-56"
+            }
+        }
+    ],
+    "ET": [
+        {
+            "phoneObj": {
+                "countryCode": "251",
+                "nationalNumber": "111112345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "011 111 2345",
+                "international": "+251 11 111 2345",
+                "e164": "+251111112345",
+                "rfc3966": "tel:+251-11-111-2345"
+            }
+        }
+    ],
+    "FI": [
+        {
+            "phoneObj": {
+                "countryCode": "358",
+                "nationalNumber": "1312345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "013 12345678",
+                "international": "+358 13 12345678",
+                "e164": "+3581312345678",
+                "rfc3966": "tel:+358-13-12345678"
+            }
+        }
+    ],
+    "FJ": [
+        {
+            "phoneObj": {
+                "countryCode": "679",
+                "nationalNumber": "3212345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "321 2345",
+                "international": "+679 321 2345",
+                "e164": "+6793212345",
+                "rfc3966": "tel:+679-321-2345"
+            }
+        }
+    ],
+    "FK": [
+        {
+            "phoneObj": {
+                "countryCode": "500",
+                "nationalNumber": "31234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "31234",
+                "international": "+500 31234",
+                "e164": "+50031234",
+                "rfc3966": "tel:+500-31234"
+            }
+        }
+    ],
+    "FM": [
+        {
+            "phoneObj": {
+                "countryCode": "691",
+                "nationalNumber": "3201234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "320 1234",
+                "international": "+691 320 1234",
+                "e164": "+6913201234",
+                "rfc3966": "tel:+691-320-1234"
+            }
+        }
+    ],
+    "FO": [
+        {
+            "phoneObj": {
+                "countryCode": "298",
+                "nationalNumber": "201234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "201234",
+                "international": "+298 201234",
+                "e164": "+298201234",
+                "rfc3966": "tel:+298-201234"
+            }
+        }
+    ],
+    "FR": [
+        {
+            "phoneObj": {
+                "countryCode": "33",
+                "nationalNumber": "123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 23 45 67 89",
+                "international": "+33 1 23 45 67 89",
+                "e164": "+33123456789",
+                "rfc3966": "tel:+33-1-23-45-67-89"
+            }
+        }
+    ],
+    "GA": [
+        {
+            "phoneObj": {
+                "countryCode": "241",
+                "nationalNumber": "01441234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 44 12 34",
+                "international": "+241 01 44 12 34",
+                "e164": "+24101441234",
+                "rfc3966": "tel:+241-01-44-12-34"
+            }
+        }
+    ],
+    "GB": [
+        {
+            "phoneObj": {
+                "countryCode": "44",
+                "nationalNumber": "1212345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0121 234 5678",
+                "international": "+44 121 234 5678",
+                "e164": "+441212345678",
+                "rfc3966": "tel:+44-121-234-5678"
+            }
+        }
+    ],
+    "GD": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "4732691234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(473) 269-1234",
+                "international": "+1 473-269-1234",
+                "e164": "+14732691234",
+                "rfc3966": "tel:+1-473-269-1234"
+            }
+        }
+    ],
+    "GE": [
+        {
+            "phoneObj": {
+                "countryCode": "995",
+                "nationalNumber": "322123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0322 12 34 56",
+                "international": "+995 322 12 34 56",
+                "e164": "+995322123456",
+                "rfc3966": "tel:+995-322-12-34-56"
+            }
+        }
+    ],
+    "GF": [
+        {
+            "phoneObj": {
+                "countryCode": "594",
+                "nationalNumber": "594101234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0594 10 12 34",
+                "international": "+594 594 10 12 34",
+                "e164": "+594594101234",
+                "rfc3966": "tel:+594-594-10-12-34"
+            }
+        }
+    ],
+    "GG": [
+        {
+            "phoneObj": {
+                "countryCode": "44",
+                "nationalNumber": "1481456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01481 456789",
+                "international": "+44 1481 456789",
+                "e164": "+441481456789",
+                "rfc3966": "tel:+44-1481-456789"
+            }
+        }
+    ],
+    "GH": [
+        {
+            "phoneObj": {
+                "countryCode": "233",
+                "nationalNumber": "302345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "030 234 5678",
+                "international": "+233 30 234 5678",
+                "e164": "+233302345678",
+                "rfc3966": "tel:+233-30-234-5678"
+            }
+        }
+    ],
+    "GI": [
+        {
+            "phoneObj": {
+                "countryCode": "350",
+                "nationalNumber": "20012345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "200 12345",
+                "international": "+350 200 12345",
+                "e164": "+35020012345",
+                "rfc3966": "tel:+350-200-12345"
+            }
+        }
+    ],
+    "GL": [
+        {
+            "phoneObj": {
+                "countryCode": "299",
+                "nationalNumber": "321000"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "32 10 00",
+                "international": "+299 32 10 00",
+                "e164": "+299321000",
+                "rfc3966": "tel:+299-32-10-00"
+            }
+        }
+    ],
+    "GM": [
+        {
+            "phoneObj": {
+                "countryCode": "220",
+                "nationalNumber": "5661234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "566 1234",
+                "international": "+220 566 1234",
+                "e164": "+2205661234",
+                "rfc3966": "tel:+220-566-1234"
+            }
+        }
+    ],
+    "GN": [
+        {
+            "phoneObj": {
+                "countryCode": "224",
+                "nationalNumber": "30241234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "30 24 12 34",
+                "international": "+224 30 24 12 34",
+                "e164": "+22430241234",
+                "rfc3966": "tel:+224-30-24-12-34"
+            }
+        }
+    ],
+    "GP": [
+        {
+            "phoneObj": {
+                "countryCode": "590",
+                "nationalNumber": "590201234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0590 20-1234",
+                "international": "+590 590 20-1234",
+                "e164": "+590590201234",
+                "rfc3966": "tel:+590-590-20-1234"
+            }
+        }
+    ],
+    "GQ": [
+        {
+            "phoneObj": {
+                "countryCode": "240",
+                "nationalNumber": "333091234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "333 091 234",
+                "international": "+240 333 091 234",
+                "e164": "+240333091234",
+                "rfc3966": "tel:+240-333-091-234"
+            }
+        }
+    ],
+    "GR": [
+        {
+            "phoneObj": {
+                "countryCode": "30",
+                "nationalNumber": "2123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "21 2345 6789",
+                "international": "+30 21 2345 6789",
+                "e164": "+302123456789",
+                "rfc3966": "tel:+30-21-2345-6789"
+            }
+        }
+    ],
+    "GT": [
+        {
+            "phoneObj": {
+                "countryCode": "502",
+                "nationalNumber": "22456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2245 6789",
+                "international": "+502 2245 6789",
+                "e164": "+50222456789",
+                "rfc3966": "tel:+502-2245-6789"
+            }
+        }
+    ],
+    "GU": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "6713001234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(671) 300-1234",
+                "international": "+1 671-300-1234",
+                "e164": "+16713001234",
+                "rfc3966": "tel:+1-671-300-1234"
+            }
+        }
+    ],
+    "GW": [
+        {
+            "phoneObj": {
+                "countryCode": "245",
+                "nationalNumber": "443201234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "443 201 234",
+                "international": "+245 443 201 234",
+                "e164": "+245443201234",
+                "rfc3966": "tel:+245-443-201-234"
+            }
+        }
+    ],
+    "GY": [
+        {
+            "phoneObj": {
+                "countryCode": "592",
+                "nationalNumber": "2201234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "220 1234",
+                "international": "+592 220 1234",
+                "e164": "+5922201234",
+                "rfc3966": "tel:+592-220-1234"
+            }
+        }
+    ],
+    "HK": [
+        {
+            "phoneObj": {
+                "countryCode": "852",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2123 4567",
+                "international": "+852 2123 4567",
+                "e164": "+85221234567",
+                "rfc3966": "tel:+852-2123-4567"
+            }
+        }
+    ],
+    "HN": [
+        {
+            "phoneObj": {
+                "countryCode": "504",
+                "nationalNumber": "22123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2212-3456",
+                "international": "+504 2212-3456",
+                "e164": "+50422123456",
+                "rfc3966": "tel:+504-2212-3456"
+            }
+        }
+    ],
+    "HR": [
+        {
+            "phoneObj": {
+                "countryCode": "385",
+                "nationalNumber": "12345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 2345 678",
+                "international": "+385 1 2345 678",
+                "e164": "+38512345678",
+                "rfc3966": "tel:+385-1-2345-678"
+            }
+        }
+    ],
+    "HT": [
+        {
+            "phoneObj": {
+                "countryCode": "509",
+                "nationalNumber": "22453300"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "22 45 3300",
+                "international": "+509 22 45 3300",
+                "e164": "+50922453300",
+                "rfc3966": "tel:+509-22-45-3300"
+            }
+        }
+    ],
+    "HU": [
+        {
+            "phoneObj": {
+                "countryCode": "36",
+                "nationalNumber": "12345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(1) 234 5678",
+                "international": "+36 1 234 5678",
+                "e164": "+3612345678",
+                "rfc3966": "tel:+36-1-234-5678"
+            }
+        }
+    ],
+    "ID": [
+        {
+            "phoneObj": {
+                "countryCode": "62",
+                "nationalNumber": "612345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(061) 2345678",
+                "international": "+62 61 2345678",
+                "e164": "+62612345678",
+                "rfc3966": "tel:+62-61-2345678"
+            }
+        }
+    ],
+    "IE": [
+        {
+            "phoneObj": {
+                "countryCode": "353",
+                "nationalNumber": "2212345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(022) 12345",
+                "international": "+353 22 12345",
+                "e164": "+3532212345",
+                "rfc3966": "tel:+353-22-12345"
+            }
+        }
+    ],
+    "IL": [
+        {
+            "phoneObj": {
+                "countryCode": "972",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02-123-4567",
+                "international": "+972 2-123-4567",
+                "e164": "+97221234567",
+                "rfc3966": "tel:+972-2-123-4567"
+            }
+        }
+    ],
+    "IM": [
+        {
+            "phoneObj": {
+                "countryCode": "44",
+                "nationalNumber": "1624456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01624 456789",
+                "international": "+44 1624 456789",
+                "e164": "+441624456789",
+                "rfc3966": "tel:+44-1624-456789"
+            }
+        }
+    ],
+    "IN": [
+        {
+            "phoneObj": {
+                "countryCode": "91",
+                "nationalNumber": "1123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "011 2345 6789",
+                "international": "+91 11 2345 6789",
+                "e164": "+911123456789",
+                "rfc3966": "tel:+91-11-2345-6789"
+            }
+        }
+    ],
+    "IQ": [
+        {
+            "phoneObj": {
+                "countryCode": "964",
+                "nationalNumber": "12345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 234 5678",
+                "international": "+964 1 234 5678",
+                "e164": "+96412345678",
+                "rfc3966": "tel:+964-1-234-5678"
+            }
+        }
+    ],
+    "IR": [
+        {
+            "phoneObj": {
+                "countryCode": "98",
+                "nationalNumber": "2123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "021 2345 6789",
+                "international": "+98 21 2345 6789",
+                "e164": "+982123456789",
+                "rfc3966": "tel:+98-21-2345-6789"
+            }
+        }
+    ],
+    "IS": [
+        {
+            "phoneObj": {
+                "countryCode": "354",
+                "nationalNumber": "4101234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "410 1234",
+                "international": "+354 410 1234",
+                "e164": "+3544101234",
+                "rfc3966": "tel:+354-410-1234"
+            }
+        }
+    ],
+    "IT": [
+        {
+            "phoneObj": {
+                "countryCode": "39",
+                "nationalNumber": "0212345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02 1234 5678",
+                "international": "+39 02 1234 5678",
+                "e164": "+390212345678",
+                "rfc3966": "tel:+39-02-1234-5678"
+            }
+        }
+    ],
+    "JE": [
+        {
+            "phoneObj": {
+                "countryCode": "44",
+                "nationalNumber": "1534456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01534 456789",
+                "international": "+44 1534 456789",
+                "e164": "+441534456789",
+                "rfc3966": "tel:+44-1534-456789"
+            }
+        }
+    ],
+    "JM": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "8765123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(876) 512-3456",
+                "international": "+1 876-512-3456",
+                "e164": "+18765123456",
+                "rfc3966": "tel:+1-876-512-3456"
+            }
+        }
+    ],
+    "JO": [
+        {
+            "phoneObj": {
+                "countryCode": "962",
+                "nationalNumber": "62001234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(06) 200 1234",
+                "international": "+962 6 200 1234",
+                "e164": "+96262001234",
+                "rfc3966": "tel:+962-6-200-1234"
+            }
+        }
+    ],
+    "JP": [
+        {
+            "phoneObj": {
+                "countryCode": "81",
+                "nationalNumber": "312345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "03-1234-5678",
+                "international": "+81 3-1234-5678",
+                "e164": "+81312345678",
+                "rfc3966": "tel:+81-3-1234-5678"
+            }
+        }
+    ],
+    "KE": [
+        {
+            "phoneObj": {
+                "countryCode": "254",
+                "nationalNumber": "202012345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "020 2012345",
+                "international": "+254 20 2012345",
+                "e164": "+254202012345",
+                "rfc3966": "tel:+254-20-2012345"
+            }
+        }
+    ],
+    "KG": [
+        {
+            "phoneObj": {
+                "countryCode": "996",
+                "nationalNumber": "312123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0312 123 456",
+                "international": "+996 312 123 456",
+                "e164": "+996312123456",
+                "rfc3966": "tel:+996-312-123-456"
+            }
+        }
+    ],
+    "KH": [
+        {
+            "phoneObj": {
+                "countryCode": "855",
+                "nationalNumber": "23756789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "023 756 789",
+                "international": "+855 23 756 789",
+                "e164": "+85523756789",
+                "rfc3966": "tel:+855-23-756-789"
+            }
+        }
+    ],
+    "KI": [
+        {
+            "phoneObj": {
+                "countryCode": "686",
+                "nationalNumber": "31234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "31234",
+                "international": "+686 31234",
+                "e164": "+68631234",
+                "rfc3966": "tel:+686-31234"
+            }
+        }
+    ],
+    "KM": [
+        {
+            "phoneObj": {
+                "countryCode": "269",
+                "nationalNumber": "7712345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "771 23 45",
+                "international": "+269 771 23 45",
+                "e164": "+2697712345",
+                "rfc3966": "tel:+269-771-23-45"
+            }
+        }
+    ],
+    "KN": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "8692361234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(869) 236-1234",
+                "international": "+1 869-236-1234",
+                "e164": "+18692361234",
+                "rfc3966": "tel:+1-869-236-1234"
+            }
+        }
+    ],
+    "KP": [
+        {
+            "phoneObj": {
+                "countryCode": "850",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02 123 4567",
+                "international": "+850 2 123 4567",
+                "e164": "+85021234567",
+                "rfc3966": "tel:+850-2-123-4567"
+            }
+        }
+    ],
+    "KR": [
+        {
+            "phoneObj": {
+                "countryCode": "82",
+                "nationalNumber": "22123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02-212-3456",
+                "international": "+82 2-212-3456",
+                "e164": "+8222123456",
+                "rfc3966": "tel:+82-2-212-3456"
+            }
+        }
+    ],
+    "KW": [
+        {
+            "phoneObj": {
+                "countryCode": "965",
+                "nationalNumber": "22345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2234 5678",
+                "international": "+965 2234 5678",
+                "e164": "+96522345678",
+                "rfc3966": "tel:+965-2234-5678"
+            }
+        }
+    ],
+    "KY": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "3452221234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(345) 222-1234",
+                "international": "+1 345-222-1234",
+                "e164": "+13452221234",
+                "rfc3966": "tel:+1-345-222-1234"
+            }
+        }
+    ],
+    "KZ": [
+        {
+            "phoneObj": {
+                "countryCode": "7",
+                "nationalNumber": "7123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "8 (712) 345 6789",
+                "international": "+7 712 345 6789",
+                "e164": "+77123456789",
+                "rfc3966": "tel:+7-712-345-6789"
+            }
+        }
+    ],
+    "LA": [
+        {
+            "phoneObj": {
+                "countryCode": "856",
+                "nationalNumber": "21212862"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "021 212 862",
+                "international": "+856 21 212 862",
+                "e164": "+85621212862",
+                "rfc3966": "tel:+856-21-212-862"
+            }
+        }
+    ],
+    "LB": [
+        {
+            "phoneObj": {
+                "countryCode": "961",
+                "nationalNumber": "1123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 123 456",
+                "international": "+961 1 123 456",
+                "e164": "+9611123456",
+                "rfc3966": "tel:+961-1-123-456"
+            }
+        }
+    ],
+    "LC": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "7584305678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(758) 430-5678",
+                "international": "+1 758-430-5678",
+                "e164": "+17584305678",
+                "rfc3966": "tel:+1-758-430-5678"
+            }
+        }
+    ],
+    "LI": [
+        {
+            "phoneObj": {
+                "countryCode": "423",
+                "nationalNumber": "2345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "234 56 78",
+                "international": "+423 234 56 78",
+                "e164": "+4232345678",
+                "rfc3966": "tel:+423-234-56-78"
+            }
+        }
+    ],
+    "LK": [
+        {
+            "phoneObj": {
+                "countryCode": "94",
+                "nationalNumber": "112345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "011 2 345678",
+                "international": "+94 11 2 345678",
+                "e164": "+94112345678",
+                "rfc3966": "tel:+94-11-2-345678"
+            }
+        }
+    ],
+    "LR": [
+        {
+            "phoneObj": {
+                "countryCode": "231",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "021 234 567",
+                "international": "+231 21 234 567",
+                "e164": "+23121234567",
+                "rfc3966": "tel:+231-21-234-567"
+            }
+        }
+    ],
+    "LS": [
+        {
+            "phoneObj": {
+                "countryCode": "266",
+                "nationalNumber": "22123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2212 3456",
+                "international": "+266 2212 3456",
+                "e164": "+26622123456",
+                "rfc3966": "tel:+266-2212-3456"
+            }
+        }
+    ],
+    "LT": [
+        {
+            "phoneObj": {
+                "countryCode": "370",
+                "nationalNumber": "31234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(8-312) 34567",
+                "international": "+370 312 34567",
+                "e164": "+37031234567",
+                "rfc3966": "tel:+370-312-34567"
+            }
+        }
+    ],
+    "LU": [
+        {
+            "phoneObj": {
+                "countryCode": "352",
+                "nationalNumber": "27123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "27 12 34 56",
+                "international": "+352 27 12 34 56",
+                "e164": "+35227123456",
+                "rfc3966": "tel:+352-27-12-34-56"
+            }
+        }
+    ],
+    "LV": [
+        {
+            "phoneObj": {
+                "countryCode": "371",
+                "nationalNumber": "63123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "63 123 456",
+                "international": "+371 63 123 456",
+                "e164": "+37163123456",
+                "rfc3966": "tel:+371-63-123-456"
+            }
+        }
+    ],
+    "LY": [
+        {
+            "phoneObj": {
+                "countryCode": "218",
+                "nationalNumber": "212345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "021-2345678",
+                "international": "+218 21-2345678",
+                "e164": "+218212345678",
+                "rfc3966": "tel:+218-21-2345678"
+            }
+        }
+    ],
+    "MA": [
+        {
+            "phoneObj": {
+                "countryCode": "212",
+                "nationalNumber": "520123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0520-123456",
+                "international": "+212 520-123456",
+                "e164": "+212520123456",
+                "rfc3966": "tel:+212-520-123456"
+            }
+        }
+    ],
+    "MC": [
+        {
+            "phoneObj": {
+                "countryCode": "377",
+                "nationalNumber": "99123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "99 12 34 56",
+                "international": "+377 99 12 34 56",
+                "e164": "+37799123456",
+                "rfc3966": "tel:+377-99-12-34-56"
+            }
+        }
+    ],
+    "MD": [
+        {
+            "phoneObj": {
+                "countryCode": "373",
+                "nationalNumber": "22212345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "022 212 345",
+                "international": "+373 22 212 345",
+                "e164": "+37322212345",
+                "rfc3966": "tel:+373-22-212-345"
+            }
+        }
+    ],
+    "ME": [
+        {
+            "phoneObj": {
+                "countryCode": "382",
+                "nationalNumber": "30234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "030 234 567",
+                "international": "+382 30 234 567",
+                "e164": "+38230234567",
+                "rfc3966": "tel:+382-30-234-567"
+            }
+        }
+    ],
+    "MF": [
+        {
+            "phoneObj": {
+                "countryCode": "590",
+                "nationalNumber": "590271234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0590 27-1234",
+                "international": "+590 590 27-1234",
+                "e164": "+590590271234",
+                "rfc3966": "tel:+590-590-27-1234"
+            }
+        }
+    ],
+    "MG": [
+        {
+            "phoneObj": {
+                "countryCode": "261",
+                "nationalNumber": "202123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "020 21 234 56",
+                "international": "+261 20 21 234 56",
+                "e164": "+261202123456",
+                "rfc3966": "tel:+261-20-21-234-56"
+            }
+        }
+    ],
+    "MH": [
+        {
+            "phoneObj": {
+                "countryCode": "692",
+                "nationalNumber": "2471234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "247-1234",
+                "international": "+692 247-1234",
+                "e164": "+6922471234",
+                "rfc3966": "tel:+692-247-1234"
+            }
+        }
+    ],
+    "MK": [
+        {
+            "phoneObj": {
+                "countryCode": "389",
+                "nationalNumber": "22212345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02 221 2345",
+                "international": "+389 2 221 2345",
+                "e164": "+38922212345",
+                "rfc3966": "tel:+389-2-221-2345"
+            }
+        }
+    ],
+    "ML": [
+        {
+            "phoneObj": {
+                "countryCode": "223",
+                "nationalNumber": "20212345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "20 21 23 45",
+                "international": "+223 20 21 23 45",
+                "e164": "+22320212345",
+                "rfc3966": "tel:+223-20-21-23-45"
+            }
+        }
+    ],
+    "MM": [
+        {
+            "phoneObj": {
+                "countryCode": "95",
+                "nationalNumber": "1234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 234 567",
+                "international": "+95 1 234 567",
+                "e164": "+951234567",
+                "rfc3966": "tel:+95-1-234-567"
+            }
+        }
+    ],
+    "MN": [
+        {
+            "phoneObj": {
+                "countryCode": "976",
+                "nationalNumber": "50123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "5012 3456",
+                "international": "+976 5012 3456",
+                "e164": "+97650123456",
+                "rfc3966": "tel:+976-5012-3456"
+            }
+        }
+    ],
+    "MO": [
+        {
+            "phoneObj": {
+                "countryCode": "853",
+                "nationalNumber": "28212345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2821 2345",
+                "international": "+853 2821 2345",
+                "e164": "+85328212345",
+                "rfc3966": "tel:+853-2821-2345"
+            }
+        }
+    ],
+    "MP": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "6702345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(670) 234-5678",
+                "international": "+1 670-234-5678",
+                "e164": "+16702345678",
+                "rfc3966": "tel:+1-670-234-5678"
+            }
+        }
+    ],
+    "MQ": [
+        {
+            "phoneObj": {
+                "countryCode": "596",
+                "nationalNumber": "596301234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0596 30 12 34",
+                "international": "+596 596 30 12 34",
+                "e164": "+596596301234",
+                "rfc3966": "tel:+596-596-30-12-34"
+            }
+        }
+    ],
+    "MR": [
+        {
+            "phoneObj": {
+                "countryCode": "222",
+                "nationalNumber": "35123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "35 12 34 56",
+                "international": "+222 35 12 34 56",
+                "e164": "+22235123456",
+                "rfc3966": "tel:+222-35-12-34-56"
+            }
+        }
+    ],
+    "MS": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "6644912345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(664) 491-2345",
+                "international": "+1 664-491-2345",
+                "e164": "+16644912345",
+                "rfc3966": "tel:+1-664-491-2345"
+            }
+        }
+    ],
+    "MT": [
+        {
+            "phoneObj": {
+                "countryCode": "356",
+                "nationalNumber": "21001234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2100 1234",
+                "international": "+356 2100 1234",
+                "e164": "+35621001234",
+                "rfc3966": "tel:+356-2100-1234"
+            }
+        }
+    ],
+    "MU": [
+        {
+            "phoneObj": {
+                "countryCode": "230",
+                "nationalNumber": "2012345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "201 2345",
+                "international": "+230 201 2345",
+                "e164": "+2302012345",
+                "rfc3966": "tel:+230-201-2345"
+            }
+        }
+    ],
+    "MV": [
+        {
+            "phoneObj": {
+                "countryCode": "960",
+                "nationalNumber": "6701234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "670-1234",
+                "international": "+960 670-1234",
+                "e164": "+9606701234",
+                "rfc3966": "tel:+960-670-1234"
+            }
+        }
+    ],
+    "MW": [
+        {
+            "phoneObj": {
+                "countryCode": "265",
+                "nationalNumber": "1234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 234 567",
+                "international": "+265 1 234 567",
+                "e164": "+2651234567",
+                "rfc3966": "tel:+265-1-234-567"
+            }
+        }
+    ],
+    "MX": [
+        {
+            "phoneObj": {
+                "countryCode": "52",
+                "nationalNumber": "2221234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 222 123 4567",
+                "international": "+52 222 123 4567",
+                "e164": "+522221234567",
+                "rfc3966": "tel:+52-222-123-4567"
+            }
+        }
+    ],
+    "MY": [
+        {
+            "phoneObj": {
+                "countryCode": "60",
+                "nationalNumber": "323456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "03-2345 6789",
+                "international": "+60 3-2345 6789",
+                "e164": "+60323456789",
+                "rfc3966": "tel:+60-3-2345-6789"
+            }
+        }
+    ],
+    "MZ": [
+        {
+            "phoneObj": {
+                "countryCode": "258",
+                "nationalNumber": "21123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "21 123 456",
+                "international": "+258 21 123 456",
+                "e164": "+25821123456",
+                "rfc3966": "tel:+258-21-123-456"
+            }
+        }
+    ],
+    "NA": [
+        {
+            "phoneObj": {
+                "countryCode": "264",
+                "nationalNumber": "61221234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "061 221 234",
+                "international": "+264 61 221 234",
+                "e164": "+26461221234",
+                "rfc3966": "tel:+264-61-221-234"
+            }
+        }
+    ],
+    "NC": [
+        {
+            "phoneObj": {
+                "countryCode": "687",
+                "nationalNumber": "201234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "20.12.34",
+                "international": "+687 20.12.34",
+                "e164": "+687201234",
+                "rfc3966": "tel:+687-20-12-34"
+            }
+        }
+    ],
+    "NE": [
+        {
+            "phoneObj": {
+                "countryCode": "227",
+                "nationalNumber": "20201234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "20 20 12 34",
+                "international": "+227 20 20 12 34",
+                "e164": "+22720201234",
+                "rfc3966": "tel:+227-20-20-12-34"
+            }
+        }
+    ],
+    "NF": [
+        {
+            "phoneObj": {
+                "countryCode": "672",
+                "nationalNumber": "106609"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "10 6609",
+                "international": "+672 10 6609",
+                "e164": "+672106609",
+                "rfc3966": "tel:+672-10-6609"
+            }
+        }
+    ],
+    "NG": [
+        {
+            "phoneObj": {
+                "countryCode": "234",
+                "nationalNumber": "12345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 234 5678",
+                "international": "+234 1 234 5678",
+                "e164": "+23412345678",
+                "rfc3966": "tel:+234-1-234-5678"
+            }
+        }
+    ],
+    "NI": [
+        {
+            "phoneObj": {
+                "countryCode": "505",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2123 4567",
+                "international": "+505 2123 4567",
+                "e164": "+50521234567",
+                "rfc3966": "tel:+505-2123-4567"
+            }
+        }
+    ],
+    "NL": [
+        {
+            "phoneObj": {
+                "countryCode": "31",
+                "nationalNumber": "101234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "010 123 4567",
+                "international": "+31 10 123 4567",
+                "e164": "+31101234567",
+                "rfc3966": "tel:+31-10-123-4567"
+            }
+        }
+    ],
+    "NO": [
+        {
+            "phoneObj": {
+                "countryCode": "47",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "21 23 45 67",
+                "international": "+47 21 23 45 67",
+                "e164": "+4721234567",
+                "rfc3966": "tel:+47-21-23-45-67"
+            }
+        }
+    ],
+    "NP": [
+        {
+            "phoneObj": {
+                "countryCode": "977",
+                "nationalNumber": "14567890"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01-4567890",
+                "international": "+977 1-4567890",
+                "e164": "+97714567890",
+                "rfc3966": "tel:+977-1-4567890"
+            }
+        }
+    ],
+    "NR": [
+        {
+            "phoneObj": {
+                "countryCode": "674",
+                "nationalNumber": "4441234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "444 1234",
+                "international": "+674 444 1234",
+                "e164": "+6744441234",
+                "rfc3966": "tel:+674-444-1234"
+            }
+        }
+    ],
+    "NU": [
+        {
+            "phoneObj": {
+                "countryCode": "683",
+                "nationalNumber": "4002"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "4002",
+                "international": "+683 4002",
+                "e164": "+6834002",
+                "rfc3966": "tel:+683-4002"
+            }
+        }
+    ],
+    "NZ": [
+        {
+            "phoneObj": {
+                "countryCode": "64",
+                "nationalNumber": "32345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "03-234 5678",
+                "international": "+64 3-234 5678",
+                "e164": "+6432345678",
+                "rfc3966": "tel:+64-3-234-5678"
+            }
+        }
+    ],
+    "OM": [
+        {
+            "phoneObj": {
+                "countryCode": "968",
+                "nationalNumber": "23123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "23 123456",
+                "international": "+968 23 123456",
+                "e164": "+96823123456",
+                "rfc3966": "tel:+968-23-123456"
+            }
+        }
+    ],
+    "PA": [
+        {
+            "phoneObj": {
+                "countryCode": "507",
+                "nationalNumber": "2001234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "200-1234",
+                "international": "+507 200-1234",
+                "e164": "+5072001234",
+                "rfc3966": "tel:+507-200-1234"
+            }
+        }
+    ],
+    "PE": [
+        {
+            "phoneObj": {
+                "countryCode": "51",
+                "nationalNumber": "11234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(01) 1234567",
+                "international": "+51 1 1234567",
+                "e164": "+5111234567",
+                "rfc3966": "tel:+51-1-1234567"
+            }
+        }
+    ],
+    "PF": [
+        {
+            "phoneObj": {
+                "countryCode": "689",
+                "nationalNumber": "40412345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "40 41 23 45",
+                "international": "+689 40 41 23 45",
+                "e164": "+68940412345",
+                "rfc3966": "tel:+689-40-41-23-45"
+            }
+        }
+    ],
+    "PG": [
+        {
+            "phoneObj": {
+                "countryCode": "675",
+                "nationalNumber": "3123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "312 3456",
+                "international": "+675 312 3456",
+                "e164": "+6753123456",
+                "rfc3966": "tel:+675-312-3456"
+            }
+        }
+    ],
+    "PH": [
+        {
+            "phoneObj": {
+                "countryCode": "63",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(02) 123 4567",
+                "international": "+63 2 123 4567",
+                "e164": "+6321234567",
+                "rfc3966": "tel:+63-2-123-4567"
+            }
+        }
+    ],
+    "PK": [
+        {
+            "phoneObj": {
+                "countryCode": "92",
+                "nationalNumber": "2123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(021) 23456789",
+                "international": "+92 21 23456789",
+                "e164": "+922123456789",
+                "rfc3966": "tel:+92-21-23456789"
+            }
+        }
+    ],
+    "PL": [
+        {
+            "phoneObj": {
+                "countryCode": "48",
+                "nationalNumber": "123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "12 345 67 89",
+                "international": "+48 12 345 67 89",
+                "e164": "+48123456789",
+                "rfc3966": "tel:+48-12-345-67-89"
+            }
+        }
+    ],
+    "PM": [
+        {
+            "phoneObj": {
+                "countryCode": "508",
+                "nationalNumber": "411234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "041 12 34",
+                "international": "+508 41 12 34",
+                "e164": "+508411234",
+                "rfc3966": "tel:+508-41-12-34"
+            }
+        }
+    ],
+    "PN": [
+        {
+            "phoneObj": {
+                "countryCode": "64",
+                "nationalNumber": "32345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "03-234 5678",
+                "international": "+64 3-234 5678",
+                "e164": "+6432345678",
+                "rfc3966": "tel:+64-3-234-5678"
+            }
+        }
+    ],
+    "PR": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "7872345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(787) 234-5678",
+                "international": "+1 787-234-5678",
+                "e164": "+17872345678",
+                "rfc3966": "tel:+1-787-234-5678"
+            }
+        }
+    ],
+    "PS": [
+        {
+            "phoneObj": {
+                "countryCode": "970",
+                "nationalNumber": "22234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02 223 4567",
+                "international": "+970 2 223 4567",
+                "e164": "+97022234567",
+                "rfc3966": "tel:+970-2-223-4567"
+            }
+        }
+    ],
+    "PT": [
+        {
+            "phoneObj": {
+                "countryCode": "351",
+                "nationalNumber": "212345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "21 234 5678",
+                "international": "+351 21 234 5678",
+                "e164": "+351212345678",
+                "rfc3966": "tel:+351-21-234-5678"
+            }
+        }
+    ],
+    "PW": [
+        {
+            "phoneObj": {
+                "countryCode": "680",
+                "nationalNumber": "2771234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "277 1234",
+                "international": "+680 277 1234",
+                "e164": "+6802771234",
+                "rfc3966": "tel:+680-277-1234"
+            }
+        }
+    ],
+    "PY": [
+        {
+            "phoneObj": {
+                "countryCode": "595",
+                "nationalNumber": "212345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(021) 234 5678",
+                "international": "+595 21 234 5678",
+                "e164": "+595212345678",
+                "rfc3966": "tel:+595-21-234-5678"
+            }
+        }
+    ],
+    "QA": [
+        {
+            "phoneObj": {
+                "countryCode": "974",
+                "nationalNumber": "44123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "4412 3456",
+                "international": "+974 4412 3456",
+                "e164": "+97444123456",
+                "rfc3966": "tel:+974-4412-3456"
+            }
+        }
+    ],
+    "RE": [
+        {
+            "phoneObj": {
+                "countryCode": "262",
+                "nationalNumber": "262161234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0262 16 12 34",
+                "international": "+262 262 16 12 34",
+                "e164": "+262262161234",
+                "rfc3966": "tel:+262-262-16-12-34"
+            }
+        }
+    ],
+    "RO": [
+        {
+            "phoneObj": {
+                "countryCode": "40",
+                "nationalNumber": "211234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "021 123 4567",
+                "international": "+40 21 123 4567",
+                "e164": "+40211234567",
+                "rfc3966": "tel:+40-21-123-4567"
+            }
+        }
+    ],
+    "RS": [
+        {
+            "phoneObj": {
+                "countryCode": "381",
+                "nationalNumber": "10234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "010 234567",
+                "international": "+381 10 234567",
+                "e164": "+38110234567",
+                "rfc3966": "tel:+381-10-234567"
+            }
+        }
+    ],
+    "RU": [
+        {
+            "phoneObj": {
+                "countryCode": "7",
+                "nationalNumber": "3011234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "8 (301) 123-45-67",
+                "international": "+7 301 123-45-67",
+                "e164": "+73011234567",
+                "rfc3966": "tel:+7-301-123-45-67"
+            }
+        }
+    ],
+    "RW": [
+        {
+            "phoneObj": {
+                "countryCode": "250",
+                "nationalNumber": "250123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "250 123 456",
+                "international": "+250 250 123 456",
+                "e164": "+250250123456",
+                "rfc3966": "tel:+250-250-123-456"
+            }
+        }
+    ],
+    "SA": [
+        {
+            "phoneObj": {
+                "countryCode": "966",
+                "nationalNumber": "112345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "011 234 5678",
+                "international": "+966 11 234 5678",
+                "e164": "+966112345678",
+                "rfc3966": "tel:+966-11-234-5678"
+            }
+        }
+    ],
+    "SB": [
+        {
+            "phoneObj": {
+                "countryCode": "677",
+                "nationalNumber": "40123"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "40123",
+                "international": "+677 40123",
+                "e164": "+67740123",
+                "rfc3966": "tel:+677-40123"
+            }
+        }
+    ],
+    "SC": [
+        {
+            "phoneObj": {
+                "countryCode": "248",
+                "nationalNumber": "4217123"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "4 217 123",
+                "international": "+248 4 217 123",
+                "e164": "+2484217123",
+                "rfc3966": "tel:+248-4-217-123"
+            }
+        }
+    ],
+    "SD": [
+        {
+            "phoneObj": {
+                "countryCode": "249",
+                "nationalNumber": "121231234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "012 123 1234",
+                "international": "+249 12 123 1234",
+                "e164": "+249121231234",
+                "rfc3966": "tel:+249-12-123-1234"
+            }
+        }
+    ],
+    "SE": [
+        {
+            "phoneObj": {
+                "countryCode": "46",
+                "nationalNumber": "8123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "08-12 34 56",
+                "international": "+46 8 12 34 56",
+                "e164": "+468123456",
+                "rfc3966": "tel:+46-8-12-34-56"
+            }
+        }
+    ],
+    "SG": [
+        {
+            "phoneObj": {
+                "countryCode": "65",
+                "nationalNumber": "61234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "6123 4567",
+                "international": "+65 6123 4567",
+                "e164": "+6561234567",
+                "rfc3966": "tel:+65-6123-4567"
+            }
+        }
+    ],
+    "SH": [
+        {
+            "phoneObj": {
+                "countryCode": "290",
+                "nationalNumber": "22158"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "22158",
+                "international": "+290 22158",
+                "e164": "+29022158",
+                "rfc3966": "tel:+290-22158"
+            }
+        }
+    ],
+    "SI": [
+        {
+            "phoneObj": {
+                "countryCode": "386",
+                "nationalNumber": "11234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(01) 123 45 67",
+                "international": "+386 1 123 45 67",
+                "e164": "+38611234567",
+                "rfc3966": "tel:+386-1-123-45-67"
+            }
+        }
+    ],
+    "SJ": [
+        {
+            "phoneObj": {
+                "countryCode": "47",
+                "nationalNumber": "79123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "79 12 34 56",
+                "international": "+47 79 12 34 56",
+                "e164": "+4779123456",
+                "rfc3966": "tel:+47-79-12-34-56"
+            }
+        }
+    ],
+    "SK": [
+        {
+            "phoneObj": {
+                "countryCode": "421",
+                "nationalNumber": "212345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02/123 456 78",
+                "international": "+421 2/123 456 78",
+                "e164": "+421212345678",
+                "rfc3966": "tel:+421-2-123-456-78"
+            }
+        }
+    ],
+    "SL": [
+        {
+            "phoneObj": {
+                "countryCode": "232",
+                "nationalNumber": "22221234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(022) 221234",
+                "international": "+232 22 221234",
+                "e164": "+23222221234",
+                "rfc3966": "tel:+232-22-221234"
+            }
+        }
+    ],
+    "SM": [
+        {
+            "phoneObj": {
+                "countryCode": "378",
+                "nationalNumber": "0549886377"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0549 886377",
+                "international": "+378 (0549) 886377",
+                "e164": "+3780549886377",
+                "rfc3966": "tel:+378-0549-886377"
+            }
+        }
+    ],
+    "SN": [
+        {
+            "phoneObj": {
+                "countryCode": "221",
+                "nationalNumber": "301012345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "30 101 23 45",
+                "international": "+221 30 101 23 45",
+                "e164": "+221301012345",
+                "rfc3966": "tel:+221-30-101-23-45"
+            }
+        }
+    ],
+    "SO": [
+        {
+            "phoneObj": {
+                "countryCode": "252",
+                "nationalNumber": "4012345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "4 012345",
+                "international": "+252 4 012345",
+                "e164": "+2524012345",
+                "rfc3966": "tel:+252-4-012345"
+            }
+        }
+    ],
+    "SR": [
+        {
+            "phoneObj": {
+                "countryCode": "597",
+                "nationalNumber": "211234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "211-234",
+                "international": "+597 211-234",
+                "e164": "+597211234",
+                "rfc3966": "tel:+597-211-234"
+            }
+        }
+    ],
+    "SS": [
+        {
+            "phoneObj": {
+                "countryCode": "211",
+                "nationalNumber": "181234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0181 234 567",
+                "international": "+211 181 234 567",
+                "e164": "+211181234567",
+                "rfc3966": "tel:+211-181-234-567"
+            }
+        }
+    ],
+    "ST": [
+        {
+            "phoneObj": {
+                "countryCode": "239",
+                "nationalNumber": "2221234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "222 1234",
+                "international": "+239 222 1234",
+                "e164": "+2392221234",
+                "rfc3966": "tel:+239-222-1234"
+            }
+        }
+    ],
+    "SV": [
+        {
+            "phoneObj": {
+                "countryCode": "503",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2123 4567",
+                "international": "+503 2123 4567",
+                "e164": "+50321234567",
+                "rfc3966": "tel:+503-2123-4567"
+            }
+        }
+    ],
+    "SX": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "7215425678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(721) 542-5678",
+                "international": "+1 721-542-5678",
+                "e164": "+17215425678",
+                "rfc3966": "tel:+1-721-542-5678"
+            }
+        }
+    ],
+    "SY": [
+        {
+            "phoneObj": {
+                "countryCode": "963",
+                "nationalNumber": "112345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "011 234 5678",
+                "international": "+963 11 234 5678",
+                "e164": "+963112345678",
+                "rfc3966": "tel:+963-11-234-5678"
+            }
+        }
+    ],
+    "SZ": [
+        {
+            "phoneObj": {
+                "countryCode": "268",
+                "nationalNumber": "22171234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2217 1234",
+                "international": "+268 2217 1234",
+                "e164": "+26822171234",
+                "rfc3966": "tel:+268-2217-1234"
+            }
+        }
+    ],
+    "TC": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "6497121234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(649) 712-1234",
+                "international": "+1 649-712-1234",
+                "e164": "+16497121234",
+                "rfc3966": "tel:+1-649-712-1234"
+            }
+        }
+    ],
+    "TD": [
+        {
+            "phoneObj": {
+                "countryCode": "235",
+                "nationalNumber": "22501234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "22 50 12 34",
+                "international": "+235 22 50 12 34",
+                "e164": "+23522501234",
+                "rfc3966": "tel:+235-22-50-12-34"
+            }
+        }
+    ],
+    "TG": [
+        {
+            "phoneObj": {
+                "countryCode": "228",
+                "nationalNumber": "22212345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "22 21 23 45",
+                "international": "+228 22 21 23 45",
+                "e164": "+22822212345",
+                "rfc3966": "tel:+228-22-21-23-45"
+            }
+        }
+    ],
+    "TH": [
+        {
+            "phoneObj": {
+                "countryCode": "66",
+                "nationalNumber": "21234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02 123 4567",
+                "international": "+66 2 123 4567",
+                "e164": "+6621234567",
+                "rfc3966": "tel:+66-2-123-4567"
+            }
+        }
+    ],
+    "TJ": [
+        {
+            "phoneObj": {
+                "countryCode": "992",
+                "nationalNumber": "372123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(8) 372 12 3456",
+                "international": "+992 372 12 3456",
+                "e164": "+992372123456",
+                "rfc3966": "tel:+992-372-12-3456"
+            }
+        }
+    ],
+    "TK": [
+        {
+            "phoneObj": {
+                "countryCode": "690",
+                "nationalNumber": "3101"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "3101",
+                "international": "+690 3101",
+                "e164": "+6903101",
+                "rfc3966": "tel:+690-3101"
+            }
+        }
+    ],
+    "TL": [
+        {
+            "phoneObj": {
+                "countryCode": "670",
+                "nationalNumber": "2112345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "211 2345",
+                "international": "+670 211 2345",
+                "e164": "+6702112345",
+                "rfc3966": "tel:+670-211-2345"
+            }
+        }
+    ],
+    "TM": [
+        {
+            "phoneObj": {
+                "countryCode": "993",
+                "nationalNumber": "12345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(8 12) 34-56-78",
+                "international": "+993 12 34-56-78",
+                "e164": "+99312345678",
+                "rfc3966": "tel:+993-12-34-56-78"
+            }
+        }
+    ],
+    "TN": [
+        {
+            "phoneObj": {
+                "countryCode": "216",
+                "nationalNumber": "71234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "71 234 567",
+                "international": "+216 71 234 567",
+                "e164": "+21671234567",
+                "rfc3966": "tel:+216-71-234-567"
+            }
+        }
+    ],
+    "TO": [
+        {
+            "phoneObj": {
+                "countryCode": "676",
+                "nationalNumber": "20123"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "20-123",
+                "international": "+676 20-123",
+                "e164": "+67620123",
+                "rfc3966": "tel:+676-20-123"
+            }
+        }
+    ],
+    "TR": [
+        {
+            "phoneObj": {
+                "countryCode": "90",
+                "nationalNumber": "2123456789"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(0212) 345 67 89",
+                "international": "+90 212 345 67 89",
+                "e164": "+902123456789",
+                "rfc3966": "tel:+90-212-345-67-89"
+            }
+        }
+    ],
+    "TT": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "8682211234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(868) 221-1234",
+                "international": "+1 868-221-1234",
+                "e164": "+18682211234",
+                "rfc3966": "tel:+1-868-221-1234"
+            }
+        }
+    ],
+    "TV": [
+        {
+            "phoneObj": {
+                "countryCode": "688",
+                "nationalNumber": "20123"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "20123",
+                "international": "+688 20123",
+                "e164": "+68820123",
+                "rfc3966": "tel:+688-20123"
+            }
+        }
+    ],
+    "TW": [
+        {
+            "phoneObj": {
+                "countryCode": "886",
+                "nationalNumber": "221234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02 2123 4567",
+                "international": "+886 2 2123 4567",
+                "e164": "+886221234567",
+                "rfc3966": "tel:+886-2-2123-4567"
+            }
+        }
+    ],
+    "TZ": [
+        {
+            "phoneObj": {
+                "countryCode": "255",
+                "nationalNumber": "222345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "022 234 5678",
+                "international": "+255 22 234 5678",
+                "e164": "+255222345678",
+                "rfc3966": "tel:+255-22-234-5678"
+            }
+        }
+    ],
+    "UA": [
+        {
+            "phoneObj": {
+                "countryCode": "380",
+                "nationalNumber": "311234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "03112 34567",
+                "international": "+380 3112 34567",
+                "e164": "+380311234567",
+                "rfc3966": "tel:+380-3112-34567"
+            }
+        }
+    ],
+    "UG": [
+        {
+            "phoneObj": {
+                "countryCode": "256",
+                "nationalNumber": "312345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "031 2345678",
+                "international": "+256 31 2345678",
+                "e164": "+256312345678",
+                "rfc3966": "tel:+256-31-2345678"
+            }
+        }
+    ],
+    "US": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "2015550123"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(201) 555-0123",
+                "international": "+1 201-555-0123",
+                "e164": "+12015550123",
+                "rfc3966": "tel:+1-201-555-0123"
+            }
+        }
+    ],
+    "UY": [
+        {
+            "phoneObj": {
+                "countryCode": "598",
+                "nationalNumber": "21231234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "2123 1234",
+                "international": "+598 2123 1234",
+                "e164": "+59821231234",
+                "rfc3966": "tel:+598-2123-1234"
+            }
+        }
+    ],
+    "UZ": [
+        {
+            "phoneObj": {
+                "countryCode": "998",
+                "nationalNumber": "662345678"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "8 66 234 56 78",
+                "international": "+998 66 234 56 78",
+                "e164": "+998662345678",
+                "rfc3966": "tel:+998-66-234-56-78"
+            }
+        }
+    ],
+    "VA": [
+        {
+            "phoneObj": {
+                "countryCode": "39",
+                "nationalNumber": "0669812345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "06 6981 2345",
+                "international": "+39 06 6981 2345",
+                "e164": "+390669812345",
+                "rfc3966": "tel:+39-06-6981-2345"
+            }
+        }
+    ],
+    "VC": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "7842661234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(784) 266-1234",
+                "international": "+1 784-266-1234",
+                "e164": "+17842661234",
+                "rfc3966": "tel:+1-784-266-1234"
+            }
+        }
+    ],
+    "VE": [
+        {
+            "phoneObj": {
+                "countryCode": "58",
+                "nationalNumber": "2121234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0212-1234567",
+                "international": "+58 212-1234567",
+                "e164": "+582121234567",
+                "rfc3966": "tel:+58-212-1234567"
+            }
+        }
+    ],
+    "VG": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "2842291234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(284) 229-1234",
+                "international": "+1 284-229-1234",
+                "e164": "+12842291234",
+                "rfc3966": "tel:+1-284-229-1234"
+            }
+        }
+    ],
+    "VI": [
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "3406421234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(340) 642-1234",
+                "international": "+1 340-642-1234",
+                "e164": "+13406421234",
+                "rfc3966": "tel:+1-340-642-1234"
+            }
+        }
+    ],
+    "VN": [
+        {
+            "phoneObj": {
+                "countryCode": "84",
+                "nationalNumber": "2101234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0210 1234 567",
+                "international": "+84 210 1234 567",
+                "e164": "+842101234567",
+                "rfc3966": "tel:+84-210-1234-567"
+            }
+        }
+    ],
+    "VU": [
+        {
+            "phoneObj": {
+                "countryCode": "678",
+                "nationalNumber": "22123"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "22123",
+                "international": "+678 22123",
+                "e164": "+67822123",
+                "rfc3966": "tel:+678-22123"
+            }
+        }
+    ],
+    "WF": [
+        {
+            "phoneObj": {
+                "countryCode": "681",
+                "nationalNumber": "501234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "50 12 34",
+                "international": "+681 50 12 34",
+                "e164": "+681501234",
+                "rfc3966": "tel:+681-50-12-34"
+            }
+        }
+    ],
+    "WS": [
+        {
+            "phoneObj": {
+                "countryCode": "685",
+                "nationalNumber": "22123"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "22123",
+                "international": "+685 22123",
+                "e164": "+68522123",
+                "rfc3966": "tel:+685-22123"
+            }
+        }
+    ],
+    "XK": [
+        {
+            "phoneObj": {
+                "countryCode": "377",
+                "nationalNumber": "99123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "99 12 34 56",
+                "international": "+377 99 12 34 56",
+                "e164": "+37799123456",
+                "rfc3966": "tel:+377-99-12-34-56"
+            }
+        }
+    ],
+    "YE": [
+        {
+            "phoneObj": {
+                "countryCode": "967",
+                "nationalNumber": "1234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 234 567",
+                "international": "+967 1 234 567",
+                "e164": "+9671234567",
+                "rfc3966": "tel:+967-1-234-567"
+            }
+        }
+    ],
+    "YT": [
+        {
+            "phoneObj": {
+                "countryCode": "262",
+                "nationalNumber": "269601234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0269 60 12 34",
+                "international": "+262 269 60 12 34",
+                "e164": "+262269601234",
+                "rfc3966": "tel:+262-269-60-12-34"
+            }
+        }
+    ],
+    "ZA": [
+        {
+            "phoneObj": {
+                "countryCode": "27",
+                "nationalNumber": "101234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "010 123 4567",
+                "international": "+27 10 123 4567",
+                "e164": "+27101234567",
+                "rfc3966": "tel:+27-10-123-4567"
+            }
+        }
+    ],
+    "ZM": [
+        {
+            "phoneObj": {
+                "countryCode": "260",
+                "nationalNumber": "211234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "021 1234567",
+                "international": "+260 21 1234567",
+                "e164": "+260211234567",
+                "rfc3966": "tel:+260-21-1234567"
+            }
+        }
+    ],
+    "ZW": [
+        {
+            "phoneObj": {
+                "countryCode": "263",
+                "nationalNumber": "1312345"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "013 12345",
+                "international": "+263 13 12345",
+                "e164": "+2631312345",
+                "rfc3966": "tel:+263-13-12345"
+            }
+        }
+    ]
+}
