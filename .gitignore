@@ -2,3 +2,4 @@
 vendor
 tmp
 old
+test/output/

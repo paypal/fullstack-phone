@@ -12,9 +12,9 @@ Contents
 - [Usage](#usage)
 - [Output](#output)
   - [metadata/](#metadata-)
-  - [loadMeta.js](#loadmeta-js)
-  - [libphonenumber.js](#libphonenumber-js)
-  - [libphonenumber_full.js](#libphonenumber_full-js)
+  - [loadPhoneMeta.js](#loadphonemeta-js)
+  - [phoneUtil.js](#phoneUtil-js)
+  - [phoneUtil_full.js](#phoneUtil_full-js)
 - [Custom Methods](#custom-methods)
   - [useMeta](#usemeta)
   - [getSupportedRegions](#getsupportedregions)
@@ -23,8 +23,8 @@ Contents
   - [formatPhoneNumber](#formatphonenumber)
   - [validatePhoneNumber](#validatephonenumber)
   - [parsePhoneNumber](#parsephonenumber)
-  - [AsYouType Formatter Methods](#asyoutype-formatter-methods)
-    - [setRegion](#setregion)
+  - [getExampleNumberForType](#getexamplenumberfortype)
+  - [getAsYouTypeFormatter](#getasyoutypeformatter)
     - [inputDigit](#inputdigit)
     - [clear](#clear)
 - [How It works](#how-it-works)
@@ -81,57 +81,57 @@ The generated files are placed in the `dist/` folder:
 
 ### metadata/
 
-The JSON files in this subfolder contain the individual metadata needed by libphonenumber for each region, and are loaded by the `loadMeta` module (described in the next section). Two extra files should be noted:
+The JSON files in this subfolder contain the individual metadata needed by `phoneUtil` for each region, and are loaded by the `loadPhoneMeta` module (described in the next section). Two extra files should be noted:
 
-- `001.json`: This file contains metadata for ["non-geographical entities"](https://github.com/googlei18n/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml#L19) (Universal International Toll Free Number, Universal International Shared Cost Number, Inmarsat Global Limited, VISIONng, Iridium, etc.). '001' can be passed as a region code to `loadMeta` to load this metadata, but so far this appears unnecessary for our purposes.
+- `001.json`: This file contains metadata for ["non-geographical entities"](https://github.com/googlei18n/libphonenumber/blob/master/resources/PhoneNumberMetadata.xml#L19) (Universal International Toll Free Number, Universal International Shared Cost Number, Inmarsat Global Limited, VISIONng, Iridium, etc.). '001' can be passed as a region code to `loadPhoneMeta` to load this metadata, but so far this appears unnecessary for our purposes.
 
-- `dependencyMap.json`: This file contains the information needed by `loadMeta` to determine which regions depend on other regions for loading metadata (e.g. KZ metadata requires RU metadata to be bundled with it, since RU is the main country for calling code 7).
+- `dependencyMap.json`: This file contains the information needed by `loadPhoneMeta` to determine which regions depend on other regions for loading metadata (e.g. KZ metadata requires RU metadata to be bundled with it, since RU is the main country for calling code 7).
 
-### loadMeta.js
+### loadPhoneMeta.js
 
-The module for loading appropriate regional metadata based on  country code dependencies, to be passed to the custom libphonenumber module. The `require` lines in this module should be modified to point to wherever the `metadata/` folder is located. Note: this module depends on the [Ramda library](https://www.npmjs.com/package/ramda).
+The module for loading appropriate regional metadata based on  country code dependencies, to be passed to the custom `phoneUtil` module. The `require` lines in this module should be modified to point to wherever the `metadata/` folder is located. Note: this module depends on the [Ramda library](https://www.npmjs.com/package/ramda).
 
   The metadata loader is used as follows:
 
 ```javascript
-var loadMeta = require('./loadMeta.js');
-var meta = loadMeta(['CA', 'KZ']); // array of region codes to be supported
+var loadPhoneMeta = require('./loadPhoneMeta.js');
+var meta = loadPhoneMeta(['CA', 'KZ']); // array of region codes to be supported
 // 'meta' variable now has metadata for CA, US, KZ, and RU
 ```
 
-### libphonenumber.js
+### phoneUtil.js
 
-The custom libphonenumber module with hooks for injecting regional metadata. It can be initialized as follows:
+The custom phone module with hooks for injecting regional metadata. It can be initialized as follows:
 
 ```javascript
-var libphonenumber = require('./libphonenumber.js');
-var loadMeta = require('./loadMeta.js');
-var meta = loadMeta(['CA', 'KZ']); // load necessary metadata for CA and KZ (includes US and RU)
-libphonenumber.useMeta(meta); // inject this metadata to libphonenumber
-// at this point libphonenumber is ready to use
+var phoneUtil = require('./phoneUtil.js');
+var loadPhoneMeta = require('./loadPhoneMeta.js');
+var meta = loadPhoneMeta(['CA', 'KZ']); // load necessary metadata for CA and KZ (includes US and RU)
+phoneUtil.useMeta(meta); // inject this metadata to phoneUtil
+// at this point phoneUtil is ready to use
 ```
 
 (The custom methods provided by this module are described [below](#custom-methods).)
 
-### libphonenumber_full.js
+### phoneUtil.js
 
-The custom libphonenumber module compiled with all metadata __already included__. The module can therefore be used __without the metadata loader__, but the regions must be intialized as follows:
+The custom phone module compiled with all metadata __already included__. The module can therefore be used __without the metadata loader__, but the regions must be intialized as follows:
 
 ```javascript
-var libphonenumber = require('./libphonenumber_full.js');
+var phoneUtil = require('./phoneUtil.js');
 var meta = { regionCodes: ['US', 'CA', 'AU'] }; // construct array of all region codes desired
-libphonenumber.useMeta(meta); // tell libphonenumber which regions to support
+phoneUtil.useMeta(meta); // tell phoneUtil which regions to support
 ```
 
 Custom Methods
 --------------
 
-The methods provided by the custom `libphonenumber` module are as follows:
+The methods provided by the custom `phoneUtil` module are as follows:
 
 ### useMeta
 #### `useMeta(metadata)`
 
-Inject regional metadata from the `loadMeta` module.
+Inject regional metadata from the `loadPhoneMeta` module.
 
 ### getSupportedRegions
 #### `getSupportedRegions()`
@@ -149,77 +149,128 @@ Return map from country calling codes to array of supported regions, e.g. `{'7':
 Given a `regionCode` (assuming metadata has already been loaded for that region), return its country calling code:
 
 ```javascript
-libphonenumber.getCountryCodeForRegion('RU'); // 7
+phoneUtil.getCountryCodeForRegion('RU'); // 7
 ```
 
 ### formatPhoneNumber
-#### `formatPhoneNumber(canonicalPhone, options)`
+#### `formatPhoneNumber(phoneObj, options)`
 
-Given a `canonicalPhone` object (with string properties `countryCode` and `nationalNumber`), and `options` object (with string property `style`: 'national', 'international', 'E164' or 'RFC3699'), return formatted phone number:
+Given a `phoneObj` object (with string properties `countryCode` and `nationalNumber`), and `options` object (with string property `style`: 'national', 'international', 'E164' or 'RFC3699'), return formatted phone number.
+
+The phone object is defined as follows:
+
+```
+{
+  countryCode : {string or number} country calling code (e.g. '1'); DIGITS ONLY [required]
+  nationalNumber : {string or number} phone number, (e.g. '4085551212'); DIGITS ONLY [required]
+  extension : {string} phone extension (e.g. '123') [optional]
+}```
+
+#### Example
 
 ```javascript
 var phone = { countryCode: '1', nationalNumber: '5101234567' };
 var options = { style: 'international' };
-libphonenumber.formatPhoneNumber(phone, options); // '+1 510-123-4567'
+phoneUtil.formatPhoneNumber(phone, options); // '+1 510-123-4567'
 
 options.style = 'national';
-libphonenumber.formatPhoneNumber(phone, options); // '(510) 123-4567'
+phoneUtil.formatPhoneNumber(phone, options); // '(510) 123-4567'
 ```
 
 ### validatePhoneNumber
-#### `validatePhoneNumber(canonicalPhone, regionCode)`
+#### `validatePhoneNumber(phoneObj, regionCode)`
 
-Given a `canonicalPhone` object (defined above) and `regionCode`, return Error object or indicating any problems with the phone object (or empty object if it passed validation):
+Given a `phoneObj` object (defined above) and `regionCode`, return Error object or indicating any problems with the phone object (or true if it passed validation):
 
 ```javascript
 var phone = { countryCode: '1', nationalNumber: '5' };
-libphonenumber.validatePhoneNumber(phone, 'US'); // [Error: PHN_NUMBER_TOO_SHORT]
+phoneUtil.validatePhoneNumber(phone, 'US'); // [Error: PHN_NUMBER_TOO_SHORT]
 ```
 
 ### parsePhoneNumber
 #### `parsePhoneNumber(phoneNumberToParse, regionCode)`
 
-Given a string `phoneNumberToParse` and `regionCode`, return a `canonicalPhone` object or an Error object if the number is invalid:
+Given a string `phoneNumberToParse` and `regionCode`, return a `phoneObj` object or an Error object if the number is invalid:
 
 ```javascript
-libphonenumber.parsePhoneNumber('5101234567', 'US'); // { countryCode: '1', nationalNumber: '5101234567' }
+phoneUtil.parsePhoneNumber('5101234567', 'US'); // { countryCode: '1', nationalNumber: '5101234567' }
 
-libphonenumber.parsePhoneNumber('ABC', 'US'); //[Error: PHN_NOT_A_NUMBER]
+phoneUtil.parsePhoneNumber('ABC', 'US'); // [Error: PHN_NOT_A_NUMBER]
 ```
 
-### AsYouType Formatter Methods
+### getExampleNumberForType
+#### `getExampleNumberForType(regionCode, type)`
 
-The AsYouType Formatter methods are namespaced under the `asYouType` object. Note that these methods are stateful, depending on an AsYouType initialized by the `setRegion` method:
-
-#### setRegion
-##### `asYouType.setRegion(regionCode)`
-
-Set the particular region (out of the supported regions) for which to initialize the AsYouType Formatter.
-
-#### inputDigit
-##### `asYouType.inputDigit(digit)`
-
-Given a string `digit`, return the formatted phone number up to that point:
+Given the string parameters `regionCode` and `type` ('GENERAL', 'MOBILE', 'FIXED_LINE', 'FIXED_LINE_OR_MOBILE', 'PREMIUM_RATE', 'VOIP', 'TOLL_FREE', etc.) return a `phoneObj` object with an example number for that type:
 
 ```javascript
-libphonenumber.asYouType.setRegion('US');
-
-libphonenumber.asYouType.inputDigit('9') // '9'
-libphonenumber.asYouType.inputDigit('1') // '91'
-libphonenumber.asYouType.inputDigit('9') // '919'
-libphonenumber.asYouType.inputDigit('2') // '919-2'
-libphonenumber.asYouType.inputDigit('8') // '919-28'
-libphonenumber.asYouType.inputDigit('2') // '919-282'
-libphonenumber.asYouType.inputDigit('3') // '919-2823' (a phone number without area code)
-libphonenumber.asYouType.inputDigit('4') // '(919) 282-34'
-libphonenumber.asYouType.inputDigit('5') // '(919) 282-345'
-libphonenumber.asYouType.inputDigit('6') // '(919) 282-3456'
+phoneUtil.getExampleNumberForType('US', 'MOBILE'); // { countryCode: '1', nationalNumber: '2015550123' }
 ```
 
-#### clear
-##### `asYouType.clear()`
+### getAsYouTypeFormatter
+#### `getAsYouTypeFormatter(regionCode)`
 
-Clear the history of digits passed to `inputDigit`.
+Returns a new AsYouTypeFormatter object instantiated for the given region.
+
+#### Exceptions
+
+The function will throw the following exception if an invalid parameter is supplied:
+
+* PHN_UNSUPPORTED_REGION: region code not supported/valid
+
+#### Example
+```javascript
+var formatter = phoneUtil.getAsYouTypeFormatter('GB'); // returns AsYouTypeFormatter object initialized to Great Britain
+```
+
+The AsYouTypeFormatter object contains the following methods:
+
+### inputDigit
+#### `formatter.inputDigit(digit)`
+
+Given a digit (number or string), output the phone number formatted thus far, given the history of inputted digits.
+
+#### Parameter
+* `digit`: A digit (as number or string); can include '+' and '*'
+
+#### Output
+
+Returns a string representing the phone number formatted so far.
+
+#### Example
+```javascript
+formatter.inputDigit('5'); // '5'
+formatter.inputDigit('1'); // '51'
+formatter.inputDigit('0'); // '510'
+formatter.inputDigit('1'); // '510-1'
+formatter.inputDigit('2'); // '510-12'
+formatter.inputDigit('3'); // '510-123'
+formatter.inputDigit('4'); // '510-1234'
+formatter.inputDigit('5'); // '(510) 123-45'
+formatter.inputDigit('6'); // '(510) 123-456'
+formatter.inputDigit('7'); // '(510) 123-4567'
+```
+
+### clear
+#### `formatter.clear()`
+
+Clears the formatter state.
+
+#### Example
+```javascript
+formatter.inputDigit('5'); // '5'
+formatter.inputDigit('1'); // '51'
+formatter.inputDigit('0'); // '510'
+formatter.inputDigit('1'); // '510-1'
+formatter.inputDigit('2'); // '510-12'
+formatter.clear();
+formatter.inputDigit('9'); // '9'
+formatter.inputDigit('1'); // '91'
+formatter.inputDigit('9'); // '919'
+formatter.inputDigit('4'); // '919-4'
+formatter.inputDigit('8'); // '919-48'
+...
+```
 
 How It Works
 ------------
@@ -228,7 +279,7 @@ TODO
 
 - `metadataExtractor.js`
 
-- `loadMeta.js`
+- `loadPhoneMeta.js`
 
 - `phoneAdapter.js`
 

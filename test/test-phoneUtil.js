@@ -1,23 +1,93 @@
 'use strict';
 
 var assert = require('assert'),
-    loadMeta = require('../dist/loadMeta'),
-    lib = require('../dist/libphonenumber');
+    loadPhoneMeta = require('../dist/loadPhoneMeta'),
+    phoneUtil = require('../dist/phoneUtil');
 
-// TODO add tests for legacy region mapping (AN, PN)
+describe('Test phoneUtil exceptions', function () {
 
-describe('Phone handler-exported functions test', function () {
+    /*
+    // phoneUtil is a singleton, so this test doesn't work when it's run after others have initialized phoneUtil
+    it('Should throw errors when metadata not loaded', function () {
+        assert.throws(() => phoneUtil.getExampleNumberForType(), /No metadata loaded/);
+    });
+    */
+
+    it('Should throw error for unsupported region', function () {
+
+        var meta = loadPhoneMeta(['US']);
+        phoneUtil.useMeta(meta);
+
+        assert.throws(() => phoneUtil.getExampleNumberForType('GB', 'MOBILE'), /Metadata not loaded for region/);
+
+    });
+
+    it('Should throw error for invalid style object', function () {
+
+        var meta = loadPhoneMeta(['US']);
+        phoneUtil.useMeta(meta);
+
+        var phoneObj = {
+            countryCode: '1',
+            nationalNumber: '5105261234'
+        };
+
+        var badStyleOptions = ['', 0, 1, {}, [], true, null, undefined, { style: 'INVALID' }, function () { }];
+
+        badStyleOptions.forEach(function (options) {
+            assert.throws(() => phoneUtil.formatPhoneNumber(phoneObj, options), /Invalid style/);
+        });
+    });
+
+    it('Should throw error for phoneObj that fails conversion to proto format', function () {
+
+        var meta = loadPhoneMeta(['US']);
+        phoneUtil.useMeta(meta);
+
+        var badPhoneObjects = [null, undefined];
+
+        badPhoneObjects.forEach(function (phoneObj) {
+            assert.throws(() => phoneUtil.formatPhoneNumber(phoneObj, { style: 'national' }), /Phone object conversion failed/);
+            assert.throws(() => phoneUtil.validatePhoneNumber(phoneObj, 'US'), /Phone object conversion failed/);
+        });
+
+    });
+});
+
+describe('Phone adapter functionality tests', function () {
+    describe('Test mapping from legacy regions to libphonenumber-supported regions', function () {
+        // setup
+        before(function () {
+            var meta = loadPhoneMeta(['AN', 'PN']); // AN (Netherlands Antilles) maps to BQ (Bonaire, Sint Eustatius and Saba), PN (Pitcairn Island) maps to NZ (New Zealand);
+            // note that CW (Curaçao) is also loaded because it's the main country for BQ's calling code (599)
+            phoneUtil.useMeta(meta);
+        });
+
+        it('Should show BQ, CW, and NZ as supported regions', function () {
+            assert.deepEqual(phoneUtil.getSupportedRegions(), ['BQ', 'CW', 'NZ']);
+            assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), { '64': ['NZ'], '599': ['CW', 'BQ'] });
+        });
+
+        it('Should return BQ example phone number for AN', function () {
+            assert.deepEqual(phoneUtil.getExampleNumberForType('AN', 'FIXED_LINE'), { countryCode: '599', nationalNumber: '7151234' });
+        });
+
+        it('Should return NZ example phone number for PN', function () {
+            assert.deepEqual(phoneUtil.getExampleNumberForType('PN', 'MOBILE'), { countryCode: '64', nationalNumber: '211234567' });
+        });
+    });
+
     describe('Test formatting/validation of US phone numbers', function () {
 
         // setup
         before(function () {
-            var meta = loadMeta(['BS']); // loading Bahamas also loads US
-            lib.useMeta(meta);
+            var meta = loadPhoneMeta(['BS']); // loading Bahamas also loads US
+            phoneUtil.useMeta(meta);
         });
 
         it('Should show BS and US as supported regions', function () {
-            assert.deepEqual(lib.getSupportedRegions(), ['BS', 'US']);
-            assert.deepEqual(lib.countryCodeToRegionCodeMap(), { '1': ['US', 'BS'] });
+            assert.deepEqual(phoneUtil.getSupportedRegions(), ['BS', 'US']);
+            assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), { '1': ['US', 'BS'] });
         });
 
         it('Should format US phone numbers', function () {
@@ -49,7 +119,7 @@ describe('Phone handler-exported functions test', function () {
                 var options = {
                     style: optionObj.style
                 };
-                assert.equal(lib.formatPhoneNumber(phone, options), optionObj.result);
+                assert.equal(phoneUtil.formatPhoneNumber(phone, options), optionObj.result);
             });
         });
 
@@ -66,7 +136,7 @@ describe('Phone handler-exported functions test', function () {
             ];
 
             numbers.forEach(function (phone) {
-                assert.equal(lib.validatePhoneNumber(phone, 'US'), true);
+                assert.equal(phoneUtil.validatePhoneNumber(phone, 'US'), true);
             });
         });
 
@@ -87,34 +157,34 @@ describe('Phone handler-exported functions test', function () {
             ];
 
             inputs.forEach(function (phone) {
-                var response = lib.parsePhoneNumber(phone, 'US');
+                var response = phoneUtil.parsePhoneNumber(phone, 'US');
                 assert.deepEqual(response, canonicalPhone);
             });
         });
 
-        it('Should return errors when parsing invalid US phone numbers', function () {
+        it('Should return errors with messages when parsing invalid US phone numbers', function () {
 
             var badNumbers = [
                 {
                     phone: '5',
-                    errorMessage: 'PHN_NOT_A_NUMBER'
+                    errorMessage: 'The string supplied did not seem to be a phone number'
                 },
                 {
                     phone: '555555555555555555555',
-                    errorMessage: 'PHN_NUMBER_TOO_LONG'
+                    errorMessage: 'The string supplied is too long to be a phone number'
                 },
                 {
                     phone: 'aaa',
-                    errorMessage: 'PHN_NOT_A_NUMBER'
+                    errorMessage: 'The string supplied did not seem to be a phone number'
                 },
                 {
                     phone: '+44 0121',
-                    errorMessage: 'PHN_COUNTRY_CODE_INVALID'
+                    errorMessage: 'Invalid country calling code'
                 }
             ];
 
             badNumbers.forEach(function (phoneObj) {
-                var response = lib.parsePhoneNumber(phoneObj.phone, 'US');
+                var response = phoneUtil.parsePhoneNumber(phoneObj.phone, 'US');
                 assert.ok(response instanceof Error);
                 assert.equal(response.message, phoneObj.errorMessage);
             });
@@ -129,7 +199,7 @@ describe('Phone handler-exported functions test', function () {
                 },
                 {
                     numberObj: { countryCode: '44', nationalNumber: '5103981827' },
-                    errorMessage: 'PHN_INVALID_FOR_REGION'
+                    errorMessage: 'PHN_INVALID_COUNTRY_CODE'
                 },
                 {
                     numberObj: { countryCode: '1', nationalNumber: '01212345678' }, // GB number
@@ -142,39 +212,38 @@ describe('Phone handler-exported functions test', function () {
             ];
 
             badNumbers.forEach(function (phone) {
-                var response = lib.validatePhoneNumber(phone.numberObj, 'US');
+                var response = phoneUtil.validatePhoneNumber(phone.numberObj, 'US');
                 assert.ok(response instanceof Error);
                 assert.equal(response.message, phone.errorMessage);
             });
         });
 
-        it('Should format US number as typed using stateful AsYouTypeFormatter', function () {
-            lib.asYouType.setRegion('US');
-            lib.asYouType.clear();
+        it('Should format US number using AsYouTypeFormatter', function () {
+            var formatter = phoneUtil.getAsYouTypeFormatter('US');
 
-            assert.equal(lib.asYouType.inputDigit('9'), '9');
-            assert.equal(lib.asYouType.inputDigit('1'), '91');
-            assert.equal(lib.asYouType.inputDigit('9'), '919');
-            assert.equal(lib.asYouType.inputDigit('2'), '919-2');
-            assert.equal(lib.asYouType.inputDigit('8'), '919-28');
-            assert.equal(lib.asYouType.inputDigit('2'), '919-282');
-            assert.equal(lib.asYouType.inputDigit('3'), '919-2823');
-            assert.equal(lib.asYouType.inputDigit('4'), '(919) 282-34');
-            assert.equal(lib.asYouType.inputDigit('5'), '(919) 282-345');
-            assert.equal(lib.asYouType.inputDigit('6'), '(919) 282-3456');
+            assert.equal(formatter.inputDigit('9'), '9');
+            assert.equal(formatter.inputDigit('1'), '91');
+            assert.equal(formatter.inputDigit('9'), '919');
+            assert.equal(formatter.inputDigit('2'), '919-2');
+            assert.equal(formatter.inputDigit('8'), '919-28');
+            assert.equal(formatter.inputDigit('2'), '919-282');
+            assert.equal(formatter.inputDigit('3'), '919-2823');
+            assert.equal(formatter.inputDigit('4'), '(919) 282-34');
+            assert.equal(formatter.inputDigit('5'), '(919) 282-345');
+            assert.equal(formatter.inputDigit('6'), '(919) 282-3456');
 
             // test overrun
-            assert.equal(lib.asYouType.inputDigit('7'), '91928234567');
+            assert.equal(formatter.inputDigit('7'), '91928234567');
 
             // test that clear works
-            lib.asYouType.clear();
-            assert.equal(lib.asYouType.inputDigit('9'), '9');
+            formatter.clear();
+            assert.equal(formatter.inputDigit('9'), '9');
         });
 
         it('Should throw errors if metadata not loaded for requested region', function () {
-            assert.throws(() => lib.asYouType.setRegion('TR'), /PHN_UNSUPPORTED_REGION/);
-            assert.throws(() => lib.getCountryCodeForRegion('TR'), /PHN_UNSUPPORTED_REGION/);
-            assert.throws(() => lib.validatePhoneNumber({}, 'TR'), /PHN_UNSUPPORTED_REGION/);
+            assert.throws(() => phoneUtil.getAsYouTypeFormatter('TR'), /Metadata not loaded/);
+            assert.throws(() => phoneUtil.getCountryCodeForRegion('TR'), /Metadata not loaded/);
+            assert.throws(() => phoneUtil.validatePhoneNumber({}, 'TR'), /Metadata not loaded/);
         });
     });
 
@@ -182,13 +251,13 @@ describe('Phone handler-exported functions test', function () {
 
         // setup
         before(function () {
-            var meta = loadMeta(['KZ', 'AU', 'GG', 'GB']);
-            lib.useMeta(meta);
+            var meta = loadPhoneMeta(['KZ', 'AU', 'GG', 'GB']);
+            phoneUtil.useMeta(meta);
         });
 
         it('Should show supported regions', function () {
-            assert.deepEqual(lib.getSupportedRegions(), ['KZ', 'RU', 'AU', 'GG', 'GB']);
-            assert.deepEqual(lib.countryCodeToRegionCodeMap(), {
+            assert.deepEqual(phoneUtil.getSupportedRegions(), ['KZ', 'RU', 'AU', 'GG', 'GB']);
+            assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), {
                 '7': ['RU', 'KZ'],
                 '44': ['GB', 'GG'],
                 '61': ['AU']
@@ -224,7 +293,7 @@ describe('Phone handler-exported functions test', function () {
                 var options = {
                     style: optionObj.style
                 };
-                assert.equal(lib.formatPhoneNumber(phone, options), optionObj.result);
+                assert.equal(phoneUtil.formatPhoneNumber(phone, options), optionObj.result);
             });
         });
 
@@ -257,7 +326,7 @@ describe('Phone handler-exported functions test', function () {
                 var options = {
                     style: optionObj.style
                 };
-                assert.equal(lib.formatPhoneNumber(phone, options), optionObj.result);
+                assert.equal(phoneUtil.formatPhoneNumber(phone, options), optionObj.result);
             });
         });
 
@@ -274,32 +343,32 @@ describe('Phone handler-exported functions test', function () {
             ];
 
             numbers.forEach(function (phone) {
-                assert.ok(lib.validatePhoneNumber(phone, 'GB'));
+                assert.equal(phoneUtil.validatePhoneNumber(phone, 'GB'), true);
             });
         });
 
-        it('Should format GB number as typed using stateful AsYouTypeFormatter', function () {
-            lib.asYouType.setRegion('GB');
-            lib.asYouType.clear();
+        it('Should format GB number using AsYouTypeFormatter', function () {
+            var formatter = phoneUtil.getAsYouTypeFormatter('GB');
+            formatter.clear();
 
-            assert.equal(lib.asYouType.inputDigit('0'), '0');
-            assert.equal(lib.asYouType.inputDigit('1'), '01');
-            assert.equal(lib.asYouType.inputDigit('2'), '012');
-            assert.equal(lib.asYouType.inputDigit('1'), '0121');
-            assert.equal(lib.asYouType.inputDigit('2'), '0121 2');
-            assert.equal(lib.asYouType.inputDigit('3'), '0121 23');
-            assert.equal(lib.asYouType.inputDigit('4'), '0121 234');
-            assert.equal(lib.asYouType.inputDigit('5'), '0121 234 5');
-            assert.equal(lib.asYouType.inputDigit('6'), '0121 234 56');
-            assert.equal(lib.asYouType.inputDigit('7'), '01212 34567');
-            assert.equal(lib.asYouType.inputDigit('8'), '0121 234 5678');
+            assert.equal(formatter.inputDigit('0'), '0');
+            assert.equal(formatter.inputDigit('1'), '01');
+            assert.equal(formatter.inputDigit('2'), '012');
+            assert.equal(formatter.inputDigit('1'), '0121');
+            assert.equal(formatter.inputDigit('2'), '0121 2');
+            assert.equal(formatter.inputDigit('3'), '0121 23');
+            assert.equal(formatter.inputDigit('4'), '0121 234');
+            assert.equal(formatter.inputDigit('5'), '0121 234 5');
+            assert.equal(formatter.inputDigit('6'), '0121 234 56');
+            assert.equal(formatter.inputDigit('7'), '01212 34567');
+            assert.equal(formatter.inputDigit('8'), '0121 234 5678');
 
             // test overrun
-            assert.equal(lib.asYouType.inputDigit('9'), '012123456789');
+            assert.equal(formatter.inputDigit('9'), '012123456789');
 
             // test that clear works
-            lib.asYouType.clear();
-            assert.equal(lib.asYouType.inputDigit('0'), '0');
+            formatter.clear();
+            assert.equal(formatter.inputDigit('0'), '0');
         });
 
         it('Should not validate invalid GB phone numbers', function () {
@@ -311,7 +380,7 @@ describe('Phone handler-exported functions test', function () {
                 },
                 {
                     numberObj: { countryCode: '1', nationalNumber: '01212345678' },
-                    errorMessage: 'PHN_INVALID_FOR_REGION'
+                    errorMessage: 'PHN_INVALID_COUNTRY_CODE'
                 },
                 {
                     numberObj: { countryCode: '44', nationalNumber: '5105261987' },
@@ -324,34 +393,9 @@ describe('Phone handler-exported functions test', function () {
             ];
 
             badNumbers.forEach(function (phone) {
-                var response = lib.validatePhoneNumber(phone.numberObj, 'GB');
+                var response = phoneUtil.validatePhoneNumber(phone.numberObj, 'GB');
                 assert.ok(response instanceof Error);
                 assert.equal(response.message, phone.errorMessage);
-            });
-        });
-
-        it('Should throw errors for certain invalid inputs', function () {
-            var throwableNumbers = [
-                {
-                    numberObj: { countryCode: '44', nationalNumber: undefined },
-                    errorRegex: /PHN_NUMBER_EMPTY/
-                },
-                {
-                    numberObj: { countryCode: '44', nationalNumber: 'ABCDE' },
-                    errorRegex: /PHN_FORMAT_INVALID/
-                },
-                {
-                    numberObj: { countryCode: undefined, nationalNumber: '01212345678' },
-                    errorRegex: /PHN_COUNTRY_MISSING/
-                },
-                {
-                    numberObj: { countryCode: 'ABCD', nationalNumber: '01212345678' },
-                    errorRegex: /PHN_COUNTRY_CODE_INVALID/
-                }
-            ];
-
-            throwableNumbers.forEach(function (phone) {
-                assert.throws(() => lib.validatePhoneNumber(phone.numberObj, 'GB'), phone.errorRegex);
             });
         });
     });

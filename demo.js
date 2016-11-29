@@ -1,2 +1,2 @@
-var lib = require('./dist/libphonenumber.js');
-var loadMeta = require('./dist/loadMeta');
+var util = require('./dist/phoneUtil.js');
+var loadPhoneMeta = require('./dist/loadPhoneMeta');
