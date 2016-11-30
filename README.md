@@ -164,7 +164,8 @@ The phone object is defined as follows:
   countryCode : {string or number} country calling code (e.g. '1'); DIGITS ONLY [required]
   nationalNumber : {string or number} phone number, (e.g. '4085551212'); DIGITS ONLY [required]
   extension : {string} phone extension (e.g. '123') [optional]
-}```
+}
+```
 
 #### Example
 
