@@ -58,14 +58,17 @@ describe('Phone adapter functionality tests', function () {
     describe('Test mapping from legacy regions to libphonenumber-supported regions', function () {
         // setup
         before(function () {
-            var meta = loadPhoneMeta(['AN', 'PN']); // AN (Netherlands Antilles) maps to BQ (Bonaire, Sint Eustatius and Saba), PN (Pitcairn Island) maps to NZ (New Zealand);
+            // AN (Netherlands Antilles) is copied from BQ (Bonaire, Sint Eustatius and Saba)
+            // PN (Pitcairn Island) is copied from NZ (New Zealand)
+            // XK (Kosov) is copied from MC (Monaco)
+            var meta = loadPhoneMeta(['AN', 'PN', 'XK']);
             // note that CW (Curaçao) is also loaded because it's the main country for BQ's calling code (599)
             phoneUtil.useMeta(meta);
         });
 
-        it('Should show BQ, CW, and NZ as supported regions', function () {
-            assert.deepEqual(phoneUtil.getSupportedRegions(), ['BQ', 'CW', 'NZ']);
-            assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), { '64': ['NZ'], '599': ['CW', 'BQ'] });
+        it('Should show AN, CW, PN, NZ, XK, and MC as supported regions', function () {
+            assert.deepEqual(phoneUtil.getSupportedRegions(), ['AN', 'CW', 'PN', 'NZ', 'XK', 'MC']);
+            assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), { '64': ['NZ', 'PN'], '377': ['MC', 'XK'], '599': ['CW', 'AN'] });
         });
 
         it('Should return BQ example phone number for AN', function () {
@@ -74,6 +77,10 @@ describe('Phone adapter functionality tests', function () {
 
         it('Should return NZ example phone number for PN', function () {
             assert.deepEqual(phoneUtil.getExampleNumberForType('PN', 'MOBILE'), { countryCode: '64', nationalNumber: '211234567' });
+        });
+
+        it('Should return MC example phone number for XK', function () {
+            assert.deepEqual(phoneUtil.getExampleNumberForType('XK', 'MOBILE'), { countryCode: '377', nationalNumber: '612345678' });
         });
     });
 

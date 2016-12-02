@@ -7,13 +7,6 @@
 
 var R = require('ramda'); // utility library
 
-// some systems support these territories, but libphonenumber does not, so map to ones that libphonenumber supports
-var legacyRegionCodeMap = {
-    AN: 'BQ', // Netherlands Antilles no longer exists, so use Bonaire, Sint Eustatius and Saba instead
-    PN: 'NZ', // Pitcairn Islands - use NZ data
-    XK: 'MC'  // for Kosovo, use Monaco metadata
-};
-
 var exceptions = {
     REGIONCODE_ARRAY_INVALID: 'Invalid region code array parameter',
     METADATA_NOT_FOUND: 'No phone metadata found for region: '
@@ -40,8 +33,7 @@ module.exports = function loadPhoneMeta(regionCodeArray) {
 
     // populate full list of region codes to add (regions and their main country dependencies)
     // and populate full list of country calling codes
-    regionCodeArray.forEach(function (regionCodeParam) {
-        var regionCode = legacyRegionCodeMap[regionCodeParam] || regionCodeParam; // map legacy regions to libphonenumber-supported ones (for AN and PN)
+    regionCodeArray.forEach(function (regionCode) {
         allRegionCodes.push(regionCode);
 
         var countryCodes = dependencyMap.regionCodeToCountryCodeMap[regionCode];

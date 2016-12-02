@@ -106,6 +106,58 @@ describe('Metadata loader tests', function () {
 
     });
 
+    it('Should load copied metadata for PN', function () {
+
+        // PN metadata is copied from NZ
+        var meta = loadPhoneMeta(['PN']);
+        assert.deepEqual(meta.regionCodes, ['PN', 'NZ']); // NZ is also in regionCodes because it's the main country for the calling code
+        assert.deepEqual(meta.countryCodeToRegionCodeMap, {
+            '64': [ 'NZ', 'PN' ]
+        });
+        assert.deepEqual(Object.keys(meta.countryToMetadata), ['PN', 'NZ']);
+        var metaPN = meta.countryToMetadata.PN,
+            metaNZ = meta.countryToMetadata.NZ,
+            metaPNtoNZ = JSON.parse(
+                JSON.stringify(metaPN).replace('"PN"', '"NZ"')
+            );
+        assert.deepEqual(metaPNtoNZ, metaNZ, 'PN metadata was not properly copied from NZ');
+    });
+
+    it('Should load copied metadata for XK', function () {
+
+        // XK metadata is copied from MC
+        var meta = loadPhoneMeta(['XK']);
+        assert.deepEqual(meta.regionCodes, ['XK', 'MC']); // MC is also in regionCodes because it's the main country for the calling code
+        assert.deepEqual(meta.countryCodeToRegionCodeMap, {
+            '377': [ 'MC', 'XK' ]
+        });
+        assert.deepEqual(Object.keys(meta.countryToMetadata), ['XK', 'MC']);
+        var metaXK = meta.countryToMetadata.XK,
+            metaMC = meta.countryToMetadata.MC,
+            metaXKtoMC = JSON.parse(
+                JSON.stringify(metaXK).replace('"XK"', '"MC"')
+            );
+        assert.deepEqual(metaXKtoMC, metaMC, 'XK metadata was not properly copied from MC');
+    });
+
+    it('Should load copied metadata for AN', function () {
+
+        // AN metadata is copied from BQ (which depends on CW)
+        var meta = loadPhoneMeta(['AN']);
+        assert.deepEqual(meta.regionCodes, ['AN', 'CW']); // CW is the main country for the calling code
+        assert.deepEqual(meta.countryCodeToRegionCodeMap, {
+            '599': ['CW', 'AN']
+        });
+        assert.deepEqual(Object.keys(meta.countryToMetadata), ['AN', 'CW']);
+
+        var metaAN = meta.countryToMetadata.AN,
+            metaBQ = loadPhoneMeta(['BQ']).countryToMetadata.BQ,  // load BQ metadata separately, since it's not included here
+            metaANtoBQ = JSON.parse(
+                JSON.stringify(metaAN).replace('"AN"', '"BQ"')
+            );
+        assert.deepEqual(metaANtoBQ, metaBQ, 'AN metadata was not properly copied from BQ');
+    });
+
     it('Should load metadata for global exchanges using region code 001', function () {
         var meta = loadPhoneMeta(['001']);
         assert.deepEqual(meta.regionCodes, ['001']);
