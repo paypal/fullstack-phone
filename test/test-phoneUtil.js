@@ -67,7 +67,7 @@ describe('Phone adapter functionality tests', function () {
         });
 
         it('Should show AN, CW, PN, NZ, XK, and MC as supported regions', function () {
-            assert.deepEqual(phoneUtil.getSupportedRegions(), ['AN', 'CW', 'PN', 'NZ', 'XK', 'MC']);
+            assert.deepEqual(phoneUtil.getSupportedRegions().sort(), ['AN', 'CW', 'MC', 'NZ', 'PN', 'XK']);
             assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), { '64': ['NZ', 'PN'], '377': ['MC', 'XK'], '599': ['CW', 'AN'] });
         });
 
@@ -263,7 +263,7 @@ describe('Phone adapter functionality tests', function () {
         });
 
         it('Should show supported regions', function () {
-            assert.deepEqual(phoneUtil.getSupportedRegions(), ['KZ', 'RU', 'AU', 'GG', 'GB']);
+            assert.deepEqual(phoneUtil.getSupportedRegions().sort(), ['AU', 'GB', 'GG', 'KZ', 'RU']);
             assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), {
                 '7': ['RU', 'KZ'],
                 '44': ['GB', 'GG'],
