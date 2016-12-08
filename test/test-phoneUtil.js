@@ -174,19 +174,19 @@ describe('Phone adapter functionality tests', function () {
             var badNumbers = [
                 {
                     phone: '5',
-                    errorMessage: 'The string supplied did not seem to be a phone number'
+                    errorMessage: 'PHN_NOT_A_NUMBER'
                 },
                 {
                     phone: '555555555555555555555',
-                    errorMessage: 'The string supplied is too long to be a phone number'
+                    errorMessage: 'PHN_NUMBER_TOO_LONG'
                 },
                 {
                     phone: 'aaa',
-                    errorMessage: 'The string supplied did not seem to be a phone number'
+                    errorMessage: 'PHN_NOT_A_NUMBER'
                 },
                 {
                     phone: '+44 0121',
-                    errorMessage: 'Invalid country calling code'
+                    errorMessage: 'PHN_INVALID_COUNTRY_CODE'
                 }
             ];
 

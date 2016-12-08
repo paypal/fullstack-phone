@@ -2,53 +2,53 @@
     "US": [
         {
             "phoneString": "",
-            "parseError": "The string supplied did not seem to be a phone number"
+            "parseError": "PHN_NOT_A_NUMBER"
         },
         {
             "phoneString": "XYZ",
-            "parseError": "The string supplied did not seem to be a phone number"
+            "parseError": "PHN_NOT_A_NUMBER"
         },
         {
             "phoneString": "2",
-            "parseError": "The string supplied did not seem to be a phone number"
+            "parseError": "PHN_NOT_A_NUMBER"
         },
         {
             "phoneString": "510526343434343434434343",
-            "parseError": "The string supplied is too long to be a phone number"
+            "parseError": "PHN_NUMBER_TOO_LONG"
         },
         {
             "phoneString": "+61510",
-            "parseError": "Invalid country calling code"
+            "parseError": "PHN_INVALID_COUNTRY_CODE"
         },
         {
             "phoneString": "+997510",
-            "parseError": "Invalid country calling code"
+            "parseError": "PHN_INVALID_COUNTRY_CODE"
         },
         {
             "phoneString": "011",
-            "parseError": "Phone number too short after IDD"
+            "parseError": "PHN_TOO_SHORT_AFTER_IDD"
         }
     ],
     "AU": [
         {
             "phoneString": "2",
-            "parseError": "The string supplied did not seem to be a phone number"
+            "parseError": "PHN_NOT_A_NUMBER"
         },
         {
             "phoneString": "212345678212345678",
-            "parseError": "The string supplied is too long to be a phone number"
+            "parseError": "PHN_NUMBER_TOO_LONG"
         },
         {
             "phoneString": "0011",
-            "parseError": "Phone number too short after IDD"
+            "parseError": "PHN_TOO_SHORT_AFTER_IDD"
         },
         {
             "phoneString": "+15105261234",
-            "parseError": "Invalid country calling code"
+            "parseError": "PHN_INVALID_COUNTRY_CODE"
         },
         {
             "phoneString": "+997510",
-            "parseError": "Invalid country calling code"
+            "parseError": "PHN_INVALID_COUNTRY_CODE"
         }
     ]
 }
