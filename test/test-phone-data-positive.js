@@ -49,8 +49,14 @@ describe('Phone Data-Driven Tests (Positive)', function () {
                         });
 
                         it('Should parse formatted phone number string (from ' + format + ') to object', function () {
+                            var expectedPhoneObj = JSON.parse(JSON.stringify(phoneObj));
                             var parsedPhoneObj = phoneUtil.parsePhoneNumber(phoneItemExpected.formatted[format], regionCode);
-                            assert.deepEqual(parsedPhoneObj, phoneObj);
+
+                            if (format === 'e164') {
+                                delete expectedPhoneObj.extension; // no extension in e164 format, so don't compare it in phoneObj
+                            }
+
+                            assert.deepEqual(parsedPhoneObj, expectedPhoneObj);
                         });
                     });
 

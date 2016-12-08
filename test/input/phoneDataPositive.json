@@ -3402,6 +3402,20 @@
                 "e164": "+12015550123",
                 "rfc3966": "tel:+1-201-555-0123"
             }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "1",
+                "nationalNumber": "2015550123",
+                "extension": "999"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "(201) 555-0123 ext. 999",
+                "international": "+1 201-555-0123 ext. 999",
+                "e164": "+12015550123",
+                "rfc3966": "tel:+1-201-555-0123;ext=999"
+            }
         }
     ],
     "UY": [
