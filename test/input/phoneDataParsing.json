@@ -2,53 +2,53 @@
     "US": [
         {
             "phoneString": "",
-            "parseError": "PHN_NOT_A_NUMBER"
+            "parseError": "PHONE_NOT_A_NUMBER"
         },
         {
             "phoneString": "XYZ",
-            "parseError": "PHN_NOT_A_NUMBER"
+            "parseError": "PHONE_NOT_A_NUMBER"
         },
         {
             "phoneString": "2",
-            "parseError": "PHN_NOT_A_NUMBER"
+            "parseError": "PHONE_NOT_A_NUMBER"
         },
         {
             "phoneString": "510526343434343434434343",
-            "parseError": "PHN_NUMBER_TOO_LONG"
+            "parseError": "PHONE_NUMBER_TOO_LONG"
         },
         {
             "phoneString": "+61510",
-            "parseError": "PHN_INVALID_COUNTRY_CODE"
+            "parseError": "PHONE_INVALID_COUNTRY_CODE"
         },
         {
             "phoneString": "+997510",
-            "parseError": "PHN_INVALID_COUNTRY_CODE"
+            "parseError": "PHONE_INVALID_COUNTRY_CODE"
         },
         {
             "phoneString": "011",
-            "parseError": "PHN_TOO_SHORT_AFTER_IDD"
+            "parseError": "PHONE_TOO_SHORT_AFTER_IDD"
         }
     ],
     "AU": [
         {
             "phoneString": "2",
-            "parseError": "PHN_NOT_A_NUMBER"
+            "parseError": "PHONE_NOT_A_NUMBER"
         },
         {
             "phoneString": "212345678212345678",
-            "parseError": "PHN_NUMBER_TOO_LONG"
+            "parseError": "PHONE_NUMBER_TOO_LONG"
         },
         {
             "phoneString": "0011",
-            "parseError": "PHN_TOO_SHORT_AFTER_IDD"
+            "parseError": "PHONE_TOO_SHORT_AFTER_IDD"
         },
         {
             "phoneString": "+15105261234",
-            "parseError": "PHN_INVALID_COUNTRY_CODE"
+            "parseError": "PHONE_INVALID_COUNTRY_CODE"
         },
         {
             "phoneString": "+997510",
-            "parseError": "PHN_INVALID_COUNTRY_CODE"
+            "parseError": "PHONE_INVALID_COUNTRY_CODE"
         }
     ]
 }

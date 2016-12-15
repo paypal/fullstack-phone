@@ -5,7 +5,7 @@
                 "countryCode": "971",
                 "nationalNumber": "2278"
             },
-            "validationErrorMessage": "PHN_NUMBER_TOO_SHORT"
+            "validationErrorMessage": "PHONE_NUMBER_TOO_SHORT"
         }
     ],
     "AU": [
@@ -14,28 +14,28 @@
                 "countryCode": "1",
                 "nationalNumber": "212345678"
             },
-            "validationErrorMessage": "PHN_INVALID_COUNTRY_CODE"
+            "validationErrorMessage": "PHONE_INVALID_COUNTRY_CODE"
         },
         {
             "phoneObj": {
                 "countryCode": "61",
                 "nationalNumber": "891621234"
             },
-            "validationErrorMessage": "PHN_INVALID_FOR_REGION"
+            "validationErrorMessage": "PHONE_INVALID_FOR_REGION"
         },
         {
             "phoneObj": {
                 "countryCode": "61",
                 "nationalNumber": "212"
             },
-            "validationErrorMessage": "PHN_NUMBER_TOO_SHORT"
+            "validationErrorMessage": "PHONE_NUMBER_TOO_SHORT"
         },
         {
             "phoneObj": {
                 "countryCode": "61",
                 "nationalNumber": "212345678212345678"
             },
-            "validationErrorMessage": "PHN_NUMBER_TOO_LONG"
+            "validationErrorMessage": "PHONE_NUMBER_TOO_LONG"
         }
     ],
     "US": [
@@ -44,28 +44,28 @@
                 "countryCode": "376",
                 "nationalNumber": "712345"
             },
-            "validationErrorMessage": "PHN_INVALID_COUNTRY_CODE"
+            "validationErrorMessage": "PHONE_INVALID_COUNTRY_CODE"
         },
         {
             "phoneObj": {
                 "countryCode": "1",
                 "nationalNumber": "2042345678"
             },
-            "validationErrorMessage": "PHN_INVALID_FOR_REGION"
+            "validationErrorMessage": "PHONE_INVALID_FOR_REGION"
         },
         {
             "phoneObj": {
                 "countryCode": "1",
                 "nationalNumber": "2"
             },
-            "validationErrorMessage": "PHN_NUMBER_TOO_SHORT"
+            "validationErrorMessage": "PHONE_NUMBER_TOO_SHORT"
         },
         {
             "phoneObj": {
                 "countryCode": "1",
                 "nationalNumber": "20155501232015550123"
             },
-            "validationErrorMessage": "PHN_NUMBER_TOO_LONG"
+            "validationErrorMessage": "PHONE_NUMBER_TOO_LONG"
         }
     ]
 }

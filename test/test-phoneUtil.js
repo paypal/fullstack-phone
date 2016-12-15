@@ -174,19 +174,19 @@ describe('Phone adapter functionality tests', function () {
             var badNumbers = [
                 {
                     phone: '5',
-                    errorMessage: 'PHN_NOT_A_NUMBER'
+                    errorMessage: 'PHONE_NOT_A_NUMBER'
                 },
                 {
                     phone: '555555555555555555555',
-                    errorMessage: 'PHN_NUMBER_TOO_LONG'
+                    errorMessage: 'PHONE_NUMBER_TOO_LONG'
                 },
                 {
                     phone: 'aaa',
-                    errorMessage: 'PHN_NOT_A_NUMBER'
+                    errorMessage: 'PHONE_NOT_A_NUMBER'
                 },
                 {
                     phone: '+44 0121',
-                    errorMessage: 'PHN_INVALID_COUNTRY_CODE'
+                    errorMessage: 'PHONE_INVALID_COUNTRY_CODE'
                 }
             ];
 
@@ -202,19 +202,19 @@ describe('Phone adapter functionality tests', function () {
             var badNumbers = [
                 {
                     numberObj: { countryCode: '1', nationalNumber: '5' },
-                    errorMessage: 'PHN_NUMBER_TOO_SHORT'
+                    errorMessage: 'PHONE_NUMBER_TOO_SHORT'
                 },
                 {
                     numberObj: { countryCode: '44', nationalNumber: '5103981827' },
-                    errorMessage: 'PHN_INVALID_COUNTRY_CODE'
+                    errorMessage: 'PHONE_INVALID_COUNTRY_CODE'
                 },
                 {
                     numberObj: { countryCode: '1', nationalNumber: '01212345678' }, // GB number
-                    errorMessage: 'PHN_INVALID_FOR_REGION'
+                    errorMessage: 'PHONE_INVALID_FOR_REGION'
                 },
                 {
                     numberObj: { countryCode: '1', nationalNumber: '51052618767' }, // one extra digit
-                    errorMessage: 'PHN_NUMBER_TOO_LONG'
+                    errorMessage: 'PHONE_NUMBER_TOO_LONG'
                 }
             ];
 
@@ -383,19 +383,19 @@ describe('Phone adapter functionality tests', function () {
             var badNumbers = [
                 {
                     numberObj: { countryCode: '44', nationalNumber: '5' },
-                    errorMessage: 'PHN_NUMBER_TOO_SHORT'
+                    errorMessage: 'PHONE_NUMBER_TOO_SHORT'
                 },
                 {
                     numberObj: { countryCode: '1', nationalNumber: '01212345678' },
-                    errorMessage: 'PHN_INVALID_COUNTRY_CODE'
+                    errorMessage: 'PHONE_INVALID_COUNTRY_CODE'
                 },
                 {
                     numberObj: { countryCode: '44', nationalNumber: '5105261987' },
-                    errorMessage: 'PHN_INVALID_FOR_REGION'
+                    errorMessage: 'PHONE_INVALID_FOR_REGION'
                 },
                 {
                     numberObj: { countryCode: '44', nationalNumber: '012123456789' }, // one extra digit
-                    errorMessage: 'PHN_NUMBER_TOO_LONG'
+                    errorMessage: 'PHONE_NUMBER_TOO_LONG'
                 }
             ];
 
