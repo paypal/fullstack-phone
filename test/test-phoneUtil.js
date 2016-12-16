@@ -210,7 +210,7 @@ describe('Phone adapter functionality tests', function () {
                 },
                 {
                     numberObj: { countryCode: '1', nationalNumber: '01212345678' }, // GB number
-                    errorMessage: 'PHONE_INVALID_FOR_REGION'
+                    errorMessage: 'PHONE_INVALID_FOR_COUNTRY'
                 },
                 {
                     numberObj: { countryCode: '1', nationalNumber: '51052618767' }, // one extra digit
@@ -391,7 +391,7 @@ describe('Phone adapter functionality tests', function () {
                 },
                 {
                     numberObj: { countryCode: '44', nationalNumber: '5105261987' },
-                    errorMessage: 'PHONE_INVALID_FOR_REGION'
+                    errorMessage: 'PHONE_INVALID_FOR_COUNTRY'
                 },
                 {
                     numberObj: { countryCode: '44', nationalNumber: '012123456789' }, // one extra digit
