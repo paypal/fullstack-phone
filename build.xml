@@ -78,10 +78,10 @@
     </exec>
   </target>
 
-  <target name="compile-phoneUtil-fullMeta"
-          description="generates phoneUtil_full.js with full libphonenumber metadata">
+  <target name="compile-libphonenumberUtil-fullMeta"
+          description="generates libphonenumberUtil_full.js with full libphonenumber metadata">
     <closure-compile inputfile="lib/phoneAdapter.js"
-                     outputfile="dist/phoneUtil_full.js">
+                     outputfile="dist/libphonenumberUtil_full.js">
       <extraflags>
         <arg line='-f "--js=lib/metadataInjectorNoop.js"' /><!-- compile with dummy version of injectMeta -->
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers"' />
@@ -92,10 +92,10 @@
     </closure-compile>
   </target>
 
-  <target name="compile-phoneUtil-noMeta"
-          description="generates phoneUtil.js with no libphonenumber metadata">
+  <target name="compile-libphonenumberUtil-noMeta"
+          description="generates libphonenumberUtil.js with no libphonenumber metadata">
     <closure-compile inputfile="lib/phoneAdapter.js"
-                     outputfile="dist/phoneUtil.js">
+                     outputfile="dist/libphonenumberUtil.js">
       <extraflags>
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumberutil.js"' />
@@ -113,8 +113,8 @@
   <target name="compile" depends="clean,
                                   copy-loadPhoneMeta,
                                   prepare-regional-metadata,
-                                  compile-phoneUtil-fullMeta,
-                                  compile-phoneUtil-noMeta">
+                                  compile-libphonenumberUtil-fullMeta,
+                                  compile-libphonenumberUtil-noMeta">
   </target>
 
 </project>

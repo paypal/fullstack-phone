@@ -2,12 +2,12 @@
 
 var assert = require('assert'),
     loadPhoneMeta = require('../dist/loadPhoneMeta'),
-    phoneUtil = require('../dist/phoneUtil');
+    phoneUtil = require('../dist/libphonenumberUtil');
 
-describe('Test phoneUtil exceptions', function () {
+describe('Test libphonenumberUtil exceptions', function () {
 
     /*
-    // phoneUtil is a singleton, so this test doesn't work when it's run after others have initialized phoneUtil
+    // libphonenumberUtil is a singleton, so this test doesn't work when it's run after others have initialized libphonenumberUtil
     it('Should throw errors when metadata not loaded', function () {
         assert.throws(() => phoneUtil.getExampleNumberForType(), /No metadata loaded/);
     });

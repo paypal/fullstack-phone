@@ -1,2 +1,2 @@
-var util = require('./dist/phoneUtil.js');
+var util = require('./dist/libphonenumberUtil.js');
 var loadPhoneMeta = require('./dist/loadPhoneMeta');
