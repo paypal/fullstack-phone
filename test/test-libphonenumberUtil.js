@@ -13,6 +13,132 @@ describe('Test libphonenumberUtil exceptions', function () {
     });
     */
 
+    it('Should throw error for invalid metadata', function () {
+        var badMeta = [
+            undefined,
+            null,
+            '',
+            'string',
+            0,
+            1,
+            false,
+            true,
+            new Date(),
+            [],
+            {},
+            {
+                regionCodes: ['US'],
+                countryCodeToRegionCodeMap: {}
+                // missing countryToMetadata
+            },
+            {
+                regionCodes: ['US'],
+                // missing countryCodeToRegionCodeMap
+                countryToMetadata: {}
+            },
+            {
+                // missing regionCodes
+                countryCodeToRegionCodeMap: {},
+                countryToMetadata: {}
+            },
+            {
+                regionCodes: [], // empty regionCodes array
+                countryCodeToRegionCodeMap: {},
+                countryToMetadata: {}
+            }
+        ];
+
+        badMeta.forEach(meta => {
+            assert.throws(() => phoneUtil.useMeta(meta), /Invalid metadata/);
+        });
+    });
+
+    it('Should throw exception for invalid regionCodes property in metadata', function () {
+        // should be non-empty array
+        var badRegionCodeArrays = [
+            undefined,
+            null,
+            0,
+            1,
+            false,
+            true,
+            '',
+            'string',
+            new Date(),
+            {},
+            [] // empty array
+        ];
+
+        badRegionCodeArrays.forEach(x => {
+            var meta = {
+                regionCodes: x,
+                countryCodeToRegionCodeMap: {},
+                countryToMetadata: {}
+            };
+            assert.throws(() => phoneUtil.useMeta(meta));
+        });
+    });
+
+    it('Should throw exception for invalid countryCodeToRegionCodeMap property in metadata', function () {
+        // should be object
+        var badCountryCodeToRegionCodeMaps = [
+            undefined,
+            null,
+            0,
+            1,
+            false,
+            true,
+            '',
+            'string',
+            new Date(),
+            []
+        ];
+
+        badCountryCodeToRegionCodeMaps.forEach(x => {
+            var meta = {
+                regionCodes: ['US'],
+                countryCodeToRegionCodeMap: x,
+                countryToMetadata: {}
+            };
+            assert.throws(() => phoneUtil.useMeta(meta));
+        });
+    });
+
+    it('Should throw exception for invalid countryToMetadata property in metadata', function () {
+        // should be object
+        var badCountryToMetadatas = [
+            undefined,
+            null,
+            0,
+            1,
+            false,
+            true,
+            '',
+            'string',
+            new Date(),
+            []
+        ];
+
+        badCountryToMetadatas.forEach(x => {
+            var meta = {
+                regionCodes: ['US'],
+                countryCodeToRegionCodeMap: {},
+                countryToMetadata: x
+            };
+            assert.throws(() => phoneUtil.useMeta(meta));
+        });
+    });
+
+    it('Should not throw exception for well-formed metadata', function () {
+        var meta = {
+            regionCodes: [1], // needs at least one member
+            countryCodeToRegionCodeMap: {},
+            countryToMetadata: {}
+        };
+
+        assert.doesNotThrow(() => phoneUtil.useMeta(meta), Error, 'Should not have thrown for well-formed metadata');
+    });
+
     it('Should throw error for unsupported region', function () {
 
         var meta = loadPhoneMeta(['US']);
