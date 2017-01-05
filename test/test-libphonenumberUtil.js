@@ -80,7 +80,7 @@ describe('Test libphonenumberUtil exceptions', function () {
     });
 
     it('Should throw exception for invalid countryCodeToRegionCodeMap property in metadata', function () {
-        // should be object
+        // should be plain object
         var badCountryCodeToRegionCodeMaps = [
             undefined,
             null,
@@ -91,7 +91,8 @@ describe('Test libphonenumberUtil exceptions', function () {
             '',
             'string',
             new Date(),
-            []
+            [],
+            new function () {} // not a plain object
         ];
 
         badCountryCodeToRegionCodeMaps.forEach(x => {
@@ -105,7 +106,7 @@ describe('Test libphonenumberUtil exceptions', function () {
     });
 
     it('Should throw exception for invalid countryToMetadata property in metadata', function () {
-        // should be object
+        // should be plain object
         var badCountryToMetadatas = [
             undefined,
             null,
@@ -116,7 +117,8 @@ describe('Test libphonenumberUtil exceptions', function () {
             '',
             'string',
             new Date(),
-            []
+            [],
+            new function () {} // not a plain object
         ];
 
         badCountryToMetadatas.forEach(x => {
