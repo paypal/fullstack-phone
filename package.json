@@ -1,7 +1,7 @@
 {
   "name": "libphonenumber-builder",
   "version": "1.0.0",
-  "description": "libphonenumber build system",
+  "description": "libphonenumber build system with dynamic regional metadata loading",
   "dependencies": {},
   "devDependencies": {
     "ramda": "^0.22.1",

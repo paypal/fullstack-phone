@@ -183,7 +183,7 @@ describe('Test libphonenumberUtil exceptions', function () {
 });
 
 describe('Phone adapter functionality tests', function () {
-    describe('Test mapping from legacy regions to libphonenumber-supported regions', function () {
+    describe('Test mapping from legacy/new regions to libphonenumber-supported regions', function () {
         // setup
         before(function () {
             // AN (Netherlands Antilles) is copied from BQ (Bonaire, Sint Eustatius and Saba)
