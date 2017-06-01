@@ -1,4 +1,4 @@
-libphonenumber-builder
+YALP: Yet Another Libphonenumber Package
 ======================
 
 Custom build system on top of Google libphonenumber to provide compressed version with dynamic regional metadata loading.

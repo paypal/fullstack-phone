@@ -1,18 +1,23 @@
 {
-  "name": "libphonenumber-builder",
+  "name": "yalp",
   "version": "1.0.0",
-  "description": "libphonenumber build system with dynamic regional metadata loading",
+  "description": "Yet Another Libphonenumber Package: A libphonenumber build system with dynamic regional metadata loading",
+  "keywords": [
+    "libphonenumber",
+    "phone"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dwbruhn/yalp"
+  },
+  "author": "Daniel Bruhn <dwbruhn@gmail.com>",
+  "license": "Apache",
+  "scripts": {
+    "test": "mocha test/"
+  },
   "dependencies": {},
   "devDependencies": {
     "ramda": "^0.22.1",
     "mocha": "^3.0.2"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dwbruhn/libphonenumber"
-  },
-  "author": "Daniel Bruhn <dwbruhn@gmail.com>"
+  }
 }

@@ -1,5 +1,8 @@
 <?xml version="1.0" ?>
 
+<!-- Original from: https://github.com/googlei18n/libphonenumber/blob/master/javascript/build.xml -->
+<!-- Modified by: Nathan Hammond, Daniel Bruhn -->
+
 <project name="libphonenumber-javascript" default="compile">
   <property name="closure-compiler.dir"
             value="${basedir}/vendor/closure-compiler" />
