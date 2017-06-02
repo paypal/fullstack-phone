@@ -13,11 +13,13 @@
   "author": "Daniel Bruhn <dwbruhn@gmail.com>",
   "license": "Apache",
   "scripts": {
-    "test": "mocha test/"
+    "test": "mocha test/",
+    "prepush": "npm test"
   },
   "dependencies": {},
   "devDependencies": {
-    "ramda": "^0.22.1",
-    "mocha": "^3.0.2"
+    "husky": "^0.13.4",
+    "mocha": "^3.0.2",
+    "ramda": "^0.22.1"
   }
 }
