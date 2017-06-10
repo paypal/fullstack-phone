@@ -213,14 +213,14 @@
         {
             "phoneObj": {
                 "countryCode": "358",
-                "nationalNumber": "1812345678"
+                "nationalNumber": "181234567"
             },
             "validationResult": true,
             "formatted": {
-                "national": "018 12345678",
-                "international": "+358 18 12345678",
-                "e164": "+3581812345678",
-                "rfc3966": "tel:+358-18-12345678"
+                "national": "018 1234567",
+                "international": "+358 18 1234567",
+                "e164": "+358181234567",
+                "rfc3966": "tel:+358-18-1234567"
             }
         }
     ],
@@ -1023,14 +1023,14 @@
         {
             "phoneObj": {
                 "countryCode": "358",
-                "nationalNumber": "1312345678"
+                "nationalNumber": "131234567"
             },
             "validationResult": true,
             "formatted": {
-                "national": "013 12345678",
-                "international": "+358 13 12345678",
-                "e164": "+3581312345678",
-                "rfc3966": "tel:+358-13-12345678"
+                "national": "013 1234567",
+                "international": "+358 13 1234567",
+                "e164": "+358131234567",
+                "rfc3966": "tel:+358-13-1234567"
             }
         }
     ],
@@ -1188,14 +1188,14 @@
         {
             "phoneObj": {
                 "countryCode": "44",
-                "nationalNumber": "1481456789"
+                "nationalNumber": "1481256789"
             },
             "validationResult": true,
             "formatted": {
-                "national": "01481 456789",
-                "international": "+44 1481 456789",
-                "e164": "+441481456789",
-                "rfc3966": "tel:+44-1481-456789"
+                "national": "01481 256789",
+                "international": "+44 1481 256789",
+                "e164": "+441481256789",
+                "rfc3966": "tel:+44-1481-256789"
             }
         }
     ],
@@ -1503,14 +1503,14 @@
         {
             "phoneObj": {
                 "countryCode": "44",
-                "nationalNumber": "1624456789"
+                "nationalNumber": "1624756789"
             },
             "validationResult": true,
             "formatted": {
-                "national": "01624 456789",
-                "international": "+44 1624 456789",
-                "e164": "+441624456789",
-                "rfc3966": "tel:+44-1624-456789"
+                "national": "01624 756789",
+                "international": "+44 1624 756789",
+                "e164": "+441624756789",
+                "rfc3966": "tel:+44-1624-756789"
             }
         }
     ],
@@ -2958,14 +2958,14 @@
         {
             "phoneObj": {
                 "countryCode": "421",
-                "nationalNumber": "212345678"
+                "nationalNumber": "221234567"
             },
             "validationResult": true,
             "formatted": {
-                "national": "02/123 456 78",
-                "international": "+421 2/123 456 78",
-                "e164": "+421212345678",
-                "rfc3966": "tel:+421-2-123-456-78"
+                "national": "02/212 345 67",
+                "international": "+421 2/212 345 67",
+                "e164": "+421221234567",
+                "rfc3966": "tel:+421-2-212-345-67"
             }
         }
     ],
@@ -3202,7 +3202,7 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "(8) 372 12 3456",
+                "national": "372 12 3456",
                 "international": "+992 372 12 3456",
                 "e164": "+992372123456",
                 "rfc3966": "tel:+992-372-12-3456"
