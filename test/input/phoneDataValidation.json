@@ -1,4 +1,13 @@
 {
+    "AD": [
+        {
+            "phoneObj": {
+                "countryCode": "376",
+                "nationalNumber": "3123456"
+            },
+            "validationErrorMessage": "PHONE_NUMBER_INVALID_LENGTH"
+        }
+    ],
     "AE": [
         {
             "phoneObj": {
