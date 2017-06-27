@@ -13,11 +13,12 @@ var assert = require('assert'),
 describe('Phone Data-Driven Tests (Positive)', function () {
     Object.keys(phoneDataExpected).forEach(function (regionCode) {
         describe('Region: ' + regionCode, function () {
+            var handler;
 
             // initialize with metadata for region
             before(function () {
                 var meta = loadPhoneMeta([regionCode]);
-                phoneUtil.useMeta(meta);
+                handler = phoneUtil.createHandler(meta);
 
                 phoneDataActual[regionCode] = []; // prepare output object
             });
@@ -37,20 +38,20 @@ describe('Phone Data-Driven Tests (Positive)', function () {
                     });
 
                     it('Should validate phone number', function () {
-                        phoneItemActual.validationResult = phoneUtil.validatePhoneNumber(phoneObj, regionCode);
+                        phoneItemActual.validationResult = handler.validatePhoneNumber(phoneObj, regionCode);
                         assert.deepEqual(phoneItemActual.validationResult, phoneItemExpected.validationResult);
                     });
 
                     Object.keys(phoneItemExpected.formatted).forEach(function (format) {
                         it('Should format phone number: ' + format, function () {
                             var options = { style: format };
-                            phoneItemActual.formatted[format] = phoneUtil.formatPhoneNumber(phoneObj, options);
+                            phoneItemActual.formatted[format] = handler.formatPhoneNumber(phoneObj, options);
                             assert.equal(phoneItemActual.formatted[format], phoneItemExpected.formatted[format], 'Formatting failed for ' + regionCode + ' ' + format);
                         });
 
                         it('Should parse formatted phone number string (from ' + format + ') to object', function () {
                             var expectedPhoneObj = JSON.parse(JSON.stringify(phoneObj));
-                            var parsedPhoneObj = phoneUtil.parsePhoneNumber(phoneItemExpected.formatted[format], regionCode);
+                            var parsedPhoneObj = handler.parsePhoneNumber(phoneItemExpected.formatted[format], regionCode);
 
                             if (format === 'e164') {
                                 delete expectedPhoneObj.extension; // no extension in e164 format, so don't compare it in phoneObj

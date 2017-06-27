@@ -116,7 +116,6 @@
   <target name="compile" depends="clean,
                                   copy-loadPhoneMeta,
                                   prepare-regional-metadata,
-                                  compile-libphonenumberUtil-fullMeta,
                                   compile-libphonenumberUtil-noMeta">
   </target>
 

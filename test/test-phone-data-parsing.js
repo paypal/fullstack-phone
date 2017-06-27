@@ -13,11 +13,12 @@ var assert = require('assert'),
 describe('Phone Data-Driven Tests (Negative Parsing)', function () {
     Object.keys(phoneDataExpected).forEach(function (regionCode) {
         describe('Region: ' + regionCode, function () {
+            var handler;
 
             // initialize with metadata for region
             before(function () {
                 var meta = loadPhoneMeta([regionCode]);
-                phoneUtil.useMeta(meta);
+                handler = phoneUtil.createHandler(meta);
 
                 phoneDataActual[regionCode] = []; // prepare output object
             });
@@ -36,7 +37,8 @@ describe('Phone Data-Driven Tests (Negative Parsing)', function () {
                     });
 
                     it('Should return parse error', function () {
-                        var parseResult = phoneUtil.parsePhoneNumber(phoneString, regionCode);
+                        var parseResult = handler.parsePhoneNumber(phoneString, regionCode);
+                        console.log(parseResult.name, parseResult.message);
 
                         assert(parseResult instanceof Error, 'Should have failed parsing (' + regionCode + ' ' + phoneString + ') but instead returned: ' + JSON.stringify(parseResult));
 

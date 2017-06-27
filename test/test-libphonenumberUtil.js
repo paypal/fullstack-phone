@@ -6,13 +6,6 @@ var assert = require('assert'),
 
 describe('Test libphonenumberUtil exceptions', function () {
 
-    /*
-    // libphonenumberUtil is a singleton, so this test doesn't work when it's run after others have initialized libphonenumberUtil
-    it('Should throw errors when metadata not loaded', function () {
-        assert.throws(() => phoneUtil.getExampleNumberForType(), /No metadata loaded/);
-    });
-    */
-
     it('Should throw error for invalid metadata', function () {
         var badMeta = [
             undefined,
@@ -49,7 +42,7 @@ describe('Test libphonenumberUtil exceptions', function () {
         ];
 
         badMeta.forEach(meta => {
-            assert.throws(() => phoneUtil.useMeta(meta), /Invalid metadata/);
+            assert.throws(() => phoneUtil.createHandler(meta), /Invalid metadata/);
         });
     });
 
@@ -75,7 +68,7 @@ describe('Test libphonenumberUtil exceptions', function () {
                 countryCodeToRegionCodeMap: {},
                 countryToMetadata: {}
             };
-            assert.throws(() => phoneUtil.useMeta(meta));
+            assert.throws(() => phoneUtil.createHandler(meta));
         });
     });
 
@@ -101,7 +94,7 @@ describe('Test libphonenumberUtil exceptions', function () {
                 countryCodeToRegionCodeMap: x,
                 countryToMetadata: {}
             };
-            assert.throws(() => phoneUtil.useMeta(meta));
+            assert.throws(() => phoneUtil.createHandler(meta));
         });
     });
 
@@ -127,7 +120,7 @@ describe('Test libphonenumberUtil exceptions', function () {
                 countryCodeToRegionCodeMap: {},
                 countryToMetadata: x
             };
-            assert.throws(() => phoneUtil.useMeta(meta));
+            assert.throws(() => phoneUtil.createHandler(meta));
         });
     });
 
@@ -138,22 +131,22 @@ describe('Test libphonenumberUtil exceptions', function () {
             countryToMetadata: {}
         };
 
-        assert.doesNotThrow(() => phoneUtil.useMeta(meta), Error, 'Should not have thrown for well-formed metadata');
+        assert.doesNotThrow(() => phoneUtil.createHandler(meta), Error, 'Should not have thrown for well-formed metadata');
     });
 
     it('Should throw error for unsupported region', function () {
 
         var meta = loadPhoneMeta(['US']);
-        phoneUtil.useMeta(meta);
+        var handler = phoneUtil.createHandler(meta);
 
-        assert.throws(() => phoneUtil.getExampleNumberForType('GB', 'MOBILE'), /Metadata not loaded for region/);
+        assert.throws(() => handler.getExampleNumberForType('GB', 'MOBILE'), /Metadata not loaded for region/);
 
     });
 
     it('Should throw error for invalid style object', function () {
 
         var meta = loadPhoneMeta(['US']);
-        phoneUtil.useMeta(meta);
+        var handler = phoneUtil.createHandler(meta);
 
         var phoneObj = {
             countryCode: '1',
@@ -163,20 +156,20 @@ describe('Test libphonenumberUtil exceptions', function () {
         var badStyleOptions = ['', 0, 1, {}, [], true, null, undefined, { style: 'INVALID' }, function () { }];
 
         badStyleOptions.forEach(function (options) {
-            assert.throws(() => phoneUtil.formatPhoneNumber(phoneObj, options), /Invalid style/);
+            assert.throws(() => handler.formatPhoneNumber(phoneObj, options), /Invalid style/);
         });
     });
 
     it('Should throw error for phoneObj that fails conversion to proto format', function () {
 
         var meta = loadPhoneMeta(['US']);
-        phoneUtil.useMeta(meta);
+        var handler = phoneUtil.createHandler(meta);
 
         var badPhoneObjects = [null, undefined];
 
         badPhoneObjects.forEach(function (phoneObj) {
-            assert.throws(() => phoneUtil.formatPhoneNumber(phoneObj, { style: 'national' }), /Phone object conversion failed/);
-            assert.throws(() => phoneUtil.validatePhoneNumber(phoneObj, 'US'), /Phone object conversion failed/);
+            assert.throws(() => handler.formatPhoneNumber(phoneObj, { style: 'national' }), /Phone object conversion failed/);
+            assert.throws(() => handler.validatePhoneNumber(phoneObj, 'US'), /Phone object conversion failed/);
         });
 
     });
@@ -184,45 +177,47 @@ describe('Test libphonenumberUtil exceptions', function () {
 
 describe('Phone adapter functionality tests', function () {
     describe('Test mapping from legacy/new regions to libphonenumber-supported regions', function () {
+        var handler;
         // setup
         before(function () {
             // AN (Netherlands Antilles) is copied from BQ (Bonaire, Sint Eustatius and Saba)
             // PN (Pitcairn Island) is copied from NZ (New Zealand)
-            // XK (Kosov) is copied from MC (Monaco)
+            // XK (Kosovo) is copied from MC (Monaco)
             var meta = loadPhoneMeta(['AN', 'PN', 'XK']);
             // note that CW (Curaçao) is also loaded because it's the main country for BQ's calling code (599)
-            phoneUtil.useMeta(meta);
+            handler = phoneUtil.createHandler(meta);
         });
 
         it('Should show AN, CW, PN, NZ, XK, and MC as supported regions', function () {
-            assert.deepEqual(phoneUtil.getSupportedRegions().sort(), ['AN', 'CW', 'MC', 'NZ', 'PN', 'XK']);
-            assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), { '64': ['NZ', 'PN'], '377': ['MC', 'XK'], '599': ['CW', 'AN'] });
+            assert.deepEqual(handler.getSupportedRegions().sort(), ['AN', 'CW', 'MC', 'NZ', 'PN', 'XK']);
+            assert.deepEqual(handler.countryCodeToRegionCodeMap(), { '64': ['NZ', 'PN'], '377': ['MC', 'XK'], '599': ['CW', 'AN'] });
         });
 
         it('Should return BQ example phone number for AN', function () {
-            assert.deepEqual(phoneUtil.getExampleNumberForType('AN', 'FIXED_LINE'), { countryCode: '599', nationalNumber: '7151234' });
+            assert.deepEqual(handler.getExampleNumberForType('AN', 'FIXED_LINE'), { countryCode: '599', nationalNumber: '7151234' });
         });
 
         it('Should return NZ example phone number for PN', function () {
-            assert.deepEqual(phoneUtil.getExampleNumberForType('PN', 'MOBILE'), { countryCode: '64', nationalNumber: '211234567' });
+            assert.deepEqual(handler.getExampleNumberForType('PN', 'MOBILE'), { countryCode: '64', nationalNumber: '211234567' });
         });
 
         it('Should return MC example phone number for XK', function () {
-            assert.deepEqual(phoneUtil.getExampleNumberForType('XK', 'MOBILE'), { countryCode: '377', nationalNumber: '612345678' });
+            assert.deepEqual(handler.getExampleNumberForType('XK', 'MOBILE'), { countryCode: '377', nationalNumber: '612345678' });
         });
     });
 
     describe('Test formatting/validation of US phone numbers', function () {
+        var handler;
 
         // setup
         before(function () {
             var meta = loadPhoneMeta(['BS']); // loading Bahamas also loads US
-            phoneUtil.useMeta(meta);
+            handler = phoneUtil.createHandler(meta);
         });
 
         it('Should show BS and US as supported regions', function () {
-            assert.deepEqual(phoneUtil.getSupportedRegions(), ['BS', 'US']);
-            assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), { '1': ['US', 'BS'] });
+            assert.deepEqual(handler.getSupportedRegions(), ['BS', 'US']);
+            assert.deepEqual(handler.countryCodeToRegionCodeMap(), { '1': ['US', 'BS'] });
         });
 
         it('Should format US phone numbers', function () {
@@ -254,7 +249,7 @@ describe('Phone adapter functionality tests', function () {
                 var options = {
                     style: optionObj.style
                 };
-                assert.equal(phoneUtil.formatPhoneNumber(phone, options), optionObj.result);
+                assert.equal(handler.formatPhoneNumber(phone, options), optionObj.result);
             });
         });
 
@@ -271,7 +266,7 @@ describe('Phone adapter functionality tests', function () {
             ];
 
             numbers.forEach(function (phone) {
-                assert.equal(phoneUtil.validatePhoneNumber(phone, 'US'), true);
+                assert.equal(handler.validatePhoneNumber(phone, 'US'), true);
             });
         });
 
@@ -292,7 +287,7 @@ describe('Phone adapter functionality tests', function () {
             ];
 
             inputs.forEach(function (phone) {
-                var response = phoneUtil.parsePhoneNumber(phone, 'US');
+                var response = handler.parsePhoneNumber(phone, 'US');
                 assert.deepEqual(response, canonicalPhone);
             });
         });
@@ -319,7 +314,7 @@ describe('Phone adapter functionality tests', function () {
             ];
 
             badNumbers.forEach(function (phoneObj) {
-                var response = phoneUtil.parsePhoneNumber(phoneObj.phone, 'US');
+                var response = handler.parsePhoneNumber(phoneObj.phone, 'US');
                 assert.ok(response instanceof Error);
                 assert.equal(response.message, phoneObj.errorMessage);
             });
@@ -347,14 +342,14 @@ describe('Phone adapter functionality tests', function () {
             ];
 
             badNumbers.forEach(function (phone) {
-                var response = phoneUtil.validatePhoneNumber(phone.numberObj, 'US');
+                var response = handler.validatePhoneNumber(phone.numberObj, 'US');
                 assert.ok(response instanceof Error);
                 assert.equal(response.message, phone.errorMessage);
             });
         });
 
         it('Should format US number using AsYouTypeFormatter', function () {
-            var formatter = phoneUtil.getAsYouTypeFormatter('US');
+            var formatter = handler.getAsYouTypeFormatter('US');
 
             assert.equal(formatter.inputDigit('9'), '9');
             assert.equal(formatter.inputDigit('1'), '91');
@@ -376,23 +371,24 @@ describe('Phone adapter functionality tests', function () {
         });
 
         it('Should throw errors if metadata not loaded for requested region', function () {
-            assert.throws(() => phoneUtil.getAsYouTypeFormatter('TR'), /Metadata not loaded/);
-            assert.throws(() => phoneUtil.getCountryCodeForRegion('TR'), /Metadata not loaded/);
-            assert.throws(() => phoneUtil.validatePhoneNumber({}, 'TR'), /Metadata not loaded/);
+            assert.throws(() => handler.getAsYouTypeFormatter('TR'), /Metadata not loaded/);
+            assert.throws(() => handler.getCountryCodeForRegion('TR'), /Metadata not loaded/);
+            assert.throws(() => handler.validatePhoneNumber({}, 'TR'), /Metadata not loaded/);
         });
     });
 
     describe('Test formatting/validation of GB & RU phone numbers', function () {
+        var handler;
 
         // setup
         before(function () {
             var meta = loadPhoneMeta(['KZ', 'AU', 'GG', 'GB']);
-            phoneUtil.useMeta(meta);
+            handler = phoneUtil.createHandler(meta);
         });
 
         it('Should show supported regions', function () {
-            assert.deepEqual(phoneUtil.getSupportedRegions().sort(), ['AU', 'GB', 'GG', 'KZ', 'RU']);
-            assert.deepEqual(phoneUtil.countryCodeToRegionCodeMap(), {
+            assert.deepEqual(handler.getSupportedRegions().sort(), ['AU', 'GB', 'GG', 'KZ', 'RU']);
+            assert.deepEqual(handler.countryCodeToRegionCodeMap(), {
                 '7': ['RU', 'KZ'],
                 '44': ['GB', 'GG'],
                 '61': ['AU']
@@ -428,7 +424,7 @@ describe('Phone adapter functionality tests', function () {
                 var options = {
                     style: optionObj.style
                 };
-                assert.equal(phoneUtil.formatPhoneNumber(phone, options), optionObj.result);
+                assert.equal(handler.formatPhoneNumber(phone, options), optionObj.result);
             });
         });
 
@@ -461,7 +457,7 @@ describe('Phone adapter functionality tests', function () {
                 var options = {
                     style: optionObj.style
                 };
-                assert.equal(phoneUtil.formatPhoneNumber(phone, options), optionObj.result);
+                assert.equal(handler.formatPhoneNumber(phone, options), optionObj.result);
             });
         });
 
@@ -478,12 +474,12 @@ describe('Phone adapter functionality tests', function () {
             ];
 
             numbers.forEach(function (phone) {
-                assert.equal(phoneUtil.validatePhoneNumber(phone, 'GB'), true);
+                assert.equal(handler.validatePhoneNumber(phone, 'GB'), true);
             });
         });
 
         it('Should format GB number using AsYouTypeFormatter', function () {
-            var formatter = phoneUtil.getAsYouTypeFormatter('GB');
+            var formatter = handler.getAsYouTypeFormatter('GB');
             formatter.clear();
 
             assert.equal(formatter.inputDigit('0'), '0');
@@ -528,7 +524,7 @@ describe('Phone adapter functionality tests', function () {
             ];
 
             badNumbers.forEach(function (phone) {
-                var response = phoneUtil.validatePhoneNumber(phone.numberObj, 'GB');
+                var response = handler.validatePhoneNumber(phone.numberObj, 'GB');
                 assert.ok(response instanceof Error);
                 assert.equal(response.message, phone.errorMessage);
             });

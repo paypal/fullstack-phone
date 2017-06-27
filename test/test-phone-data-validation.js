@@ -13,11 +13,12 @@ var assert = require('assert'),
 describe('Phone Data-Driven Tests (Negative Validation)', function () {
     Object.keys(phoneDataExpected).forEach(function (regionCode) {
         describe('Region: ' + regionCode, function () {
+            var handler;
 
             // initialize with metadata for region
             before(function () {
                 var meta = loadPhoneMeta([regionCode]);
-                phoneUtil.useMeta(meta);
+                handler = phoneUtil.createHandler(meta);
 
                 phoneDataActual[regionCode] = []; // prepare output object
             });
@@ -36,7 +37,7 @@ describe('Phone Data-Driven Tests (Negative Validation)', function () {
                     });
 
                     it('Should return validation error', function () {
-                        var validationError = phoneUtil.validatePhoneNumber(phoneObj, regionCode);
+                        var validationError = handler.validatePhoneNumber(phoneObj, regionCode);
 
                         assert(validationError instanceof Error, 'Should have failed validation: ' + regionCode + ' ' + JSON.stringify(phoneObj));
 
