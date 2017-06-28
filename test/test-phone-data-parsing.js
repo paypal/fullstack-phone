@@ -3,8 +3,8 @@
 var assert = require('assert'),
     fs = require('fs'),
     path = require('path'),
-    loadPhoneMeta = require('../dist/loadPhoneMeta'),
-    phoneUtil = require('../dist/libphonenumberUtil'),
+    loadMeta = require('../server').loadMeta,
+    phoneClient = require('../client'),
     phoneDataExpected = require('./input/phoneDataParsing'),
     outputDir = path.join(__dirname, 'output/'),
     outputFilePath = path.join(outputDir, 'phoneDataParsing.json'),
@@ -17,8 +17,8 @@ describe('Phone Data-Driven Tests (Negative Parsing)', function () {
 
             // initialize with metadata for region
             before(function () {
-                var meta = loadPhoneMeta([regionCode]);
-                handler = phoneUtil.createHandler(meta);
+                var meta = loadMeta([regionCode]);
+                handler = phoneClient.createHandler(meta);
 
                 phoneDataActual[regionCode] = []; // prepare output object
             });
@@ -38,7 +38,6 @@ describe('Phone Data-Driven Tests (Negative Parsing)', function () {
 
                     it('Should return parse error', function () {
                         var parseResult = handler.parsePhoneNumber(phoneString, regionCode);
-                        console.log(parseResult.name, parseResult.message);
 
                         assert(parseResult instanceof Error, 'Should have failed parsing (' + regionCode + ' ' + phoneString + ') but instead returned: ' + JSON.stringify(parseResult));
 

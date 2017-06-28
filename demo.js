@@ -1,4 +1,2 @@
-var util = require('./dist/libphonenumberUtil.js');
-var loadPhoneMeta = require('./dist/loadPhoneMeta');
-var meta = loadPhoneMeta(['US']);
-var handler = util.createHandler(meta);
+var meta = require('./server').loadMeta(['US']);
+var handler = require('./client').createHandler(meta);

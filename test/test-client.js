@@ -1,8 +1,8 @@
 'use strict';
 
-var assert = require('assert'),
-    loadPhoneMeta = require('../dist/loadPhoneMeta'),
-    phoneUtil = require('../dist/libphonenumberUtil');
+var assert = require('assert');
+var loadMeta = require('../server').loadMeta;
+var phoneClient = require('../client');
 
 describe('Test libphonenumberUtil exceptions', function () {
 
@@ -42,7 +42,7 @@ describe('Test libphonenumberUtil exceptions', function () {
         ];
 
         badMeta.forEach(meta => {
-            assert.throws(() => phoneUtil.createHandler(meta), /Invalid metadata/);
+            assert.throws(() => phoneClient.createHandler(meta), /Invalid metadata/);
         });
     });
 
@@ -68,7 +68,7 @@ describe('Test libphonenumberUtil exceptions', function () {
                 countryCodeToRegionCodeMap: {},
                 countryToMetadata: {}
             };
-            assert.throws(() => phoneUtil.createHandler(meta));
+            assert.throws(() => phoneClient.createHandler(meta));
         });
     });
 
@@ -94,7 +94,7 @@ describe('Test libphonenumberUtil exceptions', function () {
                 countryCodeToRegionCodeMap: x,
                 countryToMetadata: {}
             };
-            assert.throws(() => phoneUtil.createHandler(meta));
+            assert.throws(() => phoneClient.createHandler(meta));
         });
     });
 
@@ -120,7 +120,7 @@ describe('Test libphonenumberUtil exceptions', function () {
                 countryCodeToRegionCodeMap: {},
                 countryToMetadata: x
             };
-            assert.throws(() => phoneUtil.createHandler(meta));
+            assert.throws(() => phoneClient.createHandler(meta));
         });
     });
 
@@ -131,13 +131,13 @@ describe('Test libphonenumberUtil exceptions', function () {
             countryToMetadata: {}
         };
 
-        assert.doesNotThrow(() => phoneUtil.createHandler(meta), Error, 'Should not have thrown for well-formed metadata');
+        assert.doesNotThrow(() => phoneClient.createHandler(meta), Error, 'Should not have thrown for well-formed metadata');
     });
 
     it('Should throw error for unsupported region', function () {
 
-        var meta = loadPhoneMeta(['US']);
-        var handler = phoneUtil.createHandler(meta);
+        var meta = loadMeta(['US']);
+        var handler = phoneClient.createHandler(meta);
 
         assert.throws(() => handler.getExampleNumberForType('GB', 'MOBILE'), /Metadata not loaded for region/);
 
@@ -145,8 +145,8 @@ describe('Test libphonenumberUtil exceptions', function () {
 
     it('Should throw error for invalid style object', function () {
 
-        var meta = loadPhoneMeta(['US']);
-        var handler = phoneUtil.createHandler(meta);
+        var meta = loadMeta(['US']);
+        var handler = phoneClient.createHandler(meta);
 
         var phoneObj = {
             countryCode: '1',
@@ -162,8 +162,8 @@ describe('Test libphonenumberUtil exceptions', function () {
 
     it('Should throw error for phoneObj that fails conversion to proto format', function () {
 
-        var meta = loadPhoneMeta(['US']);
-        var handler = phoneUtil.createHandler(meta);
+        var meta = loadMeta(['US']);
+        var handler = phoneClient.createHandler(meta);
 
         var badPhoneObjects = [null, undefined];
 
@@ -183,9 +183,9 @@ describe('Phone adapter functionality tests', function () {
             // AN (Netherlands Antilles) is copied from BQ (Bonaire, Sint Eustatius and Saba)
             // PN (Pitcairn Island) is copied from NZ (New Zealand)
             // XK (Kosovo) is copied from MC (Monaco)
-            var meta = loadPhoneMeta(['AN', 'PN', 'XK']);
+            var meta = loadMeta(['AN', 'PN', 'XK']);
             // note that CW (Curaçao) is also loaded because it's the main country for BQ's calling code (599)
-            handler = phoneUtil.createHandler(meta);
+            handler = phoneClient.createHandler(meta);
         });
 
         it('Should show AN, CW, PN, NZ, XK, and MC as supported regions', function () {
@@ -211,8 +211,8 @@ describe('Phone adapter functionality tests', function () {
 
         // setup
         before(function () {
-            var meta = loadPhoneMeta(['BS']); // loading Bahamas also loads US
-            handler = phoneUtil.createHandler(meta);
+            var meta = loadMeta(['BS']); // loading Bahamas also loads US
+            handler = phoneClient.createHandler(meta);
         });
 
         it('Should show BS and US as supported regions', function () {
@@ -382,8 +382,8 @@ describe('Phone adapter functionality tests', function () {
 
         // setup
         before(function () {
-            var meta = loadPhoneMeta(['KZ', 'AU', 'GG', 'GB']);
-            handler = phoneUtil.createHandler(meta);
+            var meta = loadMeta(['KZ', 'AU', 'GG', 'GB']);
+            handler = phoneClient.createHandler(meta);
         });
 
         it('Should show supported regions', function () {

@@ -17,7 +17,7 @@ var exceptions = {
  * Return libphonenumber metadata for those regions, including the necessary metadata for the main countries for each country calling code
  * E.g. if the array includes CA (country calling code 1), then the metadata must also include the US, which is the main country for calling code 1
  */
-module.exports = function loadPhoneMeta(regionCodeArray) {
+module.exports = function loadMeta(regionCodeArray) {
     if (!regionCodeArray || !Array.isArray(regionCodeArray) || !regionCodeArray.length) {
         throw new Error(exceptions.REGIONCODE_ARRAY_INVALID);
     }
@@ -29,7 +29,7 @@ module.exports = function loadPhoneMeta(regionCodeArray) {
     },
         allRegionCodes = [],
         allCountryCodes = [],
-        dependencyMap = require('./metadata/dependencyMap'); // ATTENTION: modify this path as necessary
+        dependencyMap = require('./metadata/dependencyMap');
 
     // populate full list of region codes to add (regions and their main country dependencies)
     // and populate full list of country calling codes
@@ -65,7 +65,7 @@ module.exports = function loadPhoneMeta(regionCodeArray) {
 
     // populate countryToMetadata for each region code
     allRegionCodes.forEach(function (regionCode) {
-        var regionalMeta = require('./metadata/' + regionCode + '.json'); // ATTENTION: modify this path as necessary
+        var regionalMeta = require('./metadata/' + regionCode + '.json');
         // for countryToMetadata, just add keys
         Object.keys(regionalMeta.countryToMetadata).forEach(function (cty) {
             metadata.countryToMetadata[cty] = regionalMeta.countryToMetadata[cty];

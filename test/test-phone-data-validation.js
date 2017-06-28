@@ -3,8 +3,8 @@
 var assert = require('assert'),
     fs = require('fs'),
     path = require('path'),
-    loadPhoneMeta = require('../dist/loadPhoneMeta'),
-    phoneUtil = require('../dist/libphonenumberUtil'),
+    loadMeta = require('../server').loadMeta,
+    phoneClient = require('../client'),
     phoneDataExpected = require('./input/phoneDataValidation'),
     outputDir = path.join(__dirname, 'output/'),
     outputFilePath = path.join(outputDir, 'phoneDataValidation.json'),
@@ -17,8 +17,8 @@ describe('Phone Data-Driven Tests (Negative Validation)', function () {
 
             // initialize with metadata for region
             before(function () {
-                var meta = loadPhoneMeta([regionCode]);
-                handler = phoneUtil.createHandler(meta);
+                var meta = loadMeta([regionCode]);
+                handler = phoneClient.createHandler(meta);
 
                 phoneDataActual[regionCode] = []; // prepare output object
             });

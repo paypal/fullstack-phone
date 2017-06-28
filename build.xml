@@ -69,40 +69,35 @@
   </macrodef>
 
   <target name="clean" description="deletes all generated files">
-    <delete dir="dist" />
-    <mkdir dir="dist"/>
-    <mkdir dir="dist/metadata"/>
+    <delete file="client/index.js"/>
+    <delete dir="server/metadata"/>
+    <mkdir dir="server/metadata"/>
   </target>
 
   <target name="prepare-regional-metadata" description="Extracts regional metadata from libphonenumber">
-    <exec executable="${basedir}/lib/metadataExtractor.js" failonerror="true">
+    <exec executable="${basedir}/util/metadataExtractor.js" failonerror="true">
       <arg value="${libphonenumber.dir}/javascript/i18n/phonenumbers/metadata.js" />
-      <arg value="${basedir}/dist/metadata/" />
+      <arg value="${basedir}/server/metadata/" />
     </exec>
   </target>
 
-  <target name="compile-libphonenumberUtil"
-          description="generates libphonenumberUtil.js with no libphonenumber metadata">
-    <closure-compile inputfile="lib/phoneAdapter.js"
-                     outputfile="dist/libphonenumberUtil.js">
+  <target name="compile-client"
+          description="generates client/index.js from phoneAdapter + injectMeta">
+    <closure-compile inputfile="src/phoneAdapter.js"
+                     outputfile="client/index.js">
       <extraflags>
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/asyoutypeformatter.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumberutil.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonemetadata.pb.js"' />
         <arg line='-p "${libphonenumber.dir}/javascript/i18n/phonenumbers/phonenumber.pb.js"' />
-        <arg line='-p "lib/injectMeta.js"' /> <!-- overrides libphonenumber metadata module with injectMeta function -->
+        <arg line='-p "src/injectMeta.js"' /> <!-- overrides libphonenumber metadata module with injectMeta function -->
       </extraflags>
     </closure-compile>
   </target>
 
-  <target name="copy-loadPhoneMeta" description="copies metadata loader to dist directory">
-    <copy file="lib/loadPhoneMeta.js" todir="dist/"/>
-  </target>
-
-  <target name="compile" depends="clean,
-                                  copy-loadPhoneMeta,
+    <target name="compile" depends="clean,
                                   prepare-regional-metadata,
-                                  compile-libphonenumberUtil">
+                                  compile-client">
   </target>
 
 </project>
