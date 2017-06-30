@@ -10,16 +10,18 @@
     "type": "git",
     "url": "https://github.com/dwbruhn/yalp-phone"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "author": "Daniel Bruhn <dwbruhn@gmail.com>",
-  "license": "Apache",
+  "license": "Apache-2.0",
   "scripts": {
-    "test": "mocha test/",
+    "test": "mocha test/ -R dot",
     "prepush": "npm test"
   },
   "dependencies": {},
   "devDependencies": {
     "husky": "^0.13.4",
-    "mocha": "^3.0.2",
-    "ramda": "^0.22.1"
+    "mocha": "^3.0.2"
   }
 }

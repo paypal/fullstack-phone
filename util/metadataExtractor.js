@@ -11,10 +11,11 @@ Note: countryCode = country calling code (e.g. 61 for AU)
 */
 
 
-var fs = require('fs'),
-    vm = require('vm'),
-    path = require('path'),
-    outpath; // populated in main
+var fs = require('fs');
+var vm = require('vm');
+var path = require('path');
+var outpath; // populated in main
+var finalMetadata = {};
 
 // some systems support these region codes, but libphonenumber does not
 // for unsupported region codes, "fake" the metadata by copying from supported regions
@@ -28,7 +29,7 @@ function main() {
 
     outpath = process.argv[3];
 
-    var metadata = fs.readFileSync(process.argv[2]),
+    var metadata = fs.readFileSync(process.argv[2], 'utf8'),
         context = { goog: { provide: function () { } }, i18n: { phonenumbers: { metadata: {} } } };
 
     vm.runInNewContext(metadata, context); // provide dummy google closure wrapper around metadata.js file from libphonenumber
@@ -47,15 +48,18 @@ function main() {
         if (!Number.isNaN(parseInt(regionCode))) { return; } // skip 001 because it's not stored the same (keys in countryToMetadata are calling codes, not region codes)
 
         var regionalOutput = extractRegionalMetadata(regionCode, fullMetadata, regionCodeToCountryCodeMap, countryCodeToRegionCodeMap);
-        writeRegionalFile(regionCode, regionalOutput);
+        finalMetadata[regionCode] = regionalOutput; // save region in final metadata
     });
 
     // extract metadata for 001 (stored differently)
     var globalExchangeOutput = extractGlobalExchanges('001', fullMetadata, regionCodeToCountryCodeMap);
-    writeRegionalFile('001', globalExchangeOutput);
+    finalMetadata['001'] = globalExchangeOutput; // save in final metadata
 
     // write dependency map
     fs.writeFileSync(path.join(outpath, 'dependencyMap.json'), JSON.stringify(dependencyMap, null, 2));
+
+    // write final metadata
+    fs.writeFileSync(path.join(outpath, 'metadata.json'), JSON.stringify(finalMetadata, null, 2));
 
     // debugging
     // fs.writeFileSync(path.join(outpath, 'countryCodeToRegionCodeMap.json'), JSON.stringify(countryCodeToRegionCodeMap, null, 2));
@@ -90,10 +94,6 @@ function applyAugmentations(countryCodeToRegionCodeMap, regionCodeToCountryCodeM
     });
 }
 
-// output regional metadata files
-function writeRegionalFile(regionCode, regionalOutput) {
-    fs.writeFileSync(path.join(outpath, regionCode + '.json'), JSON.stringify(regionalOutput));
-}
 
 /**
  * Extract metadata for given regionCode

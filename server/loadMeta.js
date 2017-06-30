@@ -5,7 +5,8 @@
 
 'use strict';
 
-var R = require('ramda'); // utility library
+var dependencyMap = require('./metadata/dependencyMap');
+var fullMetadata = require('./metadata/metadata');
 
 var exceptions = {
     REGIONCODE_ARRAY_INVALID: 'Invalid region code array parameter',
@@ -18,7 +19,11 @@ var exceptions = {
  * E.g. if the array includes CA (country calling code 1), then the metadata must also include the US, which is the main country for calling code 1
  */
 module.exports = function loadMeta(regionCodeArray) {
-    if (!regionCodeArray || !Array.isArray(regionCodeArray) || !regionCodeArray.length) {
+    // if regionCodeArray is undefined, load all regions
+    if (regionCodeArray === undefined) {
+        regionCodeArray = Object.keys(fullMetadata);
+    }
+    if (!Array.isArray(regionCodeArray) || !regionCodeArray.length) {
         throw new Error(exceptions.REGIONCODE_ARRAY_INVALID);
     }
 
@@ -28,8 +33,7 @@ module.exports = function loadMeta(regionCodeArray) {
         countryToMetadata: {}
     },
         allRegionCodes = [],
-        allCountryCodes = [],
-        dependencyMap = require('./metadata/dependencyMap');
+        allCountryCodes = [];
 
     // populate full list of region codes to add (regions and their main country dependencies)
     // and populate full list of country calling codes
@@ -56,8 +60,8 @@ module.exports = function loadMeta(regionCodeArray) {
         });
     });
 
-    allRegionCodes = R.uniq(allRegionCodes); // dedupe arrays
-    allCountryCodes = R.uniq(allCountryCodes);
+    allRegionCodes = removeDuplicates(allRegionCodes); // dedupe arrays
+    allCountryCodes = removeDuplicates(allCountryCodes);
 
     // now prepare metadata object
 
@@ -65,12 +69,12 @@ module.exports = function loadMeta(regionCodeArray) {
 
     // populate countryToMetadata for each region code
     allRegionCodes.forEach(function (regionCode) {
-        var regionalMeta = require('./metadata/' + regionCode + '.json');
+        var regionalMeta = fullMetadata[regionCode];
         // for countryToMetadata, just add keys
-        Object.keys(regionalMeta.countryToMetadata).forEach(function (cty) {
-            metadata.countryToMetadata[cty] = regionalMeta.countryToMetadata[cty];
-        });
-        // Object.assign(metadata.countryToMetadata, regionalMeta.countryToMetadata); // ES6
+        // Object.keys(regionalMeta.countryToMetadata).forEach(function (cty) {
+        // metadata.countryToMetadata[cty] = regionalMeta.countryToMetadata[cty];
+        // });
+        Object.assign(metadata.countryToMetadata, regionalMeta.countryToMetadata); // ES6
     });
 
     // construct countryCodeToRegionCodeMap based on included regions
@@ -86,3 +90,11 @@ module.exports = function loadMeta(regionCodeArray) {
 
     return metadata;
 };
+
+
+function removeDuplicates(array) {
+    var seen = {};
+    return array.filter(function (item) {
+        return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+    });
+}
