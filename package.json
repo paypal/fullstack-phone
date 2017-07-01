@@ -1,7 +1,7 @@
 {
-  "name": "yalp-phone",
+  "name": "fullstack-phone",
   "version": "1.0.0",
-  "description": "Yet Another Libphonenumber Package: A libphonenumber build system with dynamic regional metadata loading",
+  "description": "A dual-module phone number system with dynamic regional metadata",
   "keywords": [
     "libphonenumber",
     "phone"
@@ -13,6 +13,10 @@
   "engines": {
     "node": ">=4.0.0"
   },
+  "files": [
+    "client",
+    "server"
+  ],
   "author": "Daniel Bruhn <dwbruhn@gmail.com>",
   "license": "Apache-2.0",
   "scripts": {
