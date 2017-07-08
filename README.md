@@ -163,10 +163,10 @@ Any method that takes a `regionCode` string can throw the following exception if
 
 ```javascript
 phoneHandler.getCountryCodeForRegion();
-Error: Metadata not loaded for region: undefined
+// > Error: Metadata not loaded for region: undefined
 
 phoneHandler.getCountryCodeForRegion('XX');
-Error: Metadata not loaded for region: XX
+// > Error: Metadata not loaded for region: XX
 ```
 
 #### Note about `phoneObj`

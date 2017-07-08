@@ -8,14 +8,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/dwbruhn/yalp-phone"
+    "url": "https://github.com/dwbruhn/fullstack-phone.git"
   },
   "engines": {
     "node": ">=4.0.0"
   },
   "files": [
-    "client",
-    "server"
+    "client/",
+    "server/"
   ],
   "author": "Daniel Bruhn <dwbruhn@gmail.com>",
   "license": "Apache-2.0",
