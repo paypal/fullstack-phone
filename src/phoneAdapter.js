@@ -158,6 +158,7 @@ function createHandler(metadata) {
          * @throws {Error} if metadata has not been loaded for given region or phoneObj to proto conversion failed
          */
         'validatePhoneNumber': function validatePhoneNumber(phoneObj, regionCode) {
+            // TODO: assert on phoneObj
             injectMeta(metadata);
             assertSupportedRegion(regionCode, metadata);
 
