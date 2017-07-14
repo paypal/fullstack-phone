@@ -10,6 +10,14 @@
     "type": "git",
     "url": "https://github.com/dwbruhn/fullstack-phone.git"
   },
+  "author": "Daniel Bruhn <dwbruhn@gmail.com>",
+  "license": "Apache-2.0",
+  "contributors": [
+    "Nathan Hammond <github.com@nathanhammond.com> (http://www.nathanhammond.com/)",
+    "Theresa Khoo <tkhoo@paypal.com>",
+    "Diego Lagunas <dlagunas@paypal.com>",
+    "Reza Payami <rpayami@paypal.com>"
+  ],
   "engines": {
     "node": ">=4.0.0"
   },
@@ -17,8 +25,6 @@
     "client/",
     "server/"
   ],
-  "author": "Daniel Bruhn <dwbruhn@gmail.com>",
-  "license": "Apache-2.0",
   "scripts": {
     "test": "mocha test/ -R dot",
     "prepush": "npm test"
