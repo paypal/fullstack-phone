@@ -11,6 +11,7 @@
     * Renamed `createHandler` to `createPhoneHandler` to make it more distinct in case anyone uses a `<script>` tag to load `client/index.js` and it gets added to the `window` object
 * Metadata:
     * Updated to libphonenumber v8.5.1
+    * Updated to Closure library v20170626
 
 ## 0.0.1 (Unpublished)
 
