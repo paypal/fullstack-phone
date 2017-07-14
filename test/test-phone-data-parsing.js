@@ -18,7 +18,7 @@ describe('Phone Data-Driven Tests (Negative Parsing)', function () {
             // initialize with metadata for region
             before(function () {
                 var meta = loadMeta([regionCode]);
-                handler = phoneClient.createHandler(meta);
+                handler = phoneClient.createPhoneHandler(meta);
 
                 phoneDataActual[regionCode] = []; // prepare output object
             });

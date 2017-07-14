@@ -38,8 +38,8 @@ On the client (assuming a client-side bundler that provides `require`, like [web
 // Browser:
 var phoneClient = require('fullstack-phone/client');
 
-// fetch the metadata somehow, then pass to createHandler to instantiate a handler:
-var phoneHandler = phoneClient.createHandler(metadata);
+// fetch the metadata somehow, then pass to createPhoneHandler to instantiate a handler:
+var phoneHandler = phoneClient.createPhoneHandler(metadata);
 ```
 
 Once initialized, the phone handler can be used to process phone numbers:
@@ -94,7 +94,7 @@ The phone server exposes only one function:
 
 ##### `phoneServer.loadMeta(regionCodeArray)`
 
-Given an array of two-letter region codes ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)), return a metadata bundle for those regions, to be passed to [`phoneClient.createHandler()`](#createhandler).
+Given an array of two-letter region codes ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)), return a metadata bundle for those regions, to be passed to [`phoneClient.createPhoneHandler()`](#createphonehandler).
 
 ##### Notes:
 
@@ -132,19 +132,19 @@ var phoneClient = require('fullstack-phone/client');
 
 The phone client exposes only one function:
 
-#### createHandler
+#### createPhoneHandler
 
-##### `phoneClient.createHandler(metadata)`
+##### `phoneClient.createPhoneHandler(metadata)`
 
 Given a metadata bundle from [`phoneServer.loadMeta()`](#loadmeta), return a phone handler instantiated for that metadata.
 
 ### Phone Handler
 
 ```javascript
-var phoneHandler = phoneClient.createHandler(metadata);
+var phoneHandler = phoneClient.createPhoneHandler(metadata);
 ```
 
-The phone handler returned by `createHandler` provides the following methods:
+The phone handler returned by `createPhoneHandler` provides the following methods:
 
 - [getSupportedRegions](#getsupportedregions)
 - [countryCodeToRegionCodeMap](#countrycodetoregioncodemap)

@@ -80,7 +80,7 @@ parseErrors[PNError.TOO_SHORT_AFTER_IDD] = 'PHONE_TOO_SHORT_AFTER_IDD';
  * @throws {Error} if metadata is invalid
  * @return {Object} phone handler for the given metadata bundle
  */
-function createHandler(metadata) {
+function createPhoneHandler(metadata) {
 
     validateMetadata(metadata);
 
@@ -266,7 +266,7 @@ function createHandler(metadata) {
         }
 
     }; // end handler object
-} // end createHandler
+} // end createPhoneHandler
 
 
 /**
@@ -388,4 +388,4 @@ function phoneObjToProto(phoneObj) {
 }
 
 // initialization function
-goog.exportSymbol('createHandler', createHandler);
+goog.exportSymbol('createPhoneHandler', createPhoneHandler);

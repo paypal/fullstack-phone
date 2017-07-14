@@ -42,7 +42,7 @@ describe('Test libphonenumberUtil exceptions', function () {
         ];
 
         badMeta.forEach(meta => {
-            assert.throws(() => phoneClient.createHandler(meta), /Invalid metadata/);
+            assert.throws(() => phoneClient.createPhoneHandler(meta), /Invalid metadata/);
         });
     });
 
@@ -68,7 +68,7 @@ describe('Test libphonenumberUtil exceptions', function () {
                 countryCodeToRegionCodeMap: {},
                 countryToMetadata: {}
             };
-            assert.throws(() => phoneClient.createHandler(meta));
+            assert.throws(() => phoneClient.createPhoneHandler(meta));
         });
     });
 
@@ -94,7 +94,7 @@ describe('Test libphonenumberUtil exceptions', function () {
                 countryCodeToRegionCodeMap: x,
                 countryToMetadata: {}
             };
-            assert.throws(() => phoneClient.createHandler(meta));
+            assert.throws(() => phoneClient.createPhoneHandler(meta));
         });
     });
 
@@ -120,7 +120,7 @@ describe('Test libphonenumberUtil exceptions', function () {
                 countryCodeToRegionCodeMap: {},
                 countryToMetadata: x
             };
-            assert.throws(() => phoneClient.createHandler(meta));
+            assert.throws(() => phoneClient.createPhoneHandler(meta));
         });
     });
 
@@ -131,13 +131,13 @@ describe('Test libphonenumberUtil exceptions', function () {
             countryToMetadata: {}
         };
 
-        assert.doesNotThrow(() => phoneClient.createHandler(meta), Error, 'Should not have thrown for well-formed metadata');
+        assert.doesNotThrow(() => phoneClient.createPhoneHandler(meta), Error, 'Should not have thrown for well-formed metadata');
     });
 
     it('Should throw error for unsupported region', function () {
 
         var meta = loadMeta(['US']);
-        var handler = phoneClient.createHandler(meta);
+        var handler = phoneClient.createPhoneHandler(meta);
 
         assert.throws(() => handler.getExampleNumberForType('MOBILE', 'GB'), /Metadata not loaded for region/);
 
@@ -146,7 +146,7 @@ describe('Test libphonenumberUtil exceptions', function () {
     it('Should throw error for invalid style object', function () {
 
         var meta = loadMeta(['US']);
-        var handler = phoneClient.createHandler(meta);
+        var handler = phoneClient.createPhoneHandler(meta);
 
         var phoneObj = {
             countryCode: '1',
@@ -163,7 +163,7 @@ describe('Test libphonenumberUtil exceptions', function () {
     it('Should throw error for phoneObj that fails conversion to proto format', function () {
 
         var meta = loadMeta(['US']);
-        var handler = phoneClient.createHandler(meta);
+        var handler = phoneClient.createPhoneHandler(meta);
 
         var badPhoneObjects = [null, undefined];
 
@@ -185,7 +185,7 @@ describe('Phone adapter functionality tests', function () {
             // XK (Kosovo) is copied from MC (Monaco)
             var meta = loadMeta(['AN', 'PN', 'XK']);
             // note that CW (Curaçao) is also loaded because it's the main country for BQ's calling code (599)
-            handler = phoneClient.createHandler(meta);
+            handler = phoneClient.createPhoneHandler(meta);
         });
 
         it('Should show AN, CW, PN, NZ, XK, and MC as supported regions', function () {
@@ -212,7 +212,7 @@ describe('Phone adapter functionality tests', function () {
         // setup
         before(function () {
             var meta = loadMeta(['BS']); // loading Bahamas also loads US
-            handler = phoneClient.createHandler(meta);
+            handler = phoneClient.createPhoneHandler(meta);
         });
 
         it('Should show BS and US as supported regions', function () {
@@ -383,7 +383,7 @@ describe('Phone adapter functionality tests', function () {
         // setup
         before(function () {
             var meta = loadMeta(['KZ', 'AU', 'GG', 'GB']);
-            handler = phoneClient.createHandler(meta);
+            handler = phoneClient.createPhoneHandler(meta);
         });
 
         it('Should show supported regions', function () {
