@@ -324,14 +324,14 @@ phoneHandler.parsePhoneNumber('ABC', 'US');
 
 #### getExampleNumberForType
 
-##### `phoneHandler.getExampleNumberForType(regionCode, type)`
+##### `phoneHandler.getExampleNumberForType(type, regionCode)`
 
-Given the string parameters `regionCode` and `type` ('GENERAL', 'MOBILE', 'FIXED_LINE', 'FIXED_LINE_OR_MOBILE', 'PREMIUM_RATE', 'VOIP', 'TOLL_FREE', etc.) return a `phoneObj` object with an example number for that type.
+Given the string parameters `type` ('GENERAL', 'MOBILE', 'FIXED_LINE', 'FIXED_LINE_OR_MOBILE', 'PREMIUM_RATE', 'VOIP', 'TOLL_FREE', etc.) and `regionCode`, return a `phoneObj` object with an example number for that type.
 
 ##### Example
 
 ```javascript
-phoneHandler.getExampleNumberForType('US', 'MOBILE');
+phoneHandler.getExampleNumberForType('MOBILE', 'US');
 // > { countryCode: '1', nationalNumber: '2015550123' }
 ```
 

@@ -229,7 +229,7 @@ function createHandler(metadata) {
          * @param {string} type
          * @return {Object} phoneObj
          */
-        'getExampleNumberForType': function getExampleNumberForType(regionCode, type) {
+        'getExampleNumberForType': function getExampleNumberForType(type, regionCode) {
             injectMeta(metadata);
             assertSupportedRegion(regionCode, metadata);
 

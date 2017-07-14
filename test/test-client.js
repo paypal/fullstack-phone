@@ -139,7 +139,7 @@ describe('Test libphonenumberUtil exceptions', function () {
         var meta = loadMeta(['US']);
         var handler = phoneClient.createHandler(meta);
 
-        assert.throws(() => handler.getExampleNumberForType('GB', 'MOBILE'), /Metadata not loaded for region/);
+        assert.throws(() => handler.getExampleNumberForType('MOBILE', 'GB'), /Metadata not loaded for region/);
 
     });
 
@@ -194,15 +194,15 @@ describe('Phone adapter functionality tests', function () {
         });
 
         it('Should return BQ example phone number for AN', function () {
-            assert.deepEqual(handler.getExampleNumberForType('AN', 'FIXED_LINE'), { countryCode: '599', nationalNumber: '7151234' });
+            assert.deepEqual(handler.getExampleNumberForType('FIXED_LINE', 'AN'), { countryCode: '599', nationalNumber: '7151234' });
         });
 
         it('Should return NZ example phone number for PN', function () {
-            assert.deepEqual(handler.getExampleNumberForType('PN', 'MOBILE'), { countryCode: '64', nationalNumber: '211234567' });
+            assert.deepEqual(handler.getExampleNumberForType('MOBILE', 'PN'), { countryCode: '64', nationalNumber: '211234567' });
         });
 
         it('Should return MC example phone number for XK', function () {
-            assert.deepEqual(handler.getExampleNumberForType('XK', 'MOBILE'), { countryCode: '377', nationalNumber: '612345678' });
+            assert.deepEqual(handler.getExampleNumberForType('MOBILE', 'XK'), { countryCode: '377', nationalNumber: '612345678' });
         });
     });
 
