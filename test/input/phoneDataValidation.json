@@ -30,7 +30,7 @@
                 "countryCode": "61",
                 "nationalNumber": "891621234"
             },
-            "validationErrorMessage": "PHONE_INVALID_FOR_COUNTRY"
+            "validationErrorMessage": "PHONE_INVALID_FOR_REGION"
         },
         {
             "phoneObj": {
@@ -60,7 +60,7 @@
                 "countryCode": "1",
                 "nationalNumber": "2042345678"
             },
-            "validationErrorMessage": "PHONE_INVALID_FOR_COUNTRY"
+            "validationErrorMessage": "PHONE_INVALID_FOR_REGION"
         },
         {
             "phoneObj": {

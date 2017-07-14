@@ -30,9 +30,9 @@ var stylesMap = {
     'rfc3966': PNFormat.RFC3966
 };
 
-// returned from validatePhoneNumber (coded to a particular phone module message)
+// returned from validatePhoneNumber
 var validationErrors = {
-    INVALID_FOR_REGION: 'PHONE_INVALID_FOR_COUNTRY',
+    INVALID_FOR_REGION: 'PHONE_INVALID_FOR_REGION',
     INVALID_COUNTRY_CODE: 'PHONE_INVALID_COUNTRY_CODE',
     TOO_LONG: 'PHONE_NUMBER_TOO_LONG',
     TOO_SHORT: 'PHONE_NUMBER_TOO_SHORT',

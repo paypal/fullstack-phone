@@ -62,7 +62,7 @@ phoneHandler.validatePhoneNumber(
   { countryCode: '1', nationalNumber: '5101234567'},
   'US'
 );
-// > [Error: PHONE_INVALID_FOR_COUNTRY]
+// > [Error: PHONE_INVALID_FOR_REGION]
 ```
 
 It's also possible to use both within the same environment. Using the server module in the browser, however, nullifies the advantages of the per-region metadata slicing.
@@ -279,7 +279,7 @@ Given a `phoneObj` object (defined above) and `regionCode` string, return an Err
 
 The possible error messages are:
 
-* `'PHONE_INVALID_FOR_COUNTRY'` // TODO: change to REGION
+* `'PHONE_INVALID_FOR_REGION'`
 * `'PHONE_INVALID_COUNTRY_CODE'`
 * `'PHONE_NUMBER_TOO_LONG'`
 * `'PHONE_NUMBER_TOO_SHORT'`
