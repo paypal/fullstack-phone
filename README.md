@@ -20,6 +20,8 @@ Contents
 
 ## Usage
 
+**Demo App:** [fullstack-phone-demo](https://github.com/dwbruhn/fullstack-phone-demo)
+
 The modules are optimized for use in two environments.
 
 On the server:
