@@ -36,10 +36,6 @@ var validationErrors = {
     INVALID_COUNTRY_CODE: 'PHONE_INVALID_COUNTRY_CODE',
     TOO_LONG: 'PHONE_NUMBER_TOO_LONG',
     TOO_SHORT: 'PHONE_NUMBER_TOO_SHORT',
-
-    // INVALID_LENGTH: not too long, not too short, but not just right, either
-    // e.g. Andorra (AD) numbers are 6, 8, or 8 digits, so a 7-digit number yields this error:
-    INVALID_LENGTH: 'PHONE_NUMBER_INVALID_LENGTH'
 };
 
 // thrown
@@ -189,9 +185,6 @@ function createPhoneHandler(metadata) {
                 case PNValidationResult.TOO_LONG:
                     errorCode = validationErrors.TOO_LONG;
                     break;
-                case PNValidationResult.INVALID_LENGTH:
-                    errorCode = validationErrors.INVALID_LENGTH;
-                    break;
                 // in this case, isPossibleNumberWithReason returned IS_POSSIBLE or IS_POSSIBLE_LOCAL_ONLY
                 // but isPossibleNumberWithReason can be more lenient than isValidNumberForRegion
                 // so return a default error
@@ -217,9 +210,7 @@ function createPhoneHandler(metadata) {
             try {
                 parsedPhoneNumber = phoneUtil.parse(phoneNumberToParse, regionCode);
             } catch (e) {
-                // libphonenumber no longer throws strings!
-                // https://github.com/googlei18n/libphonenumber/commit/b702df040dcaab9fa549c1e32c06f06cce096df3#diff-2dcb77e833422ee304da348b905cde0b
-                return new Error(parseErrors[e.message]); // map error message string to an error code and return a new Error object with that code
+                return new Error(parseErrors[e]); // libphonenumber throws strings, map string to phone module message and return
             }
             return protoToPhoneObj(parsedPhoneNumber);
         },

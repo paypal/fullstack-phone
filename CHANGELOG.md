@@ -1,6 +1,6 @@
 # Changelog
 
-# 0.1.0
+## 0.1.0
 
 * API:
     * Refactored into server & client modules for easy inclusion
@@ -12,6 +12,13 @@
 * Metadata:
     * Updated to libphonenumber v8.5.2
     * Updated to Closure library v20170626
+
+## 0.0.2
+
+* Backported API changes from 0.1.0 but based on libphonenumber v7.7.5
+* Metadata:
+    * libphonenumber v7.7.5
+    * Closure library v20170626
 
 ## 0.0.1 (Unpublished)
 

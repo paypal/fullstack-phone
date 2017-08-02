@@ -3202,7 +3202,7 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "372 12 3456",
+                "national": "(8) 372 12 3456",
                 "international": "+992 372 12 3456",
                 "e164": "+992372123456",
                 "rfc3966": "tel:+992-372-12-3456"

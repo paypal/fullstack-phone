@@ -6,7 +6,7 @@ fi
 
 # Install or update the git dependencies.
 # format is: ORGANIZATION/PROJECT/TAG
-LIBRARIES=(google/closure-library/v20170626 google/closure-compiler/v20161024 googlei18n/libphonenumber/v8.5.2)
+LIBRARIES=(google/closure-library/v20170626 google/closure-compiler/v20161024 googlei18n/libphonenumber/v7.7.5)
 for LIBRARY in "${LIBRARIES[@]}"
 do
   SPLIT=(${LIBRARY//\// })
