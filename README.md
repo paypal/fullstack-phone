@@ -328,7 +328,7 @@ phoneHandler.parsePhoneNumber('ABC', 'US');
 
 ##### `phoneHandler.getExampleNumberForType(type, regionCode)`
 
-Given the string parameters `type` ('GENERAL', 'MOBILE', 'FIXED_LINE', 'FIXED_LINE_OR_MOBILE', 'PREMIUM_RATE', 'VOIP', 'TOLL_FREE', etc.) and `regionCode`, return a `phoneObj` object with an example number for that type.
+Given the string parameters [`type`](https://github.com/googlei18n/libphonenumber/blob/b58ef8b8a607074845534cb2ebe19b208521747f/javascript/i18n/phonenumbers/phonenumberutil.js#L907-L941) ('FIXED_LINE', 'MOBILE', 'FIXED_LINE_OR_MOBILE', 'TOLL_FREE', 'PREMIUM_RATE', 'SHARED_COST', 'VOIP', 'PERSONAL_NUMBER', 'PAGER', 'UAN', 'VOICEMAIL', or 'UNKNOWN') and `regionCode`, return a `phoneObj` object with an example number for that type.
 
 ##### Example
 
