@@ -332,7 +332,7 @@ describe('Phone adapter functionality tests', function () {
                     errorMessage: 'PHONE_INVALID_COUNTRY_CODE'
                 },
                 {
-                    numberObj: { countryCode: '1', nationalNumber: '01212345678' }, // GB number
+                    numberObj: { countryCode: '1', nationalNumber: '1212345678' }, // GB number
                     errorMessage: 'PHONE_INVALID_FOR_REGION'
                 },
                 {
@@ -465,11 +465,11 @@ describe('Phone adapter functionality tests', function () {
             var numbers = [
                 {
                     countryCode: '44',
-                    nationalNumber: '01212345678' // fixed line
+                    nationalNumber: '1212345678' // fixed line
                 },
                 {
                     countryCode: '44',
-                    nationalNumber: '07400123456' // mobile
+                    nationalNumber: '7400123456' // mobile
                 }
             ];
 
@@ -510,15 +510,19 @@ describe('Phone adapter functionality tests', function () {
                     errorMessage: 'PHONE_NUMBER_TOO_SHORT'
                 },
                 {
-                    numberObj: { countryCode: '1', nationalNumber: '01212345678' },
+                    numberObj: { countryCode: '1', nationalNumber: '1212345678' },
                     errorMessage: 'PHONE_INVALID_COUNTRY_CODE'
                 },
+                /*{
+                    numberObj: { countryCode: '44', nationalNumber: '01212345678' }, // should omit leading 0 in nationalNumber property
+                    errorMessage: 'PHONE_NUMBER_TOO_LONG'
+                },*/
                 {
                     numberObj: { countryCode: '44', nationalNumber: '5105261987' },
                     errorMessage: 'PHONE_INVALID_FOR_REGION'
                 },
                 {
-                    numberObj: { countryCode: '44', nationalNumber: '012123456789' }, // one extra digit
+                    numberObj: { countryCode: '44', nationalNumber: '12123456789' }, // one extra digit
                     errorMessage: 'PHONE_NUMBER_TOO_LONG'
                 }
             ];
