@@ -537,6 +537,19 @@
                 "e164": "+5012221234",
                 "rfc3966": "tel:+501-222-1234"
             }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "501",
+                "nationalNumber": "08001234123"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0-800-1234-123",
+                "international": "+501 0-800-1234-123",
+                "e164": "+50108001234123",
+                "rfc3966": "tel:+501-0-800-1234-123"
+            }
         }
     ],
     "CA": [
@@ -1647,6 +1660,19 @@
                 "e164": "+81312345678",
                 "rfc3966": "tel:+81-3-1234-5678"
             }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "81",
+                "nationalNumber": "00777012"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0077-7012",
+                "international": "+81 00777012",
+                "e164": "+8100777012",
+                "rfc3966": "tel:+81-00777012"
+            }
         }
     ],
     "KE": [
@@ -1766,6 +1792,19 @@
                 "international": "+82 2-212-3456",
                 "e164": "+8222123456",
                 "rfc3966": "tel:+82-2-212-3456"
+            }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "82",
+                "nationalNumber": "007981234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "00798 123 4567",
+                "international": "+82 007981234567",
+                "e164": "+82007981234567",
+                "rfc3966": "tel:+82-007981234567"
             }
         }
     ],

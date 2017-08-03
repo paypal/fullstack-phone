@@ -325,13 +325,18 @@ function protoToPhoneObj(phoneNumber) {
         return null;
     }
 
+    // extract countryCode and nationalNumber from proto buffer phone
     var phoneObj = {
         'countryCode': phoneNumber.values_[1].toString(),
         'nationalNumber': phoneNumber.values_[2].toString()
     };
 
-    if (phoneNumber.values_[4] && phoneUtil.isLeadingZeroPossible(phoneNumber.values_[1])) {
-        phoneObj['nationalNumber'] = '0' + phoneObj['nationalNumber'];
+    // set leading zeros if they exist
+    if (phoneNumber.hasItalianLeadingZero()) {
+        var numberOfLeadingZeros = phoneNumber.getNumberOfLeadingZerosOrDefault(); // don't use getNumberOfLeadingZeros because that returns null if it's only 1 (so use getNumberOfLeadingZerosOrDefault instead)
+        for (var i = 0; i < numberOfLeadingZeros; i++) {
+            phoneObj['nationalNumber'] = '0' + phoneObj['nationalNumber']; // TODO: use ES6 String.prototype.repeat
+        }
     }
 
     if (phoneNumber.values_[3] !== undefined) {
@@ -351,11 +356,14 @@ function protoToPhoneObj(phoneNumber) {
  *      extension: string or number
  *
  * For phoneNumber protocol buffer methods, countryCode and nationalNumber are converted to number, and extension is converted to string
+ *
+ * NOTE: Could perform this conversion by simply passing countryCode + nationalNumber + ';' + extension to parse, if region were known
  */
 function phoneObjToProto(phoneObj) {
     var phoneNumber = new i18n.phonenumbers.PhoneNumber();
 
     var countryCode, nationalNumber, extension;
+    var hasLeadingZero = false;
 
     // note: use string literals when referencing object properties to prevent closure compiler from reducing
 
@@ -365,14 +373,22 @@ function phoneObjToProto(phoneObj) {
 
     // deal with nationalNumber
     nationalNumber = phoneObj['nationalNumber'];
-    if (typeof nationalNumber === 'string') { // special handling for nationalNumber string type (could have leading 0)
+    if (typeof nationalNumber === 'string') { // special handling for nationalNumber string type (could have leading 0's)
 
-        // setItalianLeadingZero = true if
-        // nationalNumber is a string and starts with '0'
-        // and leading zero is possible for that country
-        phoneNumber.setItalianLeadingZero(nationalNumber.charAt(0) === '0' && phoneUtil.isLeadingZeroPossible(countryCode));
+        // loop over digits to determine how many leading zeros there might be
+        var i = 0;
+        while (nationalNumber.charAt(i) === '0') {
+            hasLeadingZero = true;
+            i++;
+        }
 
-        nationalNumber = Number(nationalNumber); // now convert to number (removes leading 0 if it exists)
+        // if one or more leading zeros, call the appropriate proto buffer phone setters
+        if (hasLeadingZero) {
+            phoneNumber.setItalianLeadingZero(true);
+            phoneNumber.setNumberOfLeadingZeros(i);
+        }
+
+        nationalNumber = Number(nationalNumber); // now convert to number (removes leading 0's if they exist)
     }
     phoneNumber.setNationalNumber(nationalNumber);
 

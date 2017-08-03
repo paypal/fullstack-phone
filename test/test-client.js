@@ -513,10 +513,10 @@ describe('Phone adapter functionality tests', function () {
                     numberObj: { countryCode: '1', nationalNumber: '1212345678' },
                     errorMessage: 'PHONE_INVALID_COUNTRY_CODE'
                 },
-                /*{
+                {
                     numberObj: { countryCode: '44', nationalNumber: '01212345678' }, // should omit leading 0 in nationalNumber property
                     errorMessage: 'PHONE_NUMBER_TOO_LONG'
-                },*/
+                },
                 {
                     numberObj: { countryCode: '44', nationalNumber: '5105261987' },
                     errorMessage: 'PHONE_INVALID_FOR_REGION'
