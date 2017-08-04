@@ -24,7 +24,7 @@ Contents
 
 The modules are optimized for use in two environments.
 
-On the server:
+On the server (requires Node 4+):
 
 ```javascript
 // Node.js:
