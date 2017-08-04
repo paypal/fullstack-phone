@@ -25,7 +25,7 @@
     // > { countryCode: '44', nationalNumber: '1212345678', extension: '123' } // valid GB phoneObj without leading 0
     ```
 * Metadata
-
+  * Updated to libphonenumber v8.7.1
 
 ## 0.1.0
 
