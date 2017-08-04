@@ -514,7 +514,7 @@ describe('Phone adapter functionality tests', function () {
                     errorMessage: 'PHONE_INVALID_COUNTRY_CODE'
                 },
                 {
-                    numberObj: { countryCode: '44', nationalNumber: '01212345678' }, // should omit leading 0 in nationalNumber property
+                    numberObj: { countryCode: '44', nationalNumber: '01212345678' }, // leading 0 not allowed in nationalNumber property unless it's an Italian leading zero
                     errorMessage: 'PHONE_NUMBER_TOO_LONG'
                 },
                 {
