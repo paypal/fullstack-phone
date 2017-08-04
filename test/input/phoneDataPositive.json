@@ -625,6 +625,19 @@
                 "e164": "+242222123456",
                 "rfc3966": "tel:+242-22-212-3456"
             }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "242",
+                "nationalNumber": "061234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "06 123 4567",
+                "international": "+242 06 123 4567",
+                "e164": "+242061234567",
+                "rfc3966": "tel:+242-06-123-4567"
+            }
         }
     ],
     "CH": [
@@ -654,6 +667,19 @@
                 "international": "+225 21 23 45 67",
                 "e164": "+22521234567",
                 "rfc3966": "tel:+225-21-23-45-67"
+            }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "225",
+                "nationalNumber": "01234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01 23 45 67",
+                "international": "+225 01 23 45 67",
+                "e164": "+22501234567",
+                "rfc3966": "tel:+225-01-23-45-67"
             }
         }
     ],
@@ -1060,6 +1086,19 @@
                 "e164": "+6793212345",
                 "rfc3966": "tel:+679-321-2345"
             }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "679",
+                "nationalNumber": "08001234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0800 123 4567",
+                "international": "+679 0800 123 4567",
+                "e164": "+67908001234567",
+                "rfc3966": "tel:+679-0800-123-4567"
+            }
         }
     ],
     "FK": [
@@ -1134,6 +1173,19 @@
                 "international": "+241 01 44 12 34",
                 "e164": "+24101441234",
                 "rfc3966": "tel:+241-01-44-12-34"
+            }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "241",
+                "nationalNumber": "06031234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "06 03 12 34",
+                "international": "+241 06 03 12 34",
+                "e164": "+24106031234",
+                "rfc3966": "tel:+241-06-03-12-34"
             }
         }
     ],
@@ -2406,6 +2458,19 @@
                 "e164": "+22720201234",
                 "rfc3966": "tel:+227-20-20-12-34"
             }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "227",
+                "nationalNumber": "08123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "08 123 456",
+                "international": "+227 08 123 456",
+                "e164": "+22708123456",
+                "rfc3966": "tel:+227-08-123-456"
+            }
         }
     ],
     "NF": [
@@ -2480,6 +2545,19 @@
                 "international": "+47 21 23 45 67",
                 "e164": "+4721234567",
                 "rfc3966": "tel:+47-21-23-45-67"
+            }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "47",
+                "nationalNumber": "01234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "01234",
+                "international": "+47 01234",
+                "e164": "+4701234",
+                "rfc3966": "tel:+47-01234"
             }
         }
     ],
@@ -3171,6 +3249,19 @@
                 "e164": "+26822171234",
                 "rfc3966": "tel:+268-2217-1234"
             }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "268",
+                "nationalNumber": "08001234"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0800 1234",
+                "international": "+268 0800 1234",
+                "e164": "+26808001234",
+                "rfc3966": "tel:+268-0800-1234"
+            }
         }
     ],
     "TC": [
@@ -3320,6 +3411,19 @@
                 "international": "+676 20-123",
                 "e164": "+67620123",
                 "rfc3966": "tel:+676-20-123"
+            }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "676",
+                "nationalNumber": "0800222"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0800 222",
+                "international": "+676 0800 222",
+                "e164": "+6760800222",
+                "rfc3966": "tel:+676-0800-222"
             }
         }
     ],
