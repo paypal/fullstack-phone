@@ -1,6 +1,10 @@
 fullstack-phone ☎️
 ======================
 
+| Master | Develop | npm |
+|--------|---------|-----|
+| [![Build Status](https://travis-ci.org/dwbruhn/fullstack-phone.svg?branch=master)](https://travis-ci.org/dwbruhn/fullstack-phone) | [![Build Status](https://travis-ci.org/dwbruhn/fullstack-phone.svg?branch=develop)](https://travis-ci.org/dwbruhn/fullstack-phone) | [![npm version](https://badge.fury.io/js/fullstack-phone.svg)](https://www.npmjs.com/package/fullstack-phone) |
+
 **fullstack-phone** provides formatting, validation, and parsing of phone numbers per-region. The system is optimized for use as two modules:
 
 1. a metadata server providing dynamic regional metadata
