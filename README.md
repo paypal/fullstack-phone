@@ -1,9 +1,9 @@
 fullstack-phone ☎️
 ======================
 
-| Master | Develop | npm |
-|--------|---------|-----|
-| [![Build Status](https://travis-ci.org/dwbruhn/fullstack-phone.svg?branch=master)](https://travis-ci.org/dwbruhn/fullstack-phone) | [![Build Status](https://travis-ci.org/dwbruhn/fullstack-phone.svg?branch=develop)](https://travis-ci.org/dwbruhn/fullstack-phone) | [![npm version](https://badge.fury.io/js/fullstack-phone.svg)](https://www.npmjs.com/package/fullstack-phone) |
+| Master                                   | Develop                                  | npm                                      | Libphonenumber version                   |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| [![Build Status](https://travis-ci.org/dwbruhn/fullstack-phone.svg?branch=master)](https://travis-ci.org/dwbruhn/fullstack-phone) | [![Build Status](https://travis-ci.org/dwbruhn/fullstack-phone.svg?branch=develop)](https://travis-ci.org/dwbruhn/fullstack-phone) | [![npm version](https://badge.fury.io/js/fullstack-phone.svg)](https://www.npmjs.com/package/fullstack-phone) | [v8.7.1](https://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt) |
 
 **fullstack-phone** provides formatting, validation, and parsing of phone numbers per-region. The system is optimized for use as two modules:
 
@@ -16,6 +16,7 @@ Contents
 --------
 - [Usage](#usage)
 - [Why](#why)
+- [Canonical Phone Object](#canonical-phone-object)
 - [APIs](#apis)
   - [Server](#server)
   - [Client](#client)
@@ -85,6 +86,39 @@ This package fills a different niche by providing:
 - The official libphonenumber code (not a pure JS re-write)
 - A static code base (~25KB) that doesn’t change for different regions
 - Hot loadable metadata bundles for individual regions
+
+## Canonical Phone Object
+
+When using Google libphonenumber directly, processing a phone number requires [parsing a string](https://github.com/googlei18n/libphonenumber/blob/11ad0018a9940ec60ea2c8287d5d0ebc0bd0c188/javascript/i18n/phonenumbers/phonenumberutil_test.js#L1334) or [initializing a protocol buffer phone number object and calling setters for its various properties](https://github.com/googlei18n/libphonenumber/blob/11ad0018a9940ec60ea2c8287d5d0ebc0bd0c188/javascript/i18n/phonenumbers/phonenumberutil_test.js#L521-L525).
+
+In contrast, fullstack-phone provides a more idiomatic JavaScript phone object, removing the need to call multiple setters. Most of the phone number functions here operate on a canonical `phoneObj`, as follows:
+
+```javascript
+{
+  countryCode : '1',
+  nationalNumber : '5105261234',
+  extension : '999'
+}
+```
+
+* `countryCode`
+  * **Required**. A *number* or *string* of digits representing a country phone code, e.g., `'1'`.
+
+
+* `nationalNumber`
+  * **Required**. A *number* or *string* of digits representing a phone number, as defined by [E.164](https://en.wikipedia.org/wiki/E.164), e.g., `'4085551212'`.
+  * Note that this excludes the leading national prefix (or "trunk code"), which is 0 or 1 in most territories.
+  * [Italian leading zeros](https://github.com/googlei18n/libphonenumber/blob/11ad0018a9940ec60ea2c8287d5d0ebc0bd0c188/resources/phonenumber.proto#L57-L74) **should** be included here.
+
+
+* `extension`
+  * **Optional**. A string representing the phone number extension, e.g., `'123'`.
+
+### Notes
+
+For proper formatting and validation results, `nationalNumber` and `countryCode` must only contain digits. In addition, `countryCode` must be the calling code of a country for which the phone handler was initialized. (For example, if a `phoneObj` is passed with `countryCode: 44`, the phone handler must have been loaded with [GB](https://en.wikipedia.org/wiki/Telephone_numbers_in_the_United_Kingdom) metadata for proper results.)
+
+The `phoneObj` object can be created by calling [`parsePhoneNumber`](#parsephonenumber) on a phone number string.
 
 ## APIs
 
@@ -175,38 +209,6 @@ phoneHandler.getCountryCodeForRegion('XX');
 // > Error: Metadata not loaded for region: XX
 ```
 
-#### Note about `phoneObj`
-
-Some of the phone number functions require a `phoneObj` object as input. This is an object with the following properties:
-
-##### countryCode
-
-Required. A *number* or *string* of digits representing a country phone code, e.g., `'1'`.
-
-##### nationalNumber
-
-Required. A *number* or *string* of digits representing a phone number, as defined by E.164 e.g., `'4085551212'`.
-
-Note that this excludes the leading national prefix (or "trunk code"), which is 0 or 1 in most territories.
-
-##### extension
-
-Optional. A string representing the phone number extension, e.g., `'123'`.
-
-##### Example:
-
-```javascript
-{
-  countryCode : '1',
-  nationalNumber : '5105261234',
-  extension : '999'
-}
-```
-
-Note that `nationalNumber` must be valid and proper (i.e., should only contain digits), otherwise exceptions will be thrown. In addition, for proper formatting and validation results, `countryCode` must be the calling code of a country for which the phone handler was initialized.
-
-The `phoneObj` object can be created by calling [`parsePhoneNumber`](#parsephonenumber) on a phone number string.
-
 #### getSupportedRegions
 
 ##### `phoneHandler.getSupportedRegions()`
@@ -252,22 +254,21 @@ phoneHandler.getCountryCodeForRegion('RU');
 
 ##### `phoneHandler.formatPhoneNumber(phoneObj, options)`
 
-Given a `phoneObj` object (with string properties `countryCode` and `nationalNumber`), and `options` object (with string property `style`: 'national', 'international', 'E164' or 'RFC3699'), return a formatted phone number as a string.
+Given a [`phoneObj` object](#canonical-phone-object) and `options` object, return a formatted phone number as a string.
 
-The phone object is defined as follows:
+The `options` object has a single string property to indicate the formatting style desired:
 
-```
+```javascript
 {
-  countryCode : {string or number} country calling code (e.g. '1'); DIGITS ONLY [required]
-  nationalNumber : {string or number} phone number, (e.g. '4085551212'); DIGITS ONLY [required]
-  extension : {string} phone extension (e.g. '123') [optional]
+    style: 'national' // or 'international', 'e164', 'rfc3966'
 }
 ```
 
-##### Example
+##### Examples
 
 ```javascript
 var phone = { countryCode: '1', nationalNumber: '5101234567' };
+
 var options = { style: 'international' };
 phoneHandler.formatPhoneNumber(phone, options);
 // > '+1 510-123-4567'
@@ -275,13 +276,21 @@ phoneHandler.formatPhoneNumber(phone, options);
 options.style = 'national';
 phoneHandler.formatPhoneNumber(phone, options);
 // > '(510) 123-4567'
+
+options.style = 'e164';
+phoneHandler.formatPhoneNumber(phone, options);
+// > '+15101234567'
+
+options.style = 'rfc3966';
+phoneHandler.formatPhoneNumber(phone, options)
+// > 'tel:+1-510-123-4567'
 ```
 
 #### validatePhoneNumber
 
 ##### `phoneHandler.validatePhoneNumber(phoneObj, regionCode)`
 
-Given a `phoneObj` object (defined above) and `regionCode` string, return an Error object indicating any problems with the phone object (or `true` if it passed validation).
+Given a [`phoneObj` object](#canonical-phone-object) and `regionCode` string, return an Error object indicating any problems with the phone object (or `true` if it passed validation).
 
 The possible error messages are:
 
@@ -308,7 +317,7 @@ phoneHandler.validatePhoneNumber(phone, 'US');
 
 ##### `phoneHandler.parsePhoneNumber(phoneNumberToParse, regionCode)`
 
-Given string parameters `phoneNumberToParse` and `regionCode`, return a `phoneObj` object or an Error object if the number is invalid.
+Given string parameters `phoneNumberToParse` and `regionCode`, return a [`phoneObj` object](#canonical-phone-object) or an Error object if the number is invalid.
 
 The possible error messages are:
 
@@ -332,7 +341,22 @@ phoneHandler.parsePhoneNumber('ABC', 'US');
 
 ##### `phoneHandler.getExampleNumberForType(type, regionCode)`
 
-Given the string parameters [`type`](https://github.com/googlei18n/libphonenumber/blob/b58ef8b8a607074845534cb2ebe19b208521747f/javascript/i18n/phonenumbers/phonenumberutil.js#L907-L941) ('FIXED_LINE', 'MOBILE', 'FIXED_LINE_OR_MOBILE', 'TOLL_FREE', 'PREMIUM_RATE', 'SHARED_COST', 'VOIP', 'PERSONAL_NUMBER', 'PAGER', 'UAN', 'VOICEMAIL', or 'UNKNOWN') and `regionCode`, return a `phoneObj` object with an example number for that type.
+Given the string parameters `type` and `regionCode`, return a [`phoneObj` object](#canonical-phone-object) representing an example number for the given type.
+
+The `type` parameter is an enum based on libphonenumber [i18n.phonenumbers.PhoneNumberType](https://github.com/googlei18n/libphonenumber/blob/b58ef8b8a607074845534cb2ebe19b208521747f/javascript/i18n/phonenumbers/phonenumberutil.js#L907-L941) and can be any of the following strings:
+
+* `'FIXED_LINE'`
+* `'MOBILE'`
+* `'FIXED_LINE_OR_MOBILE'`
+* `'TOLL_FREE'`
+* `'PREMIUM_RATE'`
+* `'SHARED_COST'`
+* `'VOIP'`
+* `'PERSONAL_NUMBER'`
+* `'PAGER'`
+* `'UAN'`
+* `'VOICEMAIL'`
+* `'UNKNOWN'`
 
 ##### Example
 
@@ -345,7 +369,7 @@ phoneHandler.getExampleNumberForType('MOBILE', 'US');
 
 ##### `phoneHandler.getAsYouTypeFormatter(regionCode)`
 
-Returns a new AsYouTypeFormatter object instantiated for the given region.
+Return a new AsYouTypeFormatter object instantiated for the given `regionCode`.
 
 ##### Example
 
@@ -356,7 +380,7 @@ var formatter = phoneHandler.getAsYouTypeFormatter('GB');
 
 #### AsYouTypeFormatter methods
 
-The AsYouTypeFormatter object itself exposes the following methods:
+The initialized AsYouTypeFormatter object itself exposes the following methods:
 
 ##### inputDigit
 
@@ -385,7 +409,7 @@ formatter.inputDigit('7'); // > '(510) 123-4567'
 
 ###### `formatter.clear()`
 
-Clears the formatter state.
+Clear the formatter state.
 
 ###### Example
 
