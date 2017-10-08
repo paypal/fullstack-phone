@@ -14,6 +14,7 @@ This project was extended from [Nathan Hammond's project](https://github.com/nat
 
 Contents
 --------
+- [Installation](#installation)
 - [Usage](#usage)
 - [Why](#why)
 - [Canonical Phone Object](#canonical-phone-object)
@@ -22,6 +23,12 @@ Contents
   - [Client](#client)
   - [Phone Handler](#phone-handler)
 - [Development](#development)
+
+## Installation
+
+```bash
+npm install fullstack-phone
+```
 
 ## Usage
 
@@ -96,7 +103,7 @@ In contrast, fullstack-phone provides a more idiomatic JavaScript phone object, 
 ```javascript
 {
   countryCode : '1',
-  nationalNumber : '5105261234',
+  nationalNumber : '5105551234',
   extension : '999'
 }
 ```
