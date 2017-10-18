@@ -26,6 +26,7 @@
     "server/"
   ],
   "scripts": {
+    "build": "./build.sh",
     "test": "mocha test/ -R dot",
     "prepush": "npm test"
   },
