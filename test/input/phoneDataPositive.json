@@ -1973,10 +1973,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "011 2 345678",
-                "international": "+94 11 2 345678",
+                "national": "0112 345 678",
+                "international": "+94 112 345 678",
                 "e164": "+94112345678",
-                "rfc3966": "tel:+94-11-2-345678"
+                "rfc3966": "tel:+94-112-345-678"
             }
         }
     ],
