@@ -2389,14 +2389,14 @@
         {
             "phoneObj": {
                 "countryCode": "60",
-                "nationalNumber": "323456789"
+                "nationalNumber": "323856789"
             },
             "validationResult": true,
             "formatted": {
-                "national": "03-2345 6789",
-                "international": "+60 3-2345 6789",
-                "e164": "+60323456789",
-                "rfc3966": "tel:+60-3-2345-6789"
+                "national": "03-2385 6789",
+                "international": "+60 3-2385 6789",
+                "e164": "+60323856789",
+                "rfc3966": "tel:+60-3-2385-6789"
             }
         }
     ],
