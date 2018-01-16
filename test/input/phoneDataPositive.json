@@ -243,14 +243,14 @@
         {
             "phoneObj": {
                 "countryCode": "387",
-                "nationalNumber": "30123456"
+                "nationalNumber": "30212345"
             },
             "validationResult": true,
             "formatted": {
-                "national": "030 123-456",
-                "international": "+387 30 123-456",
-                "e164": "+38730123456",
-                "rfc3966": "tel:+387-30-123-456"
+                "national": "030 212-345",
+                "international": "+387 30 212-345",
+                "e164": "+38730212345",
+                "rfc3966": "tel:+387-30-212-345"
             }
         }
     ],
