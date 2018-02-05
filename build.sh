@@ -7,9 +7,9 @@ fi
 # Install or update the git dependencies.
 # format is: ORGANIZATION/PROJECT/TAG
 LIBRARIES=(
-  google/closure-library/v20170626
+  google/closure-library/v20171203
   google/closure-compiler/v20161024
-  googlei18n/libphonenumber/v8.8.9
+  googlei18n/libphonenumber/v8.8.10
 )
 for LIBRARY in "${LIBRARIES[@]}"
 do
