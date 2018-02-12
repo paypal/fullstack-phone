@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.12.0
+
+* Metadata:
+  * Updated to libphonenumber v8.8.11
+  * Includes new metadata for XK with country code +383 (no longer copied from MC +377)
+
 ## 1.11.0
 
 * Metadata:

@@ -3729,15 +3729,15 @@
     "XK": [
         {
             "phoneObj": {
-                "countryCode": "377",
-                "nationalNumber": "99123456"
+                "countryCode": "383",
+                "nationalNumber": "43201234"
             },
             "validationResult": true,
             "formatted": {
-                "national": "99 12 34 56",
-                "international": "+377 99 12 34 56",
-                "e164": "+37799123456",
-                "rfc3966": "tel:+377-99-12-34-56"
+                "national": "043 201 234",
+                "international": "+383 43 201 234",
+                "e164": "+38343201234",
+                "rfc3966": "tel:+383-43-201-234"
             }
         }
     ],

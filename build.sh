@@ -9,7 +9,7 @@ fi
 LIBRARIES=(
   google/closure-library/v20171203
   google/closure-compiler/v20161024
-  googlei18n/libphonenumber/v8.8.10
+  googlei18n/libphonenumber/v8.8.11
 )
 for LIBRARY in "${LIBRARIES[@]}"
 do

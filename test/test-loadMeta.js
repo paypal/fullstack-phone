@@ -133,7 +133,7 @@ describe('Dependent region metadata loading tests', function () {
     });
 });
 
-describe('Copied region metadata loading tests (PN, XK, AN)', function () {
+describe('Copied/NEW region metadata loading tests (PN, XK, AN)', function () {
     it('Should load copied metadata for PN', function () {
 
         // PN metadata is copied from NZ
@@ -151,21 +151,15 @@ describe('Copied region metadata loading tests (PN, XK, AN)', function () {
         assert.deepEqual(metaPNtoNZ, metaNZ, 'PN metadata was not properly copied from NZ');
     });
 
-    it('Should load copied metadata for XK', function () {
+    // XK added in libphonenumber v8.8.11 (no longer copied from MC)
+    it('Should load NEW metadata for XK', function () {
 
-        // XK metadata is copied from MC
         var meta = loadMeta(['XK']);
-        assert.deepEqual(meta.regionCodes.concat().sort(), ['MC', 'XK']); // MC is also in regionCodes because it's the main country for the calling code
+        assert.deepEqual(meta.regionCodes.concat().sort(), ['XK']);
         assert.deepEqual(meta.countryCodeToRegionCodeMap, {
-            '377': ['MC', 'XK']
+            '383': ['XK']
         });
-        assert.deepEqual(Object.keys(meta.countryToMetadata).sort(), ['MC', 'XK']);
-        var metaXK = meta.countryToMetadata.XK,
-            metaMC = meta.countryToMetadata.MC,
-            metaXKtoMC = JSON.parse(
-                JSON.stringify(metaXK).replace('"XK"', '"MC"')
-            );
-        assert.deepEqual(metaXKtoMC, metaMC, 'XK metadata was not properly copied from MC');
+        assert.deepEqual(Object.keys(meta.countryToMetadata).sort(), ['XK']);
     });
 
     it('Should load copied metadata for AN', function () {

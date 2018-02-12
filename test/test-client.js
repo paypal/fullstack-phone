@@ -182,15 +182,14 @@ describe('Phone adapter functionality tests', function () {
         before(function () {
             // AN (Netherlands Antilles) is copied from BQ (Bonaire, Sint Eustatius and Saba)
             // PN (Pitcairn Island) is copied from NZ (New Zealand)
-            // XK (Kosovo) is copied from MC (Monaco)
-            var meta = loadMeta(['AN', 'PN', 'XK']);
+            var meta = loadMeta(['AN', 'PN']);
             // note that CW (Curaçao) is also loaded because it's the main country for BQ's calling code (599)
             handler = phoneClient.createPhoneHandler(meta);
         });
 
-        it('Should show AN, CW, PN, NZ, XK, and MC as supported regions', function () {
-            assert.deepEqual(handler.getSupportedRegions().sort(), ['AN', 'CW', 'MC', 'NZ', 'PN', 'XK']);
-            assert.deepEqual(handler.countryCodeToRegionCodeMap(), { '64': ['NZ', 'PN'], '377': ['MC', 'XK'], '599': ['CW', 'AN'] });
+        it('Should show AN, CW, PN, and NZ as supported regions', function () {
+            assert.deepEqual(handler.getSupportedRegions().sort(), ['AN', 'CW', 'NZ', 'PN']);
+            assert.deepEqual(handler.countryCodeToRegionCodeMap(), { '64': ['NZ', 'PN'], '599': ['CW', 'AN'] });
         });
 
         it('Should return BQ example phone number for AN', function () {
@@ -199,10 +198,6 @@ describe('Phone adapter functionality tests', function () {
 
         it('Should return NZ example phone number for PN', function () {
             assert.deepEqual(handler.getExampleNumberForType('MOBILE', 'PN'), { countryCode: '64', nationalNumber: '211234567' });
-        });
-
-        it('Should return MC example phone number for XK', function () {
-            assert.deepEqual(handler.getExampleNumberForType('MOBILE', 'XK'), { countryCode: '377', nationalNumber: '612345678' });
         });
     });
 

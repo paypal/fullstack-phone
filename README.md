@@ -3,7 +3,7 @@ fullstack-phone ☎️
 
 | Master                                   | Develop                                  | npm                                      | Libphonenumber version                   |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| [![Build Status](https://travis-ci.org/paypal/fullstack-phone.svg?branch=master)](https://travis-ci.org/paypal/fullstack-phone) | [![Build Status](https://travis-ci.org/paypal/fullstack-phone.svg?branch=develop)](https://travis-ci.org/paypal/fullstack-phone) | [![npm version](https://badge.fury.io/js/fullstack-phone.svg)](https://www.npmjs.com/package/fullstack-phone) | [v8.8.10](https://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt) |
+| [![Build Status](https://travis-ci.org/paypal/fullstack-phone.svg?branch=master)](https://travis-ci.org/paypal/fullstack-phone) | [![Build Status](https://travis-ci.org/paypal/fullstack-phone.svg?branch=develop)](https://travis-ci.org/paypal/fullstack-phone) | [![npm version](https://badge.fury.io/js/fullstack-phone.svg)](https://www.npmjs.com/package/fullstack-phone) | [v8.8.11](https://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt) |
 
 **fullstack-phone** provides formatting, validation, and parsing of phone numbers per-region. The system is optimized for use as two modules:
 
@@ -149,7 +149,6 @@ Given an array of two-letter region codes ([ISO 3166-1 alpha-2](https://en.wikip
 * `loadMeta` adds support for the following regions to Google libphonenumber:
   * PN: Pitcairn Islands (copied from New Zealand metadata)
   * AN: Netherlands Antilles (copied from Bonaire, Sint Eustatius and Saba)
-  * XK: Kosovo (copied from Monaco)
 * Some regions depend on metadata of other regions. For example, the Bahamas (BS) shares a telephone country code (1) with the United States (US). Since the US is considered the main region for country code 1, the US metadata must be included to support processing of Bahamas phone numbers. `loadMeta` takes care of this automatically.
 
 The full list of region codes supported is:

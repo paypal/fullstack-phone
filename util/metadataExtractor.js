@@ -21,8 +21,7 @@ var finalMetadata = {};
 // for unsupported region codes, "fake" the metadata by copying from supported regions
 var augmentations = {
     PN: 'NZ', // Pitcairn Islands - copy NZ metadata
-    AN: 'BQ', // Netherlands Antilles - copy Bonaire, Sint Eustatius and Saba
-    XK: 'MC' // Kosovo: copy Monaco
+    AN: 'BQ' // Netherlands Antilles - copy Bonaire, Sint Eustatius and Saba
 };
 
 function main() {
