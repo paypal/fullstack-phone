@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.14.0
+
+* Metadata:
+  * Updated to libphonenumber v8.9.2
+  * Updated to Closure library v20180204
+
 ## 1.13.0
 
 * Metadata:
