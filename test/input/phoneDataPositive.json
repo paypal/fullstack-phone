@@ -382,10 +382,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "0590 27-1234",
-                "international": "+590 590 27-1234",
+                "national": "0590 27 12 34",
+                "international": "+590 590 27 12 34",
                 "e164": "+590590271234",
-                "rfc3966": "tel:+590-590-27-1234"
+                "rfc3966": "tel:+590-590-27-12-34"
             }
         }
     ],
@@ -1347,10 +1347,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "0590 20-1234",
-                "international": "+590 590 20-1234",
+                "national": "0590 20 12 34",
+                "international": "+590 590 20 12 34",
                 "e164": "+590590201234",
-                "rfc3966": "tel:+590-590-20-1234"
+                "rfc3966": "tel:+590-590-20-12-34"
             }
         }
     ],
@@ -2138,10 +2138,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "0590 27-1234",
-                "international": "+590 590 27-1234",
+                "national": "0590 27 12 34",
+                "international": "+590 590 27 12 34",
                 "e164": "+590590271234",
-                "rfc3966": "tel:+590-590-27-1234"
+                "rfc3966": "tel:+590-590-27-12-34"
             }
         }
     ],
