@@ -15,37 +15,35 @@ $ brew install maven
 Supporting Tools
 ---
 
-Installed by `build.sh` under the `vendor/` folder:
+* [Google Closure Compiler Service](https://developers.google.com/closure/compiler/docs/api-ref)
 
-- [Google Closure Library](https://github.com/google/closure-library)
-- [Google Closure Compiler](https://github.com/google/closure-compiler)
+Locally installed by `bin/update.sh` under the `vendor/` folder:
+
 - [Google libphonenumber](https://github.com/googlei18n/libphonenumber)
 
-To update these tools, change the tags on this line in `build.sh`:
+To update libphonenumber, edit the tag in `bin/update.sh`:
 
 ```bash
-# format is: ORGANIZATION/PROJECT/TAG
-LIBRARIES=(google/closure-library/v20161024 google/closure-compiler/v20161024 googlei18n/libphonenumber/v7.7.5)
+# Edit this to update the libphonenumber version:
+LIBPHONENUMBER_VERSION=v8.9.9
 ```
 
 Usage
 -----
 
-If running for the first time (or to pull in an update to one of the supporting tools), execute:
+To install or pull in a libphonenumber update, run:
 
 ```bash
-$ ./build.sh
+$ npm run update
+# this executes bin/update.sh
 ```
 
-This clones/updates all the supporting tools (google closure library, closure compiler, and libphonenumber), compiles the closure compiler (with Maven), and runs the libphonenumber builder in this repo with Ant (based on `build.xml`).
-
-Thereafter, unless one of the tools needs to be updated, execute:
+To extract the regional metadata and compile the client code with the Google Closure Compiler Service, run:
 
 ```bash
-$ ./build_quick.sh
+$ npm run build
+# this executes bin/build.sh
 ```
-
-This runs only the Ant compilation tasks in `build.xml`.
 
 To run tests:
 
@@ -83,7 +81,11 @@ In order to make sense of the code, the distinction between `regionCode` and `co
 
 For example, `regionCodeToCountryCodeMap` maps from 'AU' to 61', while `countryCodeToRegionCodeMap` maps from '61' to 'AU', 'CC', and 'CX' (all the regions that share calling code 61).
 
-### build.sh and build.xml
+### bin/update.sh
+
+TODO
+
+### bin/build.sh
 
 TODO
 

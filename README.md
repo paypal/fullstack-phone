@@ -87,7 +87,7 @@ It's also possible to use both within the same environment. Using the server mod
 
 - Simplifying the API and pre-compiling with Closure ([grantila/awesome-phonenumber](https://github.com/grantila/awesome-phonenumber))
 - Providing individually compiled code+metadata bundles for each region ([leodido/i18n.phonenumbers.js](https://github.com/leodido/i18n.phonenumbers.js), [nathanhammond/libphonenumber](https://github.com/nathanhammond/libphonenumber))
-- Rewriting the entire library without Closure and providing the option to hot load metadata for groups of regions ([halt-hammerzeit/libphonenumber-js](https://github.com/halt-hammerzeit/libphonenumber-js))
+- Rewriting the entire library without Closure and providing the option to hot load metadata for groups of regions ([catamphetamine/libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js))
 
 This package fills a different niche by providing:
 - The official libphonenumber code (not a pure JS re-write)

@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+## DEPRECATED
+
+# Run compilation locally
+# Update & run this (from the project folder)
+# only if Closure Compiler Service cannot be used for some reason
+
 if [ ! -d "vendor" ]; then
   mkdir vendor
 fi
