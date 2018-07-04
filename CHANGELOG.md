@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.22.0
+
+* Recompiled with [Google Closure Compiler Service](https://developers.google.com/closure/compiler/docs/api-ref)
+
 ## 1.21.0
 
 * Metadata:
