@@ -8,7 +8,7 @@ fullstack-phone ☎️
 **fullstack-phone** provides formatting, validation, and parsing of phone numbers per-region. The system is optimized for use as two modules:
 
 1. a metadata server providing dynamic regional metadata
-2. a lightweight, Closure-compiled phone client (~25KB)
+2. a lightweight, Closure-compiled phone client (26KB, 9KB gzipped)
 
 This project was extended from [Nathan Hammond's project](https://github.com/nathanhammond/libphonenumber), which itself is an adaptation of [Google's libphonenumber](https://github.com/googlei18n/libphonenumber/) library.
 
@@ -87,12 +87,12 @@ It's also possible to use both within the same environment. Using the server mod
 
 - Simplifying the API and pre-compiling with Closure ([grantila/awesome-phonenumber](https://github.com/grantila/awesome-phonenumber))
 - Providing individually compiled code+metadata bundles for each region ([leodido/i18n.phonenumbers.js](https://github.com/leodido/i18n.phonenumbers.js), [nathanhammond/libphonenumber](https://github.com/nathanhammond/libphonenumber))
-- Rewriting the entire library without Closure and providing the option to hot load metadata for groups of regions ([catamphetamine/libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js))
+- Rewriting the entire library without Closure and providing the option to dynamically load metadata for groups of regions ([catamphetamine/libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js))
 
 This package fills a different niche by providing:
 - The official libphonenumber code (not a pure JS re-write)
-- A static code base (~25KB) that doesn’t change for different regions
-- Hot loadable metadata bundles for individual regions
+- A small, static code base that doesn’t change for different regions
+- Pluggable metadata bundles for individual regions
 
 ## Canonical Phone Object
 
