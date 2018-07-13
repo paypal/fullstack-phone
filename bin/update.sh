@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Edit this to update the libphonenumber version:
-LIBPHONENUMBER_VERSION=v8.9.9
+LIBPHONENUMBER_VERSION=v8.9.10
 
 # NOTE: this script assumes it's running in project folder (not inside bin/)
 

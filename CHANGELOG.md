@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.23.0
+
+* Metadata:
+  * Updated to libphonenumber v8.9.10
+
 ## 1.22.0
 
 * Recompiled with [Google Closure Compiler Service](https://developers.google.com/closure/compiler/docs/api-ref)
