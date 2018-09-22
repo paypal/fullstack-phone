@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
-# Edit this to update the libphonenumber version:
-LIBPHONENUMBER_VERSION=v8.9.13
+# Read libphonenumber version:
+
+LIBPHONENUMBER_VERSION=$1 # use command line arg if it was passed
+while [ -z "$LIBPHONENUMBER_VERSION" ]; do
+    echo -n "Libphonenumber tag (e.g., v8.9.14): "
+    read LIBPHONENUMBER_VERSION
+done
 
 # NOTE: this script assumes it's running in project folder (not inside bin/)
 

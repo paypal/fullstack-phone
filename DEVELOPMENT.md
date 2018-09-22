@@ -3,15 +3,6 @@ fullstack-phone Development
 
 ### (Work In Progress 🚧)
 
-Prerequisites
-------------
-
-Ant and Maven:
-```bash
-$ brew install ant
-$ brew install maven
-```
-
 Supporting Tools
 ---
 
@@ -21,11 +12,10 @@ Locally installed by `bin/update.sh` under the `vendor/` folder:
 
 - [Google libphonenumber](https://github.com/googlei18n/libphonenumber)
 
-To update libphonenumber, edit the tag in `bin/update.sh`:
+To update libphonenumber, run `npm update` and provide the desired libphonenumber tag:
 
 ```bash
-# Edit this to update the libphonenumber version:
-LIBPHONENUMBER_VERSION=v8.9.9
+npm run update -- v8.9.14
 ```
 
 Usage
@@ -34,7 +24,7 @@ Usage
 To install or pull in a libphonenumber update, run:
 
 ```bash
-$ npm run update
+$ npm run update -- [LIBPHONENUMBER TAG]
 # this executes bin/update.sh
 ```
 
@@ -51,6 +41,17 @@ To run tests:
 $ npm install
 $ npm test
 ```
+
+Local Compilation (Alternative)
+------------
+
+Ant and Maven:
+```bash
+$ brew install ant
+$ brew install maven
+```
+
+Edit `./bin/local/update.sh` and run to install Google Closure Library & Google Closure Compiler and compile the project.
 
 Output
 ------

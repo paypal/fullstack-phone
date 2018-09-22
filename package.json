@@ -1,6 +1,7 @@
 {
   "name": "fullstack-phone",
   "version": "1.25.0",
+  "libphonenumber": "v8.9.13",
   "description": "A dual-module phone number system with dynamic regional metadata",
   "keywords": [
     "libphonenumber",
@@ -27,6 +28,7 @@
   ],
   "scripts": {
     "update": "./bin/update.sh",
+    "upgrade": "./bin/upgrade.sh",
     "build": "./bin/build.sh",
     "test": "mocha test/ -R dot",
     "prepush": "npm test"
@@ -34,6 +36,7 @@
   "dependencies": {},
   "devDependencies": {
     "husky": "^0.13.4",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "semver": "^5.5.1"
   }
 }
