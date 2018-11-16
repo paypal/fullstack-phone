@@ -486,7 +486,7 @@ describe('Phone adapter functionality tests', function () {
             assert.equal(formatter.inputDigit('4'), '0121 234');
             assert.equal(formatter.inputDigit('5'), '0121 234 5');
             assert.equal(formatter.inputDigit('6'), '0121 234 56');
-            assert.equal(formatter.inputDigit('7'), '01212 34567');
+            assert.equal(formatter.inputDigit('7'), '0121 234 567');
             assert.equal(formatter.inputDigit('8'), '0121 234 5678');
 
             // test overrun
