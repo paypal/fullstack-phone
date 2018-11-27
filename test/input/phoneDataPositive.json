@@ -3110,7 +3110,7 @@
             "validationResult": true,
             "formatted": {
                 "national": "0549 886377",
-                "international": "+378 (0549) 886377",
+                "international": "+378 0549 886377",
                 "e164": "+3780549886377",
                 "rfc3966": "tel:+378-0549-886377"
             }
@@ -3794,10 +3794,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "021 1234567",
-                "international": "+260 21 1234567",
+                "national": "0211 234 567",
+                "international": "+260 211 234 567",
                 "e164": "+260211234567",
-                "rfc3966": "tel:+260-21-1234567"
+                "rfc3966": "tel:+260-211-234-567"
             }
         }
     ],
