@@ -3045,14 +3045,14 @@
         {
             "phoneObj": {
                 "countryCode": "386",
-                "nationalNumber": "11234567"
+                "nationalNumber": "12345678"
             },
             "validationResult": true,
             "formatted": {
-                "national": "(01) 123 45 67",
-                "international": "+386 1 123 45 67",
-                "e164": "+38611234567",
-                "rfc3966": "tel:+386-1-123-45-67"
+                "national": "(01) 234 56 78",
+                "international": "+386 1 234 56 78",
+                "e164": "+38612345678",
+                "rfc3966": "tel:+386-1-234-56-78"
             }
         }
     ],
