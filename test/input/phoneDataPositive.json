@@ -807,14 +807,14 @@
         {
             "phoneObj": {
                 "countryCode": "599",
-                "nationalNumber": "94151234"
+                "nationalNumber": "94351234"
             },
             "validationResult": true,
             "formatted": {
-                "national": "9 415 1234",
-                "international": "+599 9 415 1234",
-                "e164": "+59994151234",
-                "rfc3966": "tel:+599-9-415-1234"
+                "national": "9 435 1234",
+                "international": "+599 9 435 1234",
+                "e164": "+59994351234",
+                "rfc3966": "tel:+599-9-435-1234"
             }
         }
     ],
