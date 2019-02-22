@@ -1898,10 +1898,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "8 (712) 345 6789",
-                "international": "+7 712 345 6789",
+                "national": "8 (71234) 5 67 89",
+                "international": "+7 71234 5 67 89",
                 "e164": "+77123456789",
-                "rfc3966": "tel:+7-712-345-6789"
+                "rfc3966": "tel:+7-71234-5-67-89"
             }
         }
     ],
