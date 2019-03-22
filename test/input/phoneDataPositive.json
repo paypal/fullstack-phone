@@ -1227,10 +1227,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "0322 12 34 56",
-                "international": "+995 322 12 34 56",
+                "national": "032 212 34 56",
+                "international": "+995 32 212 34 56",
                 "e164": "+995322123456",
-                "rfc3966": "tel:+995-322-12-34-56"
+                "rfc3966": "tel:+995-32-212-34-56"
             }
         }
     ],
@@ -2550,14 +2550,14 @@
         {
             "phoneObj": {
                 "countryCode": "47",
-                "nationalNumber": "01234"
+                "nationalNumber": "40612345"
             },
             "validationResult": true,
             "formatted": {
-                "national": "01234",
-                "international": "+47 01234",
-                "e164": "+4701234",
-                "rfc3966": "tel:+47-01234"
+                "national": "406 12 345",
+                "international": "+47 406 12 345",
+                "e164": "+4740612345",
+                "rfc3966": "tel:+47-406-12-345"
             }
         }
     ],
