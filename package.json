@@ -5,7 +5,22 @@
   "description": "A dual-module phone number system with dynamic regional metadata",
   "keywords": [
     "libphonenumber",
-    "phone"
+    "phone",
+    "phonenumber",
+    "format",
+    "formatter",
+    "formatting",
+    "validate",
+    "validator",
+    "validation",
+    "parse",
+    "parser",
+    "parsing",
+    "fullstack",
+    "telephone",
+    "browser",
+    "metadata",
+    "regional"
   ],
   "repository": {
     "type": "git",
