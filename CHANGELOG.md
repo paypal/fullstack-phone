@@ -4,6 +4,8 @@
 
 * Metadata:
   * Updated to libphonenumber v8.10.9
+* Development:
+  * Add `publishConfig` for public registry
 
 ## 1.37.0
 

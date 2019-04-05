@@ -11,6 +11,9 @@
     "type": "git",
     "url": "https://github.com/paypal/fullstack-phone.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "author": "Daniel Bruhn <dwbruhn@gmail.com>",
   "license": "Apache-2.0",
   "contributors": [
