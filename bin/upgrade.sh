@@ -56,7 +56,7 @@ updateRefs () {
 set -e # abort on any error
 
 OLD_LIBP=$(cat package.json | extractJsonProp libphonenumber)
-NEW_LIBP=$(curl -s https://api.github.com/repos/googlei18n/libphonenumber/releases/latest | extractJsonProp tag_name)
+NEW_LIBP=$(curl -sL https://api.github.com/repos/googlei18n/libphonenumber/releases/latest | extractJsonProp tag_name)
 
 if [ "$OLD_LIBP" = "$NEW_LIBP" ]; then
     echo "Already up to date with libphonenumber $NEW_LIBP"
