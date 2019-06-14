@@ -1,5 +1,13 @@
 # Changelog
 
+## UNRELEASED
+
+* API:
+  * Updated `validatePhoneNumber` and `parsePhoneNumber` to make `regionCode` parameter optional
+    * `validatePhoneNumber`: If `regionCode` is omitted, the phone number is validated based on the region inferred from the phone number itself
+    * `parsePhoneNumber`: The `regionCode` can be safely omitted if the phone number string contains "+" followed by the country code (e.g., international, E.164, or RFC3966 formats)
+    * Note that the handler needs to have already been instantiated with metadata for the expected region(s)
+
 ## 1.43.0
 
 * Metadata:

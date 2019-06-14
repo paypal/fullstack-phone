@@ -294,9 +294,11 @@ phoneHandler.formatPhoneNumber(phone, options)
 
 #### validatePhoneNumber
 
-##### `phoneHandler.validatePhoneNumber(phoneObj, regionCode)`
+##### `phoneHandler.validatePhoneNumber(phoneObj, ?regionCode)`
 
-Given a [`phoneObj` object](#canonical-phone-object) and `regionCode` string, return an Error object indicating any problems with the phone object (or `true` if it passed validation).
+Given a [`phoneObj` object](#canonical-phone-object) and optional `regionCode` string, return an Error object indicating any problems with the phone object (or `true` if it passed validation).
+
+If `regionCode` is provided, the phone number is validated for the given region. If it is omitted, the phone number is validated for the region inferred from the number itself. In both cases, the handler needs to have already been instantiated with metadata for the expected region(s).
 
 The possible error messages are:
 
@@ -305,25 +307,31 @@ The possible error messages are:
 * `'PHONE_NUMBER_TOO_LONG'`
 * `'PHONE_NUMBER_TOO_SHORT'`
 * `'PHONE_NUMBER_INVALID_LENGTH'`
-  * Not too long, not too short, but not just right, either. For example, Andorra (AD) numbers are 6, 8, or 8 digits, so a 7-digit number yields this error.
+  * Not too long, not too short, but not just right, either. For example, Andorra (AD) numbers are 6, 8, or 9 digits, so a 7-digit number yields this error.
 
 ##### Example
 
 ```javascript
 var phone = { countryCode: '1', nationalNumber: '5' };
 phoneHandler.validatePhoneNumber(phone, 'US');
-// > [Error: PHN_NUMBER_TOO_SHORT]
+// > [Error: PHONE_NUMBER_TOO_SHORT]
 
 phone = { countryCode: '1', nationalNumber: '5105261234'};
 phoneHandler.validatePhoneNumber(phone, 'US');
-// true
+// > true
+
+phone = { countryCode: '1', nationalNumber: '5105261234'};
+phoneHandler.validatePhoneNumber(phone); // regionCode is optional
+// > true
 ```
 
 #### parsePhoneNumber
 
-##### `phoneHandler.parsePhoneNumber(phoneNumberToParse, regionCode)`
+##### `phoneHandler.parsePhoneNumber(phoneNumberToParse, ?regionCode)`
 
-Given string parameters `phoneNumberToParse` and `regionCode`, return a [`phoneObj` object](#canonical-phone-object) or an Error object if the number is invalid.
+Given the string parameters `phoneNumberToParse` and optional `regionCode`, parse the string and return a [`phoneObj` object](#canonical-phone-object) or an Error object if parsing failed.
+
+The optional `regionCode` parameter provides a fallback if the country code cannot be extracted from the `phoneNumberToParse` string. If the string contains `+` followed by the country code, then `regionCode` can be safely omitted. In both cases, however, the handler needs to have already been instantiated with metadata for the expected region(s).
 
 The possible error messages are:
 
@@ -340,7 +348,19 @@ phoneHandler.parsePhoneNumber('5101234567', 'US');
 // > { countryCode: '1', nationalNumber: '5101234567' }
 
 phoneHandler.parsePhoneNumber('ABC', 'US');
-// > [Error: PHN_NOT_A_NUMBER]
+// > [Error: PHONE_NOT_A_NUMBER]
+
+// regionCode is optional if string has '+' followed by country code
+phoneHandler.parsePhoneNumber('+1 510-123-4567'); // international format
+phoneHandler.parsePhoneNumber('+15101234567'); // E.164 format
+phoneHandler.parsePhoneNumber('tel:+1-510-123-4567'); // RFC 3966 format
+// > { countryCode: '1', nationalNumber: '5101234567' }
+
+// Do not omit regionCode if phoneNumberString is missing '+'
+phoneHandler.parsePhoneNumber('15101234567');
+// > [Error: PHONE_INVALID_COUNTRY_CODE]
+h.parsePhoneNumber("15101234567", "US");
+// > { countryCode: '1', nationalNumber: '5101234567' }
 ```
 
 #### getExampleNumberForType
