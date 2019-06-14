@@ -38,7 +38,7 @@ var validationErrors = {
     TOO_SHORT: 'PHONE_NUMBER_TOO_SHORT',
 
     // INVALID_LENGTH: not too long, not too short, but not just right, either
-    // e.g. Andorra (AD) numbers are 6, 8, or 8 digits, so a 7-digit number yields this error:
+    // e.g. Andorra (AD) numbers are 6, 8, or 9 digits, so a 7-digit number yields this error:
     INVALID_LENGTH: 'PHONE_NUMBER_INVALID_LENGTH'
 };
 
@@ -153,14 +153,17 @@ function createPhoneHandler(metadata) {
 
         /**
          * @param {Object} phoneObj
-         * @param {string} regionCode i.e. 'US'
+         * @param {string=} regionCode (optional) e.g., 'US'
          * @return {boolean|Error} true if phone number is valid, Error with details if phone number is not valid
          * @throws {Error} if metadata has not been loaded for given region or phoneObj to proto conversion failed
          */
         'validatePhoneNumber': function validatePhoneNumber(phoneObj, regionCode) {
             // TODO: assert on phoneObj
             injectMeta(metadata);
-            assertSupportedRegion(regionCode, metadata);
+            // if regionCode is provided, verify that metadata is loaded for the region
+            if (regionCode !== undefined) {
+                assertSupportedRegion(regionCode, metadata);
+            }
 
             var phoneNumber;
             try {
@@ -169,12 +172,16 @@ function createPhoneHandler(metadata) {
                 throw new Error(exceptions.PHONE_OBJ_INVALID + e.message);
             }
 
-            // if number is valid for the region, simply return true
-            if (phoneUtil.isValidNumberForRegion(phoneNumber, regionCode)) {
+            var validPhone = (regionCode === undefined)
+                ? phoneUtil.isValidNumber(phoneNumber) // if regionCode omitted
+                : phoneUtil.isValidNumberForRegion(phoneNumber, regionCode); // if regionCode provided
+
+            // if number is valid, simply return true
+            if (validPhone) {
                 return true;
             }
 
-            // if number was not valid, attempt to get the reason
+            // if number is not valid, attempt to get the reason
             var validFlag = phoneUtil.isPossibleNumberWithReason(phoneNumber),
                 errorCode;
 
@@ -205,13 +212,15 @@ function createPhoneHandler(metadata) {
 
         /**
          * @param {string} phoneNumberToParse
-         * @param {string} regionCode ie 'US'
-         * @return {Object} phoneObj
-         *         {Error} if number is invalid
+         * @param {string=} regionCode (optional) e.g., 'US'
+         * @return {Object|Error} phoneObj or Error if number is invalid
          */
         'parsePhoneNumber': function parsePhoneNumber(phoneNumberToParse, regionCode) {
             injectMeta(metadata);
-            assertSupportedRegion(regionCode, metadata);
+            // if regionCode is provided, verify that metadata is loaded for the region
+            if (regionCode !== undefined) {
+                assertSupportedRegion(regionCode, metadata);
+            }
 
             var parsedPhoneNumber;
             try {
