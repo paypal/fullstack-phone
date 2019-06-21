@@ -16,7 +16,6 @@ echo "Compiling client code with Closure Compiler Service..."
 curl \
   --data output_format=text \
   --data output_info=compiled_code \
-  --data output_info=warnings \
   --data output_info=errors \
   --data warning_level=VERBOSE \
   --data use_closure_library=true \
