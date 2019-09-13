@@ -1512,7 +1512,7 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "(1) 234 5678",
+                "national": "(06 1) 234 5678",
                 "international": "+36 1 234 5678",
                 "e164": "+3612345678",
                 "rfc3966": "tel:+36-1-234-5678"
@@ -2378,7 +2378,7 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "01 222 123 4567",
+                "national": "222 123 4567",
                 "international": "+52 222 123 4567",
                 "e164": "+522221234567",
                 "rfc3966": "tel:+52-222-123-4567"
