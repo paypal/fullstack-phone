@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.51.0
+
+* Client: Expanded support for finding global scope (@rxaviers, #11)
+
 ## 1.50.0
 
 * Metadata:
