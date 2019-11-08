@@ -29,4 +29,10 @@ curl \
   --output client/index.js \
   https://closure-compiler.appspot.com/compile
 
+# Add support for Node.js
+grep '^var aa=this' client/index.js >/dev/null || echo "WARNING: Failed to apply Node.js support, please check bin/build.sh"
+sed -ie \
+  's/^var aa=this||self/var aa;if(void 0!==this)aa=this;else if("undefined"!=typeof global)aa=global;else{if("undefined"==typeof self)throw new Error("Can'"'"'t find global scope");aa=self}/g' \
+  client/index.js
+
 echo "Done."
