@@ -2,7 +2,7 @@
 
 ## 1.51.0
 
-* Client: Expanded support for finding global scope (@rxaviers, #11)
+* Client: Expanded support for finding global scope ([@rxaviers](https://github.com/rxaviers), [#11](https://github.com/paypal/fullstack-phone/pull/11))
 
 ## 1.50.0
 
