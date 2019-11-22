@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.52.0
+
+* Metadata:
+  * Updated to libphonenumber v8.10.23
+
 ## 1.51.0
 
 * Client: Expanded support for finding global scope ([@rxaviers](https://github.com/rxaviers), [#11](https://github.com/paypal/fullstack-phone/pull/11))
