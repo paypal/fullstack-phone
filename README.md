@@ -3,7 +3,7 @@ fullstack-phone ☎️
 
 | Master                                   | Develop                                  | npm                                      | Libphonenumber version                   |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| [![Build Status](https://travis-ci.org/paypal/fullstack-phone.svg?branch=master)](https://travis-ci.org/paypal/fullstack-phone) | [![Build Status](https://travis-ci.org/paypal/fullstack-phone.svg?branch=develop)](https://travis-ci.org/paypal/fullstack-phone) | [![npm version](https://badge.fury.io/js/fullstack-phone.svg)](https://www.npmjs.com/package/fullstack-phone) | [v8.11.3](https://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt) |
+| [![Build Status](https://travis-ci.org/paypal/fullstack-phone.svg?branch=master)](https://travis-ci.org/paypal/fullstack-phone) | [![Build Status](https://travis-ci.org/paypal/fullstack-phone.svg?branch=develop)](https://travis-ci.org/paypal/fullstack-phone) | [![npm version](https://badge.fury.io/js/fullstack-phone.svg)](https://www.npmjs.com/package/fullstack-phone) | [v8.11.4](https://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt) |
 
 **fullstack-phone** provides formatting, validation, and parsing of phone numbers per-region. The system is optimized for use as two modules:
 
