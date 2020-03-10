@@ -3465,10 +3465,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "20123",
-                "international": "+688 20123",
+                "national": "20 123",
+                "international": "+688 20 123",
                 "e164": "+68820123",
-                "rfc3966": "tel:+688-20123"
+                "rfc3966": "tel:+688-20-123"
             }
         }
     ],
