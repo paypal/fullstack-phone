@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.61.0
+
+* Metadata:
+  * Updated to libphonenumber v8.12.3
+
 ## 1.60.0
 
 * Metadata:
