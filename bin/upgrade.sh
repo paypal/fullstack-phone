@@ -44,11 +44,16 @@ updateRefs () {
     # update changelog (pass version numbers to awk as variables)
     awk -v fsp="$NEW_FSP" -v libp="$NEW_LIBP" '/Changelog/{print $0 RS "" RS "## " fsp RS "" RS "* Metadata:" RS "  * Updated to libphonenumber " libp ;next}1' CHANGELOG.md > tmp && mv tmp CHANGELOG.md
 
-    # update libphonenumber version in package.json
-    sed -i '' 's/"libphonenumber": ".*"/"libphonenumber": "'$NEW_LIBP'"/' package.json
-
-    # update README
-    sed -i '' 's/\['$OLD_LIBP'\]/\['$NEW_LIBP'\]/' README.md
+    # update libphonenumber version in package.json and README
+    # note that OSX and GNU sed have different syntax for -i
+    # https://stackoverflow.com/questions/43171648/sed-gives-sed-cant-read-no-such-file-or-directory/57766728#57766728
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        sed -i '' 's/"libphonenumber": ".*"/"libphonenumber": "'$NEW_LIBP'"/' package.json
+        sed -i '' 's/\['$OLD_LIBP'\]/\['$NEW_LIBP'\]/' README.md
+    else
+        sed -i 's/"libphonenumber": ".*"/"libphonenumber": "'$NEW_LIBP'"/' package.json
+        sed -i 's/\['$OLD_LIBP'\]/\['$NEW_LIBP'\]/' README.md
+    fi
 }
 
 # MAIN EXECUTION
@@ -79,7 +84,7 @@ npm run build
 npm test --silent
 updateRefs $OLD_LIBP $NEW_LIBP $OLD_FSP $NEW_FSP
 git add -u
-git commit -m "Update to libphonenumber $NEW_LIBP"
+git commit -m "chore(update): libphonenumber $NEW_LIBP"
 
 echo
 echo "============================"

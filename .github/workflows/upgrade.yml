@@ -1,4 +1,4 @@
-name: Upgrade and publish new version
+name: Upgrade & Publish
 
 on: [workflow_dispatch]
 
@@ -9,13 +9,30 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Node
+    - name: Set up Node
       uses: actions/setup-node@v1
       with:
         node-version: '12'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '2.x'
     - name: Install
-      run: npm ci
+      run: npm i
+    - name: Config
+      run: |
+        git config --local user.email "dwbruhn@users.noreply.github.com"
+        git config --local user.name "Daniel Bruhn"
     - name: Upgrade
       run: npm run upgrade
+    - name: Version
+      run: npm version minor
     - name: Push
-      run: git push origin workflow
+      run: |
+        git push origin master
+        git push origin --tags
+    - name: NPM Publish
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        check-version: true
