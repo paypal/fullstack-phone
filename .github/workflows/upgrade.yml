@@ -1,0 +1,21 @@
+name: Upgrade and publish new version
+
+on: [workflow_dispatch]
+
+jobs:
+  upgrade:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - name: Install
+      run: npm ci
+    - name: Upgrade
+      run: npm run upgrade
+    - name: Push
+      run: git push origin workflow
