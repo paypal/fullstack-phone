@@ -13,7 +13,7 @@ util/metadataExtractor.js vendor/libphonenumber/javascript/i18n/phonenumbers/met
 # Send source to Closure Compiler Service API for compilation
 # cf. https://developers.google.com/closure/compiler/docs/api-ref
 echo "Compiling client code with Closure Compiler Service..."
-curl \
+curl -v \
   --data output_format=text \
   --data output_info=compiled_code \
   --data output_info=errors \
