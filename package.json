@@ -1,7 +1,7 @@
 {
   "name": "fullstack-phone",
   "version": "1.71.0",
-  "libphonenumber": "v8.12.13",
+  "libphonenumber": "v8.12.14",
   "description": "A dual-module phone number system with dynamic regional metadata",
   "keywords": [
     "libphonenumber",
