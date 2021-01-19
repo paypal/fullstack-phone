@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.75.0
+
+* Metadata:
+  * Updated to libphonenumber v8.12.16
+
 ## 1.74.0
 
 * Switched build from Google Closure Compiler Service to [google-closure-compiler npm package](https://www.npmjs.com/package/google-closure-compiler)
