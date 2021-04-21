@@ -3700,14 +3700,14 @@
         {
             "phoneObj": {
                 "countryCode": "681",
-                "nationalNumber": "501234"
+                "nationalNumber": "821234"
             },
             "validationResult": true,
             "formatted": {
-                "national": "50 12 34",
-                "international": "+681 50 12 34",
-                "e164": "+681501234",
-                "rfc3966": "tel:+681-50-12-34"
+                "national": "82 12 34",
+                "international": "+681 82 12 34",
+                "e164": "+681821234",
+                "rfc3966": "tel:+681-82-12-34"
             }
         }
     ],
