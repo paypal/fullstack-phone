@@ -672,6 +672,19 @@
         {
             "phoneObj": {
                 "countryCode": "225",
+                "nationalNumber": "2721234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "27 21 2 34567",
+                "international": "+225 27 21 2 34567",
+                "e164": "+2252721234567",
+                "rfc3966": "tel:+225-27-21-2-34567"
+            }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "225",
                 "nationalNumber": "01234567"
             },
             "validationResult": true,
