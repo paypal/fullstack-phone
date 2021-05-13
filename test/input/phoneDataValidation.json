@@ -47,6 +47,22 @@
             "validationErrorMessage": "PHONE_NUMBER_TOO_LONG"
         }
     ],
+    "CI": [
+        {
+            "phoneObj": {
+                "countryCode": "225",
+                "nationalNumber": "21234567"
+            },
+            "validationErrorMessage": "PHONE_NUMBER_TOO_SHORT"
+        },
+        {
+            "phoneObj": {
+                "countryCode": "225",
+                "nationalNumber": "01234567"
+            },
+            "validationErrorMessage": "PHONE_NUMBER_TOO_SHORT"
+        }
+    ],
     "US": [
         {
             "phoneObj": {
