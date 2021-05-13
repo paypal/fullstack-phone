@@ -659,40 +659,27 @@
         {
             "phoneObj": {
                 "countryCode": "225",
-                "nationalNumber": "21234567"
+                "nationalNumber": "2123456789"
             },
             "validationResult": true,
             "formatted": {
-                "national": "21 23 45 67",
-                "international": "+225 21 23 45 67",
-                "e164": "+22521234567",
-                "rfc3966": "tel:+225-21-23-45-67"
+                "national": "21 23 4 56789",
+                "international": "+225 21 23 4 56789",
+                "e164": "+2252123456789",
+                "rfc3966": "tel:+225-21-23-4-56789"
             }
         },
         {
             "phoneObj": {
                 "countryCode": "225",
-                "nationalNumber": "2721234567"
+                "nationalNumber": "0123456789"
             },
             "validationResult": true,
             "formatted": {
-                "national": "27 21 2 34567",
-                "international": "+225 27 21 2 34567",
-                "e164": "+2252721234567",
-                "rfc3966": "tel:+225-27-21-2-34567"
-            }
-        },
-        {
-            "phoneObj": {
-                "countryCode": "225",
-                "nationalNumber": "01234567"
-            },
-            "validationResult": true,
-            "formatted": {
-                "national": "01 23 45 67",
-                "international": "+225 01 23 45 67",
-                "e164": "+22501234567",
-                "rfc3966": "tel:+225-01-23-45-67"
+                "national": "01 23 45 6789",
+                "international": "+225 01 23 45 6789",
+                "e164": "+2250123456789",
+                "rfc3966": "tel:+225-01-23-45-6789"
             }
         }
     ],
