@@ -65,7 +65,7 @@ NEW_LIBP=$(curl -sL https://api.github.com/repos/googlei18n/libphonenumber/relea
 
 if [ "$OLD_LIBP" = "$NEW_LIBP" ]; then
     echo "Already up to date with libphonenumber $NEW_LIBP"
-    exit
+    exit 1
 fi
 
 OLD_FSP=$(getCurrentFSPVersion)
