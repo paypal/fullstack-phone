@@ -2700,14 +2700,27 @@
         {
             "phoneObj": {
                 "countryCode": "63",
-                "nationalNumber": "21234567"
+                "nationalNumber": "232345678"
             },
             "validationResult": true,
             "formatted": {
-                "national": "(02) 123 4567",
-                "international": "+63 2 123 4567",
-                "e164": "+6321234567",
-                "rfc3966": "tel:+63-2-123-4567"
+                "national": "(02) 3234 5678",
+                "international": "+63 2 3234 5678",
+                "e164": "+63232345678",
+                "rfc3966": "tel:+63-2-3234-5678"
+            }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "63",
+                "nationalNumber": "9051234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "0905 123 4567",
+                "international": "+63 905 123 4567",
+                "e164": "+639051234567",
+                "rfc3966": "tel:+63-905-123-4567"
             }
         }
     ],
