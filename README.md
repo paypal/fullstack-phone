@@ -8,7 +8,7 @@ fullstack-phone ☎️
 **fullstack-phone** provides formatting, validation, and parsing of phone numbers per-region. The system is optimized for use as two modules:
 
 1. a metadata server providing dynamic regional metadata
-2. a lightweight, Closure-compiled phone client (26KB, 9KB gzipped)
+2. a lightweight, Closure-compiled phone client (27KB, 9KB gzipped)
 
 This project was extended from [Nathan Hammond's project](https://github.com/nathanhammond/libphonenumber), which itself is an adaptation of [Google's libphonenumber](https://github.com/googlei18n/libphonenumber/) library.
 
@@ -199,9 +199,13 @@ The phone handler returned by `createPhoneHandler` provides the following method
 - [validatePhoneNumber](#validatephonenumber)
 - [parsePhoneNumber](#parsephonenumber)
 - [getExampleNumberForType](#getexamplenumberfortype)
+- [inferPhoneNumberRegion](#inferphonenumberregion)
+- [inferPhoneNumberType](#inferphonenumbertype)
 - [getAsYouTypeFormatter](#getasyoutypeformatter)
   - [inputDigit](#inputdigit)
   - [clear](#clear)
+  - [inputDigitAndRememberPosition](#inputdigitandrememberposition)
+  - [getRememberedPosition](#getrememberedposition)
 
 #### Exceptions
 
@@ -391,6 +395,18 @@ phoneHandler.getExampleNumberForType('MOBILE', 'US');
 // > { countryCode: '1', nationalNumber: '2015550123' }
 ```
 
+#### inferPhoneNumberRegion
+
+##### `phoneHandler.inferPhoneNumberRegion(phoneObj)`
+
+TODO
+
+#### inferPhoneNumberType
+
+##### `phoneHandler.inferPhoneNumberType(phoneObj)`
+
+TODO
+
 #### getAsYouTypeFormatter
 
 ##### `phoneHandler.getAsYouTypeFormatter(regionCode)`
@@ -453,6 +469,18 @@ formatter.inputDigit('4'); // > '919-4'
 formatter.inputDigit('8'); // > '919-48'
 ...
 ```
+
+##### inputDigitAndRememberPosition
+
+###### `formatter.inputDigitAndRememberPosition(digit)`
+
+TODO
+
+##### getRememberedPosition
+
+###### `formatter.getRememberedPosition(digit)`
+
+TODO
 
 Development
 ------------

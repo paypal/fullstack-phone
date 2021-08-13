@@ -66,6 +66,14 @@ var numberTypeMap = {
     'VOICEMAIL': PNType.VOICEMAIL
 };
 
+// create reverse map of PhoneNumberType codes to strings
+// e.g., PNType.FIXED_LINE --> "FIXED_LINE"
+// for use in inferPhoneNumberType
+var reverseNumberTypeMap = Object.keys(numberTypeMap).reduce(function (acc, cur) {
+    acc[numberTypeMap[cur]] = cur;
+    return acc;
+}, {});
+
 // returned from parsePhoneNumber (coded to a particular phone module message)
 var parseErrors = {};
 parseErrors[PNError.INVALID_COUNTRY_CODE] = 'PHONE_INVALID_COUNTRY_CODE';
@@ -124,6 +132,40 @@ function createPhoneHandler(metadata) {
         /**
          *  PHONE ADAPTER FUNCTIONS
          */
+
+        /**
+         * @param {Object} phoneObj
+         * @return {string} phone number type as a string (see numberTypeMap)
+         * @throws {Error} if phoneObj is invalid
+         */
+        'inferPhoneNumberType': function inferPhoneNumberType(phoneObj) {
+            injectMeta(metadata);
+            var phoneNumber;
+            try {
+                phoneNumber = phoneObjToProto(phoneObj); // convert phoneObj to protocol buffer format
+            } catch (e) {
+                throw new Error(exceptions.PHONE_OBJ_INVALID + e.message);
+            }
+
+            return reverseNumberTypeMap[phoneUtil.getNumberType(phoneNumber)] || 'UNKNOWN';
+        },
+
+        /**
+         * @param {Object} phoneObj
+         * @return {string|null} phone number region (e.g., "GB") or null if the region cannot be determined
+         * @throws {Error} if phoneObj is invalid
+         */
+        'inferPhoneNumberRegion': function inferPhoneNumberRegion(phoneObj) {
+            injectMeta(metadata);
+            var phoneNumber;
+            try {
+                phoneNumber = phoneObjToProto(phoneObj); // convert phoneObj to protocol buffer format
+            } catch (e) {
+                throw new Error(exceptions.PHONE_OBJ_INVALID + e.message);
+            }
+
+            return phoneUtil.getRegionCodeForNumber(phoneNumber); // will return null if region cannot be determined
+        },
 
         /**
          * @param {Object} phoneObj
@@ -270,6 +312,12 @@ function createPhoneHandler(metadata) {
                 },
                 'clear': function clear() {
                     return formatter.clear();
+                },
+                'inputDigitAndRememberPosition': function inputDigitAndRememberPosition(x) {
+                    return formatter.inputDigitAndRememberPosition(x);
+                },
+                'getRememberedPosition': function getRememberedPosition() {
+                    return formatter.getRememberedPosition();
                 }
             };
         }

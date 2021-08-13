@@ -343,32 +343,92 @@ describe('Phone adapter functionality tests', function () {
             });
         });
 
-        it('Should format US number using AsYouTypeFormatter', function () {
-            var formatter = handler.getAsYouTypeFormatter('US');
-
-            assert.equal(formatter.inputDigit('9'), '9');
-            assert.equal(formatter.inputDigit('1'), '91');
-            assert.equal(formatter.inputDigit('9'), '919');
-            assert.equal(formatter.inputDigit('2'), '919-2');
-            assert.equal(formatter.inputDigit('8'), '919-28');
-            assert.equal(formatter.inputDigit('2'), '919-282');
-            assert.equal(formatter.inputDigit('3'), '919-2823');
-            assert.equal(formatter.inputDigit('4'), '(919) 282-34');
-            assert.equal(formatter.inputDigit('5'), '(919) 282-345');
-            assert.equal(formatter.inputDigit('6'), '(919) 282-3456');
-
-            // test overrun
-            assert.equal(formatter.inputDigit('7'), '91928234567');
-
-            // test that clear works
-            formatter.clear();
-            assert.equal(formatter.inputDigit('9'), '9');
-        });
-
         it('Should throw errors if metadata not loaded for requested region', function () {
             assert.throws(() => handler.getAsYouTypeFormatter('TR'), /Metadata not loaded/);
             assert.throws(() => handler.getCountryCodeForRegion('TR'), /Metadata not loaded/);
             assert.throws(() => handler.validatePhoneNumber({}, 'TR'), /Metadata not loaded/);
+        });
+
+        it('Should infer US region from phone numbers', function () {
+            var numbers = [
+                {
+                    countryCode: "1",
+                    nationalNumber: "2012735041"
+                },
+                {
+                    countryCode: "1",
+                    nationalNumber: "2015550123"
+                }
+            ];
+
+            numbers.forEach(function (num) {
+                var response = handler.inferPhoneNumberRegion(num);
+                assert.equal(response, "US");
+            });
+        });
+
+        it('Should infer null region if metadata not loaded or phone is invalid', function () {
+            var numbers = [
+                {
+                    // GB phone
+                    countryCode: "44",
+                    nationalNumber: "1212345678"
+                },
+                {
+                    // invalid phone
+                    countryCode: "999999",
+                    nationalNumber: "999999"
+                }
+            ];
+
+            numbers.forEach(function (num) {
+                var response = handler.inferPhoneNumberRegion(num);
+                assert.equal(response, null);
+            });
+        });
+
+        it('Should infer type of US phone numbers', function () {
+            var numbers = [
+                {
+                    phoneObj: {
+                        countryCode: "1",
+                        nationalNumber: "2015550123"
+                    },
+                    type: "FIXED_LINE_OR_MOBILE"
+                },
+                {
+                    phoneObj: {
+                        countryCode: "1",
+                        nationalNumber: "2015550123"
+                    },
+                    type: "FIXED_LINE_OR_MOBILE"
+                }
+            ];
+
+            numbers.forEach(function (num) {
+                var response = handler.inferPhoneNumberType(num.phoneObj);
+                assert.equal(response, num.type);
+            });
+        });
+
+        it('Should infer UNKNOWN type if metadata not loaded or phone is invalid', function () {
+            var numbers = [
+                {
+                    // GB phone
+                    countryCode: "44",
+                    nationalNumber: "1212345678"
+                },
+                {
+                    // invalid phone
+                    countryCode: "999999",
+                    nationalNumber: "999999"
+                }
+            ];
+
+            numbers.forEach(function (num) {
+                var response = handler.inferPhoneNumberType(num);
+                assert.equal(response, "UNKNOWN");
+            });
         });
     });
 
@@ -473,30 +533,6 @@ describe('Phone adapter functionality tests', function () {
             });
         });
 
-        it('Should format GB number using AsYouTypeFormatter', function () {
-            var formatter = handler.getAsYouTypeFormatter('GB');
-            formatter.clear();
-
-            assert.equal(formatter.inputDigit('0'), '0');
-            assert.equal(formatter.inputDigit('1'), '01');
-            assert.equal(formatter.inputDigit('2'), '012');
-            assert.equal(formatter.inputDigit('1'), '0121');
-            assert.equal(formatter.inputDigit('2'), '0121 2');
-            assert.equal(formatter.inputDigit('3'), '0121 23');
-            assert.equal(formatter.inputDigit('4'), '0121 234');
-            assert.equal(formatter.inputDigit('5'), '0121 234 5');
-            assert.equal(formatter.inputDigit('6'), '0121 234 56');
-            assert.equal(formatter.inputDigit('7'), '0121 234 567');
-            assert.equal(formatter.inputDigit('8'), '0121 234 5678');
-
-            // test overrun
-            assert.equal(formatter.inputDigit('9'), '012123456789');
-
-            // test that clear works
-            formatter.clear();
-            assert.equal(formatter.inputDigit('0'), '0');
-        });
-
         it('Should not validate invalid GB phone numbers', function () {
             // TODO add more
             var badNumbers = [
@@ -526,6 +562,48 @@ describe('Phone adapter functionality tests', function () {
                 var response = handler.validatePhoneNumber(phone.numberObj, 'GB');
                 assert.ok(response instanceof Error);
                 assert.equal(response.message, phone.errorMessage);
+            });
+        });
+
+        it('Should infer GB region from phone numbers', function () {
+            var numbers = [
+                {
+                    countryCode: "44",
+                    nationalNumber: "1212345678"
+                },
+                {
+                    countryCode: "44",
+                    nationalNumber: "7400123456"
+                }
+            ];
+
+            numbers.forEach(function (num) {
+                var response = handler.inferPhoneNumberRegion(num);
+                assert.equal(response, "GB");
+            });
+        });
+
+        it('Should infer type of GB phone numbers', function () {
+            var numbers = [
+                {
+                    phoneObj: {
+                        countryCode: "44",
+                        nationalNumber: "1212345678"
+                    },
+                    type: "FIXED_LINE"
+                },
+                {
+                    phoneObj: {
+                        countryCode: "44",
+                        nationalNumber: "7400123456"
+                    },
+                    type: "MOBILE"
+                }
+            ];
+
+            numbers.forEach(function (num) {
+                var response = handler.inferPhoneNumberType(num.phoneObj);
+                assert.equal(response, num.type);
             });
         });
     });
