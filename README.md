@@ -3,7 +3,7 @@ fullstack-phone ☎️
 
 | npm                                                          | Libphonenumber version                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [![npm version](https://badge.fury.io/js/fullstack-phone.svg)](https://www.npmjs.com/package/fullstack-phone) | [v8.12.28](https://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt) |
+| [![npm version](https://badge.fury.io/js/fullstack-phone.svg)](https://www.npmjs.com/package/fullstack-phone) | [v8.12.30](https://github.com/googlei18n/libphonenumber/blob/master/release_notes.txt) |
 
 **fullstack-phone** provides formatting, validation, and parsing of phone numbers per-region. The system is optimized for use as two modules:
 
