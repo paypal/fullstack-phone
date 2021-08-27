@@ -71,12 +71,12 @@ describe('Optional regionCode tests (unit)', function () {
             // valid GB number, but passing regionCode as US
             var result = handler.validatePhoneNumber({ countryCode: '44', nationalNumber: '1212345678' }, 'US');
             assert(result instanceof Error);
-            assert.equal(result.message, 'PHONE_INVALID_FOR_REGION')
+            assert.equal(result.message, 'PHONE_INVALID_COUNTRY_CODE')
 
             // valid US number, but passing regionCode as GB
             result = handler.validatePhoneNumber({ countryCode: '1', nationalNumber: '5105261234' }, 'GB');
             assert(result instanceof Error);
-            assert.equal(result.message, 'PHONE_INVALID_FOR_REGION')
+            assert.equal(result.message, 'PHONE_INVALID_COUNTRY_CODE')
         });
 
         it('Should return PHONE_INVALID_COUNTRY_CODE if phone is valid and regionCode is omitted but metadata is not loaded for the country code', function () {
@@ -86,6 +86,15 @@ describe('Optional regionCode tests (unit)', function () {
             var result = handler.validatePhoneNumber({ countryCode: '44', nationalNumber: '1212345678' });
             assert(result instanceof Error);
             assert.equal(result.message, 'PHONE_INVALID_COUNTRY_CODE')
+        });
+
+        it('Should return PHONE_INVALID_FOR_REGION if regionCode is omitted but phone is known to be invalid based on metadata already loaded', function () {
+            var meta = loadMeta(['US']);
+            var handler = phoneClient.createPhoneHandler(meta);
+
+            var result = handler.validatePhoneNumber({ countryCode: '1', nationalNumber: '5555555555' });
+            assert(result instanceof Error);
+            assert.equal(result.message, 'PHONE_INVALID_FOR_REGION')
         });
     });
 });

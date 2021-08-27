@@ -85,7 +85,7 @@ describe('Test libphonenumberUtil exceptions', function () {
             'string',
             new Date(),
             [],
-            new function () {} // not a plain object
+            function () { } // not a plain object
         ];
 
         badCountryCodeToRegionCodeMaps.forEach(x => {
@@ -111,7 +111,7 @@ describe('Test libphonenumberUtil exceptions', function () {
             'string',
             new Date(),
             [],
-            new function () {} // not a plain object
+            function () { } // not a plain object
         ];
 
         badCountryToMetadatas.forEach(x => {
@@ -160,16 +160,41 @@ describe('Test libphonenumberUtil exceptions', function () {
         });
     });
 
-    it('Should throw error for phoneObj that fails conversion to proto format', function () {
+    it('Should throw error for invalid phoneObj', function () {
 
         var meta = loadMeta(['US']);
         var handler = phoneClient.createPhoneHandler(meta);
 
-        var badPhoneObjects = [null, undefined];
+        var badPhoneObjects = [
+            null,
+            undefined,
+            1,
+            'a',
+            new Function(),
+            [],
+            {},
+            true,
+            {
+                countryCode: true
+            },
+            {
+                countryCode: 1,
+                nationalNumber: true
+            },
+            {
+                countryCode: 1,
+                nationalNumber: 2,
+                extension: [] // extension is optional but it should be a number or string
+            }
+        ];
 
         badPhoneObjects.forEach(function (phoneObj) {
-            assert.throws(() => handler.formatPhoneNumber(phoneObj, { style: 'national' }), /Phone object conversion failed/);
-            assert.throws(() => handler.validatePhoneNumber(phoneObj, 'US'), /Phone object conversion failed/);
+            const regex = /Phone object conversion failed/;
+            assert.throws(() => handler.formatPhoneNumber(phoneObj, { style: 'national' }), regex);
+            assert.throws(() => handler.validatePhoneNumber(phoneObj, 'US'), regex);
+            assert.throws(() => handler.validateLength(phoneObj, 'US'), regex);
+            assert.throws(() => handler.inferPhoneNumberRegion(phoneObj, 'US'), regex);
+            assert.throws(() => handler.inferPhoneNumberType(phoneObj, 'US'), regex);
         });
 
     });
@@ -344,9 +369,10 @@ describe('Phone adapter functionality tests', function () {
         });
 
         it('Should throw errors if metadata not loaded for requested region', function () {
-            assert.throws(() => handler.getAsYouTypeFormatter('TR'), /Metadata not loaded/);
-            assert.throws(() => handler.getCountryCodeForRegion('TR'), /Metadata not loaded/);
-            assert.throws(() => handler.validatePhoneNumber({}, 'TR'), /Metadata not loaded/);
+            const regex = /Metadata not loaded/;
+            assert.throws(() => handler.getAsYouTypeFormatter('TR'), regex);
+            assert.throws(() => handler.getCountryCodeForRegion('TR'), regex);
+            assert.throws(() => handler.validatePhoneNumber({ countryCode: 1, nationalNumber: 2 }, 'TR'), regex);
         });
 
         it('Should infer US region from phone numbers', function () {

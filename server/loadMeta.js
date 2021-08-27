@@ -53,6 +53,7 @@ module.exports = function loadMeta(regionCodeArray) {
         // loop over country calling codes associated with this region code to get main region
         countryCodes.forEach(function (countryCode) {
             // main country is first in countryCodeToRegionCodeMap array for this country calling code
+            // see https://github.com/google/libphonenumber/blob/cb815e4d6038307adfb018581cb17a444c73d090/javascript/i18n/phonenumbers/metadata.js#L26-L30
             var mainCountryforCode = dependencyMap.countryCodeToRegionCodeMap[countryCode][0];
 
             // add the dependent region code to allRegionCodes (will dedupe array later)
