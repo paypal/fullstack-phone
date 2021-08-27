@@ -68,7 +68,7 @@ The generated files are placed in the `server/metadata/` and `client/`folders.
 
 ### client/index.js
 
-This is the Closure-compiled result of processing the files in `src/` with their Closure depenencies.
+This is the Closure-compiled result of processing the files in `src/` with their Closure dependencies.
 
 How It Works
 ------------
