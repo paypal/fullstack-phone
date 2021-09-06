@@ -1,6 +1,6 @@
 # Changelog
 
-## UNRELEASED
+## 1.89.0
 
 * API:
   * Updated [`validatePhoneNumber`](./README.md#validatephonenumber) and [`parsePhoneNumber`](./README.md#parsephonenumber) to make `regionCode` parameter optional
