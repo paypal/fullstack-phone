@@ -520,7 +520,9 @@ phoneHandler.inferPhoneNumberType({ countryCode: '44', nationalNumber: '999999' 
 
 Return the two letter region code associated with a valid `phoneObj`.
 
-Returns `null` if the region cannot be determined. (This can happen if metadata has not been loaded for the region associated with the `phoneObj.countryCode`.
+Returns `null` if the region cannot be determined. (This can happen if metadata has not been loaded for the region associated with the `phoneObj.countryCode`.)
+
+**Important:** This method only guarantees correct results for **valid** phone numbers. ([See the libphonenumber source code.](https://github.com/google/libphonenumber/blob/5c309c56a945ffdf74f69aa4166b1ec5d7f233ff/javascript/i18n/phonenumbers/phonenumberutil.js#L3104-L3107))
 
 ```javascript
 phoneHandler.inferPhoneNumberRegion({ countryCode: '44', nationalNumber: '1212345678' });
