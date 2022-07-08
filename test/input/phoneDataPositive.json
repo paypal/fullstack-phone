@@ -747,14 +747,27 @@
         {
             "phoneObj": {
                 "countryCode": "57",
-                "nationalNumber": "12345678"
+                "nationalNumber": "6012345678"
             },
             "validationResult": true,
             "formatted": {
-                "national": "(1) 2345678",
-                "international": "+57 1 2345678",
-                "e164": "+5712345678",
-                "rfc3966": "tel:+57-1-2345678"
+                "national": "(601) 2345678",
+                "international": "+57 601 2345678",
+                "e164": "+576012345678",
+                "rfc3966": "tel:+57-601-2345678"
+            }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "57",
+                "nationalNumber": "3211234567"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "321 1234567",
+                "international": "+57 321 1234567",
+                "e164": "+573211234567",
+                "rfc3966": "tel:+57-321-1234567"
             }
         }
     ],
@@ -2614,8 +2627,8 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "03-234 5678",
-                "international": "+64 3-234 5678",
+                "national": "03 234 5678",
+                "international": "+64 3 234 5678",
                 "e164": "+6432345678",
                 "rfc3966": "tel:+64-3-234-5678"
             }
@@ -2777,8 +2790,8 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "03-234 5678",
-                "international": "+64 3-234 5678",
+                "national": "03 234 5678",
+                "international": "+64 3 234 5678",
                 "e164": "+6432345678",
                 "rfc3966": "tel:+64-3-234-5678"
             }
