@@ -2567,10 +2567,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "406 12 345",
-                "international": "+47 406 12 345",
+                "national": "40 61 23 45",
+                "international": "+47 40 61 23 45",
                 "e164": "+4740612345",
-                "rfc3966": "tel:+47-406-12-345"
+                "rfc3966": "tel:+47-40-61-23-45"
             }
         }
     ],
