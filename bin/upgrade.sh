@@ -19,7 +19,7 @@
 
 extractJsonProp () {
     local PROPERTY=$1
-    local EXTRACT_RESULT=$(python -c "import sys, json; print json.load(sys.stdin)['$PROPERTY']")
+    local EXTRACT_RESULT=$(python -c "import sys, json; print(json.load(sys.stdin)['$PROPERTY'])")
     echo $EXTRACT_RESULT
 }
 
