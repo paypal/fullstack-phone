@@ -38,6 +38,8 @@ util/metadataExtractor.js vendor/libphonenumber/javascript/i18n/phonenumbers/met
 echo "Compiling with Google Closure Compiler..."
 npx google-closure-compiler --version
 npx google-closure-compiler \
+  --isolation_mode=IIFE \
+  --assume_function_wrapper \
   --compilation_level=ADVANCED \
   --warning_level=DEFAULT \
   --js_output_file=client/index.js \
@@ -55,6 +57,8 @@ npx google-closure-compiler \
   --js=node_modules/google-closure-library/closure/goog/dom/htmlelement.js \
   --js=node_modules/google-closure-library/closure/goog/dom/nodetype.js \
   --js=node_modules/google-closure-library/closure/goog/dom/safe.js \
+  --js=node_modules/google-closure-library/closure/goog/asserts/dom.js \
+  --js=node_modules/google-closure-library/closure/goog/dom/element.js \
   --js=node_modules/google-closure-library/closure/goog/dom/tagname.js \
   --js=node_modules/google-closure-library/closure/goog/dom/tags.js \
   --js=node_modules/google-closure-library/closure/goog/fs/blob.js \
@@ -70,6 +74,10 @@ npx google-closure-compiler \
   --js=node_modules/google-closure-library/closure/goog/html/uncheckedconversions.js \
   --js=node_modules/google-closure-library/closure/goog/i18n/bidi.js \
   --js=node_modules/google-closure-library/closure/goog/labs/useragent/browser.js \
+  --js=node_modules/google-closure-library/closure/goog/labs/useragent/useragent.js \
+  --js=node_modules/google-closure-library/closure/goog/flags/flags.js \
+  --js=node_modules/google-closure-library/closure/goog/labs/useragent/highentropy/highentropyvalue.js \
+  --js=node_modules/google-closure-library/closure/goog/labs/useragent/highentropy/highentropydata.js \
   --js=node_modules/google-closure-library/closure/goog/labs/useragent/util.js \
   --js=node_modules/google-closure-library/closure/goog/object/object.js \
   --js=node_modules/google-closure-library/closure/goog/proto2/descriptor.js \
@@ -83,5 +91,11 @@ npx google-closure-compiler \
   --js=node_modules/google-closure-library/closure/goog/string/string.js \
   --js=node_modules/google-closure-library/closure/goog/string/stringbuffer.js \
   --js=node_modules/google-closure-library/closure/goog/string/typedstring.js
+
+# Replace global this modification with module.exports
+echo "Patching client code to support CJS module.exports..."
+grep '}).call(this);$' client/index.js >/dev/null || echo "WARNING: Failed to apply CJS support. Please check bin/build.sh"
+sed -i.bk 's/}).call(this);$/}).call(module.exports);/' client/index.js
+rm client/index.js.bk
 
 echo "Done."

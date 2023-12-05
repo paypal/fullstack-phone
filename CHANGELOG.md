@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.142.0
+
+* Upgraded to Google Closure Compiler and Library 20230802.0.0
+* Client: Replaced global scope modification with proper CJS support using module.exports
+
 ## 1.141.0
 
 * Metadata:

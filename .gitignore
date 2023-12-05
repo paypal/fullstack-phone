@@ -2,3 +2,4 @@
 vendor
 test/output/
 package-lock.json
+node_modules
