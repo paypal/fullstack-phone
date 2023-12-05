@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/paypal/fullstack-phone.git"
+    "url": "git+https://github.com/paypal/fullstack-phone.git"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
