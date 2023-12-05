@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e # abort on failure
+
 # Clean files
 echo "Removing generated files..."
 rm -f client/index.js
@@ -94,7 +96,7 @@ npx google-closure-compiler \
 
 # Replace global this modification with module.exports
 echo "Patching client code to support CJS module.exports..."
-grep '}).call(this);$' client/index.js >/dev/null || echo "WARNING: Failed to apply CJS support. Please check bin/build.sh"
+grep '}).call(this);$' client/index.js >/dev/null || (echo "ERROR: Failed to apply CJS support. Please check bin/build.sh" && exit 1)
 sed -i.bk 's/}).call(this);$/}).call(module.exports);/' client/index.js
 rm client/index.js.bk
 
