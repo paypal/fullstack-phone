@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.143.0
+
+* Metadata:
+  * Updated to libphonenumber v8.13.27
+
 ## 1.142.0
 
 * Upgraded to Google Closure Compiler and Library 20230802.0.0
