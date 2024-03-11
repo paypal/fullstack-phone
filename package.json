@@ -49,9 +49,10 @@
     "update": "./bin/update.sh",
     "upgrade": "./bin/upgrade.sh",
     "build": "./bin/build.sh",
-    "test": "mocha test/ -R dot"
+    "test": "mocha test/ -R dot && node ./bin/checkES5.js"
   },
   "devDependencies": {
+    "acorn": "^8.11.3",
     "chai": "^4.3.4",
     "google-closure-compiler": "^20230802.0.0",
     "google-closure-library": "^20230802.0.0",
