@@ -37,6 +37,7 @@ util/metadataExtractor.js vendor/libphonenumber/javascript/i18n/phonenumbers/met
 # Use local compiler
 # https://www.npmjs.com/package/google-closure-compiler
 # https://github.com/google/closure-compiler/wiki/Flags-and-Options
+# Note: default value for language_out is ECMASCRIPT_NEXT, so transpile down to ECMASCRIPT5_STRICT
 echo "Compiling with Google Closure Compiler..."
 npx google-closure-compiler --version
 npx google-closure-compiler \
@@ -44,6 +45,7 @@ npx google-closure-compiler \
   --assume_function_wrapper \
   --compilation_level=ADVANCED \
   --warning_level=DEFAULT \
+  --language_out=ECMASCRIPT5_STRICT \
   --js_output_file=client/index.js \
   --js=src/phoneAdapter.js \
   --js=src/injectMeta.js \

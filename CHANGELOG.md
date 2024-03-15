@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.147.1
+* Bugfix:
+  * Restore `client/index.js` to ES5 (was generated with ESNEXT in v1.142.0)
+
 ## 1.147.0
 
 * Metadata:
