@@ -201,8 +201,8 @@ function createPhoneHandler(metadata) {
          * If regionCode is omitted, the phone number is checked against all possible regions loaded in the metadata
          *
          * @param {Object} phoneObj
-         * @param {string} regionCode (optional) e.g., 'US'
-         * @return {boolean|Error} true if phone number is valid, Error with details if phone number is not valid
+         * @param {string=} regionCode (optional) e.g., 'US'
+         * @return {true|Error} true if phone number is valid, Error with details if phone number is not valid
          * @throws {Error} if metadata has not been loaded for given region or phoneObj to proto conversion failed
          */
         'validatePhoneNumber': function validatePhoneNumber(phoneObj, regionCode) {
@@ -261,7 +261,7 @@ function createPhoneHandler(metadata) {
          *
          * @param {Object} phoneObj
          * @param {string=} regionCode (optional)
-         * @return {boolean|Error} true if phone number is possible length, Error with details if phone number is not valid
+         * @return {true|Error} true if phone number is possible length, Error with details if phone number is not valid
          * @throws {Error} if metadata has not been loaded for given region or phoneObj to proto conversion failed
          */
         'validateLength': function validateLength(phoneObj, regionCode) {
@@ -354,10 +354,11 @@ function createPhoneHandler(metadata) {
 
         /**
          * Returns an example phone number for a given type and region
+         * or null if an example does not exist
          *
          * @param {string} regionCode
          * @param {string} type
-         * @return {Object} phoneObj
+         * @return {Object|null} phoneObj
          */
         'getExampleNumberForType': function getExampleNumberForType(type, regionCode) {
             injectMeta(metadata);

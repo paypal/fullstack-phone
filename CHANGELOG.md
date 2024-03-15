@@ -1,13 +1,18 @@
 # Changelog
 
+## 1.149.0
+
+* Added Typescript declaration files
+
 ## 1.148.0
 
 * Metadata:
   * Updated to libphonenumber v8.13.32
 
 ## 1.147.1
+
 * Bugfix:
-  * Restore `client/index.js` to ES5 (was generated with ESNEXT in v1.142.0)
+  * Restored `client/index.js` to ES5 (was generated with ESNEXT in v1.142.0)
 
 ## 1.147.0
 
