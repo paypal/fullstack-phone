@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.150.0
+
+* Metadata:
+  * Updated to libphonenumber v8.13.33
+
 ## 1.149.0
 
 * Added Typescript declaration files
