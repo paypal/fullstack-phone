@@ -2031,7 +2031,7 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "(8-312) 34567",
+                "national": "(0-312) 34567",
                 "international": "+370 312 34567",
                 "e164": "+37031234567",
                 "rfc3966": "tel:+370-312-34567"
