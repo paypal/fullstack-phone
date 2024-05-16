@@ -3610,7 +3610,7 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "8 66 234 56 78",
+                "national": "66 234 56 78",
                 "international": "+998 66 234 56 78",
                 "e164": "+998662345678",
                 "rfc3966": "tel:+998-66-234-56-78"
