@@ -2505,14 +2505,27 @@
         {
             "phoneObj": {
                 "countryCode": "234",
-                "nationalNumber": "12345678"
+                "nationalNumber": "8021234567"
             },
             "validationResult": true,
             "formatted": {
-                "national": "01 234 5678",
-                "international": "+234 1 234 5678",
-                "e164": "+23412345678",
-                "rfc3966": "tel:+234-1-234-5678"
+                "national": "0802 123 4567",
+                "international": "+234 802 123 4567",
+                "e164": "+2348021234567",
+                "rfc3966": "tel:+234-802-123-4567"
+            }
+        },
+        {
+            "phoneObj": {
+                "countryCode": "234",
+                "nationalNumber": "2033123456"
+            },
+            "validationResult": true,
+            "formatted": {
+                "national": "02033 12 3456",
+                "international": "+234 2033 12 3456",
+                "e164": "+2342033123456",
+                "rfc3966": "tel:+234-2033-12-3456"
             }
         }
     ],
