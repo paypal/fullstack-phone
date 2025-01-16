@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.169.0
+
+* Metadata:
+  * Updated to libphonenumber v8.13.53
+
 ## 1.168.0
 
 * Metadata:
