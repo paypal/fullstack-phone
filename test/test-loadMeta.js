@@ -41,7 +41,7 @@ describe('Generic metadata loading tests', function () {
                     [
                         null,
                         null,
-                        '(?:3(?:0[12]|4[1-35-79]|5[1-3]|65|8[1-58]|9[0145])|4(?:01|1[1356]|2[13467]|7[1-5]|8[1-7]|9[1-689])|8(?:1[1-8]|2[01]|3[13-6]|4[0-8]|5[15]|6[1-35-79]|7[1-37-9]))\\d{7}',
+                        '336(?:[013-9]\\d|2[013-9])\\d{5}|(?:3(?:0[12]|4[1-35-79]|5[1-3]|65|8[1-58]|9[0145])|4(?:01|1[1356]|2[13467]|7[1-5]|8[1-7]|9[1-689])|8(?:1[1-8]|2[01]|3[13-6]|4[0-8]|5[15-7]|6[0-35-79]|7[1-37-9]))\\d{7}',
                         null,
                         null,
                         null,
@@ -52,11 +52,16 @@ describe('Generic metadata loading tests', function () {
                         [7]
                     ],
                     [
-                        null, null,
-                        '9\\d{9}', null,
-                        null, null,
-                        '9123456789', null,
-                        null, [10]
+                        null,
+                        null,
+                        '9\\d{9}',
+                        null,
+                        null,
+                        null,
+                        '9123456789',
+                        null,
+                        null,
+                        [10]
                     ],
                     [
                         null,
@@ -80,22 +85,39 @@ describe('Generic metadata loading tests', function () {
                         [10]
                     ],
                     [
-                        null, null, null,
-                        null, null, null,
-                        null, null, null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
                         [-1]
                     ],
                     [
-                        null, null,
-                        '808\\d{7}', null,
-                        null, null,
-                        '8081234567', null,
-                        null, [10]
+                        null,
+                        null,
+                        '808\\d{7}',
+                        null,
+                        null,
+                        null,
+                        '8081234567',
+                        null,
+                        null,
+                        [10]
                     ],
                     [
-                        null, null, null,
-                        null, null, null,
-                        null, null, null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
                         [-1]
                     ],
                     'RU',
@@ -109,7 +131,12 @@ describe('Generic metadata loading tests', function () {
                     '8~10',
                     null,
                     [
-                        [null, '(\\d{3})(\\d{2})(\\d{2})', '$1-$2-$3', ['[0-79]']],
+                        [
+                            null,
+                            '(\\d{3})(\\d{2})(\\d{2})',
+                            '$1-$2-$3',
+                            ['[0-79]']
+                        ],
                         [
                             null,
                             '(\\d{4})(\\d{2})(\\d{2})(\\d{2})',
@@ -216,33 +243,46 @@ describe('Generic metadata loading tests', function () {
                         ]
                     ],
                     [
-                        null, null, null,
-                        null, null, null,
-                        null, null, null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
                         [-1]
                     ],
                     1,
-                    '3[04-689]|[489]',
+                    null,
                     [
-                        null, null, null,
-                        null, null, null,
-                        null, null, null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
                         [-1]
                     ],
                     [
-                        null, null, null,
-                        null, null, null,
-                        null, null, null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
                         [-1]
                     ],
                     null,
                     null,
-                    [
-                        null, null, null,
-                        null, null, null,
-                        null, null, null,
-                        [-1]
-                    ]
+                    [null, null, null, null, null, null, null, null, null, [-1]]
                 ]
             }
         });
