@@ -363,14 +363,14 @@
         {
             "phoneObj": {
                 "countryCode": "229",
-                "nationalNumber": "20211234"
+                "nationalNumber": "0120211234"
             },
             "validationResult": true,
             "formatted": {
-                "national": "20 21 12 34",
-                "international": "+229 20 21 12 34",
-                "e164": "+22920211234",
-                "rfc3966": "tel:+229-20-21-12-34"
+                "national": "01 20 21 12 34",
+                "international": "+229 01 20 21 12 34",
+                "e164": "+2290120211234",
+                "rfc3966": "tel:+229-01-20-21-12-34"
             }
         }
     ],
