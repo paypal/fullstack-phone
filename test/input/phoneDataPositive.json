@@ -1019,10 +1019,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "05288-12345",
-                "international": "+212 5288-12345",
+                "national": "05 28 81 23 45",
+                "international": "+212 5 28 81 23 45",
                 "e164": "+212528812345",
-                "rfc3966": "tel:+212-5288-12345"
+                "rfc3966": "tel:+212-5-28-81-23-45"
             }
         }
     ],
@@ -2091,10 +2091,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "0520-123456",
-                "international": "+212 520-123456",
+                "national": "05 20 12 34 56",
+                "international": "+212 5 20 12 34 56",
                 "e164": "+212520123456",
-                "rfc3966": "tel:+212-520-123456"
+                "rfc3966": "tel:+212-5-20-12-34-56"
             }
         }
     ],
