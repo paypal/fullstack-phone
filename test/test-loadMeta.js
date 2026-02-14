@@ -1,6 +1,7 @@
 'use strict';
 
 var assert = require('assert'),
+    // util = require('util'),
     loadMeta = require('../server').loadMeta;
 
 describe('Generic metadata loading tests', function () {
@@ -19,6 +20,7 @@ describe('Generic metadata loading tests', function () {
 
     it('Should load metadata for RU', function () {
         var meta = loadMeta(['RU']);
+        // console.log('meta: ', util.inspect(meta, { depth: null }));
         assert.deepEqual(meta, {
             regionCodes: ['RU'],
             countryCodeToRegionCodeMap: { '7': ['RU'] },
@@ -41,7 +43,7 @@ describe('Generic metadata loading tests', function () {
                     [
                         null,
                         null,
-                        '336(?:[013-9]\\d|2[013-9])\\d{5}|(?:3(?:0[12]|4[1-35-79]|5[1-3]|65|8[1-58]|9[0145])|4(?:01|1[1356]|2[13467]|7[1-5]|8[1-7]|9[1-689])|8(?:1[1-8]|2[01]|3[13-6]|4[0-8]|5[15-7]|6[0-35-79]|7[1-37-9]))\\d{7}',
+                        '(?:3(?:0[12]|36|4[1-35-79]|5[1-3]|65|8[1-58]|9[0145])|4(?:01|1[1356]|2[13467]|7[1-5]|8[1-7]|9[1-689])|8(?:1[1-8]|2[01]|3[13-6]|4[0-8]|5[15-7]|6[0-35-79]|7[1-37-9]))\\d{7}',
                         null,
                         null,
                         null,
@@ -255,7 +257,7 @@ describe('Generic metadata loading tests', function () {
                         [-1]
                     ],
                     1,
-                    null,
+                    '[3489]',
                     [
                         null,
                         null,
