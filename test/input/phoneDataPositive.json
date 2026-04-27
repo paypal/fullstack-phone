@@ -3118,8 +3118,8 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "02/212 345 67",
-                "international": "+421 2/212 345 67",
+                "national": "02 212 345 67",
+                "international": "+421 2 212 345 67",
                 "e164": "+421221234567",
                 "rfc3966": "tel:+421-2-212-345-67"
             }
