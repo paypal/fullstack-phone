@@ -1152,10 +1152,10 @@
             },
             "validationResult": true,
             "formatted": {
-                "national": "201234",
-                "international": "+298 201234",
+                "national": "20 12 34",
+                "international": "+298 20 12 34",
                 "e164": "+298201234",
-                "rfc3966": "tel:+298-201234"
+                "rfc3966": "tel:+298-20-12-34"
             }
         }
     ],
