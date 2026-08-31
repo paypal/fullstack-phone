@@ -30,13 +30,13 @@ jobs:
       run: |
         git config --local user.email "dwbruhn@users.noreply.github.com"
         git config --local user.name "Daniel Bruhn"
-    - name: Upgrade
-      run: npm run upgrade
-    - name: Version
-      run: npm version minor
-    - name: Push
-      run: |
-        git push origin master
-        git push origin --tags
+    #- name: Upgrade
+    #  run: npm run upgrade
+    #- name: Version
+    #  run: npm version minor
+    #- name: Push
+    #  run: |
+    #    git push origin master
+    #    git push origin --tags
     - name: NPM Publish
-      run: npm publish --dry-run
+      run: npm publish
