@@ -34,9 +34,9 @@ jobs:
       run: npm run upgrade
     - name: Version
       run: npm version minor
-   # - name: Push
-   #   run: |
-   #     git push origin master
-   #     git push origin --tags
+    - name: Push
+      run: |
+        git push origin master
+        git push origin --tags
     - name: NPM Publish
       run: npm publish --dry-run
