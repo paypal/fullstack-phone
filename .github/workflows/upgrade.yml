@@ -5,7 +5,7 @@ on: [workflow_dispatch]
 # https://docs.npmjs.com/trusted-publishers
 permissions:
   id-token: write  # Required for OIDC
-  contents: read
+  contents: write  # Required to push commits or tags
 
 jobs:
   upgrade:
