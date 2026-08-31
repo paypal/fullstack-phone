@@ -2,19 +2,26 @@ name: Upgrade & Publish
 
 on: [workflow_dispatch]
 
+# https://docs.npmjs.com/trusted-publishers
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   upgrade:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v7
     - name: Set up Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v7
       with:
-        node-version: '16'
+        node-version: '24'
+        registry-url: 'https://registry.npmjs.org'
+        package-manager-cache: false  # never use caching in release builds
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v7
       with:
         python-version: '3.x'
     - name: Install
@@ -32,7 +39,4 @@ jobs:
         git push origin master
         git push origin --tags
     - name: NPM Publish
-      uses: JS-DevTools/npm-publish@v1
-      with:
-        token: ${{ secrets.NPM_TOKEN }}
-        check-version: true
+      run: npm publish --dry-run
