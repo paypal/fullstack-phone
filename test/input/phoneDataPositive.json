@@ -3844,14 +3844,14 @@
         {
             "phoneObj": {
                 "countryCode": "263",
-                "nationalNumber": "1312345"
+                "nationalNumber": "712345678"
             },
             "validationResult": true,
             "formatted": {
-                "national": "013 12345",
-                "international": "+263 13 12345",
-                "e164": "+2631312345",
-                "rfc3966": "tel:+263-13-12345"
+                "national": "071 234 5678",
+                "international": "+263 71 234 5678",
+                "e164": "+263712345678",
+                "rfc3966": "tel:+263-71-234-5678"
             }
         }
     ]
