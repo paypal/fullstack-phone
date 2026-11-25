@@ -56,7 +56,7 @@ describe('Generic metadata loading tests', function () {
                     [
                         null,
                         null,
-                        '9(?:[0-24-9]\\d{4}|3(?:0(?:0(?:05|[124579]\\d|3[0-7]|6[0-49]|8[04-9])|[1-9]\\d\\d)|[1-9]\\d{3}))\\d{4}',
+                        '9\\d{9}',
                         null,
                         null,
                         null,
@@ -448,4 +448,3 @@ describe('Copied/NEW region metadata loading tests (PN, XK, AN)', function () {
         assert.deepEqual(metaANtoBQ, metaBQ, 'AN metadata was not properly copied from BQ');
     });
 });
-
